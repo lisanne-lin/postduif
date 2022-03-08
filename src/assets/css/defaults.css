@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body{
     font-family: 'Archivo', sans-serif;
-    font-weight: bold;
 }
 
 /* Variables */
@@ -14,7 +13,7 @@ body{
     --gray-800: #40424A;
     --black: #222328;
     --status-bezorgd: #2DD034;
-    --status-onderweg: #2DD034;
+    --status-onderweg: #FFB800;
 }
 
 /* Defaults */
@@ -24,11 +23,14 @@ body{
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+}
+
+button{
+    border-radius: 10px;
 }
 h1,h2,h3,h4,h5,h6 {
     font-weight: 600;
-    color: var(--gray-800);
+    color: var(--black);
 }
 p {
     color: var(--black);
