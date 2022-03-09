@@ -1,0 +1,74 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="../assets/css/pages/stylePopup.css">
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+<a href="#popup1" type="button" class="btn btn-primary rounded-pill">+</a>
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <div class="titel">
+            <h2>Nieuwe bestelling</h2>
+        </div>
+        <div class="content">
+            <form>
+                <div class="form-row">
+                    <div class="col-4">
+                        <label for="bestelnr">Bestelnummer</label>
+                        <input id="bestelnr" type="text" class="form-control" placeholder="Nummer">
+                    </div>
+                    <div class="col-4">
+                        <label for="prijs">Prijs</label>
+                        <input id="prijs" type="text" class="form-control" placeholder="Bedrag">
+                    </div>
+                    <div class="col-2">
+                        <label for="gewicht">Gewicht pakketje</label>
+                        <input id="gewicht" type="text" class="form-control" placeholder="Kg">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-4">
+                        <label for="klantNaam">Klant naam</label>
+                        <input id="klantNaam" type="text" class="form-control" placeholder="Naam">
+                    </div>
+                    <div class="col-4">
+                        <label for="klantAchternaam">Klant achternaam</label>
+                        <input id="klantAchternaam" type="text" class="form-control" placeholder="Achternaam">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-4">
+                        <label for="straat">Straat</label>
+                        <input id="straat" type="text" class="form-control" placeholder="Straat">
+                    </div>
+                    <div class="col-4">
+                        <label for="huisnr">Huisnummer</label>
+                        <input id="huisnr" type="text" class="form-control" placeholder="Huisnummer">
+                    </div>
+                    <div class="col-2">
+                        <label for="postcode">Postcode</label>
+                        <input id="postcode" type="text" class="form-control" placeholder="Postcode">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-4">
+                        <label for="bezorger">Bezorger</label>
+                        <input id="bezorger" type="text" class="form-control" placeholder="Naam">
+                    </div>
+                    <div class="col-4">
+                        <label for="bezorgerTlfnr">Telefoonnummer bezorger</label>
+                        <input id="bezorgerTlfnr" type="text" class="form-control" placeholder="Telefoonnummer">
+                    </div>
+                </div>
+            </form>
+            <button class="maken">Bestelling maken</button>
+            <a type="button" class="close" href="#">Annuleren</a>
+<!--            <button type="button" class="btn-close" aria-label="Close">annuleren</button>-->
+        </div>
+    </div>
+</div>
+</body>
