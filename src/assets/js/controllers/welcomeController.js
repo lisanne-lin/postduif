@@ -1,7 +1,7 @@
 /**
  * Responsible for handling the actions happening on welcome view
  * For now it uses the roomExampleRepository to get some example data from server
- *
+ * uhuh
  * @author Lennard Fonteijn & Pim Meijer
  */
 
