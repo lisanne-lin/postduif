@@ -50,6 +50,7 @@ export class NavbarController extends Controller{
         //TODO: You should add highlighting of correct anchor when page is active :)
 
         //Pass the action to a new function for further processing
+        
         App.loadController(controller);
 
         //Return false to prevent reloading the page
