@@ -47,7 +47,22 @@ footer {
 }
 
 .navbar {
-    background-color: #2F72B9;
+    background-color: var(--main);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar-dark .navbar-brand {
+    color: BLACK;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #1e1e1e;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #015F3D;
+    border-color: #015F3D;
 }
 
 .bd-navbar .navbar-nav .nav-link {
