@@ -37,7 +37,7 @@ body {
 .popup {
     margin: 70px auto;
     background: #fff;
-    border-radius: 5px;
+    border-radius: 15px;
     width: 60%;
     position: relative;
     transition: all 5s ease-in-out;
@@ -70,7 +70,7 @@ body {
     background-color: #FCFC62;
     margin-left: -15px;
     margin-right: -15px;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 .maken {
@@ -82,17 +82,49 @@ body {
     text-decoration: none;
     border: none;
     hover: #0a8f5f;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
+/**
+fix da button T.T
+ */
 .annuleren {
-    margin-top:10px;
+    margin-top:20px;
     border-radius: 5px;
     margin-left: 50px;
     padding: 8px 40px;
     text-align: center;
     text-decoration: none;
     border: none;
+}
+
+.col-6 {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.col-4 {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.col-2 {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.vorm-controle {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #A2A9AC;
+    background-color: #EBEEF4;
+    background-clip: padding-box;
+    border: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 @media screen and (max-width: 700px){
