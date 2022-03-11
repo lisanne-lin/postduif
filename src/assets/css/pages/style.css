@@ -16,3 +16,7 @@
     width: 30px;
     height: 30px;
 }
+
+p.test{
+    color: red;
+}
