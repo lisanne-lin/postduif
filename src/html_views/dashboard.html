@@ -20,30 +20,22 @@
 
   <div class="container-fluid">
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
-          </div>
-        </div>
-      </nav>
-      <h1>Verzendingen</h1>
-      <a href="#">Onderweg</a>
-      <a href="#">Bezorgd</a>
+      <!-- Navigation -->
+      <div class="navigation">
+        <!-- Loads navigation via JS -->
+      </div>
+      <div class="container">
+        <h1>Verzendingen</h1>
+        <a href="#">Onderweg</a>
+        <a href="#">Bezorgd</a>
+      </div>
     </header>
     <main>
       <div class="container">
         <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-4 bestelling-toevoegen">
+          <div class="col-sm-12 col-md-12 col-lg-4 bestelling-toevoegen">
             <div class="card">
-              <div class="card-body">
+              <div class="card-body body-bestelling">
                 <div class="box">
                   <img src="../assets/img/box.svg" alt="box">
                 </div>
@@ -52,45 +44,258 @@
               </div>
             </div>
           </div>
-          <div id="bestelling-onderweg" class="col-sm-12 col-md-6 col-lg-4">
+          <div id="bestellingen" class="col-sm-12 col-md-12 col-lg-4 ">
             <div class="card">
-              <div class="card-body">
-                <div class="bestelling-info">
-                  <p class="info-kop">Track & Trace</p>
-                  <p id="code">LE9872HG12</p>
-                  <p class="info-kop">Ordernummer</p>
-                  <p class="order-nummer">9007234879</p>
-                  <p class="info-kop">Status</p>
-                  <p id="status">Onderweg</p>
+              <div class="card-body bestelling-info">
+                <div class="d-flex  justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Track & Trace</p>
+                    <p id="code">LE9872HG12</p>
+                    <p class="info-kop">Ordernummer</p>
+                    <p class="order-nummer">9007234879</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Status</p>
+                    <p class="onderweg" id="status">
+                      <span class="cirkel-oranje"></span>
+                      Onderweg</p>
+                  </div>
                 </div>
-                <!-- <hr class="lijn"></hr> -->
-              <div class="bestelling-info">
-                <p class="info-kop">Track & Trace</p>
-                <p id="code">LE9872HG12</p>
-                <p class="info-kop">Ordernummer</p>
-                <p class="order-nummer">9007234879</p>
-                <p class="info-kop">Status</p>
-                <p id="status">Onderweg</p>
+                <hr class="lijn">
+                </hr>
+                <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Vetrek</p>
+                    <p id="vertrek-tijd">22.02.2022 16:41</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Aankomst</p>
+                    <p class="aankomst-tijd">22.02.2022 16:50</p>
+                  </div>
+                </div>
+                <hr class="lijn">
+                </hr>
+                <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Klant</p>
+                    <p id="klant-naam">John Doe</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Gewicht</p>
+                    <p id="gewicht">1.5kg</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Prijs</p>
+                    <p id="prijs">€25,00</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div id="bestelling-onderweg" class="col-sm-12 col-md-6 col-lg-4">
-          <div class="card">
-            <div class="card-body bestelling-info">
-              <p class="info-kop">Track & Trace</p>
-              <p id="code">LE9872HG12</p>
+          <div id="bestellingen" class="col-sm-12 col-md-12 col-lg-4 ">
+            <div class="card">
+              <div class="card-body bestelling-info">
+                <div class="d-flex  justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Track & Trace</p>
+                    <p id="code">LE9872HG12</p>
+                    <p class="info-kop">Ordernummer</p>
+                    <p class="order-nummer">9007234879</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Status</p>
+                    <p class="bezorgd" id="status">
+                      <span class="cirkel-groen"></span>
+                      Bezorgd</p>
+                  </div>
+                </div>
+                <hr class="lijn">
+                </hr>
+                <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Vetrek</p>
+                    <p id="vertrek-tijd">22.02.2022 16:41</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Aankomst</p>
+                    <p class="aankomst-tijd">22.02.2022 16:50</p>
+                  </div>
+                </div>
+                <hr class="lijn">
+                </hr>
+                <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Klant</p>
+                    <p id="klant-naam">John Doe</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Gewicht</p>
+                    <p id="gewicht">1.5kg</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Prijs</p>
+                    <p id="prijs">€25,00</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          <!-- <div id="bestellingen" class="col-sm-12 col-md-12 col-lg-4 ">
+            <div class="card">
+              <div class="card-body bestelling-info">
+                <div class="d-flex  justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Track & Trace</p>
+                    <p id="code">LE9872HG12</p>
+                    <p class="info-kop">Ordernummer</p>
+                    <p class="order-nummer">9007234879</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Status</p>
+                    <p class="onderweg" id="status">
+                      <span class="cirkel-oranje"></span>
+                      Onderweg</p>
+                  </div>
+                </div>
+                <hr class="lijn">
+                </hr>
+                <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Vetrek</p>
+                    <p id="vertrek-tijd">22.02.2022 16:41</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Aankomst</p>
+                    <p class="aankomst-tijd">22.02.2022 16:50</p>
+                  </div>
+                </div>
+                <hr class="lijn">
+                </hr>
+                <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Klant</p>
+                    <p id="klant-naam">John Doe</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Gewicht</p>
+                    <p id="gewicht">1.5kg</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Prijs</p>
+                    <p id="prijs">€25,00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="bestellingen" class="col-sm-12 col-md-12 col-lg-4 ">
+            <div class="card">
+              <div class="card-body bestelling-info">
+                <div class="d-flex  justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Track & Trace</p>
+                    <p id="code">LE9872HG12</p>
+                    <p class="info-kop">Ordernummer</p>
+                    <p class="order-nummer">9007234879</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Status</p>
+                    <p class="onderweg" id="status">
+                      <span class="cirkel-oranje"></span>
+                      Onderweg</p>
+                  </div>
+                </div>
+                <hr class="lijn">
+                </hr>
+                <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Vetrek</p>
+                    <p id="vertrek-tijd">22.02.2022 16:41</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Aankomst</p>
+                    <p class="aankomst-tijd">22.02.2022 16:50</p>
+                  </div>
+                </div>
+                <hr class="lijn">
+                </hr>
+                <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Klant</p>
+                    <p id="klant-naam">John Doe</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Gewicht</p>
+                    <p id="gewicht">1.5kg</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Prijs</p>
+                    <p id="prijs">€25,00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="bestellingen" class="col-sm-12 col-md-12 col-lg-4 ">
+            <div class="card">
+              <div class="card-body bestelling-info">
+                <div class="d-flex  justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Track & Trace</p>
+                    <p id="code">LE9872HG12</p>
+                    <p class="info-kop">Ordernummer</p>
+                    <p class="order-nummer">9007234879</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Status</p>
+                    <p class="onderweg" id="status">
+                      <span class="cirkel-oranje"></span>
+                      Onderweg</p>
+                  </div>
+                </div>
+                <hr class="lijn">
+                </hr>
+                <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Vetrek</p>
+                    <p id="vertrek-tijd">22.02.2022 16:41</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Aankomst</p>
+                    <p class="aankomst-tijd">22.02.2022 16:50</p>
+                  </div>
+                </div>
+                <hr class="lijn">
+                </hr>
+                <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                    <p class="info-kop">Klant</p>
+                    <p id="klant-naam">John Doe</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Gewicht</p>
+                    <p id="gewicht">1.5kg</p>
+                  </div>
+                  <div class="p-2">
+                    <p class="info-kop">Prijs</p>
+                    <p id="prijs">€25,00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          
         </div>
+
       </div>
   </div>
+  </div>
+  </div>
   </main>
+
   <footer>
 
   </footer>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
