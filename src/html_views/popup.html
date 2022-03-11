@@ -1,0 +1,73 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="../assets/css/pages/stylePopup.css">
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+<a href="#popup1" type="button" class="btn btn-primary rounded-pill">+</a>
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <div class="titel">
+            <h2>Nieuwe bestelling</h2>
+        </div>
+        <div class="content">
+            <form>
+                <div class="form-row">
+                    <div class="col-4">
+                        <label for="bestelnr">Bestelnummer</label>
+                        <input id="bestelnr" type="text" class="vorm-controle" placeholder="Nummer">
+                    </div>
+                    <div class="col-4">
+                        <label for="prijs">Prijs</label>
+                        <input id="prijs" type="text" class="vorm-controle" placeholder="Bedrag">
+                    </div>
+                    <div class="col-2">
+                        <label for="gewicht">Gewicht pakketje</label>
+                        <input id="gewicht" type="text" class="vorm-controle" placeholder="Kg">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-4">
+                        <label for="datumGeschat">Geschatte leverdatum</label>
+                        <input id="datumGeschat" type="text" class="vorm-controle" placeholder="Datum">
+                    </div>
+                    <div class="col-4">
+                        <label for="klantnummer">Klantnummer</label>
+                        <input id="klantnummer" type="text" class="vorm-controle" placeholder="Klantnummer">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-4">
+                        <label for="klantNaam">Klant naam</label>
+                        <input id="klantNaam" type="text" class="vorm-controle" placeholder="Naam">
+                    </div>
+                    <div class="col-4">
+                        <label for="klantAchternaam">Klant achternaam</label>
+                        <input id="klantAchternaam" type="text" class="vorm-controle" placeholder="Achternaam">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-6">
+                        <label for="straat">Straat</label>
+                        <input id="straat" type="text" class="vorm-controle" placeholder="Straat">
+                    </div>
+                    <div class="col-2">
+                        <label for="huisnr">Huisnummer</label>
+                        <input id="huisnr" type="text" class="vorm-controle" placeholder="Huisnummer">
+                    </div>
+                    <div class="col-2">
+                        <label for="postcode">Postcode</label>
+                        <input id="postcode" type="text" class="vorm-controle" placeholder="Postcode">
+                    </div>
+                </div>
+            </form>
+            <button href="#" class="maken">Bestelling maken</button>
+           <a href="#"><button class="maken">Annuleren</button></a>
+        </div>
+    </div>
+</div>
+</body>

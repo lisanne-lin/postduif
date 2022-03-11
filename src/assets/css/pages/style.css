@@ -1,36 +1,12 @@
 @import url(../defaults.css);
 
 .card{
-    box-shadow: rgba(24, 39, 75, 0.08) 0px 5px 24px -4px;
+    -webkit-box-shadow: 0px 8px 24px -4px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 8px 24px -4px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 24px -4px rgba(0,0,0,0.2);
     border: none;
     border-radius: 15px;
     text-align: center;
-    padding: auto;
-}
-
-p{
-    margin:5px;
-}
-
-.box{
-    background-color: white;
-    width: 80px;
-    height: 80px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 5px 0px;
-    padding: 10px;
-    margin: auto;
-    margin-bottom: 10px;
-    border-radius: 10px;
-
-}
-
-/* hr{
-    border-top: 2px solid var(--gray-300);
-    width: 100%;
-} */
-
-.card-body{
-    border: 1px solid green;
 }
 
 .card-body button{
@@ -39,23 +15,4 @@ p{
     color: white;
     width: 30px;
     height: 30px;
-    transition: 0.3s;
-}
-button:hover{
-    background-color:  var(--hover);
-    
-}
-.bestelling-info{
-    text-align: left;
-}
-
-.info-kop{
-    font-size: 13px;
-    font-weight: medium;
-    color: var(--gray-300)
-}
-
-#code{
-    font-weight: bold;
-    font-size: 16px;
 }
