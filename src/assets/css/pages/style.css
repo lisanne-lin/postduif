@@ -1,45 +1,18 @@
 @import url(../defaults.css);
 
-header{
-    margin-bottom: 40px;
-}
-
-header a{
-    color: var(--black);
-}
-
-h1{
-    margin-bottom: 50px;
-}
-.card {
+.card{
     box-shadow: rgba(24, 39, 75, 0.08) 0px 5px 24px -4px;
     border: none;
     border-radius: 15px;
     text-align: center;
-    padding: 30px;
-    position: relative;
-    margin-bottom: 90px;
-    max-height: 450px;
-    height: 100%;
-
+    padding: auto;
 }
 
-.body-bestelling{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%)
+p{
+    margin:5px;
 }
 
-p {
-    margin: 5px;
-}
-
-.order-nummer{
-    font-weight: bold;
-}
-
-.box {
+.box{
     background-color: white;
     width: 80px;
     height: 80px;
@@ -51,63 +24,38 @@ p {
 
 }
 
-.card-body button {
+/* hr{
+    border-top: 2px solid var(--gray-300);
+    width: 100%;
+} */
+
+.card-body{
+    border: 1px solid green;
+}
+
+.card-body button{
     background-color: var(--secondary);
     border: none;
     color: white;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     transition: 0.3s;
 }
-
-.card-body button:hover {
-    background-color: var(--hover);
-
+button:hover{
+    background-color:  var(--hover);
+    
 }
-
-.bestelling-info {
+.bestelling-info{
     text-align: left;
 }
 
-.info-kop {
+.info-kop{
     font-size: 13px;
     font-weight: medium;
     color: var(--gray-300)
 }
 
-#code {
+#code{
     font-weight: bold;
     font-size: 16px;
-}
-
-p.onderweg {
-    color: var(--status-onderweg);
-}
-
-p.bezorgd{
-    color: var(--status-bezorgd);
-}
-
-span.cirkel-oranje {
-    width: 10px;
-    height: 10px;
-    border-radius: 50px;
-    background-color: var(--status-onderweg);
-    display: inline-block;
-} 
-
-
-span.cirkel-groen {
-    width: 10px;
-    height: 10px;
-    border-radius: 50px;
-    background-color: var(--status-bezorgd);
-    display: inline-block;
-} 
-
-/* mobiel */
-@media (max-width: 767.98px) { 
-
-
-    
 }

@@ -12,9 +12,10 @@ export class DashboardController extends Controller {
 
     async #setup() {
 
+        debugger;
         this.#dashboardView = await super.loadHtmlIntoContent("html_views/dashboard.html");
 
-        const testPar = this.#dashboardView.querySelector("html_vies/test-class-p");
+        const testPar = this.#dashboardView.querySelector(".test-class-p");
 
         console.log(testPar);
     }
