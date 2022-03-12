@@ -32,10 +32,26 @@ a{
     text-decoration: none;
 }
 
+p {
+    margin: 5px;
+}
 
-button{
+button {
+    background-color: var(--secondary);
+    border: none;
+
+    color: white;
+    width: auto;
+    height: auto;
+    transition: 0.3s;
     border-radius: 10px;
 }
+
+button:hover {
+    background-color: var(--hover);
+
+}
+
 h1,h2,h3,h4,h5,h6 {
     font-weight: 600;
 }

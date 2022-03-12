@@ -1,24 +1,8 @@
 @import url(../defaults.css);
 
-.card {
-    box-shadow: rgba(24, 39, 75, 0.08) 0px 5px 24px -4px;
-    border: none;
-    border-radius: 15px;
-    text-align: center;
-    padding: 30px;
-    position: relative;
-    margin-bottom: 90px;
-    max-height: 450px;
-    height: 100%;
 
-}
-
-.card-body button {
-    background-color: var(--secondary);
-    border: none;
-    color: white;
-    width: 30px;
-    height: 30px;
+h1 {
+    margin-bottom: 50px;
 }
 
 header {
@@ -29,51 +13,36 @@ header a {
     color: var(--black);
 }
 
-h1 {
-    margin-bottom: 50px;
+.card {
+    box-shadow: rgba(24, 39, 75, 0.08) 0px 5px 24px -4px;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    margin-bottom: 90px;
+    max-height: 450px;
+    height: 100%;
 }
-
-.body-bestelling {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: auto;
-}
-
-p {
-    margin: 5px;
-}
-
-.order-nummer {
-    font-weight: bold;
-}
-
 
 .box {
     background-color: white;
+    padding: 10px;
     width: 80px;
     height: 80px;
     box-shadow: rgba(24, 39, 75, 0.08) 0px 5px 24px -4px;
     margin: 0;
-    
-
 }
 
-.card-body button {
-    background-color: var(--secondary);
-    border: none;
-    color: white;
-    width: 40px;
-    height: 40px;
-    width: 30px;
-    height: 30px;
-    transition: 0.3s;
+.body-bestelling{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
 }
 
-button:hover {
-    background-color: var(--hover);
-
+.order-nummer {
+    font-weight: bold;
 }
 
 .bestelling-info {
