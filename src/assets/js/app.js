@@ -7,12 +7,13 @@
  * @author Lennard Fonteijn & Pim Meijer
  */
 
-import { SessionManager } from "./framework/utils/sessionManager.js"
-import { LoginController } from "./controllers/loginController.js"
-import { NavbarController }  from "./controllers/navbarController.js"
-import { UploadController }  from "./controllers/uploadController.js"
-import { WelcomeController }  from "./controllers/welcomeController.js"
-import { DashboardController } from "./controllers/dashboardController.js"
+import {SessionManager} from "./framework/utils/sessionManager.js"
+import {LoginController} from "./controllers/loginController.js"
+import {NavbarController} from "./controllers/navbarController.js"
+import {UploadController} from "./controllers/uploadController.js"
+import {WelcomeController} from "./controllers/welcomeController.js"
+import {DashboardController} from "./controllers/dashboardController.js"
+import {PlaceOrderController} from "./controllers/placeOrderController.js";
 
 export class App {
     //we only need one instance of the sessionManager, thus static use here
@@ -26,6 +27,7 @@ export class App {
     static CONTROLLER_WELCOME = "welcome";
     static CONTROLLER_UPLOAD = "upload";
     static CONTROLLER_DASHBOARD = "dashboard";
+    static CONTROLLER_PLACE_ORDER = "place_order";
 
     constructor() {
         //Always load the navigation
@@ -65,7 +67,12 @@ export class App {
             case App.CONTROLLER_DASHBOARD:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new DashboardController(), () => new LoginController());
-            break;
+                break;
+
+            case App.CONTROLLER_PLACE_ORDER:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new PlaceOrderController(), () => new LoginController());
+                break;
 
             case App.CONTROLLER_LOGOUT:
                 App.setCurrentController(name);
@@ -78,7 +85,7 @@ export class App {
                 break;
 
             case App.CONTROLLER_UPLOAD:
-                App.isLoggedIn(() => new UploadController(),() => new LoginController());
+                App.isLoggedIn(() => new UploadController(), () => new LoginController());
                 break;
 
             default:
