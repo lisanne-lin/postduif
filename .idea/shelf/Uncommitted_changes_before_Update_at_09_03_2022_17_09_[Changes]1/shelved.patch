@@ -1,0 +1,242 @@
+Index: src/html_views/popup.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/html_views/popup.html b/src/html_views/popup.html
+new file mode 100644
+--- /dev/null	
++++ b/src/html_views/popup.html	
+@@ -0,0 +1,74 @@
++<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
++<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
++<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
++<link rel="stylesheet" href="../assets/css/pages/stylePopup.css">
++<!------ Include the above in your HEAD tag ---------->
++
++<body>
++<a href="#popup1" type="button" class="btn btn-primary rounded-pill">+</a>
++<div id="popup1" class="overlay">
++    <div class="popup">
++        <div class="titel">
++            <h2>Nieuwe bestelling</h2>
++        </div>
++        <div class="content">
++            <form>
++                <div class="form-row">
++                    <div class="col-4">
++                        <label for="bestelnr">Bestelnummer</label>
++                        <input id="bestelnr" type="text" class="form-control" placeholder="Nummer">
++                    </div>
++                    <div class="col-4">
++                        <label for="prijs">Prijs</label>
++                        <input id="prijs" type="text" class="form-control" placeholder="Bedrag">
++                    </div>
++                    <div class="col-2">
++                        <label for="gewicht">Gewicht pakketje</label>
++                        <input id="gewicht" type="text" class="form-control" placeholder="Kg">
++                    </div>
++                </div>
++
++                <div class="form-row">
++                    <div class="col-4">
++                        <label for="klantNaam">Klant naam</label>
++                        <input id="klantNaam" type="text" class="form-control" placeholder="Naam">
++                    </div>
++                    <div class="col-4">
++                        <label for="klantAchternaam">Klant achternaam</label>
++                        <input id="klantAchternaam" type="text" class="form-control" placeholder="Achternaam">
++                    </div>
++                </div>
++
++                <div class="form-row">
++                    <div class="col-4">
++                        <label for="straat">Straat</label>
++                        <input id="straat" type="text" class="form-control" placeholder="Straat">
++                    </div>
++                    <div class="col-4">
++                        <label for="huisnr">Huisnummer</label>
++                        <input id="huisnr" type="text" class="form-control" placeholder="Huisnummer">
++                    </div>
++                    <div class="col-2">
++                        <label for="postcode">Postcode</label>
++                        <input id="postcode" type="text" class="form-control" placeholder="Postcode">
++                    </div>
++                </div>
++
++                <div class="form-row">
++                    <div class="col-4">
++                        <label for="bezorger">Bezorger</label>
++                        <input id="bezorger" type="text" class="form-control" placeholder="Naam">
++                    </div>
++                    <div class="col-4">
++                        <label for="bezorgerTlfnr">Telefoonnummer bezorger</label>
++                        <input id="bezorgerTlfnr" type="text" class="form-control" placeholder="Telefoonnummer">
++                    </div>
++                </div>
++            </form>
++            <button class="maken">Bestelling maken</button>
++            <a type="button" class="close" href="#">Annuleren</a>
++<!--            <button type="button" class="btn-close" aria-label="Close">annuleren</button>-->
++        </div>
++    </div>
++</div>
++</body>
+\ No newline at end of file
+Index: src/assets/css/pages/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@import url(../defaults.css);\r\n\r\n.card{\r\n    -webkit-box-shadow: 0px 8px 24px -4px rgba(0,0,0,0.2);\r\n    -moz-box-shadow: 0px 8px 24px -4px rgba(0,0,0,0.2);\r\n    box-shadow: 0px 8px 24px -4px rgba(0,0,0,0.2);\r\n    border: none;\r\n    border-radius: 15px;\r\n    text-align: center;\r\n}\r\n\r\n.card-body button{\r\n    background-color: var(--secondary);\r\n    border: none;\r\n    color: white;\r\n    width: 30px;\r\n    height: 30px;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/assets/css/pages/style.css b/src/assets/css/pages/style.css
+--- a/src/assets/css/pages/style.css	
++++ b/src/assets/css/pages/style.css	
+@@ -1,18 +1,25 @@
+ @import url(../defaults.css);
+ 
+-.card{
+-    -webkit-box-shadow: 0px 8px 24px -4px rgba(0,0,0,0.2);
+-    -moz-box-shadow: 0px 8px 24px -4px rgba(0,0,0,0.2);
+-    box-shadow: 0px 8px 24px -4px rgba(0,0,0,0.2);
++* li {
++    list-style: none;
++}
++
++.card {
++    -webkit-box-shadow: 0px 8px 24px -4px rgba(0, 0, 0, 0.2);
++    -moz-box-shadow: 0px 8px 24px -4px rgba(0, 0, 0, 0.2);
++    box-shadow: 0px 8px 24px -4px rgba(0, 0, 0, 0.2);
+     border: none;
+     border-radius: 15px;
+     text-align: center;
+ }
+ 
+-.card-body button{
++.card-body button {
+     background-color: var(--secondary);
+     border: none;
+     color: white;
+     width: 30px;
+     height: 30px;
+ }
++
++
++
+Index: src/assets/css/pages/stylePopup.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/assets/css/pages/stylePopup.css b/src/assets/css/pages/stylePopup.css
+new file mode 100644
+--- /dev/null	
++++ b/src/assets/css/pages/stylePopup.css	
+@@ -0,0 +1,105 @@
++@import url(../defaults.css);
++
++body {
++    font-family: 'Archivo', sans-serif;
++    background: url(http://amitchaudhary.in/images/testimonials.jpg) no-repeat;
++    background-size: cover;
++    height: 100vh;
++}
++
++.box {
++    width: 50%;
++    margin: 0 auto;
++    background: rgba(53, 52, 52, 0.2);
++    padding: 50px;
++    border: 2px solid #fff;
++    background-clip: padding-box;
++    text-align: center;
++}
++
++.overlay {
++    position: fixed;
++    top: 0;
++    bottom: 0;
++    left: 0;
++    right: 0;
++    background: rgba(0, 0, 0, 0.7);
++    transition: opacity 500ms;
++    visibility: hidden;
++    opacity: 0;
++}
++
++.overlay:target {
++    visibility: visible;
++    opacity: 1;
++}
++
++.popup {
++    margin: 70px auto;
++    background: #fff;
++    border-radius: 5px;
++    width: 60%;
++    position: relative;
++    transition: all 5s ease-in-out;
++    padding-bottom: 15px;
++    padding-left: 15px;
++    padding-right: 15px;
++}
++
++.popup h2 {
++    margin: 15px;
++    color: #333;
++    font-family: 'Archivo', sans-serif;
++}
++/*.popup .close {*/
++/*    top: 370px;*/
++/*    right: 20px;*/
++/*    transition: all 200ms;*/
++/*    font-size: 30px;*/
++/*    font-weight: bold;*/
++/*    text-decoration: none;*/
++/*    color: #333;*/
++/*}*/
++
++.popup .content {
++    max-height: 30%;
++    overflow: hidden;
++}
++
++.titel {
++    background-color: #FCFC62;
++    margin-left: -15px;
++    margin-right: -15px;
++    border-radius: 5px;
++}
++
++.maken {
++    border-radius: 5px;
++    background-color: #015F3D;
++    color: white;
++    padding: 8px 25px;
++    text-align: center;
++    text-decoration: none;
++    border: none;
++    hover: #0a8f5f;
++    margin-top: 10px;
++}
++
++.annuleren {
++    margin-top:10px;
++    border-radius: 5px;
++    margin-left: 50px;
++    padding: 8px 40px;
++    text-align: center;
++    text-decoration: none;
++    border: none;
++}
++
++@media screen and (max-width: 700px){
++    .box{
++        width: 70%;
++    }
++    .popup{
++        width: 70%;
++    }
++}
+\ No newline at end of file

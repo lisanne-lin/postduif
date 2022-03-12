@@ -32,10 +32,26 @@ a{
     text-decoration: none;
 }
 
+p {
+    margin: 5px;
+}
 
-button{
+button {
+    background-color: var(--secondary);
+    border: none;
+
+    color: white;
+    width: auto;
+    height: auto;
+    transition: 0.3s;
     border-radius: 10px;
 }
+
+button:hover {
+    background-color: var(--hover);
+
+}
+
 h1,h2,h3,h4,h5,h6 {
     font-weight: 600;
 }
@@ -53,21 +69,22 @@ footer {
 
 .navbar {
     background-color: var(--main);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: rgba(24, 39, 75, 0.08) 0px 0px 10px 1px;
+    margin-bottom: 30px;
 }
 
+
 .navbar-dark .navbar-brand {
-    color: BLACK;
+    color: var(--black);
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: #1e1e1e;
+    color: var(--black);
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #015F3D;
-    border-color: #015F3D;
+    background-color: var(--secondary);
 }
 
 .bd-navbar .navbar-nav .nav-link {
