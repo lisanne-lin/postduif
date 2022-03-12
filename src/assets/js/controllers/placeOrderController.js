@@ -26,7 +26,7 @@ export class PlaceOrderController extends Controller {
     #saveOrder(event) {
         event.preventDefault();
 
-        const bestelnummer  = this.#placeOrderView.querySelector("#exampleInputOrderNum").value;
+        // const bestelnummer  = this.#placeOrderView.querySelector("#exampleInputOrderNum").value;
         const klantnummer  = this.#placeOrderView.querySelector("#exampleInputKlantnummer").value;
         const naam  = this.#placeOrderView.querySelector("#exampleInputName").value;
         const adres  = this.#placeOrderView.querySelector("#exampleInputAdres").value;
@@ -42,9 +42,9 @@ export class PlaceOrderController extends Controller {
             errorBox.innerHTML = "Naam is te kort, minimaal 2 karakters";
         } else {
             errorBox.innerHTML = "";
-            this.#ordersRepository.createOrder(bestelnummer, naam, adres, plaats, postcode, geschatte_bezorgdatum,
-                verzend_datum, bezorgkosten, null,null, null,
-                null, Date.now());
+            this.#ordersRepository.createOrder(null, naam, adres, plaats, postcode, geschatte_bezorgdatum,
+                verzend_datum, bezorgkosten, null,1, 1,
+                1, null);
         }
     }
 

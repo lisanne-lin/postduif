@@ -15,7 +15,7 @@ class DashboardRoute {
     }
 
     #createOrder() {
-        this.#app.post("/dashboard", async (req, res) => {
+        this.#app.post("/bestelling", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "INSERT INTO bestelling (bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, verzend_datum, bezorgkosten, opmerking, Bezorger_bezorger_id, Klant_klantnummer, Ondernemer_ondernemer_id, besteldatum) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
@@ -23,7 +23,7 @@ class DashboardRoute {
                 });
 
                 if (data.insertId) {
-                    res.status(this.#httpErrorCodes.HTTP_OK_CODE).json({id: data.insertId});
+                    res.status(this.#httpErrorCodes.HTTP_OK_CODE).json({bestelnummer: data.insertId});
                 }
 
             } catch (e) {

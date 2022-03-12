@@ -8,7 +8,7 @@ export class OrdersRepository {
     #route;
 
     constructor() {
-        this.#route = "/orders";
+        this.#route = "/bestelling";
         this.#networkManager = new NetworkManager();
     }
 
