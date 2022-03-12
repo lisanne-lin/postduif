@@ -1,102 +1,158 @@
-@@ -11,6 +11,12 @@
-<link rel="stylesheet" href="../assets/css/pages/style.css">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- BOOTSTRAP STYLES -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/pages/style.css">
 
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="../assets/css/pages/stylePopup.css">
-<!------ Include the above in your HEAD tag ---------->
-
-<title>Dashboard</title>
+  <title>Dashboard</title>
 </head>
 
-@@ -48,7 +54,8 @@
-<img src="../assets/img/box.svg" alt="box">
-</div>
-<p>Vul hier snel je nieuwe bestellingen in!</p>
-<button>+</button>
-<a href="#popup1" type="button" class="btn btn-primary rounded-pill">+</a>
-
-</div>
-</div>
-</div>
-@@ -86,11 +93,76 @@
-</div>
-</div>
-</main>
-<footer>
-  </div>
-
-
-</footer>
-<div id="popup1" class="overlay">
-  <div class="popup">
-    <div class="titel">
-      <h2>Nieuwe bestelling</h2>
+<body>
+  <header>
+    <div class="container">
+      <h1>Verzendingen</h1>
+      <div class="filter d-flex justify-content-around">
+      <a clas href="#">Onderweg</a>
+      <a href="#">Bezorgd</a>
     </div>
-    <div class="content">
-      <form>
-        <div class="form-row">
-          <div class="col-4">
-            <label for="bestelnr">Bestelnummer</label>
-            <input id="bestelnr" type="text" class="vorm-controle" placeholder="Nummer">
-          </div>
-          <div class="col-4">
-            <label for="prijs">Prijs</label>
-            <input id="prijs" type="text" class="vorm-controle" placeholder="Bedrag">
-          </div>
-          <div class="col-2">
-            <label for="gewicht">Gewicht pakketje</label>
-            <input id="gewicht" type="text" class="vorm-controle" placeholder="Kg">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="col-4">
-            <label for="datumGeschat">Geschatte leverdatum</label>
-            <input id="datumGeschat" type="text" class="vorm-controle" placeholder="Datum">
-          </div>
-          <div class="col-4">
-            <label for="klantnummer">Klantnummer</label>
-            <input id="klantnummer" type="text" class="vorm-controle" placeholder="Klantnummer">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="col-4">
-            <label for="klantNaam">Klant naam</label>
-            <input id="klantNaam" type="text" class="vorm-controle" placeholder="Naam">
-          </div>
-          <div class="col-4">
-            <label for="klantAchternaam">Klant achternaam</label>
-            <input id="klantAchternaam" type="text" class="vorm-controle" placeholder="Achternaam">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="col-6">
-            <label for="straat">Straat</label>
-            <input id="straat" type="text" class="vorm-controle" placeholder="Straat">
-          </div>
-          <div class="col-2">
-            <label for="huisnr">Huisnummer</label>
-            <input id="huisnr" type="text" class="vorm-controle" placeholder="Huisnummer">
-          </div>
-          <div class="col-2">
-            <label for="postcode">Postcode</label>
-            <input id="postcode" type="text" class="vorm-controle" placeholder="Postcode">
-          </div>
-        </div>
-      </form>
-      <button href="#" class="maken">Bestelling maken</button>
-      <a href="#"><button class="maken">Annuleren</button></a>
     </div>
-  </div>
-</div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-4 bestelling-toevoegen">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-body body-bestelling">
+                <div class="box">
+                  <img src="../assets/img/box.svg" alt="box">
+                  <p>Voeg hier snel je bestellingen toe!</p>
+                <button class="add">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="bestellingen" class="col-sm-12 col-md-12 col-lg-4 ">
+          <div class="card">
+            <div class="card-body bestelling-info">
+              <div class="d-flex  justify-content-between">
+                <div class="p-2">
+                  <p class="info-kop">Track & Trace</p>
+                  <p id="code">LE9872HG12</p>
+                  <p class="info-kop">Ordernummer</p>
+                  <p class="order-nummer">9007234879</p>
+                </div>
+                <div class="p-2">
+                  <p class="info-kop">Status</p>
+                  <p class="onderweg" id="status">
+                    <span class="cirkel-oranje"></span>
+                    Onderweg</p>
+                </div>
+              </div>
+              <hr class="lijn">
+              </hr>
+              <div class="d-flex justify-content-between">
+                <div class="p-2">
+                  <p class="info-kop">Vetrek</p>
+                  <p id="vertrek-tijd">22.02.2022 16:41</p>
+                </div>
+                <div class="p-2">
+                  <p class="info-kop">Aankomst</p>
+                  <p class="aankomst-tijd">22.02.2022 16:50</p>
+                </div>
+              </div>
+              <hr class="lijn">
+              </hr>
+              <div class="d-flex justify-content-between">
+                <div class="p-2">
+                  <p class="info-kop">Klant</p>
+                  <p id="klant-naam">John Doe</p>
+                </div>
+                <div class="p-2">
+                  <p class="info-kop">Gewicht</p>
+                  <p id="gewicht">1.5kg</p>
+                </div>
+                <div class="p-2">
+                  <p class="info-kop">Prijs</p>
+                  <p id="prijs">€25,00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="bestellingen" class="col-sm-12 col-md-12 col-lg-4 ">
+          <div class="card">
+            <div class="card-body bestelling-info">
+              <div class="d-flex  justify-content-between">
+                <div class="p-2">
+                  <p class="info-kop">Track & Trace</p>
+                  <p id="code">LE9872HG12</p>
+                  <p class="info-kop">Ordernummer</p>
+                  <p class="order-nummer">9007234879</p>
+                </div>
+                <div class="p-2">
+                  <p class="info-kop">Status</p>
+                  <p class="bezorgd" id="status">
+                    <span class="cirkel-groen"></span>
+                    Bezorgd</p>
+                </div>
+              </div>
+              <hr class="lijn">
+              </hr>
+              <div class="d-flex justify-content-between">
+                <div class="p-2">
+                  <p class="info-kop">Vetrek</p>
+                  <p id="vertrek-tijd">22.02.2022 16:41</p>
+                </div>
+                <div class="p-2">
+                  <p class="info-kop">Aankomst</p>
+                  <p class="aankomst-tijd">22.02.2022 16:50</p>
+                </div>
+              </div>
+              <hr class="lijn">
+              </hr>
+              <div class="d-flex justify-content-between">
+                <div class="p-2">
+                  <p class="info-kop">Klant</p>
+                  <p id="klant-naam">John Doe</p>
+                </div>
+                <div class="p-2">
+                  <p class="info-kop">Gewicht</p>
+                  <p id="gewicht">1.5kg</p>
+                </div>
+                <div class="p-2">
+                  <p class="info-kop">Prijs</p>
+                  <p id="prijs">€25,00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+  <footer>
 
+  </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+  </script>
+</body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-</script>
+</html>
