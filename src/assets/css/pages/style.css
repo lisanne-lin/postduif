@@ -20,27 +20,25 @@ header a {
     text-align: center;
     padding: 30px;
     position: relative;
+    height: 450px;
     margin-bottom: 90px;
-    max-height: 450px;
-    height: 100%;
+
 }
 
-.box {
-    background-color: white;
-    padding: 10px;
-    width: 80px;
-    height: 80px;
-    box-shadow: rgba(24, 39, 75, 0.08) 0px 5px 24px -4px;
-    margin: 0;
-}
 
-.body-bestelling{
+.box{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
 
+
+button{
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+}
 .order-nummer {
     font-weight: bold;
 }
@@ -68,6 +66,7 @@ p.bezorgd {
     color: var(--status-bezorgd);
 }
 
+
 span.cirkel-oranje {
     width: 10px;
     height: 10px;
@@ -86,4 +85,9 @@ span.cirkel-groen {
 }
 
 /* mobiel */
-@media (max-width: 767.98px) {}
+@media (max-width: 767.98px) {
+
+    .card{
+        margin-bottom: 50px;
+    }
+}

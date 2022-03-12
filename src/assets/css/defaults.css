@@ -39,10 +39,7 @@ p {
 button {
     background-color: var(--secondary);
     border: none;
-
     color: white;
-    width: auto;
-    height: auto;
     transition: 0.3s;
     border-radius: 10px;
 }
