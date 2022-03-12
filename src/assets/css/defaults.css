@@ -86,6 +86,7 @@ footer {
 .btn-primary {
     color: #fff;
     background-color: var(--secondary);
+    border-color: #015f3d;
 }
 
 .bd-navbar .navbar-nav .nav-link {
