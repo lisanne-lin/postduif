@@ -14,6 +14,7 @@ import {UploadController} from "./controllers/uploadController.js"
 import {WelcomeController} from "./controllers/welcomeController.js"
 import {DashboardController} from "./controllers/dashboardController.js"
 import {PlaceOrderController} from "./controllers/placeOrderController.js";
+import {RegisterController} from "./controllers/registerController.js";
 
 export class App {
     //we only need one instance of the sessionManager, thus static use here
@@ -28,6 +29,7 @@ export class App {
     static CONTROLLER_UPLOAD = "upload";
     static CONTROLLER_DASHBOARD = "dashboard";
     static CONTROLLER_PLACE_ORDER = "place_order";
+    static CONTROLLER_SIGN_UP = "sign_up";
 
     constructor() {
         //Always load the navigation
@@ -72,6 +74,11 @@ export class App {
             case App.CONTROLLER_PLACE_ORDER:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new PlaceOrderController(), () => new LoginController());
+                break;
+
+            case App.CONTROLLER_SIGN_UP:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new RegisterController(), () => new LoginController());
                 break;
 
             case App.CONTROLLER_LOGOUT:
