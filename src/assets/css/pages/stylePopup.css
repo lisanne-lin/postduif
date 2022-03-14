@@ -1,5 +1,15 @@
 @import url(../defaults.css);
 
+<<<<<<< HEAD
+=======
+body {
+    font-family: 'Archivo', sans-serif;
+    background-size: cover;
+    height: 100vh;
+}
+
+
+>>>>>>> 9308277cc787d8fcf986a8e086112657b1189fd8
 .overlay {
     position: fixed;
     top: 0;
