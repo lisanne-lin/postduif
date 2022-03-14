@@ -1,71 +1,64 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="../assets/css/pages/defaults.css">
 <link rel="stylesheet" href="../assets/css/pages/stylePopup.css">
 <!------ Include the above in your HEAD tag ---------->
 
 <body>
-<a href="#popup1" type="button" class="btn btn-primary rounded-pill">+</a>
+<a href="#popup1" type="button" class="btn btn-primary">+</a>
 <div id="popup1" class="overlay">
     <div class="popup">
         <div class="titel">
-            <h2>Nieuwe bestelling</h2>
+            <h2>Plaats bestelling</h2>
         </div>
         <div class="content">
             <form>
                 <div class="form-row">
                     <div class="col-4">
-                        <label for="bestelnr">Bestelnummer</label>
-                        <input id="bestelnr" type="text" class="vorm-controle" placeholder="Nummer">
+                        <label for="exampleInputKlantnummer" class="form-label">Klantnummer</label>
+                        <input type="text" class="form-control" id="exampleInputKlantnummer" placeholder="Vul het klantnummer van de klant in">
                     </div>
                     <div class="col-4">
-                        <label for="prijs">Prijs</label>
-                        <input id="prijs" type="text" class="vorm-controle" placeholder="Bedrag">
+                        <label for="exampleInputName" class="form-label">Naam</label>
+                        <input type="text" class="form-control" id="exampleInputName" placeholder="Vul naam in van de klant">
                     </div>
                     <div class="col-2">
-                        <label for="gewicht">Gewicht pakketje</label>
-                        <input id="gewicht" type="text" class="vorm-controle" placeholder="Kg">
+                        <label for="exampleInputAdres" class="form-label">Adres</label>
+                    <input type="text" class="form-control" id="exampleInputAdres" placeholder="Vul adres in van de klant">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col-4">
-                        <label for="datumGeschat">Geschatte leverdatum</label>
-                        <input id="datumGeschat" type="text" class="vorm-controle" placeholder="Datum">
+                        <label for="exampleInputPlaats" class="form-label">Plaats</label>
+                        <input type="text" class="form-control" id="exampleInputPlaats" placeholder="Vul plaats in van de klant">
                     </div>
                     <div class="col-4">
-                        <label for="klantnummer">Klantnummer</label>
-                        <input id="klantnummer" type="text" class="vorm-controle" placeholder="Klantnummer">
+                        <label for="exampleInputPostcode" class="form-label">Postcode</label>
+                    <input type="text" class="form-control" id="exampleInputPostcode" placeholder="Vul plaats in van de klant">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col-4">
-                        <label for="klantNaam">Klant naam</label>
-                        <input id="klantNaam" type="text" class="vorm-controle" placeholder="Naam">
+                        <label for="exampleInputBezorgdatum" class="form-label">Geschatte bezorgdatum (optioneel)</label>
+                    <input type="date" class="form-control" id="exampleInputBezorgdatum" placeholder="Vul de geschatte bezorgdatum in">
                     </div>
                     <div class="col-4">
-                        <label for="klantAchternaam">Klant achternaam</label>
-                        <input id="klantAchternaam" type="text" class="vorm-controle" placeholder="Achternaam">
+                        <label for="exampleInputVerzenddatum" class="form-label">Verzenddatum (optioneel)</label>
+                    <input type="date" class="form-control" id="exampleInputVerzenddatum" placeholder="Vul de verzenddatum in">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col-6">
-                        <label for="straat">Straat</label>
-                        <input id="straat" type="text" class="vorm-controle" placeholder="Straat">
-                    </div>
-                    <div class="col-2">
-                        <label for="huisnr">Huisnummer</label>
-                        <input id="huisnr" type="text" class="vorm-controle" placeholder="Huisnummer">
-                    </div>
-                    <div class="col-2">
-                        <label for="postcode">Postcode</label>
-                        <input id="postcode" type="text" class="vorm-controle" placeholder="Postcode">
+                        <label for="exampleInputBezorgkosten" class="form-label">Bezorgkosten</label>
+                        <input type="text" class="form-control" id="exampleInputBezorgkosten" placeholder="Vul de bezorgkosten in">
                     </div>
                 </div>
             </form>
-            <button href="#" class="maken">Bestelling maken</button>
+            <button type="submit" class="btn btn-primary" id="saveButton">Bestelling opslaan en plaatsen</button>
            <a href="#"><button class="maken">Annuleren</button></a>
         </div>
     </div>

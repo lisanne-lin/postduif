@@ -34,10 +34,11 @@ header a {
 }
 
 
-button.add{
+a.add{
     padding: 5px;
-    width: 40px;
-    height: 40px;
+    background-color: var(--secondary);
+    border-radius: 5px;
+    color: white;
 }
 .order-nummer {
     font-weight: bold;
