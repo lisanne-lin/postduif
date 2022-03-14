@@ -6,17 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- BOOTSTRAP STYLES -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="../assets/css/pages/style.css">
-
-
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/pages/dashboard.css">
   <link rel="stylesheet" href="../assets/css/pages/stylePopup.css">
-  <!------ Include the above in your HEAD tag ---------->
-
   <title>Dashboard</title>
 </head>
 
@@ -25,9 +19,9 @@
     <div class="container">
       <h1>Verzendingen</h1>
       <div class="filter d-flex justify-content-around">
-      <a clas href="#">Onderweg</a>
-      <a href="#">Bezorgd</a>
-    </div>
+        <a clas href="#">Onderweg</a>
+        <a href="#">Bezorgd</a>
+      </div>
     </div>
   </header>
   <main>
@@ -40,8 +34,7 @@
                 <div class="box">
                   <img src="../assets/img/box.svg" alt="box">
                   <p>Voeg hier snel je bestellingen toe!</p>
-                  <a href="#popup1" type="button" class="btn btn-primary rounded-pill">+</a>
-
+                  <a href="#popup1" class="add">+</a>
                 </div>
               </div>
             </div>
@@ -147,16 +140,14 @@
     </div>
     </div>
   </main>
-
-
   <div id="popup1" class="overlay">
     <div class="popup">
-      <div class="titel">
-        <h2>Nieuwe bestelling</h2>
-      </div>
-      <div class="content">
+      <div class="content card card-form">
+        <div class="card-header">
+          <h2>Nieuwe bestelling</h2>
+        </div>
         <form>
-          <div class="form-row">
+          <div class="form-row card-body">
             <div class="col-4">
               <label for="bestelnr">Bestelnummer</label>
               <input id="bestelnr" type="text" class="vorm-controle" placeholder="Nummer">
@@ -214,10 +205,10 @@
     </div>
   </div>
 
-  <footer>
 
-  </footer>
 
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
