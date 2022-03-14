@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     font-family: 'Archivo', sans-serif;
 }
+
 /* Variables */
 :root {
     --main: #FCFC62;
     --secondary: #015F3D;
-    --hover:#06442E;
+    --hover: #06442E;
     --gray-100: #EBEEF4;
     --gray-300: #CDD0D4;
     --gray-500: #CDD0D4;
@@ -28,15 +30,29 @@
     color: var(--black);
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-
-button{
-    border-radius: 10px;
+p {
+    margin: 5px;
 }
-h1,h2,h3,h4,h5,h6 {
+
+button {
+    background-color: var(--secondary);
+    border: none;
+    color: white;
+    transition: 0.3s;
+    border-radius: 10px;
+    width: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 600;
 }
 
@@ -51,27 +67,39 @@ footer {
     width: 100%;
 }
 
+/* Navbar */
 .navbar {
     background-color: var(--main);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: rgba(24, 39, 75, 0.08) 0px 0px 10px 1px;
+    margin-bottom: 30px;
 }
+
 
 .navbar-dark .navbar-brand {
-    color: BLACK;
+    color: var(--black);
 }
 
-.navbar-dark .navbar-nav .nav-link {
-    color: #1e1e1e;
+.navbar-light .navbar-nav .nav-link {
+    color: var(--black);
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #015F3D;
-    border-color: #015F3D;
+    background-color: var(--secondary);
+    border-color: #015f3d;
 }
 
 .bd-navbar .navbar-nav .nav-link {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
     color: #cbbde2;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    color: var(--secondary);
+}
+
+/* Navbar Toggler */
+.navbar-toggler{
+    border: none;
+    stroke: var(--secondary);
 }
