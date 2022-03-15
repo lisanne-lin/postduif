@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="sidebar in nav gedaan">
+    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="je kan nu inloggen met een ondernemersaccount">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/usersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/usersRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/loginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/loginController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/repositories/usersRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/repositories/usersRepository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/welcome.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647103580195</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="je kan nu inloggen met een ondernemersaccount">
+      <created>1647356002190</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1647356002190</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +161,7 @@
     <MESSAGE value="createOrder is af" />
     <MESSAGE value="bestellingen plaatsen backend is bijna af" />
     <MESSAGE value="het is nu mogelijk om een bestelling in de db te zetten" />
-    <option name="LAST_COMMIT_MESSAGE" value="het is nu mogelijk om een bestelling in de db te zetten" />
+    <MESSAGE value="je kan nu inloggen met een ondernemersaccount" />
+    <option name="LAST_COMMIT_MESSAGE" value="je kan nu inloggen met een ondernemersaccount" />
   </component>
 </project>
