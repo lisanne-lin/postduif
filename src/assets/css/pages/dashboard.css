@@ -26,6 +26,14 @@ header a {
 }
 
 
+.filter{
+    display: inline-block; 
+}
+
+.onderweg-filter{
+    margin-right: 30px;
+}
+
 .box{
     position: absolute;
     top: 50%;
