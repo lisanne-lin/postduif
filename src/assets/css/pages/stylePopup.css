@@ -3,6 +3,7 @@
 .container{
     max-width: 1200px;
     padding-left: 90px;
+    padding-top: 20px;
 }
 .overlay {
     position: fixed;
