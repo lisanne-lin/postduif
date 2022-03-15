@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="sidebar in nav gedaan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/pages/sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/pages/sidebar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/pages/stylePopup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/pages/stylePopup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/popup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +63,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="68884a5c-c443-4843-bcef-17925b9e1228" name="Changes" comment="" />
+      <changelist id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="sidebar in nav gedaan" />
       <created>1646239849719</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -68,6 +73,7 @@
       <workItem from="1646504089585" duration="1906000" />
       <workItem from="1646739665124" duration="22500000" />
       <workItem from="1646854629532" duration="23524000" />
+      <workItem from="1647354427424" duration="5217000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1646240196277</created>
@@ -125,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647103580195</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="sidebar in nav gedaan">
+      <created>1647354499297</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1647354499297</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +165,7 @@
     <MESSAGE value="createOrder is af" />
     <MESSAGE value="bestellingen plaatsen backend is bijna af" />
     <MESSAGE value="het is nu mogelijk om een bestelling in de db te zetten" />
-    <option name="LAST_COMMIT_MESSAGE" value="het is nu mogelijk om een bestelling in de db te zetten" />
+    <MESSAGE value="sidebar in nav gedaan" />
+    <option name="LAST_COMMIT_MESSAGE" value="sidebar in nav gedaan" />
   </component>
 </project>

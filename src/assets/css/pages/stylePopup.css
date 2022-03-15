@@ -54,7 +54,7 @@ h2 {
     max-height: 30%;
 }
 
-.maken {
+.make {
     border-radius: 5px;
     background-color: var(--secondary);
     color: white;
@@ -63,9 +63,7 @@ h2 {
 
 }
 
-/**
-fix da button T.T
- */
+
 .annuleren {
     margin-top: 20px;
     border-radius: 5px;
@@ -91,7 +89,7 @@ fix da button T.T
     margin-top: 5px;
 }
 
-.vorm-controle {
+.form-control {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
