@@ -27,24 +27,19 @@
     border-bottom: none;
     text-align: left;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 0 0 15px 15px !important;
 }
 
 .popup {
     margin: 70px auto;
     border-radius: 15px;
-    position: fixed;
-    left: 50%;
-    top: 45%;
-    transform: translate(-50%, -50%);
+    position: relative;
 }
 
 .card-form {
     padding: 0;
     border-radius: 15px;
     max-width: 800px;
-    text-align: left;
-    height: auto;
 }
 
 .titel {
@@ -64,32 +59,54 @@ h2 {
     max-height: 30%;
 }
 
-.maken {
+.make {
     border-radius: 5px;
     background-color: var(--secondary);
     color: white;
+    width: 200px;
     padding: 10px;
 
 }
 
-form{
-    margin-bottom: 20px;
+
+.annuleren {
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-left: 50px;
+    padding: 8px 40px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
 }
 
-.form-row{
-    padding: 20px;
+.col-6 {
+    margin-left: 5px;
+    margin-top: 5px;
 }
 
-.annuleren{
-    background-color: var(--gray-100);
-    color:var(--gray-800);
+.col-4 {
+    margin-left: 5px;
+    margin-top: 5px;
 }
 
-.form-buttons{
-    margin-bottom:20px ;
-    padding-left: 20px;
+.col-2 {
+    margin-left: 5px;
+    margin-top: 5px;
 }
 
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #A2A9AC;
+    background-color: #EBEEF4;
+    background-clip: padding-box;
+    border: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
 
 @media screen and (max-width: 700px) {
     .popup {
