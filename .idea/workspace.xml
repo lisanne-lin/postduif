@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="sidebar in nav gedaan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/usersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/usersRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/loginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/loginController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/js/repositories/usersRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/repositories/usersRepository.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +144,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
