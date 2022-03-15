@@ -4,6 +4,7 @@
  */
 
 import { UsersRepository } from "../repositories/usersRepository.js";
+import {EntrepreneursRepository} from "../repositories/entrepreneursRepository.js";
 import { App } from "../app.js";
 import { Controller } from "./controller.js";
 
@@ -11,10 +12,12 @@ export class LoginController extends Controller{
     //# is a private field in Javascript
     #usersRepository
     #loginView
+    #entrepreneursRepository;
 
     constructor() {
         super();
         this.#usersRepository = new UsersRepository();
+        this.#entrepreneursRepository = new EntrepreneursRepository();
 
         this.#setupView()
     }
@@ -40,14 +43,14 @@ export class LoginController extends Controller{
         event.preventDefault();
 
         //get the input field elements from the view and retrieve the value
-        const username = this.#loginView.querySelector("#exampleInputUsername").value;
-        const password = this.#loginView.querySelector("#exampleInputPassword").value;
+        const emailadres = this.#loginView.querySelector("#exampleInputUsername").value;
+        const wachtwoord = this.#loginView.querySelector("#exampleInputPassword").value;
 
         try{
-            const user = await this.#usersRepository.login(username, password);
+            const user = await this.#usersRepository.login(emailadres, wachtwoord);
 
             //let the session manager know we are logged in by setting the username, never set the password in localstorage
-            App.sessionManager.set("username", user.username);
+            App.sessionManager.set("username", user.emailadres);
             App.loadController(App.CONTROLLER_WELCOME);
         } catch(error) {
             //if unauthorized error code, show error message to the user

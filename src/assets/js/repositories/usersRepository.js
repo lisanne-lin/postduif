@@ -13,7 +13,7 @@ export class UsersRepository {
     #networkManager
 
     constructor() {
-        this.#route = "/users"
+        this.#route = "/ondernemer"
         this.#networkManager = new NetworkManager();
     }
 
@@ -26,13 +26,13 @@ export class UsersRepository {
      * if a user is found with these credentials
      *
      * POST request, so send data as an object which will be added to the body of the request by the network manager
-     * @param username
-     * @param password
+     * @param emailadres
+     * @param wachtwoord
      * @returns {Promise<user>}
      */
-    async login(username, password) {
+    async login(emailadres, wachtwoord) {
         return await this.#networkManager
-            .doRequest(`${this.#route}/login`, "POST", {"username": username, "password": password});
+            .doRequest(`${this.#route}/login`, "POST", {"emailadres": emailadres, "wachtwoord": wachtwoord});
     }
 
     async delete() {
