@@ -1,9 +1,9 @@
 import { Controller } from "./controller.js";
 
 export class DashboardController extends Controller {
-    
+
     #dashboardView;
-    
+
     constructor()  {
         super();
 
@@ -11,7 +11,6 @@ export class DashboardController extends Controller {
     }
 
     async #setup() {
-
         this.#dashboardView = await super.loadHtmlIntoContent("html_views/dashboard.html");
 
         const testPar = this.#dashboardView.querySelector(".test-class-p");
