@@ -17,7 +17,7 @@ export class PlaceOrderController extends Controller {
     }
 
     async #setupView() {
-        this.#placeOrderView = await super.loadHtmlIntoContent("html_views/place_order.html")
+        this.#placeOrderView = await super.loadHtmlIntoContent("html_views/popup.html")
 
         this.#placeOrderView.querySelector("#saveButton").addEventListener("click",
             (event) => this.#saveOrder(event));
@@ -43,7 +43,7 @@ export class PlaceOrderController extends Controller {
         } else {
             errorBox.innerHTML = "";
             this.#ordersRepository.createOrder(null, naam, adres, plaats, postcode, geschatte_bezorgdatum,
-                verzend_datum, bezorgkosten, null,1, 1,
+                verzend_datum, bezorgkosten, null,1, klantnummer,
                 1, null);
         }
     }
