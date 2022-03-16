@@ -17,7 +17,7 @@ export class PlaceOrderController extends Controller {
     }
 
     async #setupView() {
-        this.#placeOrderView = await super.loadHtmlIntoContent("html_views/popup.html")
+        this.#placeOrderView = await super.loadHtmlIntoContent("html_views/place_order.html")
 
         this.#placeOrderView.querySelector("#saveButton").addEventListener("click",
             (event) => this.#saveOrder(event));

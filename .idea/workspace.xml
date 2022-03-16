@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="navbar gefixt">
+    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="navbar gefixt 2.0">
+      <change afterPath="$PROJECT_DIR$/src/assets/dist/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/team-9.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/team-9.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/dashboardController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/dashboardController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/placeOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/placeOrderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/html_views/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/place_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/place_order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/popup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,13 +17,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
         <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="5929b8ce220a23a2c28669709eb947b6872bea15" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
