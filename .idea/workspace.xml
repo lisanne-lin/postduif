@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="landinlandingpage bezig">
-      <change afterPath="$PROJECT_DIR$/src/assets/css/pages/cover.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/landing_background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_deliveries_2r4y-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_order_delivered_re_v4ab.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_takeout_boxes_ap54.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_takeout_boxes_ap54.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/js/controllers/landingController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/html_views/landing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_03_2022_17_09_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_03_2022_17_09__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/css/pages/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_Authentication_re_svpt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_sign_in_re_o58h (1).svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/css/defaults.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/defaults.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/pages/cover.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/pages/cover.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/loginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/loginController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/registerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/registerController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/landing.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/landing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +30,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Simon Vriesema &lt;simon.vriesema@hva.nl&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="5929b8ce220a23a2c28669709eb947b6872bea15" />
@@ -93,7 +91,7 @@
       <workItem from="1646739665124" duration="22500000" />
       <workItem from="1646854629532" duration="23524000" />
       <workItem from="1647522475480" duration="15378000" />
-      <workItem from="1647538812288" duration="707000" />
+      <workItem from="1647538812288" duration="8054000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1646240196277</created>
@@ -165,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647469646879</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="landingpage gemaakt yeah :)">
+      <created>1647539657370</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1647539657370</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +200,7 @@
     <MESSAGE value="navbar gefixt 3.0" />
     <MESSAGE value="landingpage" />
     <MESSAGE value="landinlandingpage bezig" />
-    <option name="LAST_COMMIT_MESSAGE" value="landinlandingpage bezig" />
+    <MESSAGE value="landingpage gemaakt yeah :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="landingpage gemaakt yeah :)" />
   </component>
 </project>

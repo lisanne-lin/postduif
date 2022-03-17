@@ -76,7 +76,7 @@ export class App {
 
             case App.CONTROLLER_LANDING:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new LoginController(), () => new LandingController());
+                App.isLoggedIn(() => new LandingController(), () => new LandingController());
                 break;
 
             case App.CONTROLLER_PLACE_ORDER:
