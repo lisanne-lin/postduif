@@ -27,11 +27,12 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    color: var(--black);
+    /*color: var(--black);*/
 }
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 p {
@@ -81,12 +82,6 @@ footer {
 
 .navbar-light .navbar-nav .nav-link {
     color: var(--black);
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: var(--secondary);
-    border-color: #015f3d;
 }
 
 .bd-navbar .navbar-nav .nav-link {
