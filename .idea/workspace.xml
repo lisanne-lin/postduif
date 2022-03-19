@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/css/pages/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_Authentication_re_svpt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_sign_in_re_o58h (1).svg" afterDir="false" />
+    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="login and sign up redesign and now in english :))">
+      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_business_decisions_re_84ag.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_dashboard_re_3b76.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_location_tracking_re_n3ok.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_on_the_way_re_swjt (1).svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_ride_a_bicycle_re_6tjy.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_secure_login_pdn4.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/css/defaults.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/defaults.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/css/pages/cover.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/pages/cover.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/pages/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/pages/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/pages/sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/pages/sidebar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/landingController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/landingController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/loginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/loginController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/registerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/registerController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/html_views/landing.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/landing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/html_views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/navbar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/html_views/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -91,7 +98,7 @@
       <workItem from="1646739665124" duration="22500000" />
       <workItem from="1646854629532" duration="23524000" />
       <workItem from="1647522475480" duration="15378000" />
-      <workItem from="1647538812288" duration="8054000" />
+      <workItem from="1647538812288" duration="19722000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1646240196277</created>
@@ -170,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647539657370</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="login and sign up redesign and now in english :))">
+      <created>1647547130713</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1647547130713</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +215,7 @@
     <MESSAGE value="landingpage" />
     <MESSAGE value="landinlandingpage bezig" />
     <MESSAGE value="landingpage gemaakt yeah :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="landingpage gemaakt yeah :)" />
+    <MESSAGE value="login and sign up redesign and now in english :))" />
+    <option name="LAST_COMMIT_MESSAGE" value="login and sign up redesign and now in english :))" />
   </component>
 </project>

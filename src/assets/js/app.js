@@ -150,11 +150,11 @@ export class App {
     static isLoggedIn(whenYes, whenNo) {
         if (App.sessionManager.get("username")) {
             whenYes();
+            document.querySelector(".navbar").style.display = "none";
         } else {
             whenNo();
+            document.querySelector(".navbar").style.display = "block";
         }
-
-        // document.querySelector(".sidebar-container").style.display = "none";
     }
 
     /**

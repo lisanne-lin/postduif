@@ -13,7 +13,7 @@ export class LandingController extends Controller {
     async #setup() {
         this.#landingView = await super.loadHtmlIntoContent("html_views/landing.html");
 
-        document.querySelector(".sidebar-container").style.display = "none";
+        document.querySelector(".navbar").style.display = "none";
         
         this.#landingView.querySelector("#login-btn").addEventListener("click", event => {
             App.loadController(event.target.dataset.controller);

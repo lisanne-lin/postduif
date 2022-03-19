@@ -5,13 +5,15 @@
 <div>
     <nav class="navbar navbar-expand-md fixed-top">
         <div class="container-fluid">
-            <div>
-                <a class="navbar-brand text-black" href="#"> Postduif for Business</a>
-            </div>
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <img src="assets/img/logo.svg" height="40px">
+                <span class="fs-4">PostDuif</span>
+            </a>
             <div>
                 <a>Already an account? </a>
                 <button id="login-btn" type="button" data-controller="login" class="btn btn-success">
-                    <i class="fa fa-sign-in"></i> Login</button>
+                    <i class="fa fa-sign-in"></i> Login
+                </button>
             </div>
         </div>
     </nav>
@@ -27,28 +29,36 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img  class="carouselimg" src="https://images.unsplash.com/photo-1564869818056-f234afa65840?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80">
-                <img src="../assets/img/logo.svg"  class="img" height="40">
+                <img class="carouselimg"
+                     src="https://images.unsplash.com/photo-1564869818056-f234afa65840?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80">
+                <img src="../assets/img/logo.svg" id="logo-duif" class="img" height="40">
 
                 <div class="container">
                     <div class="carousel-caption text-start">
-                        <h1>Welcome to Postduif</h1>
-                        <p class="firstpage-carouselText">Postduif is a delivery service where the focus is on local entrepreneurs and where a large part of the turnover goes to small initiatives</p>
-                        <p><a id="signup-btn" data-controller="sign_up" class="btn btn-lg btn-success" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                             Register your company</a></p>
+                        <h1 class="firstpage-carouselText">Welcome to PostDuif</h1>
+                        <p class="firstpage-carouselText">Postduif is a delivery service where the focus is on local
+                            entrepreneurs and where a large part of the turnover goes to small initiatives</p>
+                        <p><a id="signup-btn" data-controller="sign_up" class="btn btn-lg btn-success" href="#"><i
+                                class="fa fa-user-plus" aria-hidden="true"></i>
+                            Register your company</a></p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
 
-                <img class="carouselimg" src="https://images.unsplash.com/photo-1577551112170-978517ac5dc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=4032&q=80" width="10px">
+                <img class="carouselimg"
+                     src="https://images.unsplash.com/photo-1577551112170-978517ac5dc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=4032&q=80"
+                     width="10px">
 
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Support your neighborhood</h1>
-                        <p>Unlike other delivery services, we do not have a towering commission. A large company will never support these kinds of small initiatives. Because Postduif does this, social cohesion within the neighborhood is promoted.</p>
-                        <p><a id="signup-btn2" data-controller="sign_up" class="btn btn-lg btn-success" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                             Register your company</a></p>
+                        <p>Unlike other delivery services, we do not have a towering commission. A large company will
+                            never support these kinds of small initiatives. Because Postduif does this, social cohesion
+                            within the neighborhood is promoted.</p>
+                        <p><a id="signup-btn2" data-controller="sign_up" class="btn btn-lg btn-success" href="#"><i
+                                class="fa fa-user-plus" aria-hidden="true"></i>
+                            Register your company</a></p>
                     </div>
                 </div>
             </div>
@@ -70,18 +80,58 @@
 
     <div class="container marketing">
 
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="assets/img/undraw_business_decisions_re_84ag.svg" height="150px">
+
+                <h2>Business</h2>
+                <p>Login with your PostDuif Business account so you can view an overview of your orders</p>
+                <p>
+                    <button id="login-btn2" type="button" data-controller="login" class="btn btn-success">
+                        <i class="fa fa-sign-in"></i> Login
+                    </button>
+                </p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img src="assets/img/undraw_location_tracking_re_n3ok.svg" height="150px">
+
+                <h2>Track your order</h2>
+                <p>Ordered something? Find your order by entering your track and trace number</p>
+                <p>
+                    <button id="track-btn" type="button" data-controller="login" class="btn btn-success">
+                        <i class="fa fa-compass" aria-hidden="true"></i>
+                        Track
+                    </button>
+                </p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img src="assets/img/undraw_ride_a_bicycle_re_6tjy.svg" height="150px">
+
+                <h2>Rider</h2>
+                <p>Login with your PostDuif Rider account so you can start working </p>
+                <p>
+                    <button id="login-btn-rider" type="button" data-controller="login" class="btn btn-success">
+                        <i class="fa fa-sign-in"></i> Login
+                    </button>
+                </p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+        <hr class="featurette-divider">
+
         <!-- START THE FEATURETTES -->
 
-<!--        <hr class="featurette-divider">-->
+        <!--        <hr class="featurette-divider">-->
 
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading">Interested? <span
                         class="text-muted">Register your company!</span></h2>
-                <p class="lead">By registering you help yourself, other local entrepreneurs and neighborhood initiatives</p>
+                <p class="lead">By registering you help yourself, other local entrepreneurs and neighborhood
+                    initiatives</p>
             </div>
             <div class="col-md-5">
-                <img src="assets/img/undraw_deliveries_2r4y-2.png" height="400px" width="500px">
+                <img src="assets/img/undraw_deliveries_2r4y-2.png" height="300px" width="400px">
             </div>
         </div>
 
@@ -95,7 +145,7 @@
                     consumer and entrepreneur is shrinking.</p>
             </div>
             <div class="col-md-5 order-md-1">
-                <img src="assets/img/undraw_order_delivered_re_v4ab.png" height="400px" width="500px">
+                <img src="assets/img/undraw_order_delivered_re_v4ab.png" height="300px" width="400px">
             </div>
         </div>
 
@@ -104,10 +154,11 @@
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                <p class="lead">4% of the turnover goes to charities, 2% is distributed by the entrepreneur and 2% by the customer.</p>
+                <p class="lead">4% of the turnover goes to charities, 2% is distributed by the entrepreneur and 2% by
+                    the customer.</p>
             </div>
             <div class="col-md-5">
-                <img src="assets/img/undraw_takeout_boxes_ap54.png" height="400px" width="600px">
+                <img src="assets/img/undraw_takeout_boxes_ap54.png" height="300px" width="550px">
             </div>
         </div>
 

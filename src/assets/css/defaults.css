@@ -20,6 +20,10 @@
     --status-onderweg: #FFB800;
 }
 
+.nav-link {
+    color: black;
+}
+
 /* Defaults */
 * {
     margin: 0;
@@ -61,6 +65,10 @@ h6 {
     color: var(--gray-300);
 }
 
+#titelLanding {
+    color: black;
+}
+
 footer {
     position: fixed;
     left: 0;
@@ -83,6 +91,7 @@ footer {
 .navbar-light .navbar-nav .nav-link {
     color: var(--black);
 }
+
 
 .bd-navbar .navbar-nav .nav-link {
     padding-right: 0.5rem;

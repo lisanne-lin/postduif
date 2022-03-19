@@ -4,11 +4,13 @@
     background-color: #ffffff;
     padding: 12px;
     border-radius: 5px;
-    border: 1px solid lightslategrey;
 }
 
 body {
-    background-color: #fffcf3;
+    background-image: url("https://images.unsplash.com/photo-1579806583662-598c22566355?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1673&q=80");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 .text-center {

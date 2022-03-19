@@ -1,7 +1,10 @@
 body {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    /*background-color: #fffff5;*/
+    padding-top: 2rem;
+    background-color: #fffff9;
+}
+
+#logo-duif {
+    margin-left: 300px;
 }
 
 /* CUSTOMIZE THE CAROUSEL
@@ -31,6 +34,7 @@ body {
 
 .firstpage-carouselText {
     width: 500px;
+    text-shadow: 1px 1px 0px #3a3a3a;
 }
 
 .carouselimg {
