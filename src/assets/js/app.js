@@ -41,7 +41,7 @@ export class App {
         App.loadController(App.CONTROLLER_NAVBAR);
 
         //Attempt to load the controller from the URL, if it fails, fall back to the welcome controller.
-        App.loadControllerFromUrl(App.CONTROLLER_WELCOME );
+        App.loadControllerFromUrl(App.CONTROLLER_WELCOME);
 
         // App.loadControllerFromUrl(App.CONTROLLER_DASHBOARD);
     }
@@ -73,7 +73,7 @@ export class App {
 
             case App.CONTROLLER_LOGIN_BEZORGER:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new WelcomeController(), () => new BezorgerLoginController());
+                App.isLoggedIn(() => new BezorgerLoginController(), () => new BezorgerLoginController());
                 break;
 
 
@@ -84,7 +84,7 @@ export class App {
 
             case App.CONTROLLER_LANDING:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new LandingController(), () => new LandingController());
+                new LandingController();
                 break;
 
             case App.CONTROLLER_PLACE_ORDER:
