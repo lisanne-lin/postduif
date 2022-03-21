@@ -1,6 +1,6 @@
 /**
- * Controller responsible for all events in login view
- * @author Pim Meijer
+ * Controller responsible for all events in login berzoger view
+ * @author Joy park
  */
 
 import { UsersRepository } from "../repositories/usersRepository.js";
@@ -8,7 +8,7 @@ import {EntrepreneursRepository} from "../repositories/entrepreneursRepository.j
 import { App } from "../app.js";
 import { Controller } from "./controller.js";
 
-export class LoginController extends Controller{
+export class BezorgerLoginController extends Controller{
     //# is a private field in Javascript
     #usersRepository
     #loginView
@@ -28,7 +28,7 @@ export class LoginController extends Controller{
      */
     async #setupView() {
         //await for when HTML is loaded, never skip this method call in a controller
-        this.#loginView = await super.loadHtmlIntoContent("html_views/bezorgerLogin.html")
+        this.#loginView = await super.loadHtmlIntoContent("html_views/login.html")
         document.querySelector("#postDuifLogo").innerHTML = "PostDuif Business";
 
         //from here we can safely get elements from the view via the right getter

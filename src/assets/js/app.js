@@ -16,6 +16,7 @@ import {DashboardController} from "./controllers/dashboardController.js"
 import {PlaceOrderController} from "./controllers/placeOrderController.js";
 import {RegisterController} from "./controllers/registerController.js";
 import {LandingController} from "./controllers/landingController.js";
+import {BezorgerLoginController} from "./controllers/bezorgerLoginController.js";
 
 
 export class App {
@@ -26,6 +27,7 @@ export class App {
     //controller identifiers, add new controllers here
     static CONTROLLER_NAVBAR = "navbar";
     static CONTROLLER_LOGIN = "login";
+    static CONTROLLER_LOGIN_BEZORGER = "loginBezorger";
     static CONTROLLER_LOGOUT = "logout";
     static CONTROLLER_WELCOME = "welcome";
     static CONTROLLER_UPLOAD = "upload";
@@ -68,6 +70,12 @@ export class App {
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new WelcomeController(), () => new LoginController());
                 break;
+
+            case App.CONTROLLER_LOGIN_BEZORGER:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new WelcomeController(), () => new BezorgerLoginController());
+                break;
+
 
             case App.CONTROLLER_DASHBOARD:
                 App.setCurrentController(name);

@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="login and sign up redesign and now in english :))">
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_business_decisions_re_84ag.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_dashboard_re_3b76.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_location_tracking_re_n3ok.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_on_the_way_re_swjt (1).svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_ride_a_bicycle_re_6tjy.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_secure_login_pdn4.svg" afterDir="false" />
+    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="sidebar">
+      <change afterPath="$PROJECT_DIR$/src/assets/css/pages/sidebarNew.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/js/controllers/bezorgerLoginController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/html_views/bezorgerLogin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/html_views/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/defaults.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/defaults.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/pages/cover.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/pages/cover.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/pages/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/pages/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/pages/sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/pages/sidebar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/landingController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/landingController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/loginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/loginController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/html_views/landing.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/landing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -200,6 +189,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
