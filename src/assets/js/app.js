@@ -18,6 +18,7 @@ import {RegisterController} from "./controllers/registerController.js";
 import {LandingController} from "./controllers/landingController.js";
 import {BezorgerLoginController} from "./controllers/bezorgerLoginController.js";
 import {RegistrerenBezorgerController} from "./controllers/registrerenBezorgerController.js";
+import {OrdersController} from "./controllers/OrdersController.js";
 
 
 export class App {
@@ -37,6 +38,7 @@ export class App {
     static CONTROLLER_SIGN_UP = "sign_up";
     static CONTROLLER_LANDING = "landing";
     static CONTROLLER_REGISTREREN_BEZORGER = "registrerenBezorger";
+    static CONTROLLER_ORDERS = "orders";
 
     constructor() {
         //Always load the navigation
@@ -81,6 +83,12 @@ export class App {
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new RegistrerenBezorgerController(), () => new RegistrerenBezorgerController());
                 break;
+
+                case App.CONTROLLER_ORDERS:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new OrdersController(), () => new LandingController());
+                break;
+
 
             case App.CONTROLLER_DASHBOARD:
                 App.setCurrentController(name);

@@ -29,4 +29,8 @@ export class OrdersRepository {
                 Ondernemer_ondernemer_id: Ondernemer_ondernemer_id,
                 besteldatum: besteldatum})
     }
+
+    async getOrders(){
+        return await this.#networkManager.doRequest(`${this.#route}`, "GET", {});
+    }
 }
