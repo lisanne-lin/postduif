@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_add_information_j2wg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_dashboard_re_3b76 kopie.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_order_delivered_re_v4ab (1).svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/undraw_ride_a_bicycle_re_6tjy kopie.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/defaults.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/defaults.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/OrdersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/OrdersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/placeOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/placeOrderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/repositories/ordersRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/repositories/ordersRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/place_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/place_order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/register.html" afterDir="false" />
-    </list>
+    <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,7 +79,7 @@
       <workItem from="1646854629532" duration="23524000" />
       <workItem from="1647522475480" duration="15378000" />
       <workItem from="1647538812288" duration="27725000" />
-      <workItem from="1647965994965" duration="10201000" />
+      <workItem from="1647965994965" duration="10529000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1646240196277</created>
@@ -199,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647966860065</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="orders pagina af :))))">
+      <created>1647985015241</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1647985015241</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +227,7 @@
     <MESSAGE value="login and sign up redesign and now in english :))" />
     <MESSAGE value="Landingpage afgemaakt, login anders, nieuwe navbar maar nog niet af helaas :(" />
     <MESSAGE value="bezig" />
-    <option name="LAST_COMMIT_MESSAGE" value="bezig" />
+    <MESSAGE value="orders pagina af :))))" />
+    <option name="LAST_COMMIT_MESSAGE" value="orders pagina af :))))" />
   </component>
 </project>
