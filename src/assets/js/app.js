@@ -16,7 +16,7 @@ import {DashboardController} from "./controllers/dashboardController.js"
 import {PlaceOrderController} from "./controllers/placeOrderController.js";
 import {RegisterController} from "./controllers/registerController.js";
 import {LandingController} from "./controllers/landingController.js";
-import {OrdersController} from "./controllers/OrdersController.js";
+import {BezorgerLoginController} from "./controllers/bezorgerLoginController.js";
 
 
 export class App {
@@ -27,12 +27,12 @@ export class App {
     //controller identifiers, add new controllers here
     static CONTROLLER_NAVBAR = "navbar";
     static CONTROLLER_LOGIN = "login";
+    static CONTROLLER_LOGIN_BEZORGER = "loginBezorger";
     static CONTROLLER_LOGOUT = "logout";
     static CONTROLLER_WELCOME = "welcome";
     static CONTROLLER_UPLOAD = "upload";
     static CONTROLLER_DASHBOARD = "dashboard";
     static CONTROLLER_PLACE_ORDER = "place_order";
-    static CONTROLLER_ORDERS = "orders";
     static CONTROLLER_SIGN_UP = "sign_up";
     static CONTROLLER_LANDING = "landing";
 
@@ -71,6 +71,12 @@ export class App {
                 App.isLoggedIn(() => new WelcomeController(), () => new LoginController());
                 break;
 
+            case App.CONTROLLER_LOGIN_BEZORGER:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new BezorgerLoginController(), () => new BezorgerLoginController());
+                break;
+
+
             case App.CONTROLLER_DASHBOARD:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new DashboardController(), () => new LoginController());
@@ -78,17 +84,12 @@ export class App {
 
             case App.CONTROLLER_LANDING:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new LandingController(), () => new LandingController());
+                new LandingController();
                 break;
 
             case App.CONTROLLER_PLACE_ORDER:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new PlaceOrderController(), () => new LoginController());
-                break;
-
-            case App.CONTROLLER_ORDERS:
-                App.setCurrentController(name);
-                App.isLoggedIn(() => new OrdersController(), () => new LandingController());
                 break;
 
             case App.CONTROLLER_SIGN_UP:

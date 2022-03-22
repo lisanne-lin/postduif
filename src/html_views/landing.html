@@ -86,13 +86,21 @@
                 <h2>Business</h2>
                 <p>Login with your PostDuif Business account so you can view an overview of your orders</p>
                 <p>
-                    <button id="login-btn2" type="button" data-controller="login" class="btn btn-success">
+
+<!--                    button voor login bezorger-->
+                    <button id="login-btn2" type="button" data-controller="bezorgerLogin" href="#" class="btn btn-success">
                         <i class="fa fa-sign-in"></i> Login
                     </button>
+
+                <li class="nav-item"><a href="#" class="nav-link" data-controller="loginBezorger">
+                    <i class="fa fa-th" aria-hidden="true"></i>
+                    Login Bezorger</a></li>
+
+
                 </p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <img src="assets/img/undraw_location_tracking_re_n3ok.svg" height="150px">
+                <img src="assets/img/un.svg" height="150px">
 
                 <h2>Track your order</h2>
                 <p>Ordered something? Find your order by entering your track and trace number</p>
@@ -124,8 +132,8 @@
 
         <div class="row featurette">
             <div class="col-md-7">
-                <h2 class="featurette-heading">Interested? <span
-                        class="text-muted">Register your company!</span></h2>
+                <h2 class="featurette-heading text-muted">Interested? <span
+                        class="text-cta">Register your company!</span></h2>
                 <p class="lead">By registering you help yourself, other local entrepreneurs and neighborhood
                     initiatives</p>
             </div>
@@ -138,8 +146,8 @@
 
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">Oh yeah, it’s that good. <span
-                        class="text-muted">See for yourself.</span></h2>
+                <h2 class="featurette-heading text-muted">Oh yeah, it’s that good. <span
+                        class="text-cta">See for yourself.</span></h2>
                 <p class="lead">Local residents come into contact with each other more quickly and the distance between
                     consumer and entrepreneur is shrinking.</p>
             </div>
@@ -152,7 +160,7 @@
 
         <div class="row featurette">
             <div class="col-md-7">
-                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                <h2 class="featurette-heading text-muted">And lastly, this one. <span class="text-cta">Checkmate.</span></h2>
                 <p class="lead">4% of the turnover goes to charities, 2% is distributed by the entrepreneur and 2% by
                     the customer.</p>
             </div>
