@@ -16,6 +16,7 @@ import {DashboardController} from "./controllers/dashboardController.js"
 import {PlaceOrderController} from "./controllers/placeOrderController.js";
 import {RegisterController} from "./controllers/registerController.js";
 import {LandingController} from "./controllers/landingController.js";
+import {OrdersController} from "./controllers/OrdersController.js";
 
 
 export class App {
@@ -31,6 +32,7 @@ export class App {
     static CONTROLLER_UPLOAD = "upload";
     static CONTROLLER_DASHBOARD = "dashboard";
     static CONTROLLER_PLACE_ORDER = "place_order";
+    static CONTROLLER_ORDERS = "orders";
     static CONTROLLER_SIGN_UP = "sign_up";
     static CONTROLLER_LANDING = "landing";
 
@@ -39,7 +41,7 @@ export class App {
         App.loadController(App.CONTROLLER_NAVBAR);
 
         //Attempt to load the controller from the URL, if it fails, fall back to the welcome controller.
-        App.loadControllerFromUrl(App.CONTROLLER_WELCOME );
+        App.loadControllerFromUrl(App.CONTROLLER_WELCOME);
 
         // App.loadControllerFromUrl(App.CONTROLLER_DASHBOARD);
     }
@@ -82,6 +84,11 @@ export class App {
             case App.CONTROLLER_PLACE_ORDER:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new PlaceOrderController(), () => new LoginController());
+                break;
+
+            case App.CONTROLLER_ORDERS:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new OrdersController(), () => new LandingController());
                 break;
 
             case App.CONTROLLER_SIGN_UP:

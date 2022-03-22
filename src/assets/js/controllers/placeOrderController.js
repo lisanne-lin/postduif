@@ -17,7 +17,10 @@ export class PlaceOrderController extends Controller {
     }
 
     async #setupView() {
-        this.#placeOrderView = await super.loadHtmlIntoContent("html_views/place_order.html")
+        this.#placeOrderView = await super.loadHtmlIntoContent("html_views/place_order.html");
+
+        document.querySelector(".navbar").style.display = "block";
+        document.querySelector("#orders-nav").className = "nav-link active";
 
         this.#placeOrderView.querySelector("#saveButton").addEventListener("click",
             (event) => this.#saveOrder(event));
