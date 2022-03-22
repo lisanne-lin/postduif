@@ -18,8 +18,8 @@
   <header>
     <div class="container">
       <h1>Verzendingen</h1>
-      <div class="filter justify-content-around">
-        <a class="onderweg-filter" href="#">Onderweg</a>
+      <div class="filter d-flex justify-content-around">
+        <a clas href="#">Onderweg</a>
         <a href="#">Bezorgd</a>
       </div>
     </div>
@@ -148,61 +148,60 @@
         </div>
         <form>
           <div class="form-row card-body">
-            <div class="col-4">
-              <label for="orderNr">Bestelnummer</label>
-              <input id="orderNr" type="text" class="form-control" placeholder="Nummer">
+            <div class="row">
+              <div class="col-sm-12 col-lg-6">
+                <label for="exampleInputKlantnummer" class="form-label">Klantnummer</label>
+                <input type="text" class="form-control" id="exampleInputKlantnummer">
+              </div>
+              <div class="col-sm-12 col-lg-6">
+                <label for="exampleInputName" class="form-label">Naam</label>
+                <input type="text" class="form-control" id="exampleInputName">
+              </div>
             </div>
-            <div class="col-4">
-              <label for="price">Prijs</label>
-              <input id="price" type="text" class="form-control" placeholder="Bedrag">
+            <div class="row">
+              <div class="col-sm-12 col-lg-6">
+                <label for="exampleInputAdres" class="form-label">Adres</label>
+                <input type="text" class="form-control" id="exampleInputAdres">
+              </div>
+              <div class="col-sm-12 col-lg-3">
+                <label for="exampleInputPostcode" class="form-label">Postcode</label>
+                <input type="text" class="form-control" id="exampleInputPostcode">
+              </div>
+              <div class="col-sm-12 col-lg-3">
+                <label for="exampleInputPlaats" class="form-label">Plaats</label>
+                <input type="text" class="form-control" id="exampleInputPlaats">
+              </div>
             </div>
-            <div class="col-2">
-              <label for="weight">Gewicht pakketje</label>
-              <input id="weight" type="text" class="form-control" placeholder="Kg">
+            <div class="row">
+              <div class="col-sm-12 col-lg-4">
+                <label for="exampleInputBezorgdatum" class="form-label">Bezorgdatum</label>
+                <input type="date" class="form-control" id="exampleInputBezorgdatum">
+              </div>
+              <div class="col-sm-12 col-lg-4">
+                <label for="exampleInputVerzenddatum" class="form-label">Verzenddatum</label>
+                <input type="date" class="form-control" id="exampleInputVerzenddatum">
+              </div>
+              <div class="col-sm-12 col-lg-4">
+                <label for="exampleInputBezorgkosten" class="form-label">Bezorgkosten</label>
+                <input type="text" class="form-control" id="exampleInputBezorgkosten">
+              </div>
             </div>
-          </div>
-
-          <div class="form-row">
-            <div class="col-4">
-              <label for="estimatedDate">Geschatte leverdatum</label>
-              <input id="estimatedDate" type="text" class="form-control" placeholder="Datum">
-            </div>
-            <div class="col-4">
-              <label for="customerNr">Klantnummer</label>
-              <input id="customerNr" type="text" class="form-control" placeholder="Klantnummer">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="col-4">
-              <label for="customerName">Klant naam</label>
-              <input id="customerName" type="text" class="form-control" placeholder="Naam">
-            </div>
-            <div class="col-4">
-              <label for="lastName">Klant achternaam</label>
-              <input id="lastName" type="text" class="form-control" placeholder="Achternaam">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="col-6">
-              <label for="street">Straat</label>
-              <input id="street" type="text" class="form-control" placeholder="Straat">
-            </div>
-            <div class="col-2">
-              <label for="houseNr">Huisnummer</label>
-              <input id="houseNr" type="text" class="form-control" placeholder="Huisnummer">
-            </div>
-            <div class="col-2">
-              <label for="zip">Postcode</label>
-              <input id="zip" type="text" class="form-control" placeholder="Postcode">
-            </div>
-          </div>
         </form>
-        <button href="#" class="make">Bestelling maken</button>
-        <a href="#"><button class="make">Annuleren</button></a>
+      </div>
+      <div class="row form-buttons">
+        <div class="col-lg-2 col-6">
+      <button type="submit" class="maken" id="saveButton">Opslaan</button>
+    </div>
+    <div class="col-lg-2 col-6">
+      <a href="#">
+        <button class="maken annuleren">Annuleren</button></a>
       </div>
     </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="error mb-3 text-danger"></div>
   </div>
 
 

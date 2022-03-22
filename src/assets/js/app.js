@@ -15,6 +15,9 @@ import {WelcomeController} from "./controllers/welcomeController.js"
 import {DashboardController} from "./controllers/dashboardController.js"
 import {PlaceOrderController} from "./controllers/placeOrderController.js";
 import {RegisterController} from "./controllers/registerController.js";
+import {LandingController} from "./controllers/landingController.js";
+import {BezorgerLoginController} from "./controllers/bezorgerLoginController.js";
+
 
 export class App {
     //we only need one instance of the sessionManager, thus static use here
@@ -24,21 +27,23 @@ export class App {
     //controller identifiers, add new controllers here
     static CONTROLLER_NAVBAR = "navbar";
     static CONTROLLER_LOGIN = "login";
+    static CONTROLLER_LOGIN_BEZORGER = "loginBezorger";
     static CONTROLLER_LOGOUT = "logout";
     static CONTROLLER_WELCOME = "welcome";
     static CONTROLLER_UPLOAD = "upload";
     static CONTROLLER_DASHBOARD = "dashboard";
     static CONTROLLER_PLACE_ORDER = "place_order";
     static CONTROLLER_SIGN_UP = "sign_up";
+    static CONTROLLER_LANDING = "landing";
 
     constructor() {
         //Always load the navigation
         App.loadController(App.CONTROLLER_NAVBAR);
 
         //Attempt to load the controller from the URL, if it fails, fall back to the welcome controller.
-        //App.loadControllerFromUrl(App.CONTROLLER_WELCOME );
+        App.loadControllerFromUrl(App.CONTROLLER_WELCOME);
 
-        App.loadControllerFromUrl(App.CONTROLLER_DASHBOARD);
+        // App.loadControllerFromUrl(App.CONTROLLER_DASHBOARD);
     }
 
     /**
@@ -66,9 +71,20 @@ export class App {
                 App.isLoggedIn(() => new WelcomeController(), () => new LoginController());
                 break;
 
+            case App.CONTROLLER_LOGIN_BEZORGER:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new BezorgerLoginController(), () => new BezorgerLoginController());
+                break;
+
+
             case App.CONTROLLER_DASHBOARD:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new DashboardController(), () => new LoginController());
+                break;
+
+            case App.CONTROLLER_LANDING:
+                App.setCurrentController(name);
+                new LandingController();
                 break;
 
             case App.CONTROLLER_PLACE_ORDER:
@@ -78,7 +94,7 @@ export class App {
 
             case App.CONTROLLER_SIGN_UP:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new RegisterController(), () => new LoginController());
+                App.isLoggedIn(() => new LoginController(), () => new RegisterController());
                 break;
 
             case App.CONTROLLER_LOGOUT:
@@ -142,8 +158,10 @@ export class App {
     static isLoggedIn(whenYes, whenNo) {
         if (App.sessionManager.get("username")) {
             whenYes();
+            document.querySelector(".navbar").style.display = "none";
         } else {
             whenNo();
+            document.querySelector(".navbar").style.display = "block";
         }
     }
 
@@ -154,7 +172,7 @@ export class App {
         App.sessionManager.remove("username");
 
         //go to login screen
-        App.loadController(App.CONTROLLER_LOGIN);
+        App.loadController(App.CONTROLLER_LANDING);
     }
 }
 

@@ -28,7 +28,7 @@ export class WelcomeController extends Controller{
     async #setupView() {
         //await for when HTML is loaded
         this.#welcomeView = await super.loadHtmlIntoContent("html_views/welcome.html")
-
+        document.querySelector(".navbar").style.display = "block";
         //from here we can safely get elements from the view via the right getter
         this.#welcomeView.querySelector("span.name").innerHTML = App.sessionManager.get("username");
 
@@ -42,6 +42,22 @@ export class WelcomeController extends Controller{
      * @private
      */
     async #fetchRooms(roomId) {
+        const exampleResponse = this.#welcomeView.querySelector(".example-response")
+
+        try {
+            //await keyword 'stops' code until data is returned - can only be used in async function
+            const roomData = await this.#roomExampleRepository.get(roomId);
+
+            exampleResponse.innerHTML = JSON.stringify(roomData, null, 4);
+        } catch (e) {
+            console.log("error while fetching rooms", e);
+
+            //for now just show every error on page, normally not all errors are appropriate for user
+            exampleResponse.innerHTML = e;
+        }
+    }
+
+    async #fetchBusinessName (user_id) {
         const exampleResponse = this.#welcomeView.querySelector(".example-response")
 
         try {

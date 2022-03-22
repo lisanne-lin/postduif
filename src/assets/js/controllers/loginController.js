@@ -29,9 +29,10 @@ export class LoginController extends Controller{
     async #setupView() {
         //await for when HTML is loaded, never skip this method call in a controller
         this.#loginView = await super.loadHtmlIntoContent("html_views/login.html")
+        document.querySelector("#postDuifLogo").innerHTML = "PostDuif Business";
 
         //from here we can safely get elements from the view via the right getter
-        this.#loginView.querySelector(".btn").addEventListener("click", event => this.#handleLogin(event));
+        this.#loginView.querySelector("#login-btn").addEventListener("click", event => this.#handleLogin(event));
 
     }
     /**
@@ -46,12 +47,14 @@ export class LoginController extends Controller{
         const emailadres = this.#loginView.querySelector("#exampleInputUsername").value;
         const wachtwoord = this.#loginView.querySelector("#exampleInputPassword").value;
 
+        console.log(emailadres)
         try{
             const user = await this.#usersRepository.login(emailadres, wachtwoord);
 
             //let the session manager know we are logged in by setting the username, never set the password in localstorage
             App.sessionManager.set("username", user.emailadres);
             App.loadController(App.CONTROLLER_WELCOME);
+            document.querySelector(".sidebar-container").style.display = "block";
         } catch(error) {
             //if unauthorized error code, show error message to the user
             if(error.code === 401) {

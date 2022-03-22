@@ -20,6 +20,10 @@
     --status-onderweg: #FFB800;
 }
 
+.nav-link {
+    color: black;
+}
+
 /* Defaults */
 * {
     margin: 0;
@@ -27,11 +31,12 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    color: var(--black);
+    /*color: var(--black);*/
 }
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 p {
@@ -60,6 +65,10 @@ h6 {
     color: var(--gray-300);
 }
 
+#titelLanding {
+    color: black;
+}
+
 footer {
     position: fixed;
     left: 0;
@@ -83,11 +92,6 @@ footer {
     color: var(--black);
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: var(--secondary);
-    border-color: #015f3d;
-}
 
 .bd-navbar .navbar-nav .nav-link {
     padding-right: 0.5rem;
@@ -103,3 +107,5 @@ footer {
     border: none;
     stroke: var(--secondary);
 }
+
+
