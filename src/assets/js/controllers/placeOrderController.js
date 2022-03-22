@@ -20,7 +20,7 @@ export class PlaceOrderController extends Controller {
         this.#placeOrderView = await super.loadHtmlIntoContent("html_views/place_order.html");
 
         document.querySelector(".navbar").style.display = "block";
-        document.querySelector("#orders-nav").className = "nav-link active";
+        document.querySelector("#nav-orders").className = "nav-link active";
 
         this.#placeOrderView.querySelector("#saveButton").addEventListener("click",
             (event) => this.#saveOrder(event));
@@ -28,8 +28,6 @@ export class PlaceOrderController extends Controller {
 
     #saveOrder(event) {
         event.preventDefault();
-
-        // const bestelnummer  = this.#placeOrderView.querySelector("#exampleInputOrderNum").value;
         const klantnummer  = this.#placeOrderView.querySelector("#exampleInputKlantnummer").value;
         const naam  = this.#placeOrderView.querySelector("#exampleInputName").value;
         const adres  = this.#placeOrderView.querySelector("#exampleInputAdres").value;
@@ -37,6 +35,7 @@ export class PlaceOrderController extends Controller {
         const postcode  = this.#placeOrderView.querySelector("#exampleInputPostcode").value;
         const geschatte_bezorgdatum  = this.#placeOrderView.querySelector("#exampleInputBezorgdatum").value;
         const verzend_datum  = this.#placeOrderView.querySelector("#exampleInputVerzenddatum").value;
+        const status  = this.#placeOrderView.querySelector("#exampleInputStatus").value;
         const bezorgkosten  = this.#placeOrderView.querySelector("#exampleInputBezorgkosten").value;
 
         const errorBox = this.#placeOrderView.querySelector(".error");
@@ -46,8 +45,8 @@ export class PlaceOrderController extends Controller {
         } else {
             errorBox.innerHTML = "";
             this.#ordersRepository.createOrder(null, naam, adres, plaats, postcode, geschatte_bezorgdatum,
-                verzend_datum, bezorgkosten, null,1, klantnummer,
-                1, null);
+                verzend_datum, bezorgkosten, null,null, klantnummer,
+                1, null, status);
         }
     }
 
