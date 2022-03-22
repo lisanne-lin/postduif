@@ -13,7 +13,7 @@ export class OrdersRepository {
     }
 
     createOrder(bestelnummer,verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, verzend_datum,
-                bezorgkosten, opmerking, Bezorger_bezorger_id, Klant_klantnummer, Ondernemer_ondernemer_id, besteldatum) {
+                bezorgkosten, opmerking, Bezorger_bezorger_id, Klant_klantnummer, Ondernemer_ondernemer_id, besteldatum, status) {
         this.#networkManager.doRequest(this.#route, "POST",
             {bestelnummer: bestelnummer,
                 verzendnaam: verzendnaam,
@@ -27,7 +27,8 @@ export class OrdersRepository {
                 Bezorger_bezorger_id: Bezorger_bezorger_id,
                 Klant_klantnummer: Klant_klantnummer,
                 Ondernemer_ondernemer_id: Ondernemer_ondernemer_id,
-                besteldatum: besteldatum})
+                besteldatum: besteldatum,
+                status: status})
     }
 
     async getOrders(){

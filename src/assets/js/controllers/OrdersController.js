@@ -9,7 +9,7 @@ import {OrdersRepository} from "../repositories/ordersRepository.js";
 import {App} from "../app.js";
 import {Controller} from "./controller.js";
 
-export class OrdersController extends Controller{
+export class OrdersController extends Controller {
     #ordersRepository
     #orderView
 
@@ -30,6 +30,10 @@ export class OrdersController extends Controller{
         this.#orderView = await super.loadHtmlIntoContent("html_views/orders.html")
         document.querySelector(".navbar").style.display = "block";
         document.querySelector("#nav-orders").className = "nav-link active";
+
+        this.#orderView.querySelector("#place-order-btn").addEventListener("click", event => {
+            App.loadController(event.target.dataset.controller);
+        })
         //from here we can safely get elements from the view via the right getter
         //for demonstration a hardcoded room id that exists in the database of the back-end
         this.#fetchOrders();
@@ -43,34 +47,29 @@ export class OrdersController extends Controller{
     async #fetchOrders() {
         const exampleResponse = this.#orderView.querySelector(".order")
 
-        // try {
-            //await keyword 'stops' code until data is returned - can only be used in async function
-            const orderData = await this.#ordersRepository.getOrders();
+        const orderData = await this.#ordersRepository.getOrders();
 
-            for (let i = 0; i < orderData.length; i++) {
-                let data = orderData[i];
-                const table = this.#orderView.querySelector("#order-table");
-                let tableRow = table.insertRow()
-                let orderCell = tableRow.insertCell()
-                let nameCell = tableRow.insertCell()
-                let adresCell = tableRow.insertCell()
-                let residenceCell = tableRow.insertCell()
-                let zipCell = tableRow.insertCell()
-                let orderDateCell = tableRow.insertCell()
+        for (let i = 0; i < orderData.length; i++) {
+            let data = orderData[i];
+            const table = this.#orderView.querySelector("#order-table");
+            let tableRow = table.insertRow()
+            let orderCell = tableRow.insertCell()
+            let nameCell = tableRow.insertCell()
+            let adresCell = tableRow.insertCell()
+            let residenceCell = tableRow.insertCell()
+            let zipCell = tableRow.insertCell()
+            let orderDateCell = tableRow.insertCell()
+            let statusCell = tableRow.insertCell()
 
-                console.log(data)
-                orderCell.append(data.bestelnummer);
-                nameCell.append(data.verzendnaam);
-                table.append(tableRow)
-            }
+            orderCell.append(data.bestelnummer);
+            nameCell.append(data.verzendnaam);
+            adresCell.append(data.verzendadres);
+            residenceCell.append(data.verzendplaats);
+            zipCell.append(data.verzend_postcode);
+            orderDateCell.append(data.besteldatum);
+            statusCell.append(data.status);
 
-            // exampleResponse.innerHTML = JSON.stringify(orderData);
-
-        // } catch (e) {
-        //     console.log("error while fetching rooms", e);
-        //
-        //     //for now just show every error on page, normally not all errors are appropriate for user
-        //     exampleResponse.innerHTML = e;
-        // }
+            table.append(tableRow)
+        }
     }
 }
