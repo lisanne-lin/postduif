@@ -34,6 +34,14 @@
     /*color: var(--black);*/
 }
 
+button, .btn-success {
+    background-color: var(--secondary);
+    border: none;
+    color: white;
+    transition: 0.3s;
+    border-radius: 10px;
+    width: auto;
+}
 a {
     text-decoration: none;
     color: black;
@@ -43,14 +51,6 @@ p {
     margin: 5px;
 }
 
-button {
-    background-color: var(--secondary);
-    border: none;
-    color: white;
-    transition: 0.3s;
-    border-radius: 10px;
-    width: auto;
-}
 
 h1,
 h2,
@@ -74,6 +74,10 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
+}
+
+.container{
+    padding-top: 30px;
 }
 
 /* Navbar */
