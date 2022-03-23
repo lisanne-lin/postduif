@@ -28,7 +28,7 @@ export class RegisterController extends Controller {
         });
     }
 
-    #saveAccount(event) {
+    async #saveAccount(event) {
         event.preventDefault();
 
         const naamOnderneming = this.#registerView.querySelector("#exampleInputNaamOnderneming").value;
@@ -54,9 +54,9 @@ export class RegisterController extends Controller {
             errorBox.innerHTML = "Phone number can't be empty";
         } else {
             errorBox.innerHTML = "";
-            this.#entrepreneursRepository.createEntrepreneur(null, naamOnderneming, volledigeNaam,
+            await this.#entrepreneursRepository.createEntrepreneur(null, naamOnderneming, volledigeNaam,
                 adres, plaats, postcode, telefoonnummer, email, wachtwoord);
-            App.loadController(App.CONTROLLER_WELCOME);
+            // App.loadController(App.CONTROLLER_WELCOME);
         }
     }
 

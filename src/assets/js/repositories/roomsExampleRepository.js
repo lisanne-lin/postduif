@@ -17,10 +17,6 @@ export class RoomsExampleRepository {
         this.#networkManager = new NetworkManager();
     }
 
-    async getAll() {
-
-    }
-
     /**
      * Async function to get a piece of room example data by its id via networkmanager
      * in the back-end we define :roomId as parameter at the end of the endpoint
@@ -31,14 +27,6 @@ export class RoomsExampleRepository {
      */
     async get(roomId) {
         return await this.#networkManager.doRequest(`${this.#route}/${roomId}`, "GET");
-    }
-
-    async create() {
-
-    }
-
-    async delete() {
-
     }
 
     async update(id, values = {}) {

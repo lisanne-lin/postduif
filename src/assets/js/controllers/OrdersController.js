@@ -29,11 +29,18 @@ export class OrdersController extends Controller {
         //await for when HTML is loaded
         this.#orderView = await super.loadHtmlIntoContent("html_views/orders.html")
         document.querySelector(".navbar").style.display = "block";
-        document.querySelector("#nav-orders").className = "nav-link active";
+        document.querySelector("#nav-orders").className = "nav-link bg-success text-light";
+        document.querySelector("#nav-dash").className = "nav-link";
+        document.querySelector("#nav-settings").className = "nav-link";
 
         this.#orderView.querySelector("#place-order-btn").addEventListener("click", event => {
             App.loadController(event.target.dataset.controller);
         })
+
+        this.#orderView.querySelector("#search-order-btn").addEventListener("click", event => {
+            this.#fetchOrderByNum(this.#orderView.querySelector("#search-order-input").value)
+        })
+
         //from here we can safely get elements from the view via the right getter
         //for demonstration a hardcoded room id that exists in the database of the back-end
         this.#fetchOrders();
@@ -41,7 +48,6 @@ export class OrdersController extends Controller {
 
     /**
      * async function that retrieves a room by its id via the right repository
-     * @param bestelnummer the room id to retrieve
      * @private
      */
     async #fetchOrders() {
@@ -66,10 +72,22 @@ export class OrdersController extends Controller {
             adresCell.append(data.verzendadres);
             residenceCell.append(data.verzendplaats);
             zipCell.append(data.verzend_postcode);
-            orderDateCell.append(data.besteldatum);
+            orderDateCell.append(data.geschatte_bezorgdatum);
             statusCell.append(data.status);
 
             table.append(tableRow)
+        }
+    }
+
+    async #fetchOrderByNum (orderNum) {
+        try {
+            let response = this.#orderView.querySelector("#order-info")
+
+            const orderData = await this.#ordersRepository.getOrderByOrderNum(orderNum);
+
+            response.innerHTML = (JSON.stringify(orderData, null, 4));
+        } catch (e) {
+            response.innerHTML = e;
         }
     }
 }

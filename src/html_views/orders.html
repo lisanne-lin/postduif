@@ -18,11 +18,15 @@
                 <i class="fa fa-plus" aria-hidden="true"></i> Add order
             </button>
             <div class="input-group w-50">
-                <input type="search" class="form-control rounded" placeholder="Search order using Order Number" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="btn btn-outline-success"><i class="fa fa-search" aria-hidden="true"></i>
+                <input type="search" id="search-order-input" class="form-control rounded" placeholder="Search order using Order Number" aria-label="Search" aria-describedby="search-addon" />
+                <button type="button" id="search-order-btn" class="btn btn-outline-success"><i class="fa fa-search" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
+    </div>
+    <div>
+        <hr class="my-4">
+        <span id="order-info"></span>
     </div>
     <br>
     <div class="table-responsive">
@@ -34,7 +38,7 @@
                 <th scope="col">Adress</th>
                 <th scope="col">Residence</th>
                 <th scope="col">Zip</th>
-                <th scope="col">Order date</th>
+                <th scope="col">Estimated delivery date</th>
                 <th scope="col">Status</th>
             </tr>
             </thead>

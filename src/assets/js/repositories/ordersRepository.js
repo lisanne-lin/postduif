@@ -12,7 +12,7 @@ export class OrdersRepository {
         this.#networkManager = new NetworkManager();
     }
 
-    createOrder(bestelnummer,verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, verzend_datum,
+    async createOrder(bestelnummer,verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, verzend_datum,
                 bezorgkosten, opmerking, Bezorger_bezorger_id, Klant_klantnummer, Ondernemer_ondernemer_id, besteldatum, status) {
         this.#networkManager.doRequest(this.#route, "POST",
             {bestelnummer: bestelnummer,
@@ -33,5 +33,9 @@ export class OrdersRepository {
 
     async getOrders(){
         return await this.#networkManager.doRequest(`${this.#route}`, "GET", {});
+    }
+
+    async getOrderByOrderNum(bestelnummer) {
+        return await this.#networkManager.doRequest(`${this.#route}/${bestelnummer}`, "GET");
     }
 }
