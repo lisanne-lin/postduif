@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ea9464-c77b-4a92-86dd-6016a17c2549" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/css/pages/orders.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/js/controllers/OrdersController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/html_views/orders.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/js/repositories/bezorgerRepository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/placeOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/placeOrderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/welcomeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/welcomeController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/repositories/ordersRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/repositories/ordersRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html_views/landing.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/landing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/js/controllers/registrerenBezorgerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/controllers/registrerenBezorgerController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/html_views/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/html_views/registrerenBezorger.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html_views/registrerenBezorger.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -206,6 +200,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

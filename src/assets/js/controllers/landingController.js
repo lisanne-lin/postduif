@@ -12,7 +12,6 @@ export class LandingController extends Controller {
 
     async #setup() {
         this.#landingView = await super.loadHtmlIntoContent("html_views/landing.html");
-        this.sidebarView.find("#loginBezorgerButton").on("click", this.handleClickMenuItem);
 
         document.querySelector(".navbar").style.display = "none";
         
