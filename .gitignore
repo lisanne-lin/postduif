@@ -2,3 +2,4 @@
 .idea
 /server
 .idea/workspace.xml
+src/.DS_Store
