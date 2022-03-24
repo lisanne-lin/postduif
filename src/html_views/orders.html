@@ -9,27 +9,44 @@
         <h1><i class="fa fa-th" aria-hidden="true"></i>
             Orders</h1>
         <hr class="my-4">
-            <h6>Below is a table where you can find all your orders, if you press the "Add Order" button you can place a
-                new order, a delivery person will pick it up as soon as possible. If you type data in the search bar, you
-                can find a specific order.</h6>
+        <h6>Below is a table where you can find all your orders, if you press the "Add Order" button you can place a
+            new order, a delivery person will pick it up as soon as possible. If you type data in the search bar, you
+            can find a specific order.</h6>
         <hr class="my-4">
         <div class="d-flex justify-content-between">
             <button class="btn btn-success" id="place-order-btn" data-controller="place_order">
                 <i class="fa fa-plus" aria-hidden="true"></i> Add order
             </button>
             <div class="input-group w-50">
-                <input type="search" id="search-order-input" class="form-control rounded" placeholder="Search order using Order Number" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" id="search-order-btn" class="btn btn-outline-success"><i class="fa fa-search" aria-hidden="true"></i>
+                <input type="search" id="search-order-input" class="form-control rounded"
+                       placeholder="Search order using Order Number" aria-label="Search"
+                       aria-describedby="search-addon"/>
+                <button type="button" id="search-order-btn" class="btn btn-outline-success"><i class="fa fa-search"
+                                                                                               aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </div>
+
     <div>
         <hr class="my-4">
-        <h6>Delivery address</h6>
-        <p><span id="order-name"></span></p>
-        <p><span id="order-straat"></span></p>
-        <p><span id="order-"></span></p>
+        <h5>Delivery <span id="order-num"></span></h5>
+        <div class="d-flex justify-content-between">
+            <div class="col-sm-6">
+                <h6>Delivery address</h6>
+                <p><span id="order-name"></span></p>
+                <p><span id="order-email"></span></p>
+                <p><span id="order-street"></span></p>
+                <p><span id="order-zip"> <span id="order-residence"></span></span></p>
+            </div>
+            <div class="col-sm-6">
+                <h6>Delivery details</h6>
+                <p>Remark:<span id="order-remark"></span></p>
+                <p>Status: <span id="order-status"></span></p>
+                <p>Delivery charge: <span id="order-charge"></span></p>
+                <p>Estimated delivery date: <span id="order-estimate"></span></p>
+            </div>
+        </div>
     </div>
     <br>
     <div class="table-responsive">
