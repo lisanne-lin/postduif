@@ -81,11 +81,27 @@ export class OrdersController extends Controller {
 
     async #fetchOrderByNum (orderNum) {
         try {
-            let response = this.#orderView.querySelector("#order-info")
-
             const orderData = await this.#ordersRepository.getOrderByOrderNum(orderNum);
 
-            response.innerHTML = (JSON.stringify(orderData, null, 4));
+            let orderName = this.#orderView.querySelector("#order-name");
+            let orderStreet = this.#orderView.querySelector("#order-street");
+            let orderZip = this.#orderView.querySelector("#order-zip");
+            let orderResidence = this.#orderView.querySelector("#order-residence");
+            // let orderEmail = this.#orderView.querySelector("#order-email");
+            let orderRemark = this.#orderView.querySelector("#order-remark");
+            let orderStatus = this.#orderView.querySelector("#order-status");
+            let orderEstimate = this.#orderView.querySelector("#order-estimate");
+            let orderCharge = this.#orderView.querySelector("#order-charge");
+
+            orderName.innerHTML = orderData[0].verzendnaam
+            orderStreet.innerHTML = orderData[0].verzendadres
+            orderZip.innerHTML = orderData[0].verzend_postcode
+            orderResidence.innerHTML = orderData[0].verzendplaats
+            // orderEmail.innerHTML = orderData[0].verzendnaam
+            orderRemark.innerHTML = orderData[0].opmerking
+            orderStatus.innerHTML = orderData[0].status
+            orderEstimate.innerHTML = orderData[0].geschatte_bezorgdatum
+            orderCharge.innerHTML = orderData[0].bezorgkosten
         } catch (e) {
             response.innerHTML = e;
         }
