@@ -3,36 +3,30 @@
 </head>
 
 <div class="container">
-    <br>
-    <br>
-    <div>
+    <header>
         <h1><i class="fa fa-th" aria-hidden="true"></i>
             Orders</h1>
-        <hr class="my-4">
         <h6>Below is a table where you can find all your orders, if you press the "Add Order" button you can place a
             new order, a delivery person will pick it up as soon as possible. If you type data in the search bar, you
             can find a specific order.</h6>
-        <hr class="my-4">
         <div class="d-flex justify-content-between">
             <button class="btn btn-success" id="place-order-btn" data-controller="place_order">
                 <i class="fa fa-plus" aria-hidden="true"></i> Add order
             </button>
             <div class="input-group w-50">
                 <input type="search" id="search-order-input" class="form-control rounded"
-                       placeholder="Search order using Order Number" aria-label="Search"
-                       aria-describedby="search-addon"/>
+                    placeholder="Search order using Order Number" aria-label="Search" aria-describedby="search-addon" />
                 <button type="button" id="search-order-btn" class="btn btn-outline-success"><i class="fa fa-search"
-                                                                                               aria-hidden="true"></i>
+                        aria-hidden="true"></i>
                 </button>
+                <hr>
             </div>
         </div>
-    </div>
 
-    <div>
-        <hr class="my-4">
-        <h5>Delivery <span id="order-num"></span></h5>
-        <div class="d-flex justify-content-between">
+    <div class="delivery-details">
+        <div class="row">
             <div class="col-sm-6">
+                <h5>Delivery <span id="order-num"></span></h5>
                 <h6>Delivery address</h6>
                 <p><span id="order-name"></span></p>
                 <p><span id="order-email"></span></p>
@@ -48,23 +42,23 @@
             </div>
         </div>
     </div>
+    </header>
     <br>
     <div class="table-responsive">
         <table id="order-table" class="table table-striped table-sm">
             <thead>
-            <tr>
-                <th scope="col">Order number</th>
-                <th scope="col">Name</th>
-                <th scope="col">Adress</th>
-                <th scope="col">Residence</th>
-                <th scope="col">Zip</th>
-                <th scope="col">Estimated delivery date</th>
-                <th scope="col">Status</th>
-            </tr>
+                <tr>
+                    <th scope="col">Order number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Adress</th>
+                    <th scope="col">Residence</th>
+                    <th scope="col">Zip</th>
+                    <th scope="col">Estimated delivery date</th>
+                    <th scope="col">Status</th>
+                </tr>
             </thead>
         </table>
     </div>
-    <hr class="my-4">
     <br>
     <br>
 </div>
