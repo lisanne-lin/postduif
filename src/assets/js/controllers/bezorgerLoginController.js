@@ -38,7 +38,6 @@ export class BezorgerLoginController extends Controller{
         const emailadres = this.#loginBezorger.querySelector("#exampleInputUsername").value;
         const wachtwoord = this.#loginBezorger.querySelector("#exampleInputPassword").value;
 
-        console.log(emailadres)
         try{
             const user = await this.#bezorgerLoginRepository.login(emailadres, wachtwoord);
 
