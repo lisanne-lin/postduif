@@ -44,22 +44,27 @@ export class RegistrerenBezorgerController extends Controller {
         const postcode = this.#dashboardView.querySelector("#inputPostcode").value;
         const datum = 5;
 
-
-
-
         const errorBox = this.#dashboardView.querySelector(".error");
 
         let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        let regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        let regexZip = /^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i;
 
-        if (!email.match(regexEmail)) {
-            errorBox.innerHTML = "Please enter a valid email address, example: user@gmail.com";
-        } else if (firstName === null || firstName === "") {
-            errorBox.innerHTML = "name can't be empty";
+        if (firstName === null || firstName === "") {
+            errorBox.innerHTML = "Name can't be empty";
         } else if (surName === null || surName === "") {
-            errorBox.innerHTML = "surname can't be empty";
+            errorBox.innerHTML = "Surname can't be empty";
+        } else if (!email.match(regexEmail)) {
+            errorBox.innerHTML = "Please enter a valid email address, example: user@gmail.com";
+        } else if (!wachtwoord.match(regexPassword)) {
+            errorBox.innerHTML = "Please enter a password with minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character";
+        } else if (adres === null || adres === "") {
+            errorBox.innerHTML = "Please enter an address";
         } else if (telefoonnummer === null || telefoonnummer === "") {
             errorBox.innerHTML = "Phone number can't be empty";
-        } else {
+        } else if (!postcode.match(regexZip))  {
+            errorBox.innerHTML = "Please enter a zip code";
+
 
             errorBox.innerHTML = "";
             this.#bezorgerRepository.createBezorger(null, firstName, surName, datum,
