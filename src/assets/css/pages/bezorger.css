@@ -1,0 +1,8 @@
+@import url(../defaults.css);
+
+.bg{
+    background-color: var(--main);
+    width: 100%;
+    height: 500px;
+    border-radius: 0px 0px 10px 10px;
+}
