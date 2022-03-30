@@ -16,7 +16,7 @@ class BezorgerRegRoute {
         this.#createBezorger();
     }
 
-    //mkmkm
+
     #createBezorger() {
         this.#app.post("/bezorger", async (req, res) => {
             try {
