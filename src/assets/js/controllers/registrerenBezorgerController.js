@@ -28,7 +28,6 @@ export class RegistrerenBezorgerController extends Controller {
 
         this.#dashboardView.querySelector("#saveAccountBtn").addEventListener("click",
             (event) => this.#accountGen(event));
-
     }
 
     #accountGen(event) {
@@ -38,8 +37,8 @@ export class RegistrerenBezorgerController extends Controller {
         const surName = this.#dashboardView.querySelector("#inputSurname").value;
         const email = this.#dashboardView.querySelector("#inputEmail").value;
         const wachtwoord = this.#dashboardView.querySelector("#inputPassword").value;
-        const telefoonnummer = this.#dashboardView.querySelector("#inputPhonenumber").value;
         const adres = this.#dashboardView.querySelector("#inputAdress").value;
+        const telefoonnummer = this.#dashboardView.querySelector("#inputPhonenumber").value;
         const plaats = this.#dashboardView.querySelector("#inputResidence").value;
         const postcode = this.#dashboardView.querySelector("#inputPostcode").value;
         const datum = 5;
@@ -62,10 +61,9 @@ export class RegistrerenBezorgerController extends Controller {
             errorBox.innerHTML = "Please enter an address";
         } else if (telefoonnummer === null || telefoonnummer === "") {
             errorBox.innerHTML = "Phone number can't be empty";
-        } else if (!postcode.match(regexZip))  {
+        } else if (!postcode.match(regexZip)) {
             errorBox.innerHTML = "Please enter a zip code";
-
-
+        } else {
             errorBox.innerHTML = "";
             this.#bezorgerRepository.createBezorger(null, firstName, surName, datum,
                 adres, plaats, postcode, email, telefoonnummer, wachtwoord);
