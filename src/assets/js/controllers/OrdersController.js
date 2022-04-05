@@ -45,6 +45,7 @@ export class OrdersController extends Controller {
         //from here we can safely get elements from the view via the right getter
         //for demonstration a hardcoded room id that exists in the database of the back-end
         this.#fetchOrders();
+        this.#fetchOrderCount();
     }
 
     /**
@@ -52,8 +53,6 @@ export class OrdersController extends Controller {
      * @private
      */
     async #fetchOrders() {
-        const exampleResponse = this.#orderView.querySelector(".order")
-
         const orderData = await this.#ordersRepository.getOrders();
 
         for (let i = 0; i < orderData.length; i++) {
@@ -81,7 +80,6 @@ export class OrdersController extends Controller {
     }
 
     async #fetchOrderByNum(orderNum) {
-
         try {
             const orderData = await this.#ordersRepository.getOrderByOrderNum(orderNum);
             if (orderData != null) {
@@ -126,5 +124,10 @@ export class OrdersController extends Controller {
             this.#orderView.querySelector("#order-overview").style.display = "none";
         }
 
+    }
+
+    async #fetchOrderCount() {
+        let x = await this.#ordersRepository.countOrders()
+        console.log(x)
     }
 }

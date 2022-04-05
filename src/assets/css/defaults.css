@@ -39,7 +39,6 @@ button, .btn-success {
     border: none;
     color: white;
     transition: 0.3s;
-    border-radius: 10px;
     width: auto;
 }
 a {

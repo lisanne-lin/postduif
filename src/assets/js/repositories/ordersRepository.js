@@ -38,4 +38,8 @@ export class OrdersRepository {
     async getOrderByOrderNum(bestelnummer) {
         return await this.#networkManager.doRequest(`${this.#route}/${bestelnummer}`, "GET");
     }
+
+    async countOrders() {
+        return await this.#networkManager.doRequest(`${this.#route}`, "GET", {});
+    }
 }
