@@ -39,7 +39,7 @@ export class OrdersRepository {
         return await this.#networkManager.doRequest(`${this.#route}/${bestelnummer}`, "GET");
     }
 
-    async countOrders() {
+    async countOrders(Ondernemer_ondernemer_id) {
         return await this.#networkManager.doRequest(`${this.#route}`, "GET", {});
     }
 }

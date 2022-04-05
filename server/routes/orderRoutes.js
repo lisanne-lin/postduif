@@ -16,7 +16,7 @@ class OrderRoutes {
         this.#app.get("/bestelling", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, besteldatum, status FROM bestelling ORDER BY besteldatum LIMIT 20"
+                    query: "SELECT bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, besteldatum, status FROM bestelling ORDER BY besteldatum"
                 });
                 //just give all data back as json, could also be empty
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
@@ -27,7 +27,7 @@ class OrderRoutes {
     }
 
     #getOrderByNum() {
-        this.#app.get("/bestelling/:bestelnummer", async (req, res) => {
+        this.#app.get("/bestelling/2:bestelnummer", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "SELECT * FROM bestelling WHERE bestelnummer = ?",
@@ -46,7 +46,8 @@ class OrderRoutes {
         this.#app.get("/bestelling", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT COUNT (bestelnummer) FROM bestelling",
+                    query: "SELECT COUNT(bestelnummer) FROM bestelling WHERE Ondernemer_ondernemer_id = ?",
+                    values: [req.params.Ondernemer_ondernemer_id]
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);

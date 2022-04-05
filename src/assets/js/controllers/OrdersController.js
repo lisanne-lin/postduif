@@ -55,7 +55,7 @@ export class OrdersController extends Controller {
     async #fetchOrders() {
         const orderData = await this.#ordersRepository.getOrders();
 
-        for (let i = 0; i < orderData.length; i++) {
+        for (let i = 0; i < 20; i++) {
             let data = orderData[i];
             const table = this.#orderView.querySelector("#order-table");
             let tableRow = table.insertRow()
@@ -127,7 +127,7 @@ export class OrdersController extends Controller {
     }
 
     async #fetchOrderCount() {
-        let x = await this.#ordersRepository.countOrders()
+        let x = await this.#ordersRepository.countOrders(2)
         console.log(x)
     }
 }
