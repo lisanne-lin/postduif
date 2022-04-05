@@ -45,7 +45,7 @@ class OrderRoutes {
         this.#app.get("/bestelling/:bestelnummer", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, besteldatum, status FROM bestelling WHERE bestelnummer = ?",
+                    query: "SELECT * FROM bestelling WHERE bestelnummer = ?",
                     values: [req.params.bestelnummer]
                 });
 
