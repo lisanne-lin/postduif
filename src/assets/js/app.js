@@ -7,18 +7,45 @@
  * @author Lennard Fonteijn & Pim Meijer
  */
 
-import {SessionManager} from "./framework/utils/sessionManager.js"
-import {LoginController} from "./controllers/loginController.js"
-import {NavbarController} from "./controllers/navbarController.js"
-import {UploadController} from "./controllers/uploadController.js"
-import {WelcomeController} from "./controllers/welcomeController.js"
-import {DashboardController} from "./controllers/dashboardController.js"
-import {PlaceOrderController} from "./controllers/placeOrderController.js";
-import {RegisterController} from "./controllers/registerController.js";
-import {LandingController} from "./controllers/landingController.js";
-import {BezorgerLoginController} from "./controllers/bezorgerLoginController.js";
-import {RegistrerenBezorgerController} from "./controllers/registrerenBezorgerController.js";
-import {OrdersController} from "./controllers/OrdersController.js";
+import {
+    SessionManager
+} from "./framework/utils/sessionManager.js"
+import {
+    LoginController
+} from "./controllers/loginController.js"
+import {
+    NavbarController
+} from "./controllers/navbarController.js"
+import {
+    UploadController
+} from "./controllers/uploadController.js"
+import {
+    WelcomeController
+} from "./controllers/welcomeController.js"
+import {
+    DashboardController
+} from "./controllers/dashboardController.js"
+import {
+    PlaceOrderController
+} from "./controllers/placeOrderController.js";
+import {
+    RegisterController
+} from "./controllers/registerController.js";
+import {
+    LandingController
+} from "./controllers/landingController.js";
+import {
+    BezorgerLoginController
+} from "./controllers/bezorgerLoginController.js";
+import {
+    RegistrerenBezorgerController
+} from "./controllers/registrerenBezorgerController.js";
+import {
+    OrdersController
+} from "./controllers/OrdersController.js";
+import {
+    bezorgerBestellingController
+}from "./controllers/bezorgerBestellingController.js";
 
 
 export class App {
@@ -39,6 +66,8 @@ export class App {
     static CONTROLLER_LANDING = "landing";
     static CONTROLLER_REGISTREREN_BEZORGER = "registrerenBezorger";
     static CONTROLLER_ORDERS = "orders";
+    static CONTROLLER_BEZORGER_BESTELLING = "bezorgerBestelling"
+
 
     constructor() {
         //Always load the navigation
@@ -84,7 +113,7 @@ export class App {
                 App.isLoggedIn(() => new RegistrerenBezorgerController(), () => new RegistrerenBezorgerController());
                 break;
 
-                case App.CONTROLLER_ORDERS:
+            case App.CONTROLLER_ORDERS:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new OrdersController(), () => new LandingController());
                 break;
@@ -124,6 +153,8 @@ export class App {
                 App.isLoggedIn(() => new UploadController(), () => new LoginController());
                 break;
 
+            case App.CONTROLLER_BEZORGER_BESTELLING:
+            App.isLoggedIn(() => new bezorgerBestellingController(), () => new LoginController());
             default:
                 return false;
         }
