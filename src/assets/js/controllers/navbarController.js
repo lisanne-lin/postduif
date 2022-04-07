@@ -26,7 +26,7 @@ export class NavbarController extends Controller{
 
         //from here we can safely get elements from the view via the right getter
         const anchors = this.#navbarView.querySelectorAll("a.nav-link");
-
+        // document.getElementById("nav-Bezorger").hidden = true;
         //set click listener on each anchor
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)))
     }
