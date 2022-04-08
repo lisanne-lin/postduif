@@ -1,9 +1,5 @@
 @import url(../defaults.css);
 
-body {
-    font-size: .875rem;
-}
-
 #page {
     background-color: var(--main);
     width: 100%;
