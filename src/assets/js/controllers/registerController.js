@@ -47,7 +47,7 @@ export class RegisterController extends Controller {
         let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
         if (!email.match(regexEmail)) {
-            errorBox.innerHTML = "Please enter a valid email address, example: bald-daddy@hotmale.com";
+            errorBox.innerHTML = "Please enter a valid email address, example: john-doe@hotmale.com";
         } else if (naamOnderneming === null || naamOnderneming === "") {
             errorBox.innerHTML = "Company name can't be empty";
         } else if (telefoonnummer === null || telefoonnummer === "") {
