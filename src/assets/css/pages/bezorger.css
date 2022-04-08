@@ -1,7 +1,11 @@
 @import url(../defaults.css);
 
-.navbar{
+.navbar .nav-item{
     display: none;
+}
+
+p{
+    margin: 0;
 }
 
 h2{
@@ -9,7 +13,7 @@ h2{
     width: 100%;
     position:sticky;
     top: 0;
-    padding: 20px;
+    padding: 30px 50px 30px 50px;
 }
 
 .bg{
@@ -18,8 +22,6 @@ h2{
     height: 500px;
     border-radius: 0px 0px 10px 10px;
 }
-
-
 
 .container-bezorger{
     background-color: white;
@@ -36,13 +38,28 @@ h2{
 }
 
 .order-list{
-    padding: 20px;
+    padding: 50px;
     padding-top: 0;
     height: auto;
 }
 
 .order-detail{
-    border-bottom: 1px solid var(--gray-500);
+    border-top: 1px solid var(--gray-500);
+    padding: 10px;
+}
+
+p.date{
+    color: var(--gray-500);
+    font-size: 12px;
+}
+
+p.company-name{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+p.order-number{
+    font-size: 14px;
 }
 
 .table td, .table th{

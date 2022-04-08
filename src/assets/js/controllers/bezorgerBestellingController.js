@@ -35,8 +35,11 @@ export class bezorgerBestellingController extends Controller {
            
 
             let orderDate = document.createElement('p');
+            orderDate.classList.add("date");
             let company = document.createElement('p');
+            company.classList.add("company-name")
             let orderNumber = document.createElement('p');
+            orderNumber.classList.add("order-number")
             
             orderDetail.appendChild(orderDate);
             orderDetail.appendChild(company);
