@@ -16,7 +16,6 @@ export class OrdersController extends Controller {
     constructor() {
         super();
         this.#ordersRepository = new OrdersRepository();
-
         this.#setupView();
     }
 
@@ -42,7 +41,12 @@ export class OrdersController extends Controller {
 
         })
 
-        //from here we can safely get elements from the view via the right getter
+        this.#orderView.querySelector("#delete-btn").addEventListener("click", event => {
+            this.#deleteOrder(this.#orderView.querySelector("#order-num").value)
+        })
+
+
+            //from here we can safely get elements from the view via the right getter
         //for demonstration a hardcoded room id that exists in the database of the back-end
         this.#fetchOrders();
         this.#fetchOrderCount();
@@ -55,7 +59,7 @@ export class OrdersController extends Controller {
     async #fetchOrders() {
         const orderData = await this.#ordersRepository.getOrders();
 
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 40; i++) {
             let data = orderData[i];
             const table = this.#orderView.querySelector("#order-table");
             let tableRow = table.insertRow()
@@ -127,7 +131,18 @@ export class OrdersController extends Controller {
     }
 
     async #fetchOrderCount() {
-        let x = await this.#ordersRepository.countOrders(2)
-        console.log(x)
+        const amount = await this.#ordersRepository.countOrders(1);
+
+        this.#orderView.querySelector("#order-count").innerHTML = amount.aantal
     }
+
+    async #deleteOrder(orderNumber) {
+        let num = parseInt(orderNumber)
+        console.log(num)
+        await this.#ordersRepository.deleteOrders(num);
+    }
+
+    // async #fetchUpdateOrder() {
+    //     this.#orderView.querySelector("#order-count") =
+    // }
 }

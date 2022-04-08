@@ -40,6 +40,15 @@ export class OrdersRepository {
     }
 
     async countOrders(Ondernemer_ondernemer_id) {
-        return await this.#networkManager.doRequest(`${this.#route}`, "GET", {});
+        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/count`, "GET", {});
+    }
+
+    async updateOrder() {
+        return await this.#networkManager.doRequest(`${this.#route}`, "POST", {});
+    }
+
+    async deleteOrders(bestelnummer){
+        console.log(bestelnummer)
+        return await this.#networkManager.doRequest(`${this.#route}/${bestelnummer}/delete`, "POST", {});
     }
 }

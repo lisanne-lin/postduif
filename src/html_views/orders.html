@@ -2,136 +2,143 @@
     <link rel="stylesheet" href="assets/css/pages/orders.css">
 </head>
 
-<div class="container">
+<div id="page">
     <br>
     <br>
-    <div>
-        <h1><i class="fa fa-th" aria-hidden="true"></i>
-            Orders</h1>
-        <hr class="my-4">
-        <h6>Below is a table where you can find all your orders, if you press the "Add Order" button you can place a
-            new order, a delivery person will pick it up as soon as possible. If you type data in the search bar, you
-            can find a specific order.</h6>
-        <hr class="my-4">
-        <div class="d-flex justify-content-between">
-            <button class="btn btn-success" id="place-order-btn" data-controller="place_order">
-                <i class="fa fa-plus" aria-hidden="true"></i> Add order
-            </button>
-            <div class="input-group w-50">
-                <input type="search" id="search-order-input" class="form-control rounded"
-                       placeholder="Search order using Order Number" aria-label="Search"
-                       aria-describedby="search-addon"/>
-                <button type="button" id="search-order-btn" class="btn btn-outline-success"><i class="fa fa-search"
-                                                                                               aria-hidden="true"></i>
+    <br>
+    <div id="orders" class="container">
+        <div>
+            <h1><i class="fa fa-th" aria-hidden="true"></i>
+                Orders - <span id="order-count"></span></h1>
+            <hr class="my-4">
+            <h6>Below is a table where you can find all your orders, if you press the "Add Order" button you can place a
+                new order, a delivery person will pick it up as soon as possible. If you type data in the search bar,
+                you
+                can find a specific order.</h6>
+            <hr class="my-4">
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-success" id="place-order-btn" data-controller="place_order">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Add order
                 </button>
+                <div class="input-group w-50">
+                    <input type="search" id="search-order-input" class="form-control rounded"
+                           placeholder="Search order using Order Number" aria-label="Search"
+                           aria-describedby="search-addon"/>
+                    <button type="button" id="search-order-btn" class="btn btn-outline-success"><i class="fa fa-search"
+                                                                                                   aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!--    <div>-->
-    <!--        <hr class="my-4">-->
-    <!--&lt;!&ndash;        <h5>Delivery <span id="order-num"></span></h5>&ndash;&gt;-->
-    <!--        <div class="d-flex justify-content-between">-->
-    <!--            <div class="col-sm-6">-->
-    <!--                <h6>Delivery address</h6>-->
-    <!--                &lt;!&ndash;                <p>Name: <input type="text" id="order-name"></p>&ndash;&gt;-->
-    <!--                &lt;!&ndash;                <p>Email: <span id="order-email"></span></p>&ndash;&gt;-->
-    <!--                <p>Adress: <span id="order-street"></span></p>-->
-    <!--                <p>Zip: <span id="order-zip"> <span id="order-residence"></span></span></p>-->
-    <!--            </div>-->
-    <!--            <div class="col-sm-6">-->
-    <!--                <h6>Delivery details</h6>-->
-    <!--                <p>Remark:<span id="order-remark"></span></p>-->
-    <!--                <p>Status: <span id="order-status"></span></p>-->
-    <!--                <p>Delivery charge: <span id="order-charge"></span></p>-->
-    <!--                <p>Estimated delivery date: <span id="order-estimate"></span></p>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
+        <!--    <div>-->
+        <!--        <hr class="my-4">-->
+        <!--&lt;!&ndash;        <h5>Delivery <span id="order-num"></span></h5>&ndash;&gt;-->
+        <!--        <div class="d-flex justify-content-between">-->
+        <!--            <div class="col-sm-6">-->
+        <!--                <h6>Delivery address</h6>-->
+        <!--                &lt;!&ndash;                <p>Name: <input type="text" id="order-name"></p>&ndash;&gt;-->
+        <!--                &lt;!&ndash;                <p>Email: <span id="order-email"></span></p>&ndash;&gt;-->
+        <!--                <p>Adress: <span id="order-street"></span></p>-->
+        <!--                <p>Zip: <span id="order-zip"> <span id="order-residence"></span></span></p>-->
+        <!--            </div>-->
+        <!--            <div class="col-sm-6">-->
+        <!--                <h6>Delivery details</h6>-->
+        <!--                <p>Remark:<span id="order-remark"></span></p>-->
+        <!--                <p>Status: <span id="order-status"></span></p>-->
+        <!--                <p>Delivery charge: <span id="order-charge"></span></p>-->
+        <!--                <p>Estimated delivery date: <span id="order-estimate"></span></p>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
 
 
-    <div>
-        <br>
-        <p id="order-error" style="display: none">No order was found...</p>
-        <form id="order-overview" style="display: none">
-            <div class="d-flex justify-content-between">
-                <h5>Delivery</h5>
-                <button type="button" class="btn-close" aria-label="Close"></button>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="order-name">Name</label>
-                    <input type="text" class="form-control" id="order-name">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="order-email">Email</label>
-                    <input type="text" class="form-control" id="order-email">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="order-street">Adress</label>
-                    <input type="text" class="form-control" id="order-street">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="order-residence">City</label>
-                    <input id="order-residence" class="form-control">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="order-zip">Zip</label>
-                    <input type="text" class="form-control" id="order-zip">
-                </div>
-            </div>
+        <div>
             <br>
-            <h5>Delivery details</h5>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="order-num">Order Number</label>
-                    <input type="text" class="form-control" id="order-num" disabled>
+            <p id="order-error" style="display: none">No order was found...</p>
+            <form id="order-overview" style="display: none">
+                <div class="d-flex justify-content-between">
+                    <h5>Delivery</h5>
+                    <button type="button" class="btn-close" aria-label="Close"></button>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="order-status">Status</label>
-                    <input type="email" class="form-control" id="order-status">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="order-name">Name</label>
+                        <input type="text" class="form-control" id="order-name" disabled>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="order-email">Email</label>
+                        <input type="text" class="form-control" id="order-email" disabled>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="order-remark">Remark</label>
-                <input type="text" class="form-control" id="order-remark">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="order-ship">Shipment Date</label>
-                    <input type="datetime-local" type="text" class="form-control" id="order-ship">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="order-street">Adress</label>
+                        <input type="text" class="form-control" id="order-street">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="order-residence">City</label>
+                        <input id="order-residence" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="order-zip">Zip</label>
+                        <input type="text" class="form-control" id="order-zip">
+                    </div>
                 </div>
-                <div class="form-group col-md-4">
-                    <label for="order-estimate">Estimated delivery date</label>
-                    <input type="datetime-local" id="order-estimate" class="form-control">
+                <br>
+                <h5>Delivery details</h5>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="order-num">Order Number</label>
+                        <input type="text" class="form-control" id="order-num" disabled>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="order-status">Status</label>
+                        <input type="text" class="form-control" id="order-status">
+                    </div>
                 </div>
-                <div class="form-group col-md-2">
-                    <label for="order-charge">Delivery Charge</label>
-                    <input type="number" class="form-control" id="order-charge">
+                <div class="form-group">
+                    <label for="order-remark">Remark</label>
+                    <input type="text" class="form-control" id="order-remark">
                 </div>
-            </div>
-            <button type="submit" class="btn btn-succes">Update</button>
-        </form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="order-ship">Shipment Date</label>
+                        <input type="datetime-local" type="text" class="form-control" id="order-ship">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="order-estimate">Estimated delivery date</label>
+                        <input type="datetime-local" id="order-estimate" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="order-charge">Delivery Charge</label>
+                        <input type="number" class="form-control" id="order-charge">
+                    </div>
+                </div>
+                <button class="btn btn-primary float-right m-1">Update</button>
+                <button id="delete-btn" class="btn btn-danger float-right m-1">Delete</button>
+                <br>
+            </form>
+        </div>
+        <br>
+        <div class="table-responsive">
+            <table id="order-table" class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">Order number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Adress</th>
+                    <th scope="col">Residence</th>
+                    <th scope="col">Zip</th>
+                    <th scope="col">Estimated delivery date</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <hr class="my-4">
     </div>
     <br>
-    <div class="table-responsive">
-        <table id="order-table" class="table table-striped table-sm">
-            <thead>
-            <tr>
-                <th scope="col">Order number</th>
-                <th scope="col">Name</th>
-                <th scope="col">Adress</th>
-                <th scope="col">Residence</th>
-                <th scope="col">Zip</th>
-                <th scope="col">Estimated delivery date</th>
-                <th scope="col">Status</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-    <hr class="my-4">
     <br>
     <br>
 </div>
