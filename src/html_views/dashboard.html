@@ -1,60 +1,44 @@
 <head>
-  <link rel="stylesheet" href="../assets/css/pages/dashboard.css">
-  <link rel="stylesheet" href="../assets/css/pages/stylePopup.css">
-  <title>Dashboard</title>
+    <link rel="stylesheet" href="assets/css/pages/dashboard.css">
 </head>
 
-<body>
-  <main>
-    <div class="container">
-      <div id="bestellingen" class="col-sm-12 col-md-12 col-lg-4 ">
-        <div class="card">
-          <div class="card-body bestelling-info">
+<div id="page">
+    <br>
+    <br>
+    <div id="dashboard" class="container">
+        <div>
             <div class="d-flex justify-content-between">
-              <div class="p-2">
-                <p class="info-kop">Track & Trace</p>
-                <p id="code">LE9872HG12</p>
-                <p class="info-kop">Ordernummer</p>
-                <p class="order-nummer">9007234879</p>
-              </div>
-              <div class="p-2">
-                <p class="info-kop">Status</p>
-                <p class="onderweg" id="status">
-                  <span class="cirkel-oranje"></span>
-                  Onderweg</p>
-              </div>
+                <h1><i class="fa fa-tachometer" aria-hidden="true"></i>
+                    Dashboard <span id="order-count"></span></h1>
             </div>
-            <hr class="lijn">
-            </hr>
-            <div class="d-flex justify-content-between">
-              <div class="p-2">
-                <p class="info-kop">Vetrek</p>
-                <p id="vertrek-tijd">22.02.2022 16:41</p>
-              </div>
-              <div class="p-2">
-                <p class="info-kop">Aankomst</p>
-                <p class="aankomst-tijd">22.02.2022 16:50</p>
-              </div>
+            <hr class="my-2">
+            <div class="d-flex justify-content-around">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Orders</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">View Orders</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Revenue</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">View Orders</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">To charities</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">View Orders</a>
+                    </div>
+                </div>
             </div>
-            <hr class="lijn">
-            </hr>
-            <div class="d-flex justify-content-between">
-              <div class="p-2">
-                <p class="info-kop">Klant</p>
-                <p id="klant-naam">John Doe</p>
-              </div>
-              <div class="p-2">
-                <p class="info-kop">Gewicht</p>
-                <p id="gewicht">1.5kg</p>
-              </div>
-              <div class="p-2">
-                <p class="info-kop">Prijs</p>
-                <p id="prijs">€25,00</p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </main>
-</body>
+
+</div>

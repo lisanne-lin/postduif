@@ -140,6 +140,7 @@ export class OrdersController extends Controller {
         let num = parseInt(orderNumber)
         console.log(num)
         await this.#ordersRepository.deleteOrders(num);
+        App.loadController(App.CONTROLLER_ORDERS);
     }
 
     // async #fetchUpdateOrder() {
