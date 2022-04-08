@@ -4,6 +4,10 @@
     display: none;
 }
 
+.navbar .nav-courier-logout{
+    display: block;
+}
+
 p{
     margin: 0;
 }
