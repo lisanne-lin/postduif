@@ -82,7 +82,7 @@ footer {
 /* Navbar */
 .navbar {
     background-color: var(--main);
-    box-shadow: rgba(24, 39, 75, 0.08) 0px 0px 10px 1px;
+    /*box-shadow: rgba(24, 39, 75, 0.08) 0px 0px 10px 1px;*/
 }
 
 

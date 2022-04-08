@@ -16,6 +16,7 @@ export class RegistrerenBezorgerController extends Controller {
 
 
 
+
     constructor()  {
         super();
 
