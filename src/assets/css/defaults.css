@@ -20,9 +20,6 @@
     --status-onderweg: #FFB800;
 }
 
-.nav-link {
-    color: black;
-}
 
 /* Defaults */
 * {
@@ -43,7 +40,7 @@ button, .btn-success {
 }
 a {
     text-decoration: none;
-    color: black;
+    color: var(--black);
 }
 
 p {
@@ -82,35 +79,31 @@ footer {
 /* Navbar */
 .navbar {
     background-color: var(--main);
-    margin-bottom: 15px;
     padding: 10px;
+    max-width: 100%;
+    z-index: 1;
 }
 
 
+nav .container{
+    padding: 0;
+}
 
-
-.navbar-dark .navbar-brand {
+.nav-link{
     color: var(--black);
 }
 
-.navbar-light .navbar-nav .nav-link {
-    color: var(--black);
-}
-
-
-.bd-navbar .navbar-nav .nav-link {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-    color: #cbbde2;
-}
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+a.nav-link:hover{
     color: var(--secondary);
 }
 
-/* Navbar Toggler */
-.navbar-toggler{
-    border: none;
-    stroke: var(--secondary);
+
+@media (min-width: 1200px){
+    nav .container{
+        max-width:100%;
+        padding-right: 50px;
+        padding-left: 50px;
+    }
 }
 
 
