@@ -101,7 +101,7 @@ export class App {
 
             case App.CONTROLLER_LOGIN:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new WelcomeController(), () => new LoginController());
+                App.isLoggedIn(() => new WelcomeController(), () => new LandingController());
                 break;
 
             case App.CONTROLLER_LOGIN_BEZORGER:
@@ -121,7 +121,7 @@ export class App {
 
             case App.CONTROLLER_DASHBOARD:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new DashboardController(), () => new LoginController());
+                App.isLoggedIn(() => new DashboardController(), () => new LandingController());
                 break;
 
             case App.CONTROLLER_LANDING:

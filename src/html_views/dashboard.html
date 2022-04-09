@@ -3,8 +3,6 @@
 </head>
 
 <div id="page">
-    <br>
-    <br>
     <div id="dashboard" class="container">
         <div>
             <div class="d-flex justify-content-between">
@@ -12,33 +10,103 @@
                     Dashboard <span id="order-count"></span></h1>
             </div>
             <hr class="my-2">
-            <div class="d-flex justify-content-around">
-                <div class="card" style="width: 18rem;">
+            <div class="d-flex justify-content-start">
+                <div class="card m-1" style="width: 25%;">
                     <div class="card-body">
-                        <h5 class="card-title">Total Orders</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">View Orders</a>
+                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (today)</h6>
+                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <br>
+                        <h2 class="card-title">€<span>0,00</span> revenue</h2>
                     </div>
                 </div>
-                <div class="card" style="width: 18rem;">
+                <div class="card m-1" style="width: 25%;">
                     <div class="card-body">
-                        <h5 class="card-title">Total Revenue</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">View Orders</a>
+                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (weekly)</h6>
+                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <br>
+                        <h2 class="card-title">€<span>0,00</span> revenue</h2>
                     </div>
                 </div>
-                <div class="card" style="width: 18rem;">
+                <div class="card m-1" style="width: 25%;">
                     <div class="card-body">
-                        <h5 class="card-title">To charities</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">View Orders</a>
+                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (monthly)</h6>
+                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <br>
+                        <h2 class="card-title">€<span>0,00</span> revenue</h2>
+                    </div>
+                </div>
+                <div class="card m-1" style="width: 25%;">
+                    <div class="card-body">
+                        <h6 class="card-text"><i class="fa fa-smile-o" aria-hidden="true"></i> Money donated</h6>
+                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <br>
+                        <h2 class="card-title">€<span>0,00</span> donated</h2>
                     </div>
                 </div>
             </div>
+            <div class="d-flex justify-content-around">
+                <div class="card m-1" style="width: 25%;">
+                    <div class="card-body">
+                        <h6 class="card-text"><i class="fa fa-calendar text-muted"></i> Orders (today)</h6>
+                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <br>
+                        <h2 class="card-title"><span>0</span> orders</h2>
+                    </div>
+                </div>
+                <div class="card m-1" style="width: 25%;">
+                    <div class="card-body">
+                        <h6 class="card-text"><i class="fa fa-calendar text-muted"></i> Orders (weekly)</h6>
+                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <br>
+                        <h2 class="card-title"><span>0</span> orders</h2>
+                    </div>
+                </div>
+                <div class="card m-1" style="width: 25%;">
+                    <div class="card-body">
+                        <h6 class="card-text"><i class="fa fa-calendar text-muted"></i> Orders (monthly)</h6>
+                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <br>
+                        <h2 class="card-title"><span>0</span> orders</h2>
+                    </div>
+                </div>
+                <div class="card m-1" style="width: 25%;">
+                    <div class="card-body">
+                        <h6 class="card-text"><i class="fa fa-calendar text-muted"></i> Orders (annual)</h6>
+                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <br>
+                        <h2 class="card-title"><span>0</span> orders</h2>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="d-flex justify-content-between">
+                <h4><i class="fa fa-th-large" aria-hidden="true"></i>
+                    Latest Orders <span id="order-table-title"></span></h4>
+                <button class="btn btn-success m-1" id="place-order-btn" data-controller="place_order">
+                    <i class="fa fa-th" aria-hidden="true"></i> View all orders
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table id="order-table" class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">Order number</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Adress</th>
+                        <th scope="col">Residence</th>
+                        <th scope="col">Zip</th>
+                        <th scope="col">Estimated delivery date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <hr class="my-1">
+
         </div>
     </div>
+    <br>
+    <br>
+    <br>
 
 </div>

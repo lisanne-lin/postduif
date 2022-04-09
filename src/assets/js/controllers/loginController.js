@@ -30,6 +30,11 @@ export class LoginController extends Controller{
         //await for when HTML is loaded, never skip this method call in a controller
         this.#loginView = await super.loadHtmlIntoContent("html_views/login.html")
         document.querySelector("#postDuifLogo").innerHTML = "PostDuif Business";
+        // // document.querySelector("#signup").style.display = "block";
+        // document.querySelector("#dashboard1").style.display = "none";
+        // document.querySelector("#customers").style.display = "none";
+        // document.querySelector("#settings").style.display = "none";
+        // document.querySelector("#orders1").style.display = "none";
 
         //from here we can safely get elements from the view via the right getter
         this.#loginView.querySelector("#login-btn").addEventListener("click", event => this.#handleLogin(event));
@@ -53,7 +58,7 @@ export class LoginController extends Controller{
 
             //let the session manager know we are logged in by setting the username, never set the password in localstorage
             App.sessionManager.set("username", user.emailadres);
-            App.loadController(App.CONTROLLER_WELCOME);
+            App.loadController(App.CONTROLLER_DASHBOARD);
             document.querySelector(".sidebar-container").style.display = "block";
         } catch(error) {
             //if unauthorized error code, show error message to the user

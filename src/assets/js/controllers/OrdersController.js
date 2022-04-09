@@ -28,7 +28,7 @@ export class OrdersController extends Controller {
         //await for when HTML is loaded
         this.#orderView = await super.loadHtmlIntoContent("html_views/orders.html")
         document.querySelector(".navbar").style.display = "block";
-        document.querySelector("#nav-orders").className = "nav-link bg-success text-light";
+        document.querySelector("#nav-orders").className = "nav-link active";
         document.querySelector("#nav-dash").className = "nav-link";
         document.querySelector("#nav-settings").className = "nav-link";
 

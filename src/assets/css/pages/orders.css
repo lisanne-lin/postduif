@@ -118,10 +118,8 @@ header{
 
 #orders {
     background-color: white;
-    padding: 50px;
+    padding: 20px;
     border-radius: 5px;
-    max-width: 90%;
-    max-height: 80vh;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     overflow-y: scroll;
 }
