@@ -40,13 +40,20 @@ export class PlaceOrderController extends Controller {
 
         const errorBox = this.#placeOrderView.querySelector(".error");
 
+        var date;
+        date = new Date();
+        date = date.getUTCFullYear() + '-' +
+            ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
+            ('00' + date.getUTCDate()).slice(-2);
+        console.log(date)
+
         if (naam.length < 2) {
             errorBox.innerHTML = "Naam is te kort, minimaal 2 karakters";
         } else {
             errorBox.innerHTML = "";
             this.#ordersRepository.createOrder(null, naam, adres, plaats, postcode, geschatte_bezorgdatum,
                 verzend_datum, bezorgkosten, null,null, klantnummer,
-                1, null, status);
+                1, date, status);
         }
     }
 

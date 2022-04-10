@@ -2,3 +2,5 @@
 .idea
 /server
 .idea/workspace.xml
+src/.DS_Store
+src/assets/.DS_Store

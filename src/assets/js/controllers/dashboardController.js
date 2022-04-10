@@ -21,6 +21,9 @@ export class DashboardController extends Controller {
         document.querySelector("#nav-dash").className = "nav-link active";
 
         this.#fetchOrders();
+        this.#fetchOrderCountOmw();
+        this.#fetchOrderCountHere();
+        this.#fetchEarningsToday()
     }
 
     async #fetchOrders() {
@@ -48,6 +51,24 @@ export class DashboardController extends Controller {
 
             table.append(tableRow);
         }
+    }
+
+    async #fetchOrderCountOmw() {
+        const amount = await this.#ordersRepository.countOrdersOmw(1);
+
+        this.#dashboardView.querySelector("#orders-omw").innerHTML = amount.aantal
+    }
+
+    async #fetchOrderCountHere() {
+        const amount = await this.#ordersRepository.countOrdersHere(1);
+
+        this.#dashboardView.querySelector("#orders-delivered").innerHTML = amount.aantal
+    }
+
+    async #fetchEarningsToday() {
+        const amount = await this.#ordersRepository.calculateEarningsToday(1);
+
+        this.#dashboardView.querySelector("#earnings-today").innerHTML = amount.prijs
     }
 }
 

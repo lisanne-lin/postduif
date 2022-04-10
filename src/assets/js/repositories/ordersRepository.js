@@ -51,4 +51,16 @@ export class OrdersRepository {
         console.log(bestelnummer)
         return await this.#networkManager.doRequest(`${this.#route}/${bestelnummer}/delete`, "POST", {});
     }
+
+    async countOrdersOmw(Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/countomw`, "GET", {});
+    }
+
+    async countOrdersHere(Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/counthere`, "GET", {});
+    }
+
+    async calculateEarningsToday(Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/calculateearningstoday`, "GET", {});
+    }
 }
