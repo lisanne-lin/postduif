@@ -45,7 +45,8 @@ import {
 } from "./controllers/OrdersController.js";
 import {
     bezorgerBestellingController
-}from "./controllers/bezorgerBestellingController.js";
+} from "./controllers/bezorgerBestellingController.js";
+import {TrackOrderController} from "./controllers/TrackOrderController.js";
 
 
 export class App {
@@ -67,6 +68,7 @@ export class App {
     static CONTROLLER_REGISTREREN_BEZORGER = "registrerenBezorger";
     static CONTROLLER_ORDERS = "orders";
     static CONTROLLER_BEZORGER_BESTELLING = "bezorgerBestelling"
+    static CONTROLLER_TRACK = "trackOrder"
 
 
     constructor() {
@@ -101,7 +103,7 @@ export class App {
 
             case App.CONTROLLER_LOGIN:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new WelcomeController(), () => new LandingController());
+                App.isLoggedIn(() => new WelcomeController(), () => new LoginController());
                 break;
 
             case App.CONTROLLER_LOGIN_BEZORGER:
@@ -115,13 +117,18 @@ export class App {
 
             case App.CONTROLLER_ORDERS:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new OrdersController(), () => new LandingController());
+                App.isLoggedIn(() => new OrdersController(), () => new LoginController());
+                break;
+
+            case App.CONTROLLER_TRACK:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new TrackOrderController(), () => new TrackOrderController());
                 break;
 
 
             case App.CONTROLLER_DASHBOARD:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new DashboardController(), () => new LandingController());
+                App.isLoggedIn(() => new DashboardController(), () => new LoginController());
                 break;
 
             case App.CONTROLLER_LANDING:
@@ -136,7 +143,7 @@ export class App {
 
             case App.CONTROLLER_SIGN_UP:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new LoginController(), () => new RegisterController());
+                App.isLoggedIn(() => new LoginController(), () => new LoginController());
                 break;
 
             case App.CONTROLLER_LOGOUT:
@@ -154,7 +161,7 @@ export class App {
                 break;
 
             case App.CONTROLLER_BEZORGER_BESTELLING:
-            App.isLoggedIn(() => new bezorgerBestellingController(), () => new LoginController());
+                App.isLoggedIn(() => new bezorgerBestellingController(), () => new LoginController());
             default:
                 return false;
         }

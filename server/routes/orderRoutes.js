@@ -13,7 +13,10 @@ class OrderRoutes {
         this.#deleteOrder();
         this.#countOrdersOmw()
         this.#countOrdersHere();
-        this.#calculateEarningsToday()
+        this.#calculateEarningsToday();
+        this.#calculateEarningsWeek();
+        this.#calculateEarningsMonth();
+        this.#calculateDonatedMoney();
     }
 
     #getOrder() {
@@ -71,6 +74,54 @@ class OrderRoutes {
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json({"prijs": data[0]['SUM(prijs)']});
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #calculateEarningsWeek() {
+        this.#app.get("/bestelling/:Ondernemer_ondernemer_id/calculateearningsweek", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = 1 AND besteldatum BETWEEN curdate()-7 AND curdate()",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json({"prijs": data[0]['SUM(prijs)']});
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #calculateEarningsMonth() {
+        this.#app.get("/bestelling/:Ondernemer_ondernemer_id/calculateearningsmonth", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = 1 AND besteldatum BETWEEN curdate()-30 AND curdate()",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json({"prijs": data[0]['SUM(prijs)']});
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #calculateDonatedMoney() {
+        this.#app.get("/bestelling/:Ondernemer_ondernemer_id/calculatedonatedmoney", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT SUM(bezorgkosten)*0.04 FROM bestelling WHERE Ondernemer_ondernemer_id = 1",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json({"donatie": data[0]['SUM(bezorgkosten)*0.04']});
 
             } catch (e) {
                 res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})

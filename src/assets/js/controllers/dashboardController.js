@@ -24,6 +24,9 @@ export class DashboardController extends Controller {
         this.#fetchOrderCountOmw();
         this.#fetchOrderCountHere();
         this.#fetchEarningsToday()
+        this.#fetchEarningsWeek()
+        this.#fetchEarningsMonth();
+        this.#fetchCollectedMoney();
     }
 
     async #fetchOrders() {
@@ -69,6 +72,25 @@ export class DashboardController extends Controller {
         const amount = await this.#ordersRepository.calculateEarningsToday(1);
 
         this.#dashboardView.querySelector("#earnings-today").innerHTML = amount.prijs
+    }
+
+    async #fetchEarningsWeek() {
+        const amount = await this.#ordersRepository.calculateEarningsWeek(1);
+
+        this.#dashboardView.querySelector("#earnings-week").innerHTML = amount.prijs
+    }
+
+    async #fetchEarningsMonth() {
+        const amount = await this.#ordersRepository.calculateEarningsMonth(1);
+
+        this.#dashboardView.querySelector("#earnings-month").innerHTML = amount.prijs
+    }
+
+    async #fetchCollectedMoney() {
+        const data = await this.#ordersRepository.calculateDonatedMoney(1);
+
+        const amount = (Math.round(data.donatie* 100) / 100).toFixed(2);
+        this.#dashboardView.querySelector("#collected-money").innerHTML = amount
     }
 }
 

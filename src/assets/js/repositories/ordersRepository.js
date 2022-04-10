@@ -63,4 +63,16 @@ export class OrdersRepository {
     async calculateEarningsToday(Ondernemer_ondernemer_id) {
         return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/calculateearningstoday`, "GET", {});
     }
+
+    async calculateEarningsWeek(Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/calculateearningsweek`, "GET", {});
+    }
+
+    async calculateEarningsMonth(Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/calculateearningsmonth`, "GET", {});
+    }
+
+    async calculateDonatedMoney(Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/calculatedonatedmoney`, "GET", {});
+    }
 }

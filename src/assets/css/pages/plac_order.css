@@ -1,0 +1,16 @@
+@import url(../defaults.css);
+
+#page {
+    background-color: var(--main);
+    width: 100%;
+    height: 500px;
+    border-radius: 0px 0px 10px 10px;
+    position: relative;
+}
+
+#dashboard {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
