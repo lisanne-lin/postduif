@@ -81,7 +81,6 @@ footer {
     background-color: var(--main);
     padding: 10px;
     max-width: 100%;
-    z-index: 1;
 }
 
 

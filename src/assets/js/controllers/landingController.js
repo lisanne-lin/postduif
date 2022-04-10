@@ -22,12 +22,14 @@ export class LandingController extends Controller {
         this.#landingView.querySelector("#login-btn").addEventListener("click", event => {
             App.loadController(event.target.dataset.controller);
         })
+
         this.#landingView.querySelector("#signup-btn").addEventListener("click", event => {
             App.loadController(event.target.dataset.controller);
         })
         this.#landingView.querySelector("#signup-btn2").addEventListener("click", event => {
             App.loadController(event.target.dataset.controller);
         })
+        
     }
 
     #handleClickNavigationItem(event) {
