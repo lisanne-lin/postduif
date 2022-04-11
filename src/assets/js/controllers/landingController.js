@@ -13,7 +13,7 @@ export class LandingController extends Controller {
     async #setup() {
         this.#landingView = await super.loadHtmlIntoContent("html_views/landing.html");
 
-        document.querySelector(".navbar").style.display = "none";
+        // document.querySelector(".navbar").style.display = "none";
 
         const anchors = this.#landingView.querySelectorAll("button.btn.btn-success");
 
@@ -23,9 +23,6 @@ export class LandingController extends Controller {
             App.loadController(App.CONTROLLER_TRACK);
         })
 
-        this.#landingView.querySelector("#signup-btn").addEventListener("click", event => {
-            App.loadController(event.target.dataset.controller);
-        })
         this.#landingView.querySelector("#signup-btn2").addEventListener("click", event => {
             App.loadController(event.target.dataset.controller);
         })
