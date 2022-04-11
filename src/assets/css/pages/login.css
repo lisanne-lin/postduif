@@ -12,6 +12,7 @@
     height: 500px;
     border-radius: 0px 0px 10px 10px;
     position: relative;
+    padding-top: 100px;
 }
 
 #login-input {
