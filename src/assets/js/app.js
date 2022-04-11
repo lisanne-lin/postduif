@@ -76,7 +76,7 @@ export class App {
         App.loadController(App.CONTROLLER_NAVBAR);
 
         //Attempt to load the controller from the URL, if it fails, fall back to the welcome controller.
-        App.loadControllerFromUrl(App.CONTROLLER_WELCOME);
+        App.loadControllerFromUrl(App.CONTROLLER_LANDING);
 
         // App.loadControllerFromUrl(App.CONTROLLER_DASHBOARD);
     }
@@ -143,7 +143,7 @@ export class App {
 
             case App.CONTROLLER_SIGN_UP:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new LoginController(), () => new LoginController());
+                App.isLoggedIn(() => new RegisterController(), () => new RegisterController());
                 break;
 
             case App.CONTROLLER_LOGOUT:
@@ -209,10 +209,10 @@ export class App {
     static isLoggedIn(whenYes, whenNo) {
         if (App.sessionManager.get("username")) {
             whenYes();
-            document.querySelector(".navbar").style.display = "none";
+            // document.querySelector(".navbar").style.display = "none";
         } else {
             whenNo();
-            document.querySelector(".navbar").style.display = "block";
+            // document.querySelector(".navbar").style.display = "block";
         }
     }
 
