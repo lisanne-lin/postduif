@@ -1,11 +1,15 @@
 @import url(../defaults.css);
 
-.navbar .nav-item{
+.logged-in{
     display: none;
 }
 
-.navbar .nav-courier-logout{
+.driver{
     display: block;
+}
+
+li{
+    list-style-type:none;
 }
 
 p{

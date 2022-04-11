@@ -1,110 +1,103 @@
 @import url(../defaults.css);
+
 #logo-duif {
     margin-left: 600px;
 }
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
 
-/* Carousel base class */
-.carousel {
-    margin-bottom: 4rem;
-    /* z-index:-1 */
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-    bottom: 3rem;
-    z-index: 1;
+.container-landing {
+    max-width: 80%;
+    padding-top: 100px;
 }
 
-/* Declare heights because of positioning of img element */
-.carousel-item {
-    height: 32rem;
-}
-.carousel-item > img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    height: 32rem;
+/* navbar */
+.navbar {
+    background-color: white;
 }
 
-.carousel-caption p{
-    display: inline-block;
-}
-
-.firstpage-carouselText {
-    width: 500px;
-    text-shadow: 1px 1px 0px #3a3a3a;
-}
-
-.carouselimg {
-    object-fit: cover;
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--black);
+    font-weight: 600;
 }
 
 
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(34, 35, 40)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
 
-/* CTA DESIGN
--------------------------------------------------- */
-.text-cta{
+.navbar-dark:hover .navbar-nav:hover .nav-link:hover {
     color: var(--secondary);
 }
 
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-.marketing h2 {
-    font-weight: 400;
-}
-/* rtl:begin:ignore */
-.marketing .col-lg-4 p {
-    margin-right: .75rem;
-    margin-left: .75rem;
-}
-/* rtl:end:ignore */
-
-
-/* Featurettes
-------------------------- */
-
-.featurette-divider {
-    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+.item {
+    margin-right: 100px;
 }
 
-/* Thin out the marketing headings */
-.featurette-heading {
-    font-weight: 300;
-    line-height: 1;
-    /* rtl:remove */
-    letter-spacing: -.05rem;
+/* header */
+h1.header,  p.header {
+    font-size: 75px;
+    font-weight: 800;
+    margin: 0px;
+    line-height: 1.2;
 }
 
+span.green {
+    color: var(--secondary);
+}
+
+span.yellow {
+    color: var(--main);
+}
+
+img.header-img {
+    width: 490px;
+}
+
+p.header-desc {
+    color: var(--gray-800);
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+
+button.get-started {
+    max-width: 200px;
+    padding: 10px 40px 10px 40px;
+    border-radius: 10px;
+}
+
+/* Sections */
+
+.section{
+margin-top: 350px;
+}
+
+
+h2{
+    margin-bottom: 90px;
+}
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
-@media (min-width: 40em) {
-    /* Bump up size of carousel content */
-    .carousel-caption p {
-        margin-bottom: 1.25rem;
-        font-size: 1.25rem;
-        line-height: 1.4;
+@media all and (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: none;
     }
 
-    .featurette-heading {
-        font-size: 50px;
+    .navbar .nav-item:hover .dropdown-menu {
+        display: block;
     }
+
+    .navbar .nav-item .dropdown-menu {
+        margin-top: 0;
+    }
+
+    
 }
 
-@media (min-width: 62em) {
-    .featurette-heading {
-        margin-top: 7rem;
+@media (max-width: 768px) {
+
+    img.header-img{
+        display: none;
     }
 }
-
-
