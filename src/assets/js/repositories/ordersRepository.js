@@ -48,7 +48,6 @@ export class OrdersRepository {
     }
 
     async deleteOrders(bestelnummer){
-        console.log(bestelnummer)
         return await this.#networkManager.doRequest(`${this.#route}/delete/${bestelnummer}`, "POST", {});
     }
 

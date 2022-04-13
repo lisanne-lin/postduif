@@ -49,7 +49,7 @@ class OrderRoutes {
     }
 
     #getOrderByNumAndZip() {
-        this.#app.get("/bestelling/trackorder/:bestelnummer/:postcode", async (req, res) => {
+        this.#app.get("/bestelling/trackorder/:bestelnummer/:verzend_postcode", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "SELECT * FROM bestelling WHERE bestelnummer = ? AND `verzend_postcode` = ?",

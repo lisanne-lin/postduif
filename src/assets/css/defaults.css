@@ -25,6 +25,11 @@
         min-height: 100vh;
     }
 
+    progress,
+    .progress-bar {
+        background-color: var(--secondary);
+    }
+
     button,
     .btn-success {
         background-color: var(--secondary);
@@ -95,7 +100,7 @@
         max-width: 100%;
         background-color: #fff;
         margin-top: 100px;
-        padding: 90px;
+        padding: 55px;
         z-index: -1;
     
     }
