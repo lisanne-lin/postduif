@@ -25,7 +25,6 @@ export class OrdersController extends Controller {
      * @private
      */
     async #setupView() {
-        //await for when HTML is loaded
         this.#orderView = await super.loadHtmlIntoContent("html_views/orders.html")
         document.querySelector(".navbar").style.display = "block";
         document.querySelector("#nav-orders").className = "nav-link active";
@@ -59,7 +58,7 @@ export class OrdersController extends Controller {
     async #fetchOrders() {
         const orderData = await this.#ordersRepository.getOrders();
 
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 60; i++) {
             let data = orderData[i];
             const table = this.#orderView.querySelector("#order-table");
             let tableRow = table.insertRow()
