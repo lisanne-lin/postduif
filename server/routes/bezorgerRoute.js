@@ -34,7 +34,7 @@ class UsersRoutes {
                 if (data.length === 1) {
                     res.status(this.#errorCodes.HTTP_OK_CODE).json({"emailadres": data[0].emailadres});
                 } else {
-                    res.status(this.#errorCodes.AUTHORIZATION_ERROR_CODE).json({reason: "Wrong emailadres or password XD"});
+                    res.status(this.#errorCodes.AUTHORIZATION_ERROR_CODE).json({reason: "Wrong emailadres or password"});
 
 
                 }
