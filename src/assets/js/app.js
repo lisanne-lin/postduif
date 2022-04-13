@@ -162,6 +162,8 @@ export class App {
 
             case App.CONTROLLER_BEZORGER_BESTELLING:
                 App.isLoggedIn(() => new bezorgerBestellingController(), () => new LoginController());
+                break
+
             default:
                 return false;
         }

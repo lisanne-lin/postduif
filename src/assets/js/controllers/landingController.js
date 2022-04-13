@@ -19,8 +19,11 @@ export class LandingController extends Controller {
 
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
 
-        this.#landingView.querySelector("a.business-signup").addEventListener("click", event => {
-            App.loadController(event.target.dataset.controller);
+        this.#landingView.querySelector("#sign-up-btn").addEventListener("click", event => {
+            App.loadController(App.CONTROLLER_SIGN_UP);
+        })
+        this.#landingView.querySelector("#log-in-btn").addEventListener("click", event => {
+            App.loadController(App.CONTROLLER_LOGIN);
         })
         
     }

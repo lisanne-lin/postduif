@@ -11,12 +11,12 @@
 }
 
 .navbar {
-    background-color: white;
+    background-color: #ffffff;
 }
 
-.logged-in {
-    display: none;
-}
+/*.logged-in {*/
+/*    display: none;*/
+/*}*/
 
 .navbar-dark .navbar-nav .nav-link {
     color: var(--black);
