@@ -13,4 +13,11 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: absolute;
+    max-width: 90%;
+    max-height: 80vh;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%); 
+    overflow-y: scroll;
 }

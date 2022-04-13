@@ -6,22 +6,30 @@
 
 
 .container-landing {
-    max-width: 80%;
-    padding-top: 100px;
+    max-width: 1140px;
+    padding-top: 20vh;
 }
 
-/* navbar */
 .navbar {
     background-color: white;
 }
-.logged-in{
-    display: none ;
+
+.logged-in {
+    display: none;
 }
 
 .navbar-dark .navbar-nav .nav-link {
     color: var(--black);
     font-weight: 600;
 }
+
+.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show>.nav-link {
+    color: var(--black);
+}
+
 
 
 .navbar-dark .navbar-toggler-icon {
@@ -36,8 +44,8 @@
     margin-right: 100px;
 }
 
-/* header */
-h1.header,  p.header {
+h1.header,
+p.header {
     font-size: 75px;
     font-weight: 800;
     margin: 0px;
@@ -68,19 +76,16 @@ button.get-started {
     border-radius: 10px;
 }
 
-/* Sections */
 
-.section{
-margin-top: 350px;
+.section {
+    margin-top: 30vh;
 }
 
 
-h2{
+h2 {
     margin-bottom: 90px;
 }
 
-/* RESPONSIVE CSS
--------------------------------------------------- */
 
 @media all and (min-width: 992px) {
     .navbar .nav-item .dropdown-menu {
@@ -95,12 +100,21 @@ h2{
         margin-top: 0;
     }
 
-    
+
 }
 
 @media (max-width: 768px) {
 
-    img.header-img{
+    img.header-img {
         display: none;
+    }
+
+    .steps{
+        margin-bottom: 100px;
+    }   
+
+    .container-landing {
+        max-width: 100%;
+        padding-top: 100px;
     }
 }

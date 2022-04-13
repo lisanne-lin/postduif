@@ -51,20 +51,6 @@ header{
  * Sidebar
  */
 
-.sidebar {
-    position: fixed;
-    top: 0;
-    /* rtl:raw:
-    right: 0;
-    */
-    bottom: 0;
-    /* rtl:remove */
-    left: 0;
-    z-index: 100; /* Behind the navbar */
-    padding: 48px 0 0; /* Height of navbar */
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-}
-
 
 /* Table */
 .table-sm td, .table-sm th{
@@ -121,7 +107,14 @@ header{
     padding: 20px;
     border-radius: 5px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: absolute;
+    max-width: 90%;
+    max-height: 100vh;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%); 
     overflow-y: scroll;
+
 }
 
 
