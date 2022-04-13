@@ -32,47 +32,47 @@ export class OrdersRepository {
     }
 
     async getOrders(){
-        return await this.#networkManager.doRequest(`${this.#route}`, "GET", {});
+        return await this.#networkManager.doRequest(`${this.#route}/getallfor`, "GET", {});
     }
 
     async getOrderByOrderNum(bestelnummer) {
-        return await this.#networkManager.doRequest(`${this.#route}/${bestelnummer}`, "GET");
+        return await this.#networkManager.doRequest(`${this.#route}/getorder/${bestelnummer}`, "GET");
+    }
+
+    async getOrderByOrderNumAndZip(bestelnummer, zip) {
+        return await this.#networkManager.doRequest(`${this.#route}/trackorder/${bestelnummer}/${zip}`, "GET");
     }
 
     async countOrders(Ondernemer_ondernemer_id) {
-        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/count`, "GET", {});
-    }
-
-    async updateOrder() {
-        return await this.#networkManager.doRequest(`${this.#route}`, "POST", {});
+        return await this.#networkManager.doRequest(`${this.#route}/count/${Ondernemer_ondernemer_id}`, "GET", {});
     }
 
     async deleteOrders(bestelnummer){
         console.log(bestelnummer)
-        return await this.#networkManager.doRequest(`${this.#route}/${bestelnummer}/delete`, "POST", {});
+        return await this.#networkManager.doRequest(`${this.#route}/delete/${bestelnummer}`, "POST", {});
     }
 
     async countOrdersOmw(Ondernemer_ondernemer_id) {
-        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/countomw`, "GET", {});
+        return await this.#networkManager.doRequest(`${this.#route}/countomw/${Ondernemer_ondernemer_id}`, "GET", {});
     }
 
     async countOrdersHere(Ondernemer_ondernemer_id) {
-        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/counthere`, "GET", {});
+        return await this.#networkManager.doRequest(`${this.#route}/counthere/${Ondernemer_ondernemer_id}`, "GET", {});
     }
 
     async calculateEarningsToday(Ondernemer_ondernemer_id) {
-        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/calculateearningstoday`, "GET", {});
+        return await this.#networkManager.doRequest(`${this.#route}/calculateearningstoday/${Ondernemer_ondernemer_id}`, "GET", {});
     }
 
     async calculateEarningsWeek(Ondernemer_ondernemer_id) {
-        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/calculateearningsweek`, "GET", {});
+        return await this.#networkManager.doRequest(`${this.#route}/calculateearningsweek/${Ondernemer_ondernemer_id}`, "GET", {});
     }
 
     async calculateEarningsMonth(Ondernemer_ondernemer_id) {
-        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/calculateearningsmonth`, "GET", {});
+        return await this.#networkManager.doRequest(`${this.#route}/calculateearningsmonth/${Ondernemer_ondernemer_id}`, "GET", {});
     }
 
     async calculateDonatedMoney(Ondernemer_ondernemer_id) {
-        return await this.#networkManager.doRequest(`${this.#route}/${Ondernemer_ondernemer_id}/calculatedonatedmoney`, "GET", {});
+        return await this.#networkManager.doRequest(`${this.#route}/calculatedonatedmoney/${Ondernemer_ondernemer_id}`, "GET", {});
     }
 }

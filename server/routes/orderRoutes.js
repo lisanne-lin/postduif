@@ -5,10 +5,9 @@ class OrderRoutes {
 
     constructor(app) {
         this.#app = app;
-
-        //call method per route for the rooms entity
         this.#getOrder();
         this.#getOrderByNum();
+        this.#getOrderByNumAndZip();
         this.#countOrders();
         this.#deleteOrder();
         this.#countOrdersOmw()
@@ -20,10 +19,10 @@ class OrderRoutes {
     }
 
     #getOrder() {
-        this.#app.get("/bestelling", async (req, res) => {
+        this.#app.get("/bestelling/getallfor", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, besteldatum, status FROM bestelling ORDER BY besteldatum"
+                    query: "SELECT * FROM bestelling ORDER BY besteldatum"
                 });
                 //just give all data back as json, could also be empty
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
@@ -34,7 +33,7 @@ class OrderRoutes {
     }
 
     #getOrderByNum() {
-        this.#app.get("/bestelling/:bestelnummer", async (req, res) => {
+        this.#app.get("/bestelling/getorder/:bestelnummer", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "SELECT * FROM bestelling WHERE bestelnummer = ?",
@@ -49,8 +48,24 @@ class OrderRoutes {
         });
     }
 
+    #getOrderByNumAndZip() {
+        this.#app.get("/bestelling/trackorder/:bestelnummer/:postcode", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT * FROM bestelling WHERE bestelnummer = ? AND `verzend_postcode` = ?",
+                    values: [req.params.bestelnummer, req.params.verzend_postcode]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
     #countOrders() {
-        this.#app.get("/bestelling/:Ondernemer_ondernemer_id/count", async (req, res) => {
+        this.#app.get("/bestelling/count/:Ondernemer_ondernemer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "SELECT COUNT(bestelnummer) FROM bestelling WHERE Ondernemer_ondernemer_id = ?",
@@ -66,7 +81,7 @@ class OrderRoutes {
     }
 
     #calculateEarningsToday() {
-        this.#app.get("/bestelling/:Ondernemer_ondernemer_id/calculateearningstoday", async (req, res) => {
+        this.#app.get("/bestelling/calculateearningstoday/:Ondernemer_ondernemer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = CURDATE()",
@@ -82,7 +97,7 @@ class OrderRoutes {
     }
 
     #calculateEarningsWeek() {
-        this.#app.get("/bestelling/:Ondernemer_ondernemer_id/calculateearningsweek", async (req, res) => {
+        this.#app.get("/bestelling/calculateearningsweek/:Ondernemer_ondernemer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = 1 AND besteldatum BETWEEN curdate()-7 AND curdate()",
@@ -98,7 +113,7 @@ class OrderRoutes {
     }
 
     #calculateEarningsMonth() {
-        this.#app.get("/bestelling/:Ondernemer_ondernemer_id/calculateearningsmonth", async (req, res) => {
+        this.#app.get("/bestelling/calculateearningsmonth/:Ondernemer_ondernemer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = 1 AND besteldatum BETWEEN curdate()-30 AND curdate()",
@@ -114,7 +129,7 @@ class OrderRoutes {
     }
 
     #calculateDonatedMoney() {
-        this.#app.get("/bestelling/:Ondernemer_ondernemer_id/calculatedonatedmoney", async (req, res) => {
+        this.#app.get("/bestelling/calculatedonatedmoney/:Ondernemer_ondernemer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "SELECT SUM(bezorgkosten)*0.04 FROM bestelling WHERE Ondernemer_ondernemer_id = 1",
@@ -130,13 +145,12 @@ class OrderRoutes {
     }
 
     #countOrdersOmw() {
-        this.#app.get("/bestelling/:Ondernemer_ondernemer_id/countomw", async (req, res) => {
+        this.#app.get("/bestelling/countomw/:Ondernemer_ondernemer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "SELECT COUNT(bestelnummer) FROM bestelling WHERE Ondernemer_ondernemer_id = ? and status = \"On the way\"",
                     values: [req.params.Ondernemer_ondernemer_id]
                 });
-
                 res.status(this.#errorCodes.HTTP_OK_CODE).json({"aantal": data[0]['COUNT(bestelnummer)']});
 
             } catch (e) {
@@ -146,7 +160,7 @@ class OrderRoutes {
     }
 
     #countOrdersHere() {
-        this.#app.get("/bestelling/:Ondernemer_ondernemer_id/counthere", async (req, res) => {
+        this.#app.get("/bestelling/counthere/:Ondernemer_ondernemer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "SELECT COUNT(bestelnummer) FROM bestelling WHERE Ondernemer_ondernemer_id = ? and status = \"Still to be picked up\"",
@@ -161,24 +175,8 @@ class OrderRoutes {
         });
     }
 
-    #updateOrder(verzendadres, verzendplaats, verzend_postcode, status, geschatte_bezorgdatum) {
-        this.#app.post("/bestelling/:bestelnummer/update", async (req, res) => {
-            try {
-                const data = await this.#databaseHelper.handleQuery({
-                    query: "UPDATE `bestelling` SET `verzend_postcode` = ?, `verzendplaats` = ?, `verzend_postcode` = ?, `status` = ?, `geschatte_bezorgdatum` = ? WHERE bestelnummer = ? ",
-                    values: [req.body.verzend_postcode, req.body.verzendplaats, req.body.verzend_postcode, req.body.status, req.body.geschatte_bezorgdatum, req.body.bestelnummer]
-                });
-
-                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
-
-            } catch (e) {
-                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
-            }
-        });
-    }
-
     #deleteOrder() {
-        this.#app.post("/bestelling/:bestelnummer/delete", async (req, res) => {
+        this.#app.post("/bestelling/delete/:bestelnummer", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "DELETE FROM `bestelling` WHERE `bestelnummer` = ?",

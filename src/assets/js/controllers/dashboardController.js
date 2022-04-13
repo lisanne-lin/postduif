@@ -32,7 +32,7 @@ export class DashboardController extends Controller {
     async #fetchOrders() {
         const orderData = await this.#ordersRepository.getOrders();
 
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 30; i++) {
             let data = orderData[i];
             const table = this.#dashboardView.querySelector("#order-table");
             let tableRow = table.insertRow()
@@ -58,6 +58,7 @@ export class DashboardController extends Controller {
 
     async #fetchOrderCountOmw() {
         const amount = await this.#ordersRepository.countOrdersOmw(1);
+        console.log(amount)
 
         this.#dashboardView.querySelector("#orders-omw").innerHTML = amount.aantal
     }
