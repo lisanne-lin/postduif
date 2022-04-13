@@ -100,6 +100,7 @@
         background-color: #fff;
         margin-top: 100px;
         padding: 90px;
+        z-index: -1;
     
     }
 
