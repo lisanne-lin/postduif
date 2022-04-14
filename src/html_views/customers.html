@@ -1,0 +1,47 @@
+<head>
+    <link rel="stylesheet" href="assets/css/pages/customers.css">
+</head>
+
+<div id="page">
+    <div id="dashboard" class="container">
+        <div>
+            <div class="d-flex justify-content-between">
+                <h1><i class="fa fa-users text-muted" aria-hidden="true"></i>
+                    Customers <span id="order-count"></span></h1>
+            </div>
+            <p>Below is a table where you can find all your customers. You can also search customers and by pressing on "Contact"
+            , you can send them an e-mail</p>
+            <hr class="my-2">
+            <br>
+            <div class="d-flex justify-content-evenly">
+                <div class="col-md-3">
+                    <img src="assets/img/undraw_people_search_re_5rre.svg" height="200">
+                </div>
+                <div class="col-md-8">
+                    <form>
+                        <div>
+                            <h3><i class="fa fa-compass text-muted" aria-hidden="true"></i> Find your client</h3>
+                            <p class="text-muted">Find your order client using his/her name and email adress</p>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="d-flex justify-content-start">
+                            <div class="form-floating w-75 m-1">
+                                <input type="text" class="form-control" id="tracktrace"
+                                       placeholder="name@example.com">
+                                <label for="tracktrace">Name</label>
+                            </div>
+                            <br>
+                            <button class="w-25 text-white btn-lg btn-outline-success m-1" id="search-btn" type="submit"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-search"
+                                                                                             aria-hidden="true"></i> Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+

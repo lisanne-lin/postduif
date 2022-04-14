@@ -32,7 +32,7 @@ export class DashboardController extends Controller {
     async #fetchOrders() {
         const orderData = await this.#ordersRepository.getOrders();
 
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 6; i++) {
             let data = orderData[i];
             const table = this.#dashboardView.querySelector("#order-table");
             let tableRow = table.insertRow()

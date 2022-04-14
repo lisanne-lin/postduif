@@ -47,6 +47,7 @@ import {
     bezorgerBestellingController
 } from "./controllers/bezorgerBestellingController.js";
 import {TrackOrderController} from "./controllers/TrackOrderController.js";
+import {CustomersController} from "./controllers/CustomersController.js";
 
 
 export class App {
@@ -69,6 +70,7 @@ export class App {
     static CONTROLLER_ORDERS = "orders";
     static CONTROLLER_BEZORGER_BESTELLING = "bezorgerBestelling"
     static CONTROLLER_TRACK = "trackOrder"
+    static CONTROLLER_CUSTOMERS = "customers"
 
 
     constructor() {
@@ -104,6 +106,11 @@ export class App {
             case App.CONTROLLER_LOGIN:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new WelcomeController(), () => new LoginController());
+                break;
+
+            case App.CONTROLLER_CUSTOMERS:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new CustomersController(), () => new LoginController());
                 break;
 
             case App.CONTROLLER_LOGIN_BEZORGER:
