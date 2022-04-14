@@ -52,7 +52,7 @@ class OrderRoutes {
         this.#app.get("/bestelling/trackorder/:bestelnummer/:verzend_postcode", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT * FROM bestelling WHERE bestelnummer = ? AND `verzend_postcode` = ?",
+                    query: "SELECT * FROM bestelling INNER JOIN ondernemer ON bestelling.Ondernemer_ondernemer_id = ondernemer.ondernemer_id WHERE bestelnummer = ? AND verzend_postcode = ?",
                     values: [req.params.bestelnummer, req.params.verzend_postcode]
                 });
 

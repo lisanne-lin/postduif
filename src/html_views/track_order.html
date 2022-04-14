@@ -26,17 +26,17 @@
                     <br>
                     <div class="d-flex justify-content-start">
                         <div class="form-floating w-50 m-1">
-                            <input type="email" class="form-control" id="tracktrace"
+                            <input type="text" class="form-control" id="tracktrace"
                                    placeholder="name@example.com">
                             <label for="tracktrace">Track and Trace</label>
                         </div>
                         <div class="form-floating w-50 m-1">
-                            <input type="password" class="form-control" id="zip"
-                                   placeholder="Password">
+                            <input type="text" class="form-control" id="input-zip"
+                                   placeholder="1234AB">
                             <label for="zip">Zip</label>
                         </div>
                         <br>
-                        <button class="w-25 text-white btn-lg btn-outline-success m-1" type="submit"
+                        <button class="w-25 text-white btn-lg btn-outline-success m-1" id="search-btn" type="submit"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-search"
                                                                                          aria-hidden="true"></i> Search
                         </button>
@@ -55,38 +55,54 @@
                         <h5 class="modal-title" id="exampleModalLabel">Your Order</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <img src="/assets/img/undraw_ride_a_bicycle_re_6tjy.svg" class="align-content-center"
-                                 height="365px">
+                    <div id="order-not-found" class="modal-body" style="display: none">
+                        <div class="mb-3" >
+                            <div class="d-flex justify-content-center">
+                                <img src="/assets/img/undraw_searching_re_3ra9.svg"  class="align-content-center"
+                                     height="365px">
+                            </div>
+
+                            <br>
+                            <br>
+                            <p>Sorry, but we couldn't find your order, please make sure you use the right Track and Trace code and zip</p>
+                        </div>
+                    </div>
+                    <div id="order-found" class="modal-body" style="display: none">
+                        <div class="mb-3" >
+                            <div class="d-flex justify-content-center">
+                                <img src="/assets/img/undraw_ride_a_bicycle_re_6tjy.svg" id="order-image" class="align-content-center"
+                                     height="365px">
+                            </div>
+
                             <br>
                             <br>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" id="bar" role="progressbar"
                                      aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%"></div>
                             </div>
-                            <h4><span>On the way</span></h4>
+                            <br>
+                            <h4><span id="status">On the way</span></h4>
                             <h6>Estimated Delivery Time</h6>
-                            <p><span>Nu</span></p>
+                            <p><span id="estimated">00:00</span></p>
                         </div>
                         <hr>
                         <div class="mb-3">
                             <h6>Delivery adress</h6>
-                            <p><span>Simon Vriesema</span></p>
-                            <p><span>Saturnusstraat 7</span></p>
-                            <p><span>2024GH HAARLEM</span></p>
+                            <p><span id="name">Simon Vriesema</span></p>
+                            <p><span id="adress">Saturnusstraat 7</span></p>
+                            <p><span id="zip">2024GH HAARLEM</span></p>
                         </div>
                         <hr>
                         <div class="mb-3">
                             <h6>Afzender</h6>
-                            <p><span>Mr. Mokum</span></p>
-                            <p><span>Postbus caviabaffer</span></p>
-                            <p><span>5140 Je Vader</span></p>
+                            <p><span id="entrepreneur-name">Mr. Mokum</span></p>
+                            <p><span id="entrepreneur-adress">Postbus caviabaffer</span></p>
+                            <p><span id="entrepreneur-zip">5140 Je Vader</span></p>
                         </div>
                         <hr>
                         <div class="mb-3">
                             <h6>Track and Trace:</h6>
-                            <p><span>1234567890</span></p>
+                            <p><span id="order-num">1234567890</span></p>
                         </div>
                         <hr>
                         <div class="mb-3">
@@ -95,8 +111,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-secondary" id="close-btn" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" id="save-btn" data-bs-dismiss="modal">Save</button>
                     </div>
                 </div>
             </div>
