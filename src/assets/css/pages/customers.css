@@ -19,3 +19,7 @@
     top: 10vh;
     /*overflow-y: scroll;*/
 }
+
+.table-sm td, .table-sm th {
+    padding: 10px;
+}

@@ -64,6 +64,8 @@ class OrderRoutes {
         });
     }
 
+
+
     #countOrders() {
         this.#app.get("/bestelling/count/:Ondernemer_ondernemer_id", async (req, res) => {
             try {

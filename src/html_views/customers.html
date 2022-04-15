@@ -9,8 +9,9 @@
                 <h1><i class="fa fa-users text-muted" aria-hidden="true"></i>
                     Customers <span id="order-count"></span></h1>
             </div>
-            <p>Below is a table where you can find all your customers. You can also search customers and by pressing on "Contact"
-            , you can send them an e-mail</p>
+            <p>Below is a table where you can find all your customers. You can also search customers and by pressing on
+                "Contact"
+                , you can send them an e-mail</p>
             <hr class="my-2">
             <br>
             <div class="d-flex justify-content-evenly">
@@ -34,13 +35,40 @@
                             <br>
                             <button class="w-25 text-white btn-lg btn-outline-success m-1" id="search-btn" type="submit"
                                     data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-search"
-                                                                                             aria-hidden="true"></i> Search
+                                                                                             aria-hidden="true"></i>
+                                Search
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
             <hr>
+            <div>
+                <h3><i class="fa fa-clock-o text-muted" aria-hidden="true"></i> Recent clients</h3>
+                <div class="container">
+                    <table id="order-table" class="table table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Contact</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td><img src="assets/img/undraw_female_avatar_w3jk (1).svg" height="33px"></td>
+                            <td>Lisanne Lin</td>
+                            <td>ja@123456789.nl</td>
+                            <td>06123456789</td>
+                            <td>Amsterdam</td>
+                            <td><a href="#" ><i class="fa fa-envelope" aria-hidden="true"></i>
+                                Email</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
