@@ -16,6 +16,7 @@ class OrderRoutes {
         this.#calculateEarningsWeek();
         this.#calculateEarningsMonth();
         this.#calculateDonatedMoney();
+        this.#getCompanyName();
     }
 
     #getOrder() {
@@ -181,6 +182,22 @@ class OrderRoutes {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "DELETE FROM `bestelling` WHERE `bestelnummer` = ?",
                     values: [req.params.bestelnummer]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getCompanyName() {
+        this.#app.get("/bestelling/getcompanyname/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: " SELECT bestelling.besteldatum, bestelling.Ondernemer_ondernemer_id, bestelling.bestelnummer, ondernemer.naam FROM bestelling INNER JOIN ondernemer ON bestelling.Ondernemer_ondernemer_id = ondernemer.ondernemer_id",
+                    values: [req.params.naam]
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);

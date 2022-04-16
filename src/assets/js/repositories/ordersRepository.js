@@ -28,7 +28,8 @@ export class OrdersRepository {
                 Klant_klantnummer: Klant_klantnummer,
                 Ondernemer_ondernemer_id: Ondernemer_ondernemer_id,
                 besteldatum: besteldatum,
-                status: status})
+                status: status,
+                naam:naam})
     }
 
     async getOrders(){
@@ -73,5 +74,9 @@ export class OrdersRepository {
 
     async calculateDonatedMoney(Ondernemer_ondernemer_id) {
         return await this.#networkManager.doRequest(`${this.#route}/calculatedonatedmoney/${Ondernemer_ondernemer_id}`, "GET", {});
+    }
+
+    async getCompanyName(naam) {
+        return await this.#networkManager.doRequest(`${this.#route}/getcompanyname/${naam}`, "GET");
     }
 }

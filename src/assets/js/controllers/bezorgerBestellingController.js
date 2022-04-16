@@ -25,11 +25,13 @@ export class bezorgerBestellingController extends Controller {
 
     async #fetchOrders() {
         const orderData = await this.#ordersRepository.getOrders();
+        const getCompanyName = await this.#ordersRepository.getCompanyName();
         console.log(orderData);
+        console.log(getCompanyName);
 
         for (let i = 0; i < 20; i++) {
             let data = orderData[i];
-
+            let name = getCompanyName[i];
             let orderDetail = document.createElement('div');
             orderDetail.classList.add("order-detail")
            
@@ -49,10 +51,12 @@ export class bezorgerBestellingController extends Controller {
 
             orderDate.innerHTML = data.geschatte_bezorgdatum;
             //postcode is placeholder voor bedrijfsnaam
-            company.innerHTML = data.verzend_postcode;
+            company.innerHTML = name.naam;
             orderNumber.innerHTML = data.bestelnummer;
-          
+
             document.querySelector(".order-list").appendChild(orderDetail);
+            console.log(company);
+
 
         }
     
