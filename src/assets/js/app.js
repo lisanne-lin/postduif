@@ -46,8 +46,12 @@ import {
 import {
     bezorgerBestellingController
 } from "./controllers/bezorgerBestellingController.js";
-import {TrackOrderController} from "./controllers/TrackOrderController.js";
-import {CustomersController} from "./controllers/CustomersController.js";
+import {
+    TrackOrderController
+} from "./controllers/TrackOrderController.js";
+import {
+    CustomersController
+} from "./controllers/CustomersController.js";
 
 
 export class App {
@@ -69,8 +73,8 @@ export class App {
     static CONTROLLER_REGISTREREN_BEZORGER = "registrerenBezorger";
     static CONTROLLER_ORDERS = "orders";
     static CONTROLLER_BEZORGER_BESTELLING = "bezorgerBestelling"
-    static CONTROLLER_TRACK = "trackOrder"
-    static CONTROLLER_CUSTOMERS = "customers"
+    static CONTROLLER_TRACK = "trackOrder";
+    static CONTROLLER_CUSTOMERS = "customers";
 
 
     constructor() {
@@ -169,7 +173,10 @@ export class App {
 
             case App.CONTROLLER_BEZORGER_BESTELLING:
                 App.isLoggedIn(() => new bezorgerBestellingController(), () => new LoginController());
-                break
+                break;
+            case App.CONTROLLER_DRIVER:
+                App.isLoggedIn(() => new bezorgerBestellingController(), () => new LoginController());
+                break;
 
             default:
                 return false;
@@ -218,10 +225,10 @@ export class App {
     static isLoggedIn(whenYes, whenNo) {
         if (App.sessionManager.get("username")) {
             whenYes();
-            // document.querySelector(".navbar").style.display = "none";
+            document.querySelector("nav.logged-in").style.display = "none";
         } else {
             whenNo();
-            // document.querySelector(".navbar").style.display = "block";
+            document.querySelector(".logged-in").style.display = "block";
         }
     }
 

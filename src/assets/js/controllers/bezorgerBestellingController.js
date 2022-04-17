@@ -21,6 +21,13 @@ export class bezorgerBestellingController extends Controller {
    async #setupView() {
         this.#createBezorgerBestellingView = await super.loadHtmlIntoContent("html_views/bezorger_bestelling-lijst.html");
         this.#fetchOrders();
+
+        // anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
+
+        // this.#bezorgerBestellingController.querySelector("#sign-up-btn").addEventListener("click", event => {
+        //     App.loadController(App.CONTROLLER_SIGN_UP);
+        // })
+        
     }
 
     async #fetchOrders() {
@@ -50,18 +57,16 @@ export class bezorgerBestellingController extends Controller {
 
 
             orderDate.innerHTML = data.geschatte_bezorgdatum;
-            //postcode is placeholder voor bedrijfsnaam
             company.innerHTML = name.naam;
             orderNumber.innerHTML = data.bestelnummer;
 
             document.querySelector(".order-list").appendChild(orderDetail);
-            console.log(company);
-
 
         }
-    
+        this.#createBezorgerBestellingView.querySelector(".order-detail").addEventListener("click", event => {
+            App.loadController(App.CONTROLLER_DRIVER);
+        })
     }
-
 
 
 }

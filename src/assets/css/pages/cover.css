@@ -4,6 +4,10 @@
     margin-left: 600px;
 }
 
+/* .logged-in{
+    display: none;
+} */
+
 
 .container-landing {
     max-width: 1140px;
@@ -82,7 +86,7 @@ button.get-started {
 }
 
 
-h2 {
+.section h2 {
     margin-bottom: 90px;
 }
 
