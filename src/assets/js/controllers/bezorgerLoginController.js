@@ -18,7 +18,7 @@ export class BezorgerLoginController extends Controller{
 
     async #setupView() {
         //await for when HTML is loaded, never skip this method call in a controller
-        this.#loginBezorger = await super.loadHtmlIntoContent("html_views/bezorgerLogin.html")
+        this.#loginBezorger = await super.loadHtmlIntoContent("html_views/driverLogin.html")
         document.querySelector("#postDuifLogo").innerHTML = "PostDuif Bezorger";
 
         //from here we can safely get elements from the view via the right getter

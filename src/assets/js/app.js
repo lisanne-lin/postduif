@@ -70,7 +70,7 @@ export class App {
     static CONTROLLER_PLACE_ORDER = "place_order";
     static CONTROLLER_SIGN_UP = "sign_up";
     static CONTROLLER_LANDING = "landing";
-    static CONTROLLER_REGISTREREN_BEZORGER = "registrerenBezorger";
+    static CONTROLLER_REGISTREREN_BEZORGER = "registerDriver";
     static CONTROLLER_ORDERS = "orders";
     static CONTROLLER_BEZORGER_BESTELLING = "bezorgerBestelling"
     static CONTROLLER_TRACK = "trackOrder";

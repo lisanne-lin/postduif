@@ -25,7 +25,7 @@ export class RegistrerenBezorgerController extends Controller {
     }
 
     async #setup() {
-        this.#dashboardView = await super.loadHtmlIntoContent("html_views/registrerenBezorger.html");
+        this.#dashboardView = await super.loadHtmlIntoContent("html_views/registerDriver.html");
 
         this.#dashboardView.querySelector("#saveAccountBtn").addEventListener("click",
             (event) => this.#accountGen(event));
@@ -42,7 +42,6 @@ export class RegistrerenBezorgerController extends Controller {
         const telefoonnummer = this.#dashboardView.querySelector("#inputPhonenumber").value;
         const plaats = this.#dashboardView.querySelector("#inputResidence").value;
         const postcode = this.#dashboardView.querySelector("#inputPostcode").value;
-        const datum = 5;
 
         const errorBox = this.#dashboardView.querySelector(".error");
 
@@ -66,7 +65,7 @@ export class RegistrerenBezorgerController extends Controller {
             errorBox.innerHTML = "Please enter a zip code";
         } else {
             errorBox.innerHTML = "";
-            this.#bezorgerRepository.createBezorger(null, firstName, surName, datum,
+            this.#bezorgerRepository.createBezorger(null, firstName, surName,
                 adres, plaats, postcode, email, telefoonnummer, wachtwoord);
             App.loadController(App.CONTROLLER_LOGIN_BEZORGER);
 

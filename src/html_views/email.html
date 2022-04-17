@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form onsubmit="emailSend(); reset(); return false;">
+    <h2> Contact </h2>
+    <input type="email" id="email" value="">
+    <input type="text" id="name" value="">
+    <input type="text" id="text" value="Hey my name is joy welcome to the game">
+    <button type="submit">Send</button>
+</form>
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+<script>
+    function emailSend() {
+        Email.send({
+            SecureToken: "aeee54e2-fdd2-40a2-ad62-237a2f9c4f41",
+            To: 'joy.park@hva.nl',
+            From: "notificationHva12344@protonmail.com",
+            Subject: "This is the subject",
+            Body: "<table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                "\n" +
+                "    <!-- START HEADER/BANNER -->\n" +
+                "\n" +
+                "    <tbody><tr>\n" +
+                "        <td align=\"center\">\n" +
+                "            <table class=\"col-600\" width=\"600\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                "                <tbody><tr>\n" +
+                "                    <td align=\"center\" valign=\"top\" background=\"https://designmodo.com/demo/emailtemplate/images/header-background.jpg\" bgcolor=\"#66809b\" style=\"background-size:cover; background-position:top;height=\" 400\"\"=\"\">\n" +
+                "                    <table class=\"col-600\" width=\"600\" height=\"400\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                "\n" +
+                "                        <tbody><tr>\n" +
+                "                            <td height=\"40\"></td>\n" +
+                "                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                        <tr>\n" +
+                "                            <td align=\"center\" style=\"line-height: 0px;\">\n" +
+                "                                <img style=\"display:block; line-height:0px; font-size:0px; border:0px;\" src=\"https://i.imgur.com/dFIe2Cu.png\" width=\"109\" height=\"103\" alt=\"logo\">\n" +
+                "                            </td>\n" +
+                "                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "                        <tr>\n" +
+                "                            <td align=\"center\" style=\"font-family: 'Raleway', sans-serif; font-size:37px; color:#ffffff; line-height:24px; font-weight: bold; letter-spacing: 7px;\">\n" +
+                "                                Your delivery person<br> <span style=\"font-family: 'Raleway', sans-serif; font-size:37px; color:#ffffff; line-height:39px; font-weight: 300; letter-spacing: 7px;\">is on its way</span>\n" +
+                "                            </td>\n" +
+                "                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "                        <tr>\n" +
+                "                            <td align=\"center\" style=\"font-family: 'Lato', sans-serif; font-size:15px; color:#ffffff; line-height:24px; font-weight: 300;\">\n" +
+                "                                A together we deliver the best product to the customer<br> we do it together!\n" +
+                "                            </td>\n" +
+                "                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                        <tr>\n" +
+                "                            <td height=\"50\"></td>\n" +
+                "                        </tr>\n" +
+                "                        </tbody></table>\n" +
+                "                    </td>\n" +
+                "                </tr>\n" +
+                "                </tbody></table>\n" +
+                "        </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "\n" +
+                "    <!-- END HEADER/BANNER -->\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "    <!-- START PRICING TABLE -->\n" +
+                "\n" +
+                "    <tr>\n" +
+                "        <td align=\"center\">\n" +
+                "            <table width=\"600\" class=\"col-600\" align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\" border-left: 1px solid #dbd9d9; border-right: 1px solid #dbd9d9;\">\n" +
+                "                <tbody><tr>\n" +
+                "                    <td height=\"50\"></td>\n" +
+                "                </tr>\n" +
+                "                <tr>\n" +
+                "                    <td>\n" +
+                "\n" +
+                "\n" +
+                "                        <table style=\"border:1px solid #e2e2e2;\" class=\"col2\" width=\"287\" border=\"0\" align=\"left\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                "\n" +
+                "\n" +
+                "                            <tbody><tr>\n" +
+                "                                <td height=\"40\" align=\"center\" bgcolor=\"#2b3c4d\" style=\"font-family: 'Raleway', sans-serif; font-size:18px; color:#f1c40f; line-height:30px; font-weight: bold;\">Total order price</td>\n" +
+                "                            </tr>\n" +
+                "\n" +
+                "\n" +
+                "                            <tr>\n" +
+                "                                <td align=\"center\">\n" +
+                "                                    <table class=\"insider\" width=\"237\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                "                                        <tbody><tr>\n" +
+                "                                            <td height=\"20\"></td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "                                        <tr align=\"center\" style=\"line-height:0px;\">\n" +
+                "                                            <td style=\"font-family: 'Lato', sans-serif; font-size:48px; color:#2b3c4d; font-weight: bold; line-height: 44px;\">$40</td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                                        <tr>\n" +
+                "                                            <td height=\"15\"></td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                                        <tr>\n" +
+                "                                            <td height=\"15\"></td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "                                        <tr>\n" +
+                "                                            <td align=\"center\">\n" +
+                "                                                <table width=\"100\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" style=\"border: 2px solid #2b3c4d;\">\n" +
+                "                                                    <tbody><tr>\n" +
+                "                                                        <td width=\"10\"></td>\n" +
+                "                                                        <td height=\"30\" align=\"center\" style=\"font-family: 'Lato', sans-serif; font-size:14px; font-weight: 300; color:#2b3c4d;\">\n" +
+                "                                                            <a href=\"#\" style=\"color: #2b3c4d;\">view More</a>\n" +
+                "                                                        </td>\n" +
+                "                                                        <td width=\"10\"></td>\n" +
+                "                                                    </tr>\n" +
+                "                                                    </tbody></table>\n" +
+                "                                            </td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                                        </tbody></table>\n" +
+                "                                </td>\n" +
+                "                            </tr>\n" +
+                "                            <tr>\n" +
+                "                                <td height=\"30\"></td>\n" +
+                "                            </tr>\n" +
+                "                            </tbody></table>\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "                        <table width=\"1\" height=\"20\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"left\">\n" +
+                "                            <tbody><tr>\n" +
+                "                                <td height=\"20\" style=\"font-size: 0;line-height: 0;border-collapse: collapse;\">\n" +
+                "                                    <p style=\"padding-left: 24px;\">&nbsp;</p>\n" +
+                "                                </td>\n" +
+                "                            </tr>\n" +
+                "                            </tbody></table>\n" +
+                "\n" +
+                "\n" +
+                "                        <table style=\"border:1px solid #e2e2e2;\" class=\"col2\" width=\"287\" border=\"0\" align=\"right\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                "\n" +
+                "\n" +
+                "                            <tbody><tr>\n" +
+                "                                <td height=\"40\" align=\"center\" bgcolor=\"#2b3c4d\" style=\"font-family: 'Raleway', sans-serif; font-size:18px; color:#f1c40f; line-height:30px; font-weight: bold;\">Delivery cost</td>\n" +
+                "                            </tr>\n" +
+                "\n" +
+                "\n" +
+                "                            <tr>\n" +
+                "                                <td align=\"center\">\n" +
+                "                                    <table class=\"insider\" width=\"237\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                "                                        <tbody><tr>\n" +
+                "                                            <td height=\"20\"></td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "                                        <tr align=\"center\" style=\"line-height:0px;\">\n" +
+                "                                            <td style=\"font-family: 'Lato', sans-serif; font-size:48px; color:#2b3c4d; font-weight: bold; line-height: 44px;\">$12</td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                                        <tr>\n" +
+                "                                            <td height=\"30\"></td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "                                        <tr align=\"center\">\n" +
+                "                                            <td>\n" +
+                "                                                <table width=\"100\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" style=\" border: 2px solid #2b3c4d;\">\n" +
+                "                                                    <tbody><tr>\n" +
+                "                                                        <td width=\"10\"></td>\n" +
+                "                                                        <td height=\"30\" align=\"center\" style=\"font-family: 'Lato', sans-serif; font-size:14px; font-weight: 300; color:#2b3c4d;\">\n" +
+                "                                                            <a href=\"#\" style=\"color: #2b3c4d;\">Learn More</a>\n" +
+                "                                                        </td>\n" +
+                "                                                        <td width=\"10\"></td>\n" +
+                "                                                    </tr>\n" +
+                "                                                    </tbody></table>\n" +
+                "                                            </td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                                        </tbody></table>\n" +
+                "                                </td>\n" +
+                "                            </tr>\n" +
+                "                            <tr>\n" +
+                "                                <td height=\"20\"></td>\n" +
+                "                            </tr>\n" +
+                "                            </tbody></table>\n" +
+                "\n" +
+                "                    </td>\n" +
+                "                </tr>\n" +
+                "                </tbody></table>\n" +
+                "        </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "\n" +
+                "    <!-- END PRICING TABLE -->\n" +
+                "\n" +
+                "\n" +
+                "    <style>\n" +
+                "        #customers {\n" +
+                "            font-family: Arial, Helvetica, sans-serif;\n" +
+                "            border-collapse: collapse;\n" +
+                "            width: 100%;\n" +
+                "        }\n" +
+                "\n" +
+                "        #customers td, #customers th {\n" +
+                "            border: 1px solid #ddd;\n" +
+                "            padding: 8px;\n" +
+                "        }\n" +
+                "\n" +
+                "        #customers tr:nth-child(even){background-color: #f2f2f2;}\n" +
+                "\n" +
+                "        #customers tr:hover {background-color: #ddd;}\n" +
+                "\n" +
+                "        #customers th {\n" +
+                "            width: 120px;\n" +
+                "            padding-top: 12px;\n" +
+                "            padding-bottom: 12px;\n" +
+                "            text-align: left;\n" +
+                "            background-color: #2B3C4D;\n" +
+                "            color: #f1c40f;\n" +
+                "        }\n" +
+                "    </style>\n" +
+                "    <!-- START 3 BOX SHOWCASE -->\n" +
+                "\n" +
+                "    <tr>\n" +
+                "        <td align=\"center\">\n" +
+                "            <table class=\"col-600\" width=\"600\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-left:20px; margin-right:20px; border-left: 1px solid #dbd9d9; border-right: 1px solid #dbd9d9;\">\n" +
+                "                <tbody><tr>\n" +
+                "                    <td height=\"35\"></td>\n" +
+                "                </tr>\n" +
+                "\n" +
+                "\n" +
+                "                <tr>\n" +
+                "                    <td height=\"10\"></td>\n" +
+                "                </tr>\n" +
+                "\n" +
+                "\n" +
+                "                <tr>\n" +
+                "                    <td  style=\"font-family: 'Lato', sans-serif; font-size:17px; color:#757575; line-height:24px; font-weight: 400; margin-left: 10px;\">\n" +
+                "\n" +
+                "                        <h1 style=\"text-align: center;\">Order #987720</h1>\n" +
+                "                        <table id=\"customers\">\n" +
+                "                            <tr>\n" +
+                "                                <th>Order number</th>\n" +
+                "                                <td>92783</td>\n" +
+                "                            </tr>\n" +
+                "                            <tr>\n" +
+                "                                <th>Name</th>\n" +
+                "                                <td>Christina Berglund</td>\n" +
+                "                            </tr>\n" +
+                "                            <tr>\n" +
+                "                                <th>Adress</th>\n" +
+                "                                <td>Bapaostraat 69</td>\n" +
+                "                            </tr>\n" +
+                "                            <tr>\n" +
+                "                                <th>Residence</th>\n" +
+                "                                <td>Amsterdam</td>\n" +
+                "                            </tr>\n" +
+                "                            <tr>\n" +
+                "                                <th>Zip</th>\n" +
+                "                                <td>2025GH</td>\n" +
+                "                            </tr>\n" +
+                "                            <tr>\n" +
+                "                                <th>Estimated delivery date</th>\n" +
+                "                                <td>2022-03-22T22:14:00.000Z</td>\n" +
+                "                            </tr>\n" +
+                "                            <tr>\n" +
+                "                                <th>Status</th>\n" +
+                "                                <td>on it's way</td>\n" +
+                "                            </tr>\n" +
+                "                        </table>\n" +
+                "                    </td>\n" +
+                "                </tr>\n" +
+                "\n" +
+                "                </tbody></table>\n" +
+                "        </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "    <tr>\n" +
+                "        <td align=\"center\">\n" +
+                "            <table class=\"col-600\" width=\"600\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-left:20px; margin-right:20px;\">\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "                <tr>\n" +
+                "                    <td align=\"center\">\n" +
+                "                        <table align=\"center\" width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\" border-left: 1px solid #dbd9d9; border-right: 1px solid #dbd9d9;\">\n" +
+                "                            <tbody><tr>\n" +
+                "                                <td height=\"50\"></td>\n" +
+                "                            </tr>\n" +
+                "                            <tr>\n" +
+                "\n" +
+                "\n" +
+                "                                <td align=\"center\" bgcolor=\"#34495e\">\n" +
+                "                                    <table class=\"col-600\" width=\"600\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                "                                        <tbody><tr>\n" +
+                "                                            <td height=\"35\"></td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                                        <tr>\n" +
+                "                                            <td align=\"center\" style=\"font-family: 'Raleway', sans-serif; font-size:20px; color:#f1c40f; line-height:24px; font-weight: bold;\">Ready to sell more?</td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                                        <tr>\n" +
+                "                                            <td height=\"20\"></td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                                        <tr>\n" +
+                "                                            <td align=\"center\" style=\"font-family: 'Lato', sans-serif; font-size:14px; color:#fff; line-height: 1px; font-weight: 300;\">\n" +
+                "                                                Go to www.postduif.nl\n" +
+                "                                            </td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "\n" +
+                "                                        <tr>\n" +
+                "                                            <td height=\"40\"></td>\n" +
+                "                                        </tr>\n" +
+                "\n" +
+                "                                        </tbody></table>\n" +
+                "                                </td>\n" +
+                "                            </tr>\n" +
+                "                            </tbody></table>\n" +
+                "                    </td>\n" +
+                "                </tr>\n" +
+                "\n" +
+                "\n"
+        }).then(
+            message => alert(message)
+        );
+    }
+</script>
+
+
+</body>
+</html>

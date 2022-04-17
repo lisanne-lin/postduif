@@ -13,13 +13,13 @@ export class BezorgerRepository {
         this.#networkManager = new NetworkManager();
     }
 
-    async createBezorger(bezorger_id, firstName, surName, datum, adres, plaats, postcode, email, telefoonnummer, wachtwoord) {
+
+    async createBezorger(bezorger_id, firstName, surName, adres, plaats, postcode, email, telefoonnummer, wachtwoord) {
         this.#networkManager.doRequest(this.#route, "POST",
             {
                 bezorger_id: bezorger_id,
                 firstNameBezorger: firstName,
                 surNameBezorger: surName,
-                datumBezorger: datum,
                 adresBezorger: adres,
                 plaatsBezorger: plaats,
                 postcodeBezorger: postcode,
@@ -28,4 +28,7 @@ export class BezorgerRepository {
                 wachtwoordBezorger: wachtwoord
             })
     }
+
+
+
 }
