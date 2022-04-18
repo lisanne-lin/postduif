@@ -81,7 +81,6 @@ export class TrackOrderController extends Controller {
             this.#trackView.querySelector("#order-found").style.display = "block";
             this.#trackView.querySelector("#order-not-found").style.display = "none";
             this.#trackView.querySelector("#save-btn").style.display = "block";
-            console.log(orderData)
         } catch (e) {
             this.#trackView.querySelector("#order-found").style.display = "none";
             this.#trackView.querySelector("#order-not-found").style.display = "block";
