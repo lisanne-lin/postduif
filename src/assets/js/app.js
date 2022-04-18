@@ -52,6 +52,7 @@ import {
 import {
     CustomersController
 } from "./controllers/CustomersController.js";
+import {ClientRegisterController} from "./controllers/ClientRegisterController.js";
 
 
 export class App {
@@ -75,6 +76,7 @@ export class App {
     static CONTROLLER_BEZORGER_BESTELLING = "bezorgerBestelling"
     static CONTROLLER_TRACK = "trackOrder";
     static CONTROLLER_CUSTOMERS = "customers";
+    static CONTROLLER_CLIENT_REGISTER = "register_client";
 
 
     constructor() {
@@ -117,10 +119,16 @@ export class App {
                 App.isLoggedIn(() => new CustomersController(), () => new LoginController());
                 break;
 
+            case App.CONTROLLER_CLIENT_REGISTER:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new ClientRegisterController(), () => new ClientRegisterController());
+                break;
+
             case App.CONTROLLER_LOGIN_BEZORGER:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new BezorgerLoginController(), () => new BezorgerLoginController());
                 break;
+
             case App.CONTROLLER_REGISTREREN_BEZORGER:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new RegistrerenBezorgerController(), () => new RegistrerenBezorgerController());
@@ -135,7 +143,6 @@ export class App {
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new TrackOrderController(), () => new TrackOrderController());
                 break;
-
 
             case App.CONTROLLER_DASHBOARD:
                 App.setCurrentController(name);

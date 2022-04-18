@@ -27,6 +27,8 @@ export class RegistrerenBezorgerController extends Controller {
     async #setup() {
         this.#dashboardView = await super.loadHtmlIntoContent("html_views/registerDriver.html");
 
+        document.querySelector(".navbar").style.display = "block";
+
         this.#dashboardView.querySelector("#saveAccountBtn").addEventListener("click",
             (event) => this.#accountGen(event));
     }
