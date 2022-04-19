@@ -80,6 +80,7 @@ export class App {
     static CONTROLLER_TRACK = "trackOrder";
     static CONTROLLER_CUSTOMERS = "customers";
     static CONTROLLER_CLIENT_REGISTER = "register_client";
+    static CONTROLLER_ORDER_DETAIL = "driverOrderDetail"
     
 
 
@@ -192,8 +193,6 @@ export class App {
             case App.CONTROLLER_ORDER_DETAIL:
                 App.isLoggedIn(() => new driverOrderDetailController(), () => new LoginController());
                 break;
-                case App.CONTROLLER_ORDER_DETAIL:
-    App.isLoggedIn(() => new driverOrderDetailController(), () => new LoginController());
     break;
             default:
                 return false;

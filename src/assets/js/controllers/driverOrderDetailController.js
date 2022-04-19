@@ -30,7 +30,7 @@
  
 
          let data = orderData;
-        //  let name = document.querySelector(".company-name").innerHTML = getCompanyName;
+         let name = document.querySelector(".company-name").innerHTML = getCompanyName;
         
          console.log(name);
 
