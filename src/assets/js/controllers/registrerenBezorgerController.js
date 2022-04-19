@@ -25,6 +25,8 @@ export class RegistrerenBezorgerController extends Controller {
     }
 
     async #setup() {
+        App.loadController(App.CONTROLLER_NAVBAR_RIDERS)
+
         this.#dashboardView = await super.loadHtmlIntoContent("html_views/registerDriver.html");
 
         document.querySelector(".navbar").style.display = "block";

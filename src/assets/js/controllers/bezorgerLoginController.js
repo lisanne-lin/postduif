@@ -17,6 +17,7 @@ export class BezorgerLoginController extends Controller{
 
 
     async #setupView() {
+        App.loadController(App.CONTROLLER_NAVBAR_RIDERS);
         //await for when HTML is loaded, never skip this method call in a controller
         this.#loginBezorger = await super.loadHtmlIntoContent("html_views/driverLogin.html")
         document.querySelector("#postDuifLogo").innerHTML = "PostDuif Bezorger";
