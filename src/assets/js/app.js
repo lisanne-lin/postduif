@@ -53,6 +53,9 @@ import {
     CustomersController
 } from "./controllers/CustomersController.js";
 import {ClientRegisterController} from "./controllers/ClientRegisterController.js";
+import {
+    driverOrderDetailController
+} from "./controllers/driverOrderDetailController.js"
 
 
 export class App {
@@ -77,6 +80,7 @@ export class App {
     static CONTROLLER_TRACK = "trackOrder";
     static CONTROLLER_CUSTOMERS = "customers";
     static CONTROLLER_CLIENT_REGISTER = "register_client";
+    
 
 
     constructor() {
@@ -188,6 +192,9 @@ export class App {
             case App.CONTROLLER_ORDER_DETAIL:
                 App.isLoggedIn(() => new driverOrderDetailController(), () => new LoginController());
                 break;
+                case App.CONTROLLER_ORDER_DETAIL:
+    App.isLoggedIn(() => new driverOrderDetailController(), () => new LoginController());
+    break;
             default:
                 return false;
         }
