@@ -14,6 +14,8 @@ export class CustomersController extends Controller {
     }
 
     async #setup() {
+        App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
+
         this.#customersView = await super.loadHtmlIntoContent("html_views/customers.html")
         document.querySelector(".navbar").style.display = "block";
 

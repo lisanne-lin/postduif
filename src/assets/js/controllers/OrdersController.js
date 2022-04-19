@@ -25,6 +25,8 @@ export class OrdersController extends Controller {
      * @private
      */
     async #setupView() {
+        App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
+
         this.#orderView = await super.loadHtmlIntoContent("html_views/orders.html")
         document.querySelector(".navbar").style.display = "block";
         document.querySelector("#nav-orders").className = "nav-link active";

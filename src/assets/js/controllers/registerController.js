@@ -18,6 +18,8 @@ export class RegisterController extends Controller {
     }
 
     async #setupView() {
+        App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
+
         this.#registerView = await super.loadHtmlIntoContent("html_views/register.html")
 
         document.querySelector(".navbar").style.display = "block";

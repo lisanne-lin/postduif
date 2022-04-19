@@ -14,12 +14,13 @@ export class TrackOrderController extends Controller {
     }
 
     async #setup() {
+        App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
+
         this.#trackView = await super.loadHtmlIntoContent("html_views/track_order.html");
         document.querySelector(".navbar").style.display = "block";
 
         this.#trackView.querySelector("#search-btn").addEventListener("click", event => {
             this.#fetchOrderByNumAndZip(this.#trackView.querySelector("#tracktrace").value, this.#trackView.querySelector("#input-zip").value);
-            console.log(this.#trackView.querySelector("#tracktrace").value)
         })
     }
 
@@ -70,7 +71,6 @@ export class TrackOrderController extends Controller {
                     this.#trackView.querySelector("#bar").style.width = "33%";
                     break;
                 default:
-                // code block
             }
 
             orderEstimate.innerHTML = geschatte_bezorgdatum
