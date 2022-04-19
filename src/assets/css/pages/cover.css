@@ -15,7 +15,8 @@
 }
 
 .navbar {
-    background-color: #ffffff;
+    background-color: var(--secondary);
+    color: white;
 }
 
 /*.logged-in {*/
