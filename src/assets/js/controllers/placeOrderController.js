@@ -5,6 +5,7 @@
 
 import {Controller} from "./controller.js";
 import {OrdersRepository} from "../repositories/ordersRepository.js";
+import {App} from "../app.js";
 
 export class PlaceOrderController extends Controller {
     #placeOrderView;
@@ -17,6 +18,8 @@ export class PlaceOrderController extends Controller {
     }
 
     async #setupView() {
+        App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
+
         this.#placeOrderView = await super.loadHtmlIntoContent("html_views/place_order.html");
 
         document.querySelector(".navbar").style.display = "block";

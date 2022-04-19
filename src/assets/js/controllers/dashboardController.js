@@ -14,6 +14,8 @@ export class DashboardController extends Controller {
     }
 
     async #setup() {
+        App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
+
         this.#dashboardView = await super.loadHtmlIntoContent("html_views/dashboard.html");
         document.querySelector(".navbar").style.display = "block";
         document.querySelector("#nav-orders").className = "nav-link";

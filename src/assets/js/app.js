@@ -56,6 +56,9 @@ import {ClientRegisterController} from "./controllers/ClientRegisterController.j
 import {
     driverOrderDetailController
 } from "./controllers/driverOrderDetailController.js"
+import {NavbarBusinessController} from "./controllers/NavbarBusinessController.js";
+import {NavbarClientsController} from "./controllers/NavbarClientsController.js";
+import {NavbarRidersController} from "./controllers/NavbarRidersController.js";
 
 
 export class App {
@@ -81,12 +84,12 @@ export class App {
     static CONTROLLER_CUSTOMERS = "customers";
     static CONTROLLER_CLIENT_REGISTER = "register_client";
     static CONTROLLER_ORDER_DETAIL = "driverOrderDetail"
-    
+    static CONTROLLER_NAVBAR_BUSINESS = "navbar_business";
+    static CONTROLLER_NAVBAR_CLIENT = "navbar_clients";
+    static CONTROLLER_NAVBAR_RIDERS = "navbar_riders";
 
 
     constructor() {
-        //Always load the navigation
-        App.loadController(App.CONTROLLER_NAVBAR);
 
         //Attempt to load the controller from the URL, if it fails, fall back to the welcome controller.
         App.loadControllerFromUrl(App.CONTROLLER_LANDING);
@@ -112,6 +115,18 @@ export class App {
         switch (name) {
             case App.CONTROLLER_NAVBAR:
                 new NavbarController();
+                break;
+
+            case App.CONTROLLER_NAVBAR_BUSINESS:
+                new NavbarBusinessController();
+                break;
+
+            case App.CONTROLLER_NAVBAR_CLIENT:
+                new NavbarClientsController();
+                break;
+
+            case App.CONTROLLER_NAVBAR_RIDERS:
+                new NavbarRidersController();
                 break;
 
             case App.CONTROLLER_LOGIN:
@@ -193,7 +208,7 @@ export class App {
             case App.CONTROLLER_ORDER_DETAIL:
                 App.isLoggedIn(() => new driverOrderDetailController(), () => new LoginController());
                 break;
-    break;
+                break;
             default:
                 return false;
         }
