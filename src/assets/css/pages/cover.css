@@ -4,10 +4,6 @@
     margin-left: 600px;
 }
 
-/* .logged-in{
-    display: none;
-} */
-
 
 .container-landing {
     max-width: 1140px;
@@ -15,8 +11,10 @@
 }
 
 .navbar {
-    background-color: var(--secondary);
-    color: white;
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: var(--black);
 }
 
 /*.logged-in {*/
@@ -90,6 +88,17 @@ button.get-started {
 .section h2 {
     margin-bottom: 90px;
 }
+/* 
+.three-steps-bg{
+    background: url(../../img/three-steps_bg.svg) no-repeat;
+    background-size: contain;
+    background-position-y: 90px;
+    padding:5px;
+    
+
+}
+ */
+
 
 
 @media all and (min-width: 992px) {

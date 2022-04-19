@@ -59,7 +59,7 @@
     }
 
     #titelLanding {
-        color: black;
+        color: var(--black);
     }
 
     .container {

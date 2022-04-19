@@ -17,7 +17,9 @@ export class LandingController extends Controller {
         // document.querySelector(".navbar").style.display = "none";
 
         const anchors = this.#landingView.querySelectorAll("a.business-login");
-        const signupButton = this.#landingView.querySelectorAll("button.get-started");
+        const signupButton = this.#landingView.querySelectorAll("button.get-started", "a.business-signup");
+
+
 
 
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
