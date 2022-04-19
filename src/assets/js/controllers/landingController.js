@@ -11,17 +11,24 @@ export class LandingController extends Controller {
     }
 
     async #setup() {
+
         this.#landingView = await super.loadHtmlIntoContent("html_views/landing.html");
 
         // document.querySelector(".navbar").style.display = "none";
 
         const anchors = this.#landingView.querySelectorAll("a.business-login");
+        const signupButton = this.#landingView.querySelectorAll("button.get-started");
+
 
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
+        
+        signupButton.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
         
     }
 
     #handleClickNavigationItem(event) {
+
+        
         //Get the data-controller from the clicked element (this)
         const clickedAnchor = event.target;
         const controller = clickedAnchor.dataset.controller;
