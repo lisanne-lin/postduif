@@ -15,8 +15,8 @@ export class CustomersRepository {
     }
 
 
-    async getCustomerByNum(name){
-        return await this.#networkManager.doRequest(`${this.#route}/getcustomer/${name}`, "GET", {});
+    async getCustomerByEmail(emailadres){
+        return await this.#networkManager.doRequest(`${this.#route}/getcustomer/${emailadres}`, "GET", {});
     }
 
 

@@ -42,6 +42,65 @@
                     </form>
                 </div>
             </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><span>Contact Details</span></h5>
+                            <button id="dismiss-btn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div id="contact-found" class="modal-body d-flex justify-content-around" style="display: none">
+                            <img id="imageclient" src="assets/img/undraw_searching_re_3ra9.svg" height="200px">
+                            <hr>
+                            <div>
+                                <h4><span id="nameclient">Contact Not Found</span></h4>
+                                <p><span id="emailclient">Please make sure you use the right emailadress</span></p>
+                                <p>
+                                    <spann id="phoneclient"></spann>
+                                </p>
+                                <p><span id="locationclient"></span></p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" id="save-btn" data-bs-target="#exampleModal2"
+                                    data-bs-toggle="modal">Email
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModal2Label">New message</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                            <input type="text" class="form-control" id="recipient-name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="message-text" class="col-form-label">Message:</label>
+                                            <textarea class="form-control" id="message-text">Dear Sir or Madam,...Yours sincerely Team postDuif
+                                            </textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
+                                    <button type="button" id="sendmail" class="btn btn-success">Send message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <hr>
             <div>
                 <h3><i class="fa fa-clock-o text-muted" aria-hidden="true"></i> Recent clients</h3>
@@ -57,15 +116,6 @@
                             <th scope="col">Contact</th>
                         </tr>
                         </thead>
-                        <tr>
-                            <td><img src="assets/img/undraw_female_avatar_w3jk (1).svg" height="33px"></td>
-                            <td>Lisanne Lin</td>
-                            <td>ja@123456789.nl</td>
-                            <td>06123456789</td>
-                            <td>Amsterdam</td>
-                            <td><a href="#" ><i class="fa fa-envelope" aria-hidden="true"></i>
-                                Email</a></td>
-                        </tr>
                     </table>
                 </div>
             </div>

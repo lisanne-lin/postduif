@@ -20,6 +20,8 @@ export class RegisterController extends Controller {
     async #setupView() {
         this.#registerView = await super.loadHtmlIntoContent("html_views/register.html")
 
+        document.querySelector(".navbar").style.display = "block";
+
         this.#registerView.querySelector("#saveAccountBtn").addEventListener("click",
             (event) => this.#saveAccount(event));
 
