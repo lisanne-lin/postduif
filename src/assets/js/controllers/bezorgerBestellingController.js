@@ -41,7 +41,7 @@ export class bezorgerBestellingController extends Controller {
             let name = getCompanyName[i];
             let orderDetail = document.createElement('div');
             orderDetail.classList.add("order-detail")
-           
+           orderDetail.setAttribute("id" , data.bestelnummer);
 
             let orderDate = document.createElement('p');
             orderDate.classList.add("date");
@@ -54,7 +54,7 @@ export class bezorgerBestellingController extends Controller {
             orderDetail.appendChild(company);
             orderDetail.appendChild(orderNumber);
 
-
+            
 
             orderDate.innerHTML = data.geschatte_bezorgdatum;
             company.innerHTML = name.naam;
@@ -63,8 +63,16 @@ export class bezorgerBestellingController extends Controller {
             document.querySelector(".order-list").appendChild(orderDetail);
 
         }
-        this.#createBezorgerBestellingView.querySelector(".order-detail").addEventListener("click", event => {
-            App.loadController(App.CONTROLLER_DRIVER);
+        // document.querySelector(".order-detail").addEventListener("click", event => {
+        //     App.loadController(App.CONTROLLER_ORDER_DETAIL);
+        // })
+
+        document.querySelectorAll(".order-detail").forEach((order)=>{
+            const id = order.getAttribute("id");
+            order.addEventListener("click", event => {
+            App.loadController(App.CONTROLLER_ORDER_DETAIL);
+               console.log(id)
+            })
         })
     }
 
