@@ -131,7 +131,7 @@ export class App {
 
             case App.CONTROLLER_LOGIN:
                 App.setCurrentController(name);
-                App.isLoggedIn(() => new WelcomeController(), () => new LoginController());
+                App.isLoggedIn(() => new LoginController(), () => new LoginController());
                 break;
 
             case App.CONTROLLER_CUSTOMERS:

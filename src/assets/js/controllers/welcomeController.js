@@ -17,7 +17,6 @@ export class WelcomeController extends Controller{
         super();
         this.#roomExampleRepository = new RoomsExampleRepository();
         this.#setupView();
-        console.log("je moeder");
     }
 
     /**
@@ -33,7 +32,7 @@ export class WelcomeController extends Controller{
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
 
         // document.querySelector(".navbar").style.display = "block";
-        document.querySelector("#nav-dash").className = "nav-link active";
+        // document.querySelector("#nav-dash").className = "nav-link active";
 
         //from here we can safely get elements from the view via the right getter
         this.#welcomeView.querySelector("span.name").innerHTML = App.sessionManager.get("username");
