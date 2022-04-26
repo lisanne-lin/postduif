@@ -26,4 +26,10 @@ export class EntrepreneursRepository {
                 wachtwoord: wachtwoord
             })
     }
+
+    async getEntrepreneurById(ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getentrepreneur/${ondernemer_id}`, "GET");
+    }
+
+
 }

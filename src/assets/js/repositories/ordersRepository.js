@@ -29,7 +29,7 @@ export class OrdersRepository {
                 Ondernemer_ondernemer_id: Ondernemer_ondernemer_id,
                 besteldatum: besteldatum,
                 status: status,
-                naam:naam})
+                naam: verzendnaam})
     }
 
     async getOrders(){
@@ -64,12 +64,24 @@ export class OrdersRepository {
         return await this.#networkManager.doRequest(`${this.#route}/calculateearningstoday/${Ondernemer_ondernemer_id}`, "GET", {});
     }
 
+    async calculateEarningsYesterday(Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/calculateearningsyesterday/${Ondernemer_ondernemer_id}`, "GET", {});
+    }
+
     async calculateEarningsWeek(Ondernemer_ondernemer_id) {
-        return await this.#networkManager.doRequest(`${this.#route}/calculateearningsweek/${Ondernemer_ondernemer_id}`, "GET", {});
+        return await this.#networkManager.doRequest(`${this.#route}/calculateearningslastweek/${Ondernemer_ondernemer_id}`, "GET", {});
+    }
+
+    async calculateEarningsLastWeek(Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/calculateearningslastweek/${Ondernemer_ondernemer_id}`, "GET", {});
     }
 
     async calculateEarningsMonth(Ondernemer_ondernemer_id) {
         return await this.#networkManager.doRequest(`${this.#route}/calculateearningsmonth/${Ondernemer_ondernemer_id}`, "GET", {});
+    }
+
+    async calculateEarningsLastMonth(Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/calculateearningslastmonth/${Ondernemer_ondernemer_id}`, "GET", {});
     }
 
     async calculateDonatedMoney(Ondernemer_ondernemer_id) {

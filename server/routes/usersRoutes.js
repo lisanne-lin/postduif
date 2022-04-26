@@ -17,8 +17,8 @@ class UsersRoutes {
     constructor(app) {
         this.#app = app;
 
-        //call method per route for the users entity
         this.#login()
+        this.#getEntrepreneurById()
     }
 
     /**
@@ -48,6 +48,22 @@ class UsersRoutes {
                 }
             } catch (e) {
                 res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e});
+            }
+        });
+    }
+
+    #getEntrepreneurById(id) {
+        this.#app.get("/ondernemer/getentrepreneur/:ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT * FROM ondernemer WHERE ondernemer_id = ?",
+                    values: [req.params.ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
             }
         });
     }
