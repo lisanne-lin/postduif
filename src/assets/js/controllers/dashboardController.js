@@ -44,9 +44,14 @@ export class DashboardController extends Controller {
         const orderDataMonth = await this.#ordersRepository.calculateEarningsMonth(1);
         const orderDataLastMonth = await this.#ordersRepository.calculateEarningsLastMonth(1);
 
-        console.log(orderDataToday);
-        console.log(orderDataLastMonth);
-        console.log(orderDataMonth);
+        const percentageToday = (((orderDataToday - orderDataYesterday) / orderDataYesterday) * 100 );
+        const percentageWeek = (((orderDataWeek - orderDataLastWeek) / orderDataLastWeek) * 100 );
+        const percentageMonth = (((orderDataMonth - orderDataLastMonth) / orderDataLastMonth) * 100 );
+
+        this.#dashboardView.querySelector("#percentageday").innerHTML = percentageToday;
+        this.#dashboardView.querySelector("#percentageweek").innerHTML = percentageWeek;
+        this.#dashboardView.querySelector("#percentagemonth").innerHTML = percentageMonth;
+
 
     }
 
