@@ -12,7 +12,7 @@ export class EntrepreneursRepository {
         this.#networkManager = new NetworkManager();
     }
 
-    createEntrepreneur(ondernemer_id, naam, eigenaar, adres, plaats, postcode, telefoonnummer, emailadres, wachtwoord) {
+    async createEntrepreneur(ondernemer_id, naam, eigenaar, adres, plaats, postcode, telefoonnummer, emailadres, wachtwoord) {
         this.#networkManager.doRequest(this.#route, "POST",
             {
                 ondernemer_id: ondernemer_id,
