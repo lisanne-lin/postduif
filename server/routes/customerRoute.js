@@ -42,7 +42,7 @@ class CustomerRoute {
     }
 
     #createCustomerAccount() {
-        this.#app.post("/klant", async (req, res) => {
+        this.#app.post("/klant/createcustomer", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
                     query: "INSERT INTO klant (klantnummer, voornaam, achternaam, emailadres, telefoonnummer, plaats, adres, postcode, wachtwoord) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",

@@ -20,16 +20,13 @@ export class ClientRegisterController extends Controller {
 
         this.#clientRegisterView = await super.loadHtmlIntoContent("html_views/register_client.html")
 
-        document.querySelector(".navbar").style.display = "block";
-
-        his.#registerView.querySelector("#saveAccountBtn").addEventListener("click",
+        this.#clientRegisterView.querySelector("#saveAccountBtn").addEventListener("click",
             (event) => this.#saveAccount(event));
     }
 
     async #saveAccount(event) {
         event.preventDefault();
 
-        const naamOnderneming = this.#clientRegisterView.querySelector("#exampleInputNaamOnderneming").value;
         const voornaam = this.#clientRegisterView.querySelector("#exampleInputNaamEigenaar").value;
         const achternaam = this.#clientRegisterView.querySelector("#exampleInputAchternaam").value;
         const email = this.#clientRegisterView.querySelector("#exampleInputEmail").value;
@@ -45,15 +42,12 @@ export class ClientRegisterController extends Controller {
 
         if (!email.match(regexEmail)) {
             errorBox.innerHTML = "Please enter a valid email address, example: john-doe@hotmale.com";
-        } else if (naamOnderneming === null || naamOnderneming === "") {
-            errorBox.innerHTML = "Company name can't be empty";
         } else if (telefoonnummer === null || telefoonnummer === "") {
             errorBox.innerHTML = "Phone number can't be empty";
         } else {
             errorBox.innerHTML = "";
             await this.#customersRepository.createCustomer(null, voornaam, achternaam, email, telefoonnummer,
                 plaats, adres, postcode, wachtwoord);
-            // App.loadController(App.CONTROLLER_WELCOME);
         }
     }
 }
