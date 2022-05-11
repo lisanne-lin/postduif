@@ -18,7 +18,7 @@ export class CustomersRepository {
     }
 
     async createCustomer(klantnummer, voornaam, achternaam, emailadres, telefoonnummer, plaats, adres, postcode, wachtwoord) {
-        this.#networkManager.doRequest(this.#route, "POST",
+        this.#networkManager.doRequest(`${this.#route}/createcustomer`, "POST",
             {
                 klantnummer: klantnummer,
                 voornaam: voornaam,

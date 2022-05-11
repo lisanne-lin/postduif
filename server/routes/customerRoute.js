@@ -50,11 +50,11 @@ class CustomerRoute {
                 });
 
                 if (data.insertId) {
-                    res.status(this.#httpErrorCodes.HTTP_OK_CODE).json({klantnummer: data.insertId});
+                    res.status(this.#errorCodes.HTTP_OK_CODE).json({klantnummer: data.insertId});
                 }
 
             } catch (e) {
-                res.status(this.#httpErrorCodes.BAD_REQUEST_CODE).json({reason: e});
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e});
             }
         })
     }
