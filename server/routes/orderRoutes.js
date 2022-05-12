@@ -106,7 +106,7 @@ class OrderRoutes {
         this.#app.get("/bestelling/calculateearningsyesterday/:Ondernemer_ondernemer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = CURDATE()-1",
+                    query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = DATE_SUB(CURDATE(), INTERVAL 1 DAY)",
                     values: [req.params.Ondernemer_ondernemer_id]
                 });
 
