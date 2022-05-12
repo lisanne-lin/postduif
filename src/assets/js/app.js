@@ -54,6 +54,9 @@ import {
 } from "./controllers/CustomersController.js";
 import {ClientRegisterController} from "./controllers/ClientRegisterController.js";
 import {
+    CompanyController
+} from "./controllers/companyController.js";
+import {
     driverOrderDetailController
 } from "./controllers/driverOrderDetailController.js"
 import {NavbarBusinessController} from "./controllers/NavbarBusinessController.js";
@@ -87,13 +90,14 @@ export class App {
     static CONTROLLER_NAVBAR_BUSINESS = "navbar_business";
     static CONTROLLER_NAVBAR_CLIENT = "navbar_clients";
     static CONTROLLER_NAVBAR_RIDERS = "navbar_riders";
+    static CONTROLLER_COMPANY = "companies"
 
 
     constructor() {
 
         //Attempt to load the controller from the URL, if it fails, fall back to the welcome controller.
         App.loadControllerFromUrl(App.CONTROLLER_LANDING);
-
+        
         // App.loadControllerFromUrl(App.CONTROLLER_DASHBOARD);
     }
 
@@ -206,8 +210,11 @@ export class App {
                 break;
 
             case App.CONTROLLER_ORDER_DETAIL:
-                App.isLoggedIn(() => new driverOrderDetailController(), () => new LoginController());
+                App.isLoggedIn(() => new driverOrderDetailController(controllerData), () => new LoginController());
                 break;
+
+                case App.CONTROLLER_COMPANY:
+                new CompanyController();
                 break;
             default:
                 return false;

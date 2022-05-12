@@ -16,12 +16,12 @@ p{
     margin: 0;
 }
 
-h2{
+h2.header{
     background-color: #fff;
     width: 100%;
     position:sticky;
     top: 0;
-    padding: 30px 50px 30px 50px;
+    padding: 20px 0px 20px 0px;
 }
 
 .bg{

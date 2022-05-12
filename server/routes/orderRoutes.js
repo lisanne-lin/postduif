@@ -17,6 +17,7 @@ class OrderRoutes {
         this.#calculateEarningsMonth();
         this.#calculateDonatedMoney();
         this.#getCompanyName();
+        this.#getPhonenumber();
     }
 
     #getOrder() {
@@ -200,6 +201,24 @@ class OrderRoutes {
                 const data = await this.#databaseHelper.handleQuery({
                     query: " SELECT bestelling.besteldatum, bestelling.Ondernemer_ondernemer_id, bestelling.bestelnummer, ondernemer.naam FROM bestelling INNER JOIN ondernemer ON bestelling.Ondernemer_ondernemer_id = ondernemer.ondernemer_id",
                     values: [req.params.naam]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+    /**
+     * pakt de telefoonnummer van de bestelling
+     */
+    #getPhonenumber() {
+        this.#app.get("/bestelling/getphonenumber/:bestelnummer", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: " SELECT klant.telefoonnummer FROM bestelling INNER JOIN klant ON bestelling.Klant_klantnummer = klant.klantnummer WHERE bestelling.bestelnummer = ?",
+                    values: [req.params.bestelnummer]
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);

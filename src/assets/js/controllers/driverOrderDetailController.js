@@ -1,78 +1,62 @@
 /**
- * Controller for getting deliveries 
- * @author Lisanne Lin 
+ * Controller for getting deliveries
+ * @author Lisanne Lin
  */
 
- import {OrdersRepository} from "../repositories/ordersRepository.js";
- import {App} from "../app.js";
- import {Controller} from "./controller.js";
- 
- 
- export class driverOrderDetailController extends Controller {
-     #ordersRepository
-     #driverOrderDetailController;
- 
-     constructor() {
-         super();
-         this.#ordersRepository = new OrdersRepository();
-         this.#setupView();
-     }
- 
-    async #setupView() {
-         this.#driverOrderDetailController = await super.loadHtmlIntoContent("html_views/order-page-details_deliverer.html");
-         this.#fetchOrders();
-     }
- 
-     async #fetchOrders() {
-         const orderData = await this.#ordersRepository.getOrders();
-         const getCompanyName = await this.#ordersRepository.getCompanyName();
-;
- 
+import { OrdersRepository } from "../repositories/ordersRepository.js";
+import { App } from "../app.js";
+import { Controller } from "./controller.js";
+export class driverOrderDetailController extends Controller {
+  #ordersRepository;
+  #driverOrderDetailController;
 
-         let data = orderData;
-         let name = document.querySelector(".company-name").innerHTML = getCompanyName;
-        
-         console.log(name);
+  constructor(data) {
+    super();
+    this.#ordersRepository = new OrdersRepository();
+    this.#setupView(data.id);
+  }
 
-        const deliverButton =  document.getElementById("deliverOrder");
-        const pickupButton  = document.getElementById("pickOrder");
-        
-        deliverButton.style.display = "none";
-        
-        pickupButton.onclick = function() {
-            deliverButton.style.display = "block";
-            pickupButton.style.display = "none";
-            console.log("click")
+  async #setupView(id) {
+    this.#driverOrderDetailController = await super.loadHtmlIntoContent(
+      "html_views/order-page-details_deliverer.html"
+    );
+    this.#fetchOrder(id);
+  }
 
-        }
-     }
-   
-            //  let data = orderData[i];
-            //  let name = getCompanyName[i];
-            //  let orderDetail = document.createElement('div');
-            //  orderDetail.classList.add("order-detail")
-            
- 
-            //  let orderDate = document.createElement('p');
-            //  orderDate.classList.add("date");
-            //  let company = document.createElement('p');
-            //  company.classList.add("company-name")
-            //  let orderNumber = document.createElement('p');
-            //  orderNumber.classList.add("order-number")
-             
-            //  orderDetail.appendChild(orderDate);
-            //  orderDetail.appendChild(company);
-            //  orderDetail.appendChild(orderNumber);
- 
- 
- 
-            //  orderDate.innerHTML = data.geschatte_bezorgdatum;
-            //  company.innerHTML = name.naam;
-            //  orderNumber.innerHTML = data.bestelnummer;
- 
-            //  document.querySelector(".order-list").appendChild(orderDetail);
+  /**
+   * pakt data van de order uit de database en laat het zien op de pagina
+   * @param {number} id = bestelnummer van bestelling 
+   */
+  async #fetchOrder(id) {
+    // haalt de bestelling op met de bestelnummer
+    const orderData = await this.#ordersRepository.getOrderByOrderNum(id);
+    const getCompanyName = await this.#ordersRepository.getCompanyName(id);
+    // pakt het telefoonnummer van de bestelling
+    const getPhonenumber = await this.#ordersRepository.getPhonenumber(id);
 
- 
- }
+    document.getElementById("customerName").innerHTML = orderData[0].verzendnaam;
+    document.getElementById("companyName").innerHTML = getCompanyName[0].naam;
+    document.getElementById("ordernumber").innerHTML = orderData[0].bestelnummer;
+    document.getElementById("date").innerHTML = orderData[0].verzend_datum;
+    document.getElementById("adres").innerHTML = orderData[0].verzendadres;
+    document.getElementById("zip").innerHTML = orderData[0].verzend_postcode;
+    document.getElementById("phonenumber").innerHTML = getPhonenumber[0].telefoonnummer;
 
-  
+
+    console.log(getPhonenumber);
+
+
+
+    const deliverButton =  document.getElementById("deliverOrder");
+    const pickupButton  = document.getElementById("pickOrder");
+
+    deliverButton.style.display = "none";
+
+    pickupButton.onclick = function() {
+        deliverButton.style.display = "block";
+        pickupButton.style.display = "none";
+        console.log("click")
+
+    }
+  }
+}
