@@ -7,6 +7,7 @@ class CustomerRoute {
         this.#app = app;
         this.#getCustomers();
         this.#getCustomerByEmail();
+        this.#createCustomerAccount();
     }
 
     #getCustomers() {
@@ -38,6 +39,24 @@ class CustomerRoute {
                 res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
             }
         });
+    }
+
+    #createCustomerAccount() {
+        this.#app.post("/klant/createcustomer", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "INSERT INTO klant (klantnummer, voornaam, achternaam, emailadres, telefoonnummer, plaats, adres, postcode, wachtwoord) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    values: [req.body.klantnummer, req.body.voornaam, req.body.achternaam, req.body.emailadres, req.body.telefoonnummer, req.body.plaats, req.body.adres, req.body.postcode, req.body.wachtwoord]
+                });
+
+                if (data.insertId) {
+                    res.status(this.#errorCodes.HTTP_OK_CODE).json({klantnummer: data.insertId});
+                }
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e});
+            }
+        })
     }
 }
 

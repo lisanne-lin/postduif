@@ -62,6 +62,7 @@ import {
 import {NavbarBusinessController} from "./controllers/NavbarBusinessController.js";
 import {NavbarClientsController} from "./controllers/NavbarClientsController.js";
 import {NavbarRidersController} from "./controllers/NavbarRidersController.js";
+import {ReviewClientController} from "./controllers/reviewClientController.js";
 
 
 export class App {
@@ -91,6 +92,7 @@ export class App {
     static CONTROLLER_NAVBAR_CLIENT = "navbar_clients";
     static CONTROLLER_NAVBAR_RIDERS = "navbar_riders";
     static CONTROLLER_COMPANY = "companies"
+    static CONTROLLER_CLIENT_REVIEW = "review_clients";
 
 
     constructor() {
@@ -132,6 +134,11 @@ export class App {
             case App.CONTROLLER_NAVBAR_RIDERS:
                 new NavbarRidersController();
                 break;
+
+            case App.CONTROLLER_CLIENT_REVIEW:
+                new ReviewClientController();
+                break;
+
 
             case App.CONTROLLER_LOGIN:
                 App.setCurrentController(name);

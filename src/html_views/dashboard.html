@@ -9,106 +9,94 @@
                 <h1><i class="fa fa-tachometer text-muted" aria-hidden="true"></i>
                     Dashboard <span id="order-count"></span></h1>
             </div>
-            <p>Below is a table where you can find all your orders, if you press the "Add Order" button you can place a
-                new order, a delivery person will pick it up as soon as possible. If you type data in the search bar,
-                you
-                can find a specific order.</p>
-            <hr class="my-2">
-            <div class="d-flex justify-content-start">
-                <div class="card m-1" style="width: 25%;">
+            <h5 class="text-muted">Welcome <span id="businessOwner" style="color: #367E7F">Owner Name</span>! to your personal dashboard for
+                <span id="businessName" style="color: #367E7F">Business Name</span></h5>
+            <div class="d-flex justify-content-around">
+                <div class="card m-1" style="width: 33%;">
                     <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (today)</h6>
-                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (today)
+                        </h6>
+                        <h6 class="card-subtitle  text-muted">Yesterday you had <span id="percentageday" style="color: #367E7F"></span>%
+                            compared to today</h6>
                         <br>
                         <h2 class="card-title">€<span id="earnings-today">0,00</span></h2>
                     </div>
                 </div>
-                <div class="card m-1" style="width: 25%;">
+                <div class="card m-1" style="width: 33%;">
                     <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (weekly)</h6>
-                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (weekly)
+                        </h6>
+                        <h6 class="card-subtitle  text-muted">Last week you had <span id="percentageweek" style="color: #367E7F"></span>%
+                            compared to this week</h6>
                         <br>
                         <h2 class="card-title">€<span id="earnings-week">0,00</span></h2>
                     </div>
                 </div>
-                <div class="card m-1" style="width: 25%;">
+                <div class="card m-1" style="width: 33%;">
                     <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (monthly)</h6>
-                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
+                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (monthly)
+                        </h6>
+                        <h6 class="card-subtitle  text-muted">Last month you had <span id="percentagemonth" style="color: #367E7F"></span>%
+                            compared to this month</h6>
                         <br>
                         <h2 class="card-title">€<span id="earnings-month">0,00</span></h2>
                     </div>
                 </div>
-                <div class="card m-1" style="width: 25%;">
+            </div>
+            <div class="d-flex justify-content-around">
+                <div class="card m-1" style="width: 33%;">
+                    <div class="card-body">
+                        <h6 class="card-text"><i class="fa fa-bicycle text-muted"></i> Orders being delivered now </h6>
+                        <h6 class="card-subtitle  text-muted">Make sure those packages are delivered!</h6>
+                        <br>
+                        <h2 class="card-title"><span id="orders-omw">0</span> orders</h2>
+                    </div>
+                </div>
+                <div class="card m-1" style="width: 33%;">
+                    <div class="card-body">
+                        <h6 class="card-text"><i class="fa fa-clock-o text-muted"></i> Orders still to be picked up</h6>
+                        <h6 class="card-subtitle  text-muted">Keep up the great work deliverers!</h6>
+                        <br>
+                        <h2 class="card-title"><span id="orders-delivered">0</span> orders</h2>
+                    </div>
+                </div>
+                <div class="card m-1" style="width: 33%;">
                     <div class="card-body">
                         <h6 class="card-text"><i class="fa fa-smile-o" aria-hidden="true"></i> Collected money</h6>
-                        <h6 class="card-subtitle  text-muted">Well done!</h6>
+                        <h6 class="card-subtitle  text-muted">Well done! Keep up the great work</h6>
                         <br>
                         <h2 class="card-title">€<span id="collected-money">0,00</span></h2>
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-around">
-                <div class="card m-1" style="width: 25%;">
-                    <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-bicycle text-muted"></i> Orders being delivered now </h6>
-                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
-                        <br>
-                        <h2 class="card-title"><span id="orders-omw">0</span> orders</h2>
-                    </div>
-                </div>
-                <div class="card m-1" style="width: 25%;">
-                    <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-clock-o text-muted"></i> Orders still to be picked up</h6>
-                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
-                        <br>
-                        <h2 class="card-title"><span id="orders-delivered">0</span> orders</h2>
-                    </div>
-                </div>
-                <div class="card m-1" style="width: 25%;">
-                    <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-calendar text-muted"></i> Orders (monthly)</h6>
-                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
-                        <br>
-                        <h2 class="card-title"><span>0</span> orders</h2>
-                    </div>
-                </div>
-                <div class="card m-1" style="width: 25%;">
-                    <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-calendar text-muted"></i> Orders (annual)</h6>
-                        <h6 class="card-subtitle  text-muted">Card subtitle</h6>
-                        <br>
-                        <h2 class="card-title"><span>0</span> orders</h2>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-4">
-            <div class="d-flex justify-content-between">
-                <h4><i class="fa fa-th-large" aria-hidden="true"></i>
-                    Latest Orders <span id="order-table-title"></span></h4>
-                <button class="btn btn-success m-1" id="place-order-btn" data-controller="place_order">
-                    <i class="fa fa-th" aria-hidden="true"></i> View all orders
-                </button>
-            </div>
-            <div class="table-responsive">
-                <table id="order-table" class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th scope="col">Order number</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Adress</th>
-                        <th scope="col">Residence</th>
-                        <th scope="col">Zip</th>
-                        <th scope="col">Estimated delivery date</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
         </div>
     </div>
     <br>
-    <br>
-    <br>
-
+    <div id="dashboard" class="container">
+        <div class="d-flex justify-content-between">
+            <h4><i class="fa fa-th-large" aria-hidden="true"></i>
+                Latest Orders <span id="order-table-title"></span></h4>
+            <button class="btn btn-success m-1" id="place-order-btn" data-controller="place_order">
+                <i class="fa fa-th" aria-hidden="true"></i> View all orders
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table id="order-table" class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">Order number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Adress</th>
+                    <th scope="col">Residence</th>
+                    <th scope="col">Zip</th>
+                    <th scope="col">Estimated delivery date</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
 </div>
+<br>
+<br>
+<br>

@@ -1,15 +1,18 @@
 import {App} from "../app.js";
 import {Controller} from "./controller.js";
 import {OrdersRepository} from "../repositories/ordersRepository.js";
+import {EntrepreneursRepository} from "../repositories/entrepreneursRepository.js";
 
 export class DashboardController extends Controller {
 
     #ordersRepository
+    #entrepreneursRepository
     #dashboardView;
 
     constructor()  {
         super();
         this.#ordersRepository = new OrdersRepository();
+        this.#entrepreneursRepository = new EntrepreneursRepository();
         this.#setup();
     }
 
@@ -29,6 +32,33 @@ export class DashboardController extends Controller {
         this.#fetchEarningsWeek()
         this.#fetchEarningsMonth();
         this.#fetchCollectedMoney();
+        this.#fetchEntrepreneurData();
+        this.#fetchPercentages();
+    }
+
+    async #fetchPercentages() {
+        const orderDataToday = await this.#ordersRepository.calculateEarningsToday(1);
+        const orderDataYesterday = await this.#ordersRepository.calculateEarningsYesterday(1);
+        const orderDataWeek = await this.#ordersRepository.calculateEarningsWeek(1);
+        const orderDataLastWeek = await this.#ordersRepository.calculateEarningsLastWeek(1);
+        const orderDataMonth = await this.#ordersRepository.calculateEarningsMonth(1);
+        const orderDataLastMonth = await this.#ordersRepository.calculateEarningsLastMonth(1);
+
+        const percentageToday = (((orderDataToday - orderDataYesterday) / orderDataYesterday) * 100 );
+        const percentageWeek = (((orderDataWeek - orderDataLastWeek) / orderDataLastWeek) * 100 );
+        const percentageMonth = (((orderDataMonth - orderDataLastMonth) / orderDataLastMonth) * 100 );
+
+        this.#dashboardView.querySelector("#percentageday").innerHTML = percentageToday;
+        this.#dashboardView.querySelector("#percentageweek").innerHTML = percentageWeek;
+        this.#dashboardView.querySelector("#percentagemonth").innerHTML = percentageMonth;
+
+
+    }
+
+    async #fetchEntrepreneurData() {
+        const data = await this.#entrepreneursRepository.getEntrepreneurById(1);
+        this.#dashboardView.querySelector("#businessOwner").innerHTML = data[0].eigenaar;
+        this.#dashboardView.querySelector("#businessName").innerHTML = data[0].naam;
     }
 
     async #fetchOrders() {
@@ -73,20 +103,29 @@ export class DashboardController extends Controller {
 
     async #fetchEarningsToday() {
         const amount = await this.#ordersRepository.calculateEarningsToday(1);
-
-        this.#dashboardView.querySelector("#earnings-today").innerHTML = amount.prijs
+        if (amount.prijs == null) {
+            this.#dashboardView.querySelector("#earnings-today").innerHTML = " -.--"
+        } else {
+            this.#dashboardView.querySelector("#earnings-today").innerHTML = amount.prijs
+        }
     }
 
     async #fetchEarningsWeek() {
         const amount = await this.#ordersRepository.calculateEarningsWeek(1);
-
-        this.#dashboardView.querySelector("#earnings-week").innerHTML = amount.prijs
+        if (amount.prijs == null) {
+            this.#dashboardView.querySelector("#earnings-week").innerHTML = " -.--"
+        } else {
+            this.#dashboardView.querySelector("#earnings-week").innerHTML = amount.prijs
+        }
     }
 
     async #fetchEarningsMonth() {
         const amount = await this.#ordersRepository.calculateEarningsMonth(1);
-
-        this.#dashboardView.querySelector("#earnings-month").innerHTML = amount.prijs
+        if (amount.prijs == null) {
+            this.#dashboardView.querySelector("#earnings-month").innerHTML = " -.--"
+        } else {
+            this.#dashboardView.querySelector("#earnings-month").innerHTML = amount.prijs
+        }
     }
 
     async #fetchCollectedMoney() {
