@@ -23,14 +23,17 @@
         <h3 id="companyName" class="company-name"></h3>
         <h3>Ordernumber <span id="ordernumber"></span> </h3>
         <h3 id="date"></h3>
-        <div class="order-detail">
-            <span id="naam"></span>
-            <span id="adres"></span>
-            <span id="zip"></span>
-            <span id="phonenumber"></span>
-        <button id="pickOrder" class="pick-order">pick this order</button>
-        <button id="cancel">Cancel</button>
-        <button id="deliverOrder" class="deliver-order">deliver now</button>
-    </div>
+        <div class="order-address">
+            <p id="naam"></p>
+            <p id="adres"></p>
+            <p id="zip"></p>
+            <p id="phonenumber"></p>
+            <div class="buttons">
+                <button id="pickOrder" class="pick-order">Pick this order</button> <br>
+                <button id="back" data-controller="bezorgerBestelling">Back</button>
+                <button id="deliverOrder" class="deliver-order">Deliver now</button>
+                <button id="cancel">Cancel</button>
+            </div>
+</div>
 </div>
 </div>

@@ -64,7 +64,6 @@ export class bezorgerBestellingController extends Controller {
     document.querySelectorAll(".order-detail").forEach((order) => {
       const id = order.getAttribute("id");
       order.addEventListener("click", (event) => {
-        // debugger;
         App.loadController(App.CONTROLLER_ORDER_DETAIL, { id });
       });
     });
