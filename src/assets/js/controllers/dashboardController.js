@@ -44,9 +44,9 @@ export class DashboardController extends Controller {
         const orderDataMonth = await this.#ordersRepository.calculateEarningsMonth(1);
         const orderDataLastMonth = await this.#ordersRepository.calculateEarningsLastMonth(1);
 
-        const percentageToday = (((orderDataToday - orderDataYesterday) / orderDataYesterday) * 100 );
-        const percentageWeek = (((orderDataWeek - orderDataLastWeek) / orderDataLastWeek) * 100 );
-        const percentageMonth = (((orderDataMonth - orderDataLastMonth) / orderDataLastMonth) * 100 );
+        const percentageToday = (((orderDataYesterday.prijs - orderDataToday.prijs) / orderDataToday.prijs) * 100);
+        const percentageWeek = (((orderDataWeek.prijs - orderDataLastWeek.prijs) / orderDataLastWeek.prijs) * 100 );
+        const percentageMonth = (((orderDataMonth.prijs - orderDataLastMonth.prijs) / orderDataLastMonth.prijs) * 100 );
 
         this.#dashboardView.querySelector("#percentageday").innerHTML = percentageToday;
         this.#dashboardView.querySelector("#percentageweek").innerHTML = percentageWeek;
@@ -90,8 +90,6 @@ export class DashboardController extends Controller {
 
     async #fetchOrderCountOmw() {
         const amount = await this.#ordersRepository.countOrdersOmw(1);
-        console.log(amount)
-
         this.#dashboardView.querySelector("#orders-omw").innerHTML = amount.aantal
     }
 
