@@ -7,62 +7,29 @@
  * @author Lennard Fonteijn & Pim Meijer
  */
 
-import {
-    SessionManager
-} from "./framework/utils/sessionManager.js"
-import {
-    LoginController
-} from "./controllers/loginController.js"
-import {
-    NavbarController
-} from "./controllers/navbarController.js"
-import {
-    UploadController
-} from "./controllers/uploadController.js"
-import {
-    WelcomeController
-} from "./controllers/welcomeController.js"
-import {
-    DashboardController
-} from "./controllers/dashboardController.js"
-import {
-    PlaceOrderController
-} from "./controllers/placeOrderController.js";
-import {
-    RegisterController
-} from "./controllers/registerController.js";
-import {
-    LandingController
-} from "./controllers/landingController.js";
-import {
-    BezorgerLoginController
-} from "./controllers/bezorgerLoginController.js";
-import {
-    RegistrerenBezorgerController
-} from "./controllers/registrerenBezorgerController.js";
-import {
-    OrdersController
-} from "./controllers/OrdersController.js";
-import {
-    bezorgerBestellingController
-} from "./controllers/bezorgerBestellingController.js";
-import {
-    TrackOrderController
-} from "./controllers/TrackOrderController.js";
-import {
-    CustomersController
-} from "./controllers/CustomersController.js";
+import {SessionManager} from "./framework/utils/sessionManager.js"
+import {LoginController} from "./controllers/loginController.js"
+import {NavbarController} from "./controllers/navbarController.js"
+import {UploadController} from "./controllers/uploadController.js"
+import {WelcomeController} from "./controllers/welcomeController.js"
+import {DashboardController} from "./controllers/dashboardController.js"
+import {PlaceOrderController} from "./controllers/placeOrderController.js";
+import {RegisterController} from "./controllers/registerController.js";
+import {LandingController} from "./controllers/landingController.js";
+import {BezorgerLoginController} from "./controllers/bezorgerLoginController.js";
+import {RegistrerenBezorgerController} from "./controllers/registrerenBezorgerController.js";
+import {OrdersController} from "./controllers/OrdersController.js";
+import {bezorgerBestellingController} from "./controllers/bezorgerBestellingController.js";
+import {TrackOrderController} from "./controllers/TrackOrderController.js";
+import {CustomersController} from "./controllers/CustomersController.js";
 import {ClientRegisterController} from "./controllers/ClientRegisterController.js";
-import {
-    CompanyController
-} from "./controllers/companyController.js";
-import {
-    driverOrderDetailController
-} from "./controllers/driverOrderDetailController.js"
+import {CompanyController} from "./controllers/companyController.js";
+import {driverOrderDetailController} from "./controllers/driverOrderDetailController.js"
 import {NavbarBusinessController} from "./controllers/NavbarBusinessController.js";
 import {NavbarClientsController} from "./controllers/NavbarClientsController.js";
 import {NavbarRidersController} from "./controllers/NavbarRidersController.js";
 import {ReviewClientController} from "./controllers/reviewClientController.js";
+import {TrackOrderWithoutLoginController} from "./controllers/TrackOrderWithoutLoginController.js";
 
 
 export class App {
@@ -85,6 +52,7 @@ export class App {
     static CONTROLLER_ORDERS = "orders";
     static CONTROLLER_BEZORGER_BESTELLING = "bezorgerBestelling"
     static CONTROLLER_TRACK = "trackOrder";
+    static CONTROLLER_TRACK_WITHOUT_LOGIN = "trackOrderWithoutLogin";
     static CONTROLLER_CUSTOMERS = "customers";
     static CONTROLLER_CLIENT_REGISTER = "register_client";
     static CONTROLLER_ORDER_DETAIL = "driverOrderDetail"
@@ -139,7 +107,6 @@ export class App {
                 new ReviewClientController();
                 break;
 
-
             case App.CONTROLLER_LOGIN:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new LoginController(), () => new LoginController());
@@ -173,6 +140,11 @@ export class App {
             case App.CONTROLLER_TRACK:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new TrackOrderController(), () => new TrackOrderController());
+                break;
+
+                case App.CONTROLLER_TRACK_WITHOUT_LOGIN:
+                App.setCurrentController(name);
+                App.isLoggedIn(() => new TrackOrderWithoutLoginController(), () => new TrackOrderWithoutLoginController());
                 break;
 
             case App.CONTROLLER_DASHBOARD:
