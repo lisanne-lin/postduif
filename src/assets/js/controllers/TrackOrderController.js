@@ -1,27 +1,35 @@
 import {Controller} from "./controller.js";
 import {App} from "../app.js";
 import {OrdersRepository} from "../repositories/ordersRepository.js";
+import {CustomersRepository} from "../repositories/customersRepository.js";
 
 export class TrackOrderController extends Controller {
 
     #trackView;
-    #ordersRepository
+    #ordersRepository;
+    #customersRepository;
 
     constructor() {
         super();
         this.#setup();
         this.#ordersRepository = new OrdersRepository();
+        this.#customersRepository = new CustomersRepository();
     }
 
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
-
         this.#trackView = await super.loadHtmlIntoContent("html_views/track_order.html");
         document.querySelector(".navbar").style.display = "block";
 
         this.#trackView.querySelector("#search-btn").addEventListener("click", event => {
             this.#fetchOrderByNumAndZip(this.#trackView.querySelector("#tracktrace").value, this.#trackView.querySelector("#input-zip").value);
         })
+
+        const customerData = await this.#customersRepository.getCustomerById(1);
+
+        this.#trackView.querySelector("#welcomename").innerHTML  = customerData[0].voornaam
+
+        const orders = await this.#customersRepository.getOrdersFromCustomer(1);
     }
 
 

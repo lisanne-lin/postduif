@@ -8,6 +8,8 @@ class CustomerRoute {
         this.#getCustomers();
         this.#getCustomerByEmail();
         this.#createCustomerAccount();
+        this.#getCustomerById()
+        this.#getOrdersFromCustomer()
     }
 
     #getCustomers() {
@@ -58,6 +60,39 @@ class CustomerRoute {
             }
         })
     }
+
+    #getCustomerById() {
+        this.#app.get("/klant/getcustomerbyid/:klantnummer", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT * FROM klant WHERE klantnummer = ?;",
+                    values: [req.params.klantnummer]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrdersFromCustomer() {
+        this.#app.get("/klant/getordersfromcustomer/:klantnummer", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, verzend_datum, bezorgkosten, opmerking, Bezorger_bezorger_id, Ondernemer_ondernemer_id, besteldatum, status, prijs FROM bestelling INNER JOIN klant ON bestelling.Klant_klantnummer = klant.klantnummer WHERE klant.klantnummer = ?",
+                    values: [req.params.klantnummer]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
 }
 
 module.exports = CustomerRoute

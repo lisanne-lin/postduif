@@ -31,4 +31,12 @@ export class CustomersRepository {
                 wachtwoord: wachtwoord
             })
     }
+
+    async getCustomerById (klantnummer) {
+        return await this.#networkManager.doRequest(`${this.#route}/getcustomerbyid/${klantnummer}`, "GET", {});
+    }
+
+    async getOrdersFromCustomer(klantnummer) {
+        return await this.#networkManager.doRequest(`${this.#route}/getordersfromcustomer/${klantnummer}`, "GET", {});
+    }
 }
