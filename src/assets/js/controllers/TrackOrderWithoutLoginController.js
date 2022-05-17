@@ -1,35 +1,54 @@
 import {Controller} from "./controller.js";
 import {App} from "../app.js";
 import {OrdersRepository} from "../repositories/ordersRepository.js";
-import {CustomersRepository} from "../repositories/customersRepository.js";
 
-export class TrackOrderController extends Controller {
+export class TrackOrderWithoutLoginController extends Controller {
 
     #trackView;
-    #ordersRepository;
-    #customersRepository;
+    #ordersRepository
 
     constructor() {
         super();
         this.#setup();
         this.#ordersRepository = new OrdersRepository();
-        this.#customersRepository = new CustomersRepository();
     }
 
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
-        this.#trackView = await super.loadHtmlIntoContent("html_views/track_order.html");
-        document.querySelector(".navbar").style.display = "block";
+
+        this.#trackView = await super.loadHtmlIntoContent("html_views/trackorder_without_login.html");
+        document.querySelector("#nav-settings").style.display = "none";
+        document.querySelector("#nav-track").style.display = "none";
+        document.querySelector("#nav-logout").style.display = "none";
 
         this.#trackView.querySelector("#search-btn").addEventListener("click", event => {
             this.#fetchOrderByNumAndZip(this.#trackView.querySelector("#tracktrace").value, this.#trackView.querySelector("#input-zip").value);
         })
 
-        const customerData = await this.#customersRepository.getCustomerById(1);
+        //from here we can safely get elements from the view via the right getter
+        const anchors = this.#trackView.querySelectorAll("button");
+        //set click listener on each anchor
+        anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)))
+    }
 
-        this.#trackView.querySelector("#welcomename").innerHTML  = customerData[0].voornaam
+    #handleClickNavigationItem(event) {
+        //Get the data-controller from the clicked element (this)
+        const clickedAnchor = event.target;
+        const controller = clickedAnchor.dataset.controller;
 
-        const orders = await this.#customersRepository.getOrdersFromCustomer(1);
+        if(typeof controller === "undefined") {
+            console.error("No data-controller attribute defined in anchor HTML tag, don't know which controller to load!")
+            return false;
+        }
+
+        //TODO: You should add highlighting of correct anchor when page is active :)
+
+        //Pass the action to a new function for further processing
+
+        App.loadController(controller);
+
+        //Return false to prevent reloading the page
+        return false;
     }
 
 

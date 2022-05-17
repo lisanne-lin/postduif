@@ -5,23 +5,19 @@
 <div id="page">
     <div id="dashboard" class="container">
         <div class="d-flex justify-content-between">
-            <div>
-                <h1>
-                    My postDuif orders</h1>
-                <p class="text-muted">On this page you can track your order using your Track and Trace code and view
-                    your order history</p>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="d-flex justify-content-between">
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <form>
                     <div>
-                        <h3><i class="fa fa-compass text-muted" aria-hidden="true"></i> Track your order</h3>
-                        <p class="text-muted">Find your order using the Track and Trace code and your zip!</p>
+                        <h1><i class="fa fa-compass text-muted" aria-hidden="true"></i> Track your order</h1>
+                        <p class="text-muted"> Welcome <span id="welcomename" class="green">name</span> to postDuif!
+                            with track and trace you always know exactly where your package is and when. Any time of the
+                            day.
+                            Keep the shipment number and zip code of the recipient to hand, so you always know exactly
+                            where your
+                            package is.</p>
                     </div>
+                    <br>
+                    <br>
                     <br>
                     <br>
                     <div class="d-flex justify-content-start">
@@ -33,21 +29,20 @@
                         <div class="form-floating w-50 m-1">
                             <input type="text" class="form-control" id="input-zip"
                                    placeholder="1234AB">
-                            <label for="zip">Zip</label>
+                            <label for="zip">Zip </label>
                         </div>
                         <br>
                         <button class="w-25 text-white btn-lg btn-outline-success m-1" id="search-btn" type="submit"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-search"
-                                                                                         aria-hidden="true"></i> Search
+                                                                                         aria-hidden="true"></i>
                         </button>
                     </div>
                 </form>
             </div>
-            <div class="col-md-4">
-                <img src="assets/img/undraw_location_tracking_re_n3ok.svg" height="200">
+            <div class="col-md-5" >
+                <img src="assets/img/undraw_location_tracking_re_n3ok.svg" width="100%">
             </div>
         </div>
-        <hr>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -56,28 +51,31 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div id="order-not-found" class="modal-body" style="display: none">
-                        <div class="mb-3" >
+                        <div class="mb-3">
                             <div class="d-flex justify-content-center">
-                                <img src="/assets/img/undraw_searching_re_3ra9.svg"  class="align-content-center"
+                                <img src="/assets/img/undraw_searching_re_3ra9.svg" class="align-content-center"
                                      height="365px">
                             </div>
 
                             <br>
                             <br>
-                            <p>Sorry, but we couldn't find your order, please make sure you use the right Track and Trace code and zip</p>
+                            <p>Sorry, but we couldn't find your order, please make sure you use the right Track and
+                                Trace code and zip</p>
                         </div>
                     </div>
                     <div id="order-found" class="modal-body" style="display: none">
-                        <div class="mb-3" >
+                        <div class="mb-3">
                             <div class="d-flex justify-content-center">
-                                <img src="/assets/img/undraw_ride_a_bicycle_re_6tjy.svg" id="order-image" class="align-content-center"
+                                <img src="/assets/img/undraw_ride_a_bicycle_re_6tjy.svg" id="order-image"
+                                     class="align-content-center"
                                      height="365px">
                             </div>
 
                             <br>
                             <br>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" id="bar" role="progressbar"
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" id="bar"
+                                     role="progressbar"
                                      aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%"></div>
                             </div>
                             <br>
@@ -111,66 +109,119 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="close-btn" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success" id="save-btn" data-bs-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-secondary" id="close-btn" data-bs-dismiss="modal">Close
+                        </button>
+                        <button type="button" class="btn btn-success" id="save-btn" data-bs-dismiss="modal">Save
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <br>
+    <div id="dashboard" class="container">
         <div>
-            <h4><i class="fa fa-bicycle text-muted" aria-hidden="true"></i> Orders on the way</h4>
-            <div class="d-flex justify-content-start">
-                <div class="card m-1" style="width: 40%;">
-                    <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-clock-o text-muted" aria-hidden="true"></i> Mr. Mokum</h6>
-                        <h6 class="card-subtitle  text-muted">Will be delivered on Tuesday 15 February</h6>
-                        <br>
-                        <h2 class="card-title">Still to be picked up</h2>
-                        <div class="text-right">
-                            <button class="text-white btn-lg btn-outline-success m-1" type="submit">View info</button>
+            <h4><i class="fa fa-history text-muted" aria-hidden="true"></i> Order History</h4>
+            <div class="container-fluid">
+                <div class="d-flex flex-row flex-nowrap w-auto">
+                    <div class="col-sm-4">
+                        <div class="card h-100">
+                            <h5 class="card-header">
+                                Mr. Mokum
+                            </h5>
+                            <div class="card-body">
+                                <p class="card-text">May 13, 2022</p>
+                                <p class="card-text">Saturnusstraat 7</p>
+                                <h6 class="card-text">€8,50</h6>
+                                <a href="#" class="btn btn-success">View info</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Still to be picked up
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card h-100">
+                            <h5 class="card-header">
+                                Mr. Mokum
+                            </h5>
+                            <div class="card-body">
+                                <p class="card-text">May 13, 2022</p>
+                                <p class="card-text">Saturnusstraat 7</p>
+                                <h6 class="card-text">€8,50</h6>
+                                <a href="#" class="btn btn-success">View info</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Still to be picked up
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card h-100">
+                            <h5 class="card-header">
+                                Mr. Mokum
+                            </h5>
+                            <div class="card-body">
+                                <p class="card-text">May 13, 2022</p>
+                                <p class="card-text">Saturnusstraat 7</p>
+                                <h6 class="card-text">€8,50</h6>
+                                <a href="#" class="btn btn-success">View info</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Still to be picked up
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card h-100">
+                            <h5 class="card-header">
+                                Mr. Mokum
+                            </h5>
+                            <div class="card-body">
+                                <p class="card-text">May 13, 2022</p>
+                                <p class="card-text">Saturnusstraat 7</p>
+                                <h6 class="card-text">€8,50</h6>
+                                <a href="#" class="btn btn-success">View info</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Still to be picked up
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card h-100">
+                            <h5 class="card-header">
+                                Mr. Mokum
+                            </h5>
+                            <div class="card-body">
+                                <p class="card-text">May 13, 2022</p>
+                                <p class="card-text">Saturnusstraat 7</p>
+                                <h6 class="card-text">€8,50</h6>
+                                <a href="#" class="btn btn-success">View info</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Still to be picked up
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card h-100">
+                            <h5 class="card-header">
+                                Mr. Mokum
+                            </h5>
+                            <div class="card-body">
+                                <p class="card-text">May 13, 2022</p>
+                                <p class="card-text">Saturnusstraat 7</p>
+                                <h6 class="card-text">€8,50</h6>
+                                <a href="#" class="btn btn-success">View info</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Still to be picked up
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <hr>
-        <div>
-            <h4><i class="fa fa-history text-muted" aria-hidden="true"></i> Order History</h4>
-            <div class="d-flex justify-content-start">
-                <div class="card m-1" style="width: 25%;">
-                    <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Mr. Mokum</h6>
-                        <h6 class="card-subtitle  text-muted">Delivered on Tuesday 15 February</h6>
-                        <br>
-                        <h2 class="card-title">Delivered</h2>
-                    </div>
-                </div>
-                <div class="card m-1" style="width: 25%;">
-                    <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Mr. Mokum</h6>
-                        <h6 class="card-subtitle  text-muted">Delivered on Tuesday 15 February</h6>
-                        <br>
-                        <h2 class="card-title">Delivered</h2>
-                    </div>
-                </div>
-                <div class="card m-1" style="width: 25%;">
-                    <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Mr. Mokum</h6>
-                        <h6 class="card-subtitle  text-muted">Delivered on Tuesday 15 February</h6>
-                        <br>
-                        <h2 class="card-title">Delivered</h2>
-                    </div>
-                </div>
-                <div class="card m-1" style="width: 25%;">
-                    <div class="card-body">
-                        <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Mr. Mokum</h6>
-                        <h6 class="card-subtitle  text-muted">Delivered on Tuesday 15 February</h6>
-                        <br>
-                        <h2 class="card-title">Delivered</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>

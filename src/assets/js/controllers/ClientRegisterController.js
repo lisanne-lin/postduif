@@ -22,6 +22,11 @@ export class ClientRegisterController extends Controller {
 
         this.#clientRegisterView.querySelector("#saveAccountBtn").addEventListener("click",
             (event) => this.#saveAccount(event));
+
+        document.querySelector("#nav-settings").style.display = "none";
+        document.querySelector("#nav-track").style.display = "none";
+        document.querySelector("#nav-logout").style.display = "none";
+
     }
 
     async #saveAccount(event) {

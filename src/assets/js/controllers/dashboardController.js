@@ -45,14 +45,12 @@ export class DashboardController extends Controller {
         const orderDataLastMonth = await this.#ordersRepository.calculateEarningsLastMonth(1);
 
         const percentageToday = (((orderDataYesterday.prijs - orderDataToday.prijs) / orderDataToday.prijs) * 100);
-        const percentageWeek = (((orderDataWeek.prijs - orderDataLastWeek.prijs) / orderDataLastWeek.prijs) * 100 );
-        const percentageMonth = (((orderDataMonth.prijs - orderDataLastMonth.prijs) / orderDataLastMonth.prijs) * 100 );
+        const percentageWeek = (((orderDataLastWeek.prijs - orderDataWeek.prijs) / orderDataWeek.prijs) * 100 );
+        const percentageMonth = (((orderDataLastMonth.prijs - orderDataMonth.prijs) / orderDataMonth.prijs) * 100 );
 
         this.#dashboardView.querySelector("#percentageday").innerHTML = percentageToday;
         this.#dashboardView.querySelector("#percentageweek").innerHTML = percentageWeek;
         this.#dashboardView.querySelector("#percentagemonth").innerHTML = percentageMonth;
-
-
     }
 
     async #fetchEntrepreneurData() {
