@@ -48,30 +48,30 @@ export class driverOrderDetailController extends Controller {
 
     console.log(getPhonenumber);
 
-    const deliverButton = document.getElementById("deliverOrder");
-    const pickupButton = document.getElementById("pickOrder");
-    const cancelButton = document.getElementById("cancel");
+    // const deliverButton = document.getElementById("deliverOrder");
+    // const pickupButton = document.getElementById("pickOrder");
+    // const cancelButton = document.getElementById("cancel");
     const backButton = document.getElementById("back");
 
-    deliverButton.style.display = "none";
-    cancelButton.style.display = "none";
+    // deliverButton.style.display = "none";
+    // cancelButton.style.display = "none";
 
-    pickupButton.onclick = function () {
-      deliverButton.style.display = "block";
-      cancelButton.style.display = "block";
+    // pickupButton.onclick = function () {
+    //   deliverButton.style.display = "block";
+    //   cancelButton.style.display = "block";
 
-      pickupButton.style.display = "none";
-      backButton.style.display = "none";
+    //   pickupButton.style.display = "none";
+    //   backButton.style.display = "none";
 
-      console.log("click");
-    };
-    cancelButton.onclick = function () {
-      deliverButton.style.display = "none";
-      cancelButton.style.display = "none";
+    //   console.log("click");
+    // };
+    // cancelButton.onclick = function () {
+    //   deliverButton.style.display = "none";
+    //   cancelButton.style.display = "none";
 
-      pickupButton.style.display = "block";
-      backButton.style.display = "block";
-    };
+    //   pickupButton.style.display = "block";
+    //   backButton.style.display = "block";
+    // };
 
     backButton.addEventListener("click", (event) => {
       App.loadController(App.CONTROLLER_BEZORGER_BESTELLING);
