@@ -20,18 +20,21 @@ export class TrackOrderController extends Controller {
         App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
         this.#trackView = await super.loadHtmlIntoContent("html_views/track_order.html");
         document.querySelector(".navbar").style.display = "block";
-
         this.#trackView.querySelector("#search-btn").addEventListener("click", event => {
             this.#fetchOrderByNumAndZip(this.#trackView.querySelector("#tracktrace").value, this.#trackView.querySelector("#input-zip").value);
         })
-
         const customerData = await this.#customersRepository.getCustomerById(1);
-
         this.#trackView.querySelector("#welcomename").innerHTML  = customerData[0].voornaam
 
-        const orders = await this.#customersRepository.getOrdersFromCustomer(1);
+        await this.#getOrderHistory()
     }
 
+    async #getOrderHistory() {
+        const orders = await this.#customersRepository.getOrdersFromCustomer(1);
+        for (let i = 0; i < orders.length; i++) {
+            document.querySelector("#orders-history").appendChild()
+        }
+    }
 
     async #fetchOrderByNumAndZip(num, zip) {
         try {

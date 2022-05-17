@@ -16,5 +16,8 @@
     position: relative;
     max-width: 1140px;
     top: 10vh;
-    /*overflow-y: scroll;*/
 }
+    .order-history{
+        overflow-y: scroll;
+        max-width: 100%;
+    }
