@@ -1,9 +1,9 @@
 @import url(../defaults.css);
 
+
 #logo-duif {
     margin-left: 600px;
 }
-
 
 .container-landing {
     max-width: 1140px;
@@ -16,6 +16,7 @@
     backdrop-filter: blur(10px);
     color: var(--black);
 }
+
 
 /*.logged-in {*/
 /*    display: none;*/
@@ -86,18 +87,14 @@ button.get-started {
 
 
 .section h2 {
-    margin-bottom: 90px;
+    background-color: var(--accent);
+    margin-bottom: 0;
 }
-/* 
-.three-steps-bg{
-    background: url(../../img/three-steps_bg.svg) no-repeat;
-    background-size: contain;
-    background-position-y: 90px;
-    padding:5px;
-    
 
+.content-steps{
+    background-color: var(--accent);
+    padding: 50px;
 }
- */
 
 
 
