@@ -1,6 +1,8 @@
 <head>
     <link rel="stylesheet" href="assets/css/pages/dashboard.css">
+
 </head>
+
 
 <div id="page">
     <div id="dashboard" class="container">
@@ -39,7 +41,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-5" >
+            <div class="col-md-5">
                 <img src="assets/img/undraw_location_tracking_re_n3ok.svg" width="100%">
             </div>
         </div>
@@ -125,8 +127,30 @@
             <div class="container-fluid">
                 <div id="orders-history" class="d-flex flex-row flex-nowrap w-auto">
 
-<!--                    Orders -->
-
+                    <template id="client_order_template">
+                        <div class="col-sm-4">
+                            <div class="card h-100">
+                                <h5 class="card-header">
+                                    <span id="business_name"></span>
+                                </h5>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Ordered on <span id="month"></span> <span id="day"></span>,
+                                        <span id="year"></span></p>
+                                    <p class="card-text">
+                                        <span id="adress-client"></span></p>
+                                    <p class="card-text">
+                                        <span id="order-number"></span></p>
+                                    <h6 class="card-text">€
+                                        <span id="price"></span></h6>
+                                    <a href="#" class="btn btn-success">View info</a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <span id="order-status"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>

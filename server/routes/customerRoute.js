@@ -81,7 +81,7 @@ class CustomerRoute {
         this.#app.get("/klant/getordersfromcustomer/:klantnummer", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, verzend_datum, bezorgkosten, opmerking, Bezorger_bezorger_id, Ondernemer_ondernemer_id, besteldatum, status, prijs FROM bestelling INNER JOIN klant ON bestelling.Klant_klantnummer = klant.klantnummer WHERE klant.klantnummer = ?",
+                    query: "SELECT bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, MONTHNAME(`geschatte_bezorgdatum`) as bestelmaand, DAY(`geschatte_bezorgdatum`) AS dag, year(`geschatte_bezorgdatum`) AS jaar, verzend_datum, bezorgkosten, opmerking, Bezorger_bezorger_id, Ondernemer_ondernemer_id, besteldatum, status, prijs, ondernemer.naam FROM bestelling INNER JOIN klant ON bestelling.Klant_klantnummer = klant.klantnummer INNER JOIN ondernemer ON bestelling.Ondernemer_ondernemer_id = ondernemer.ondernemer_id WHERE klant.klantnummer = ? ORDER BY geschatte_bezorgdatum DESC ",
                     values: [req.params.klantnummer]
                 });
 

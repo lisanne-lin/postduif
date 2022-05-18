@@ -40,15 +40,6 @@
                     <form class="needs-validation" novalidate>
                         <div class="row g-3">
                             <div class="col-12">
-                                <label for="exampleInputKlantnummer" class="form-label">Customer Number </label>
-                                <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="exampleInputKlantnummer"
-                                           placeholder="1 (for now)" required>
-                                    <div class="invalid-feedback">
-                                        Customer Name is required.
-                                    </div>
-                                </div>
-                            </div>                            <div class="col-12">
                                 <label for="exampleInputName" class="form-label">Name </label>
                                 <div class="input-group has-validation">
                                     <input type="text" class="form-control" id="exampleInputName"
@@ -109,13 +100,10 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="exampleInputStatus" class="form-label">Status</label>
-                                <select class="form-select" id="exampleInputStatus" required>
-                                    <option value="">Choose...</option>
-                                    <option>On the way</option>
-                                    <option>Delivered</option>
-                                    <option>Still to be picked up</option>
-                                </select>
+                                <label for="exampleInputStatus" class="form-label">Price in €</label>
+                                <input type="number" class="form-control" id="exampleInputStatus" placeholder="7,95"required>
+
+                                </input>
                                 <div class="invalid-feedback">
                                     Please select a valid place.
                                 </div>
@@ -138,7 +126,10 @@
 
                         </div>
 
-                        <button class="w-100 btn btn-success btn-lg" id="saveButton" type="submit">Add order
+                        <button class="w-100 btn btn-success btn-lg" id="saveButton" type="submit">
+                            Add order
+                            <div id="spinnder" class="spinner-border spinner-border-sm text-light" style="display: none" role="status">
+                            </div>
                         </button>
                     </form>
                 </div>

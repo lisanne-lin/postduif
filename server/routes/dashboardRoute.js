@@ -18,8 +18,8 @@ class DashboardRoute {
         this.#app.post("/bestelling", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "INSERT INTO bestelling (bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, verzend_datum, bezorgkosten, opmerking, Bezorger_bezorger_id, Klant_klantnummer, Ondernemer_ondernemer_id, besteldatum) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    values: [req.body.bestelnummer, req.body.verzendnaam, req.body.verzendadres, req.body.verzendplaats, req.body.verzend_postcode, req.body.geschatte_bezorgdatum, req.body.verzend_datum, req.body.bezorgkosten, req.body.opmerking, req.body.Bezorger_bezorger_id, req.body.Klant_klantnummer, req.body.Ondernemer_ondernemer_id, req.body.besteldatum]
+                    query: "INSERT INTO bestelling (bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, verzend_datum, bezorgkosten, opmerking, Bezorger_bezorger_id, Klant_klantnummer, Ondernemer_ondernemer_id, besteldatum, prijs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    values: [req.body.bestelnummer, req.body.verzendnaam, req.body.verzendadres, req.body.verzendplaats, req.body.verzend_postcode, req.body.geschatte_bezorgdatum, req.body.verzend_datum, req.body.bezorgkosten, req.body.opmerking, req.body.Bezorger_bezorger_id, req.body.Klant_klantnummer, req.body.Ondernemer_ondernemer_id, req.body.besteldatum, req.body.prijs]
                 });
 
                 if (data.insertId) {

@@ -19,11 +19,13 @@ export class TrackOrderController extends Controller {
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
         this.#trackView = await super.loadHtmlIntoContent("html_views/track_order.html");
-        document.querySelector(".navbar").style.display = "block";
+
         this.#trackView.querySelector("#search-btn").addEventListener("click", event => {
             this.#fetchOrderByNumAndZip(this.#trackView.querySelector("#tracktrace").value, this.#trackView.querySelector("#input-zip").value);
         })
+
         const customerData = await this.#customersRepository.getCustomerById(1);
+
         this.#trackView.querySelector("#welcomename").innerHTML  = customerData[0].voornaam
 
         await this.#getOrderHistory()
@@ -31,8 +33,30 @@ export class TrackOrderController extends Controller {
 
     async #getOrderHistory() {
         const orders = await this.#customersRepository.getOrdersFromCustomer(1);
-        for (let i = 0; i < orders.length; i++) {
-            document.querySelector("#orders-history").appendChild()
+
+        if (orders.length !== 0 ) {
+            for (let i = 0; i < orders.length; i++) {
+                let template = document.getElementById("client_order_template");
+
+                let cloneTemplate = template.content.cloneNode(true);
+
+                cloneTemplate.querySelector("#business_name").innerHTML = orders[i].naam
+                cloneTemplate.querySelector("#adress-client").innerHTML = orders[i].verzendadres
+                cloneTemplate.querySelector("#month").innerHTML = orders[i].bestelmaand
+                cloneTemplate.querySelector("#day").innerHTML = orders[i].dag
+                cloneTemplate.querySelector("#year").innerHTML = orders[i].jaar
+                cloneTemplate.querySelector("#price").innerHTML = orders[i].prijs
+                cloneTemplate.querySelector("#order-status").innerHTML = orders[i].status
+                cloneTemplate.querySelector("#order-number").innerHTML = orders[i].bestelnummer
+
+                document.getElementById("orders-history").appendChild(cloneTemplate);
+            }
+        } else {
+            let text = document.createElement("p");
+
+            text.innerHTML = "It looks like you don't have any orders yet..."
+
+            document.getElementById("orders-history").appendChild(text);
         }
     }
 
