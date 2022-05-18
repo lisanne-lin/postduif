@@ -32,6 +32,10 @@ export class OrdersRepository {
                 prijs: prijs})
     }
 
+    async saveOrder(bestelnummer, Klant_klantnummer){
+        return await this.#networkManager.doRequest(`${this.#route}/saveorder/${bestelnummer}/${Klant_klantnummer}`, "PUT", {});
+    }
+
     async getOrders(){
         return await this.#networkManager.doRequest(`${this.#route}/getallfor`, "GET", {});
     }

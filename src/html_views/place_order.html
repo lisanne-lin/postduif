@@ -123,13 +123,16 @@
                         <hr class="my-4">
 
                         <div class="error mb-3 text-danger">
-
+                            <p><span id="error-box"></span></p>
                         </div>
 
-                        <button class="w-100 btn btn-success btn-lg" id="saveButton" type="submit">
+                        <button class="w-100 btn btn-success btn-lg" id="saveButton" >
+                            <span id="spinner" class="spinner-border spinner-border-sm text-light" style="display: none" role="status"></span>
                             Add order
-                            <div id="spinnder" class="spinner-border spinner-border-sm text-light" style="display: none" role="status">
-                            </div>
+                        </button>
+                        <button class="w-100 btn btn-success btn-lg" type="button" id="loadingBtn" style="display: none" disabled>
+                            <span class="spinner-border spinner-border-sm text-light" role="status" aria-hidden="true"></span>
+                            Adding order, please wait...
                         </button>
                     </form>
                 </div>

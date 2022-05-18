@@ -21,6 +21,22 @@ class OrderRoutes {
         this.#calculateEarningsLastWeek();
         this.#calculateEarningsYesterday();
         this.#getPhonenumber();
+        this.#saveOrder();
+    }
+
+    #saveOrder(){
+        this.#app.put("/bestelling/saveorder/:bestelnummer/:Klant_klantnummer", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "UPDATE bestelling SET Klant_klantnummer = ? WHERE bestelnummer = ?",
+                    values: [req.params.Klant_klantnummer, req.params.bestelnummer]
+                });
+                //just give all data back as json, could also be empty
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        })
     }
 
     #getOrder() {

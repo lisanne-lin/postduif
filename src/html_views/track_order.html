@@ -45,6 +45,8 @@
                 <img src="assets/img/undraw_location_tracking_re_n3ok.svg" width="100%">
             </div>
         </div>
+
+
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -94,14 +96,14 @@
                         </div>
                         <hr>
                         <div class="mb-3">
-                            <h6>Afzender</h6>
+                            <h6>Sender</h6>
                             <p><span id="entrepreneur-name">Mr. Mokum</span></p>
                             <p><span id="entrepreneur-adress">Postbus caviabaffer</span></p>
                             <p><span id="entrepreneur-zip">5140 Je Vader</span></p>
                         </div>
                         <hr>
                         <div class="mb-3">
-                            <h6>Track and Trace:</h6>
+                            <h6>Track and Trace</h6>
                             <p><span id="order-num">1234567890</span></p>
                         </div>
                         <hr>
@@ -143,7 +145,8 @@
                                         <span id="order-number"></span></p>
                                     <h6 class="card-text">€
                                         <span id="price"></span></h6>
-                                    <a href="#" class="btn btn-success">View info</a>
+                                    <a href="#" id="viewInfoBtn" class="btn btn-success"
+                                       data-bs-toggle="modal" data-bs-target="#exampleModal">View info</a>
                                 </div>
                                 <div class="card-footer text-muted">
                                     <span id="order-status"></span>
