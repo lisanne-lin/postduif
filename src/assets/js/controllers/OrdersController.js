@@ -69,16 +69,22 @@ export class OrdersController extends Controller {
             let adresCell = tableRow.insertCell()
             let residenceCell = tableRow.insertCell()
             let zipCell = tableRow.insertCell()
-            let orderDateCell = tableRow.insertCell()
             let statusCell = tableRow.insertCell()
+            let infoCell = tableRow.insertCell()
 
             orderCell.append(data.bestelnummer);
             nameCell.append(data.verzendnaam);
             adresCell.append(data.verzendadres);
             residenceCell.append(data.verzendplaats);
             zipCell.append(data.verzend_postcode);
-            orderDateCell.append(data.geschatte_bezorgdatum);
             statusCell.append(data.status);
+
+            let btn = document.createElement('a');
+            btn.type = "button";
+            btn.className = "btn btn-outline-succes"
+            btn.innerHTML = "Info";
+
+            infoCell.append(btn);
 
             table.append(tableRow);
         }

@@ -10,6 +10,30 @@ class CustomerRoute {
         this.#createCustomerAccount();
         this.#getCustomerById()
         this.#getOrdersFromCustomer()
+        this.#login()
+    }
+
+    #login() {
+        this.#app.post("/klant/login", async (req, res) => {
+            const emailadres = req.body.emailadres;
+            //TODO: You shouldn't save a password unencrypted!! Improve this by using this.#cryptoHelper functions :)
+            const wachtwoord = req.body.wachtwoord;
+
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT emailadres, wachtwoord FROM klant WHERE emailadres = ? AND wachtwoord = ?",
+                    values: [emailadres, wachtwoord]
+                });
+
+                if (data.length === 1) {
+                    res.status(this.#errorCodes.HTTP_OK_CODE).json({"emailadres": data[0].emailadres});
+                } else {
+                    res.status(this.#errorCodes.AUTHORIZATION_ERROR_CODE).json({reason: "Wrong emailadres or password"});
+                }
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e});
+            }
+        });
     }
 
     #getCustomers() {

@@ -9,6 +9,10 @@ export class CustomersRepository {
         this.#networkManager = new NetworkManager();
     }
 
+    async login(emailadres, wachtwoord){
+        return await this.#networkManager.doRequest(`${this.#route}/login`, "POST", {"emailadres": emailadres, "wachtwoord": wachtwoord});
+    }
+
     async getCustomers(entrepreneurNum){
         return await this.#networkManager.doRequest(`${this.#route}/getallfor/${entrepreneurNum}`, "GET", {});
     }

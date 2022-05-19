@@ -8,7 +8,7 @@
 
     /* Variables */
     :root {
-        --main: #F9E052;
+        --main: #f8df51;
         --secondary: #377E7F;
         --hover: #06442E;
         --accent: #FFFCE8;
@@ -35,6 +35,14 @@
         background-color: var(--secondary);
         border: none;
         color: white;
+        transition: 0.3s;
+        width: auto;
+    }
+
+    .btn-primary {
+        background-color: var(--main);
+        border: none;
+        color: #000000;
         transition: 0.3s;
         width: auto;
     }

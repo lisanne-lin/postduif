@@ -1,9 +1,23 @@
 @import url(../defaults.css);
 
 #page {
-    background-color: var(--main);
+    background-color: #f8df51;
     width: 100%;
     height: 500px;
+    border-radius: 0px 0px 10px 10px;
+    position: relative;
+}
+
+#client-navbar {
+    background-color: #f8df51;
+    padding: 10px;
+    max-width: 100%;
+}
+
+#client-panel {
+    background-color: #f8df51;
+    width: 100%;
+    height: 550px;
     border-radius: 0px 0px 10px 10px;
     position: relative;
 }

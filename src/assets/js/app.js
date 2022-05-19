@@ -30,7 +30,7 @@ import {NavbarClientsController} from "./controllers/NavbarClientsController.js"
 import {NavbarRidersController} from "./controllers/NavbarRidersController.js";
 import {ReviewClientController} from "./controllers/reviewClientController.js";
 import {TrackOrderWithoutLoginController} from "./controllers/TrackOrderWithoutLoginController.js";
-
+import {clientLoginController} from "./controllers/clientLoginController.js";
 
 export class App {
     //we only need one instance of the sessionManager, thus static use here
@@ -61,13 +61,14 @@ export class App {
     static CONTROLLER_NAVBAR_RIDERS = "navbar_riders";
     static CONTROLLER_COMPANY = "companies"
     static CONTROLLER_CLIENT_REVIEW = "review_clients";
+    static CONTROLLER_CLIENT_LOGIN = "client_login";
 
 
     constructor() {
 
         //Attempt to load the controller from the URL, if it fails, fall back to the welcome controller.
         App.loadControllerFromUrl(App.CONTROLLER_LANDING);
-        
+
         // App.loadControllerFromUrl(App.CONTROLLER_DASHBOARD);
     }
 
@@ -107,6 +108,10 @@ export class App {
                 new ReviewClientController();
                 break;
 
+            case App.CONTROLLER_CLIENT_LOGIN:
+                new clientLoginController();
+                break;
+
             case App.CONTROLLER_LOGIN:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new LoginController(), () => new LoginController());
@@ -142,7 +147,7 @@ export class App {
                 App.isLoggedIn(() => new TrackOrderController(), () => new TrackOrderController());
                 break;
 
-                case App.CONTROLLER_TRACK_WITHOUT_LOGIN:
+            case App.CONTROLLER_TRACK_WITHOUT_LOGIN:
                 App.setCurrentController(name);
                 App.isLoggedIn(() => new TrackOrderWithoutLoginController(), () => new TrackOrderWithoutLoginController());
                 break;
@@ -192,7 +197,7 @@ export class App {
                 App.isLoggedIn(() => new driverOrderDetailController(controllerData), () => new LoginController());
                 break;
 
-                case App.CONTROLLER_COMPANY:
+            case App.CONTROLLER_COMPANY:
                 new CompanyController();
                 break;
             default:

@@ -57,7 +57,7 @@ class OrderRoutes {
         this.#app.get("/bestelling/getorder/:bestelnummer", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT * FROM bestelling WHERE bestelnummer = ?",
+                    query: "SELECT * FROM bestelling INNER JOIN ondernemer ON bestelling.Ondernemer_ondernemer_id = ondernemer.ondernemer_id WHERE bestelnummer = ?",
                     values: [req.params.bestelnummer]
                 });
 

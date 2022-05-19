@@ -4,20 +4,20 @@
  */
 
 import {UsersRepository} from "../repositories/usersRepository.js";
-import {EntrepreneursRepository} from "../repositories/entrepreneursRepository.js";
 import {App} from "../app.js";
 import {Controller} from "./controller.js";
+import {CustomersRepository} from "../repositories/customersRepository.js";
 
-export class LoginController extends Controller{
+export class clientLoginController extends Controller{
     //# is a private field in Javascript
     #usersRepository
+    #customersRepository
     #loginView
-    #entrepreneursRepository;
 
     constructor() {
         super();
         this.#usersRepository = new UsersRepository();
-        this.#entrepreneursRepository = new EntrepreneursRepository();
+        this.#customersRepository = new CustomersRepository();
 
         this.#setupView()
     }
@@ -27,9 +27,9 @@ export class LoginController extends Controller{
      * @returns {Promise<void>}
      */
     async #setupView() {
-        App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
+        App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
         //await for when HTML is loaded, never skip this method call in a controller
-        this.#loginView = await super.loadHtmlIntoContent("html_views/login.html")
+        this.#loginView = await super.loadHtmlIntoContent("html_views/client_login.html")
 
         //from here we can safely get elements from the view via the right getter
         this.#loginView.querySelector("#login-btn").addEventListener("click", event => this.#handleLogin(event));
@@ -48,12 +48,11 @@ export class LoginController extends Controller{
         const wachtwoord = this.#loginView.querySelector("#exampleInputPassword").value;
 
         try{
-            const user = await this.#usersRepository.login(emailadres, wachtwoord);
+            const user = await this.#customersRepository.login(emailadres, wachtwoord);
 
             //let the session manager know we are logged in by setting the username, never set the password in localstorage
             App.sessionManager.set("username", user.emailadres);
-            App.loadController(App.CONTROLLER_DASHBOARD);
-            document.querySelector(".sidebar-container").style.display = "block";
+            App.loadController(App.CONTROLLER_TRACK);
         } catch(error) {
             //if unauthorized error code, show error message to the user
             if(error.code === 401) {

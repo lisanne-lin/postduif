@@ -20,6 +20,10 @@ export class TrackOrderController extends Controller {
         App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
         this.#trackView = await super.loadHtmlIntoContent("html_views/track_order.html");
 
+        document.querySelector(".navbar").style.display = "block";
+        document.querySelector("#nav-settings").className = "nav-link";
+        document.querySelector("#nav-track").className = "nav-link active";
+
         this.#trackView.querySelector("#search-btn").addEventListener("click", event => {
             this.#fetchOrderByNumAndZip(this.#trackView.querySelector("#tracktrace").value, this.#trackView.querySelector("#input-zip").value);
         })
@@ -101,7 +105,7 @@ export class TrackOrderController extends Controller {
 
                     this.#trackView.querySelector("#order-found").style.display = "block";
                     this.#trackView.querySelector("#order-not-found").style.display = "none";
-                    this.#trackView.querySelector("#save-btn").style.display = "block";
+                    this.#trackView.querySelector("#save-btn").style.display = "none";
                 })
 
                 document.getElementById("orders-history").appendChild(cloneTemplate);
