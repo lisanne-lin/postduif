@@ -16,8 +16,6 @@ export class bezorgerBestellingController extends Controller {
     this.#ordersRepository = new OrdersRepository();
     this.#setupView();
     console.log(id);
-
-
   }
 
   async #setupView() {
@@ -33,13 +31,12 @@ export class bezorgerBestellingController extends Controller {
     console.log(orderData);
     console.log(getCompanyName);
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < orderData.length; i++) {
       let data = orderData[i];
       let name = getCompanyName[i];
       let orderDetail = document.createElement("div");
       orderDetail.classList.add("order-detail");
       orderDetail.setAttribute("id", data.bestelnummer);
-
       let orderDate = document.createElement("p");
       orderDate.classList.add("date");
       let company = document.createElement("p");
@@ -57,15 +54,14 @@ export class bezorgerBestellingController extends Controller {
 
       document.querySelector(".order-list").appendChild(orderDetail);
     }
-    // document.querySelector(".order-detail").addEventListener("click", event => {
-    //     App.loadController(App.CONTROLLER_ORDER_DETAIL);
-    // })
 
     document.querySelectorAll(".order-detail").forEach((order) => {
       const id = order.getAttribute("id");
       order.addEventListener("click", (event) => {
         App.loadController(App.CONTROLLER_ORDER_DETAIL, { id });
+    
       });
     });
   }
 }
+
