@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" href="assets/css/pages/dashboard.css">
+    <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
 </head>
 
 <div id="page">
@@ -9,14 +10,16 @@
                 <h1><i class="fa fa-tachometer text-muted" aria-hidden="true"></i>
                     Dashboard <span id="order-count"></span></h1>
             </div>
-            <h5 class="text-muted">Welcome <span id="businessOwner" style="color: #367E7F">Owner Name</span>! to your personal dashboard for
+            <h5 class="text-muted">Welcome <span id="businessOwner" style="color: #367E7F">Owner Name</span>! to your
+                personal dashboard for
                 <span id="businessName" style="color: #367E7F">Business Name</span></h5>
             <div class="d-flex justify-content-around">
                 <div class="card m-1" style="width: 33%;">
                     <div class="card-body">
                         <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (today)
                         </h6>
-                        <h6 class="card-subtitle  text-muted">Yesterday you had <span id="percentageday" style="color: #367E7F"></span>%
+                        <h6 class="card-subtitle  text-muted">Yesterday you had <span id="percentageday"
+                                                                                      style="color: #367E7F"></span>%
                             compared to today</h6>
                         <br>
                         <h2 class="card-title">€<span id="earnings-today">0,00</span></h2>
@@ -26,7 +29,8 @@
                     <div class="card-body">
                         <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (weekly)
                         </h6>
-                        <h6 class="card-subtitle  text-muted">Last week you had <span id="percentageweek" style="color: #367E7F"></span>%
+                        <h6 class="card-subtitle  text-muted">Last week you had <span id="percentageweek"
+                                                                                      style="color: #367E7F"></span>%
                             compared to this week</h6>
                         <br>
                         <h2 class="card-title">€<span id="earnings-week">0,00</span></h2>
@@ -36,7 +40,8 @@
                     <div class="card-body">
                         <h6 class="card-text"><i class="fa fa-eur text-muted" aria-hidden="true"></i> Earnings (monthly)
                         </h6>
-                        <h6 class="card-subtitle  text-muted">Last month you had <span id="percentagemonth" style="color: #367E7F"></span>%
+                        <h6 class="card-subtitle  text-muted">Last month you had <span id="percentagemonth"
+                                                                                       style="color: #367E7F"></span>%
                             compared to this month</h6>
                         <br>
                         <h2 class="card-title">€<span id="earnings-month">0,00</span></h2>
@@ -70,6 +75,28 @@
                 </div>
             </div>
         </div>
+    </div>
+    <br>
+    <div id="dashboard" class="container">
+        <div class="d-flex justify-content-between">
+            <h4>Number of orders last <span class="green">7 days</span></h4>
+
+
+            <div class="dropdown">
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Show By
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Orders 7 Days</a></li>
+                    <li><a class="dropdown-item" href="#">Orders Month</a></li>
+                    <li><a class="dropdown-item" href="#">Earnings 7 Days</a></li>
+                    <li><a class="dropdown-item" href="#">Earnings Month</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ct-chart ct-double-octave	"></div>
     </div>
     <br>
     <div id="dashboard" class="container">

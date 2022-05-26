@@ -9,7 +9,7 @@ export class DashboardController extends Controller {
     #entrepreneursRepository
     #dashboardView;
 
-    constructor()  {
+    constructor() {
         super();
         this.#ordersRepository = new OrdersRepository();
         this.#entrepreneursRepository = new EntrepreneursRepository();
@@ -34,6 +34,7 @@ export class DashboardController extends Controller {
         this.#fetchCollectedMoney();
         this.#fetchEntrepreneurData();
         this.#fetchPercentages();
+        this.#fetchChartData();
     }
 
     async #fetchPercentages() {
@@ -45,8 +46,8 @@ export class DashboardController extends Controller {
         const orderDataLastMonth = await this.#ordersRepository.calculateEarningsLastMonth(1);
 
         const percentageToday = (((orderDataYesterday.prijs - orderDataToday.prijs) / orderDataToday.prijs) * 100);
-        const percentageWeek = (((orderDataLastWeek.prijs - orderDataWeek.prijs) / orderDataWeek.prijs) * 100 );
-        const percentageMonth = (((orderDataLastMonth.prijs - orderDataMonth.prijs) / orderDataMonth.prijs) * 100 );
+        const percentageWeek = (((orderDataLastWeek.prijs - orderDataWeek.prijs) / orderDataWeek.prijs) * 100);
+        const percentageMonth = (((orderDataLastMonth.prijs - orderDataMonth.prijs) / orderDataMonth.prijs) * 100);
 
         this.#dashboardView.querySelector("#percentageday").innerHTML = percentageToday;
         this.#dashboardView.querySelector("#percentageweek").innerHTML = percentageWeek;
@@ -59,10 +60,24 @@ export class DashboardController extends Controller {
         this.#dashboardView.querySelector("#businessName").innerHTML = data[0].naam;
     }
 
+    async #fetchChartData() {
+        let data = {
+            // A labels array that can contain any sort of values
+            labels: ['6 days ago', '5 days ago', '4 days ago', '3 days ago', '2 days ago', 'Yesterday', "Today"],
+            // Our series array that contains series objects or in this case series data arrays
+            series: [
+                [900, 2, 4, 2, 0, 3, 2]
+            ]
+        };
+
+        new Chartist.Line('.ct-chart', data);
+    }
+
     async #fetchOrders() {
         const orderData = await this.#ordersRepository.getOrders();
+        const maxOrders = 6
 
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < maxOrders; i++) {
             let data = orderData[i];
             const table = this.#dashboardView.querySelector("#order-table");
             let tableRow = table.insertRow()
@@ -127,7 +142,7 @@ export class DashboardController extends Controller {
     async #fetchCollectedMoney() {
         const data = await this.#ordersRepository.calculateDonatedMoney(1);
 
-        const amount = (Math.round(data.donatie* 100) / 100).toFixed(2);
+        const amount = (Math.round(data.donatie * 100) / 100).toFixed(2);
         this.#dashboardView.querySelector("#collected-money").innerHTML = amount
     }
 }

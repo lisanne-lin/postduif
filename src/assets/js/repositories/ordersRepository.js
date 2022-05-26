@@ -36,6 +36,10 @@ export class OrdersRepository {
         return await this.#networkManager.doRequest(`${this.#route}/saveorder/${bestelnummer}/${Klant_klantnummer}`, "PUT", {});
     }
 
+    async getOrderByInfo (info) {
+        return await this.#networkManager.doRequest(`${this.#route}/getOrderByInfo/${info}/${info}/${info}/${info}`, "GET");
+    }
+
     async getOrders(){
         return await this.#networkManager.doRequest(`${this.#route}/getallfor`, "GET", {});
     }

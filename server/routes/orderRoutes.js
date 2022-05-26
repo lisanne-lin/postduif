@@ -22,6 +22,8 @@ class OrderRoutes {
         this.#calculateEarningsYesterday();
         this.#getPhonenumber();
         this.#saveOrder();
+        this.#getOrderByInfo();
+        this.#sortOrdersName();
     }
 
     #saveOrder(){
@@ -43,10 +45,40 @@ class OrderRoutes {
         this.#app.get("/bestelling/getallfor", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT * FROM bestelling ORDER BY besteldatum"
+                    query: "SELECT * FROM bestelling ORDER BY besteldatum DESC"
                 });
                 //just give all data back as json, could also be empty
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #sortOrdersName() {
+        this.#app.get("/bestelling/getallforName", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT * FROM bestelling ORDER BY besteldatum DESC"
+                });
+                //just give all data back as json, could also be empty
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrderByInfo() {
+        this.#app.get("/bestelling/getOrderByInfo/:info/:info/:info/:info", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT * FROM bestelling INNER JOIN ondernemer ON bestelling.Ondernemer_ondernemer_id = ondernemer.ondernemer_id WHERE verzendnaam = ? OR verzendadres = ? OR verzend_postcode = ? OR bestelnummer = ?",
+                    values: [req.params.info, req.params.info, req.params.info, req.params.info]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
             } catch (e) {
                 res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
             }
