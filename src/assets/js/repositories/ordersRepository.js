@@ -40,6 +40,46 @@ export class OrdersRepository {
         return await this.#networkManager.doRequest(`${this.#route}/getOrderByInfo/${info}/${info}/${info}/${info}`, "GET");
     }
 
+    async getTodaysOrder (Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getTodaysOrder/${Ondernemer_ondernemer_id}`, "GET");
+    }
+
+    async getYesterdaysOrder (Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getYesterdaysOrder/${Ondernemer_ondernemer_id}`, "GET");
+    }
+
+    async getOrderDataTwoDaysAgo (Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getOrderDataTwoDaysAgo/${Ondernemer_ondernemer_id}`, "GET");
+    }
+
+    async getOrderDataThreeDaysAgo (Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getOrderDataThreeDaysAgo/${Ondernemer_ondernemer_id}`, "GET");
+    }
+
+    async getOrderDataFourDaysAgo (Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getOrderDataFourDaysAgo/${Ondernemer_ondernemer_id}`, "GET");
+    }
+
+    async getOrderDataFiveDaysAgo (Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getOrderDataFiveDaysAgo/${Ondernemer_ondernemer_id}`, "GET");
+    }
+
+    async getOrderDataSevenDaysAgo (Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getOrderDataSevenDaysAgo/${Ondernemer_ondernemer_id}`, "GET");
+    }
+
+    async getOrderDataTwoWeeksAgo (Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getOrderDataTwoWeeksAgo/${Ondernemer_ondernemer_id}`, "GET");
+    }
+
+    async getOrderDataThreeWeeksAgo (Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getOrderDataThreeWeeksAgo/${Ondernemer_ondernemer_id}`, "GET");
+    }
+
+    async getOrderDataFourWeeksAgo (Ondernemer_ondernemer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getOrderDataFourWeeksAgo/${Ondernemer_ondernemer_id}`, "GET");
+    }
+
     async getOrders(){
         return await this.#networkManager.doRequest(`${this.#route}/getallfor`, "GET", {});
     }

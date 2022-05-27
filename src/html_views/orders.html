@@ -26,8 +26,10 @@
                             Sort by
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Name <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i></a></li>
-                            <li><a class="dropdown-item" href="#">Name <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Name <i class="fa fa-sort-alpha-asc"
+                                                                          aria-hidden="true"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Name <i class="fa fa-sort-alpha-desc"
+                                                                          aria-hidden="true"></i></a></li>
                             <li><a class="dropdown-item" href="#">Order Date </a></li>
                         </ul>
                     </div>
@@ -137,12 +139,21 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-bus text-muted" aria-hidden="true"></i> Order - <span id="order-number">1234567890</span></h5>
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-bus text-muted" aria-hidden="true"></i>
+                    Order - <span id="order-number">1234567890</span></h5>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="order-found" class="modal-body">
+                <div class="d-flex justify-content-center">
+                    <img src="/assets/img/undraw_online_information_re_erks.svg" id="order-image2"
+                         class="align-content-center"
+                         height="250px">
+                </div>
+                <hr>
+
                 <div class="mb-3">
-                    <h4><span id="status"><i class="fa fa-clock-o text-muted" aria-hidden="true"></i> On the way</span></h4>
+                    <h4><span id="status"><i class="fa fa-clock-o text-muted" aria-hidden="true"></i> On the way</span>
+                    </h4>
                     <h5>Estimated Delivery Time:</h5>
                     <p><span id="estimated">00:00</span></p>
                 </div>
@@ -162,12 +173,13 @@
                 </div>
                 <hr>
                 <div class="mb-3">
-                    <h4 for="message-text" class="col-form-label">Remark:</h4>
-                    <textarea class="form-control" id="message-text"></textarea>
+                    <h4>Remark</h4>
+                    <p><span id="entrepreneur-remark">something something</span></p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="edit-btn" data-target="#exampleModalToggle2" data-toggle="modal">
+                <button type="button" class="btn btn-secondary" id="edit-btn" data-target="#exampleModalToggle2"
+                        data-toggle="modal">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
                 </button>
                 <button type="button" class="btn btn-danger" id="close-btn" data-dismiss="modal">
@@ -178,103 +190,138 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1"><div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalEditLabel"><i class="fa fa-pencil text-muted" aria-hidden="true"></i> Edit Order - <span id="order-number2">0</span></h5>
-            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div id="order-found2" class="modal-body">
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+     tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalEditLabel"><i class="fa fa-pencil text-muted"
+                                                                      aria-hidden="true"></i> Edit Order</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="order-found2" class="modal-body">
 
-            <div class="col-12">
-                <label for="exampleInputName" class="form-label">Name </label>
-                <div class="input-group has-validation">
-                    <input type="text" class="form-control" id="exampleInputName"
-                           placeholder="John Doe" required>
-                    <div class="invalid-feedback">
-                        Customer Name is required.
+                <div class="d-flex justify-content-center">
+                    <img src="/assets/img/undraw_editable_re_4l94.svg" id="order-image"
+                         class="align-content-center"
+                         height="260px">
+                </div>
+                <hr>
+
+                <div class="col-12">
+                    <label for="exampleInputName" class="form-label">Name </label>
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control" id="exampleInputName"
+                               placeholder="John Doe" required>
+                        <div class="invalid-feedback">
+                            Customer Name is required.
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-12">
-                <label for="exampleInputAdres" class="form-label">Adress (required)</label>
-                <input type="text" class="form-control" id="exampleInputAdres"
-                       placeholder="Wibautstraat 69">
-                <div class="invalid-feedback">
-                    Please enter a valid email address for updates.
+                <br>
+
+                <div class="d-flex justify-content-between">
+
+                    <div class="col-6">
+                        <label for="exampleInputAdres" class="form-label">Adress (required)</label>
+                        <input type="text" class="form-control" id="exampleInputAdres"
+                               placeholder="Wibautstraat 69">
+                        <div class="invalid-feedback">
+                            Please enter a valid email address for updates.
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="exampleInputPostcode" class="form-label">Zip (required)</label>
+                        <input type="text" class="form-control" id="exampleInputPostcode"
+                               placeholder="1234 AB"
+                               value="" required>
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+
                 </div>
-            </div>
 
-            <div class="col-12">
-                <label for="exampleInputPlaats" class="form-label">City (required)</label>
-                <select class="form-select" id="exampleInputPlaats" required>
-                    <option value="">Choose...</option>
-                    <option>Amsterdam</option>
-                    <option>Rotterdam</option>
-                    <option>Den Haag</option>
-                </select>
-                <div class="invalid-feedback">
-                    Valid first name is required.
+                <div class="col-12">
+                    <label for="exampleInputPlaats" class="form-label">City (required)</label>
+                    <select class="form-select" id="exampleInputPlaats" required>
+                        <option value="">Choose...</option>
+                        <option>Amsterdam</option>
+                        <option>Rotterdam</option>
+                        <option>Den Haag</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-12">
-                <label for="exampleInputPostcode" class="form-label">Zip (required)</label>
-                <input type="text" class="form-control" id="exampleInputPostcode"
-                       placeholder="1234 AB"
-                       value="" required>
-                <div class="invalid-feedback">
-                    Valid last name is required.
+                <br>
+
+                <div class="col-12">
+                    <label for="exampleInputBezorgdatum" class="form-label">Estimated delivery day & time</label>
+                    <input type="datetime-local" class="form-control" id="exampleInputBezorgdatum"
+                           placeholder="Amsterdam"
+                           value="" required>
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <label for="exampleInputBezorgdatum" class="form-label">Estimated delivery day & time</label>
-                <input type="datetime-local" class="form-control" id="exampleInputBezorgdatum" placeholder="Amsterdam"
-                       value="" required>
-                <div class="invalid-feedback">
-                    Valid first name is required.
+
+                <div class="col-12">
+                    <label for="exampleInputVerzenddatum" class="form-label">Shipment date</label>
+                    <input type="date" class="form-control" id="exampleInputVerzenddatum" placeholder="1234 AB"
+                           value="" required>
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-12">
-                <label for="exampleInputVerzenddatum" class="form-label">Shipment date</label>
-                <input type="date" class="form-control" id="exampleInputVerzenddatum" placeholder="1234 AB"
-                       value="" required>
-                <div class="invalid-feedback">
-                    Valid last name is required.
+                <br>
+
+                <div class="d-flex justify-content-between">
+                    <div class="col-6">
+                        <label for="exampleInputStatus" class="form-label">Price in €</label>
+                        <input type="number" class="form-control" id="exampleInputStatus" placeholder="7,95" required>
+
+                        </input>
+                        <div class="invalid-feedback">
+                            Please select a valid place.
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="exampleInputBezorgkosten" class="form-label">Delivery charge in € </label>
+                        <input type="number" class="form-control" id="exampleInputBezorgkosten"
+                               placeholder="4,95" required>
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-12">
-                <label for="exampleInputStatus" class="form-label">Price in €</label>
-                <input type="number" class="form-control" id="exampleInputStatus" placeholder="7,95"required>
+                <br>
 
-                </input>
-                <div class="invalid-feedback">
-                    Please select a valid place.
+                <div class="col-12">
+                    <label for="exampleInputStatus" class="form-label">Remark</label>
+                    <input type="text" class="form-control" id="remark" placeholder="something something" required>
+
+                    </input>
+                    <div class="invalid-feedback">
+                        Please select a valid place.
+                    </div>
                 </div>
+
+
+
             </div>
-
-            <div class="col-12">
-                <label for="exampleInputBezorgkosten" class="form-label">Delivery charge in € </label>
-                <input type="number" class="form-control" id="exampleInputBezorgkosten"
-                       placeholder="4,95" required>
-                <div class="invalid-feedback">
-                    Zip code required.
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="save-btn2" data-target="#exampleModalToggle2"
+                        data-toggle="modal">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                </button>
             </div>
-
-            <br>
-            <br>
-
-
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-success" id="save-btn2" data-target="#exampleModalToggle2" data-toggle="modal">
-                <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
-            </button>
         </div>
     </div>
-</div>
 </div>
