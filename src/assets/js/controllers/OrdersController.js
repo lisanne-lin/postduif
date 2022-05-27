@@ -94,7 +94,7 @@ export class OrdersController extends Controller {
         let orderEntrepreneurName = this.#orderView.querySelector("#entrepreneur-name");
         let orderEntrepreneurAdress = this.#orderView.querySelector("#entrepreneur-adress");
         let orderEntrepreneurZip = this.#orderView.querySelector("#entrepreneur-zip");
-        let orderRemark = this.#orderView.querySelector("#message-text");
+        let orderRemark = this.#orderView.querySelector("#entrepreneur-remark");
         let orderNum = this.#orderView.querySelector("#order-number");
 
         let geschatte_bezorgdatum = orderData.geschatte_bezorgdatum
@@ -103,7 +103,7 @@ export class OrdersController extends Controller {
         orderName.innerHTML = orderData[0].verzendnaam
         orderStreet.innerHTML = orderData[0].verzendadres
         orderZip.innerHTML = orderData[0].verzend_postcode
-        orderRemark.value = orderData[0].opmerking
+        orderRemark.innerHTML = orderData[0].opmerking
         orderStatus.innerHTML = orderData[0].status
         orderEstimate.innerHTML = geschatte_bezorgdatum
         orderEntrepreneurName.innerHTML = orderData[0].naam
@@ -114,7 +114,7 @@ export class OrdersController extends Controller {
             await this.#editOrder(orderData[0].bestelnummer);
         })
 
-        this.#orderView.querySelector("#close-btn")._addEventListeners("click", event => {this.#deleteOrder()})
+        this.#orderView.querySelector("#close-btn").addEventListener("click", event => {this.#deleteOrder()})
     }
 
     async #deleteOrder() {
@@ -165,7 +165,7 @@ export class OrdersController extends Controller {
         this.#orderView.querySelector("#exampleInputStatus").value = orderData[0].prijs
         this.#orderView.querySelector("#exampleInputBezorgkosten").value = orderData[0].bezorgkosten
 
-        this.#orderView.querySelector("#save-btn2")._addEventListeners("click", event => {this.#saveOrder()})
+        this.#orderView.querySelector("#save-btn2").addEventListener("click", event => {this.#saveOrder()})
     }
 
     async #saveOrder() {

@@ -27,9 +27,38 @@ export class PlaceOrderController extends Controller {
 
         this.#placeOrderView.querySelector("#saveButton").addEventListener("click",
             (event) => this.#saveOrder(event));
+
+        await this.#sendMail();
     }
 
-    #saveOrder(event) {
+    async #sendMail() {
+        var nodemailer = require('nodemailer');
+
+        var transporter = nodemailer.createTransport({
+            service: 'outlook',
+            auth: {
+                user: 'simonvriesema@outlook.com',
+                pass: 'KnolpowerHoodie1984$'
+            }
+        });
+
+        var mailOptions = {
+            from: 'simonvriesema@outlook.com',
+            to: 'simon.vriesema@icloud.com',
+            subject: 'Sending Email using Node.js',
+            text: 'That was easy!'
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    }
+
+    async #saveOrder(event) {
         event.preventDefault();
 
 

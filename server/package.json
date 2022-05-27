@@ -18,7 +18,8 @@
         "mdb-ui-kit": "^3.11.0",
         "morgan": "1.10.0",
         "multer": "1.4.4",
-        "mysql": "2.18.1"
+        "mysql": "2.18.1",
+        "nodemailer": "^6.7.5"
     },
     "scripts": {
         "start": "nodemon server.js",
