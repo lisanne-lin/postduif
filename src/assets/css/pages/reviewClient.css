@@ -25,7 +25,27 @@
     height: 200px;
 }
 
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
 
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.alert.success {background-color: #04AA6D;}
+
+.closebtn:hover {
+    color: black;
+}
 .negativeBar{
     float: left;
     width: 0;

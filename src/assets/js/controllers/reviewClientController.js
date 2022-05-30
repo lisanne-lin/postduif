@@ -1,18 +1,21 @@
 import {App} from "../app.js";
 import {Controller} from "./controller.js";
+import {ReviewRepsitory} from "../repositories/reviewRepsitory.js";
 
 export class ReviewClientController extends Controller {
     #reviewClient
+    #reviewRepsitory;
 
     constructor() {
         super();
+        this.#reviewRepsitory = new ReviewRepsitory();
         this.#setupView()
+
     }
 
 
     async #setupView() {
 
-        console.log("hey ithis ");
         App.loadController(App.CONTROLLER_NAVBAR_RIDERS);
         //await for when HTML is loaded, never skip this method call in a controller
         this.#reviewClient = await super.loadHtmlIntoContent("html_views/review_clients.html")
@@ -26,7 +29,8 @@ export class ReviewClientController extends Controller {
         // //set click listener on each anchor
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)))
 
-
+        this.#reviewClient.querySelector("#error").hidden = true;
+        this.#reviewClient.querySelector("#success").hidden = true;
     }
 
 
@@ -46,9 +50,39 @@ export class ReviewClientController extends Controller {
 
 
     #commend(event) {
+        event.preventDefault();
 
-        let theCommand = document.getElementById("reviewBox");
-        alert(theCommand.value);
-        return undefined;
+
+
+        //todo add user id
+        const customer_id = 1;
+
+        //todo add company id
+        const entrepreneur_id = 2;
+        const command = this.#reviewClient.querySelector("#reviewBox").value;
+
+        //todo add rating menu
+        const rating = 5;
+
+
+
+
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+
+        if (command === ''){
+
+            const error = this.#reviewClient.querySelector("#error").hidden = false;
+        }else {
+
+            //code for db
+
+            const error = this.#reviewClient.querySelector("#error").hidden = true;
+            const success = this.#reviewClient.querySelector("#success").hidden = false;
+
+
+            this.#reviewRepsitory.createReview(null, customer_id, entrepreneur_id, command, rating, date);
+        }
     }
 }
