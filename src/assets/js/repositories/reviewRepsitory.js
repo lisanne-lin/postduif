@@ -13,6 +13,9 @@ export class ReviewRepsitory {
         this.#networkManager = new NetworkManager();
     }
 
+    async getReviewsById(id){
+        return await this.#networkManager.doRequest(`${this.#route}/getReviews/${id}`, "GET", {});
+    }
 
     async createReview(review_id, customerId, entrepreneurId, command, rating, date) {
         this.#networkManager.doRequest(this.#route, "POST",

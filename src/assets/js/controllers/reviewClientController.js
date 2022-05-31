@@ -8,8 +8,9 @@ export class ReviewClientController extends Controller {
 
     constructor() {
         super();
+        this.#setupView();
         this.#reviewRepsitory = new ReviewRepsitory();
-        this.#setupView()
+
 
     }
 
@@ -29,10 +30,98 @@ export class ReviewClientController extends Controller {
         // //set click listener on each anchor
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)))
 
+
+
         this.#reviewClient.querySelector("#error").hidden = true;
         this.#reviewClient.querySelector("#success").hidden = true;
+
+
+        await this.#getreviewsList()
     }
 
+
+
+    async #getreviewsList() {
+        let userid = 2;
+        let counterBad = 0;
+        let counterGood = 0;
+        let counterNotSoGood = 0;
+
+        let reviews = await this.#reviewRepsitory.getReviewsById(userid);
+
+
+        if (reviews.length !== 0) {
+            for (let i = 0; i < reviews.length; i++) {
+
+
+
+                let template = document.getElementById("reviewBoxList").innerHTML += '   <div class="row">\n' +
+                    '                            <div class="col-sm-3">\n' +
+                    '                                <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">\n' +
+                    '                                <div class="review-block-name"><a href="#">'+reviews[i].achternaam +'</a></div>\n' +
+                    '                                <div class="review-block-date">2022-05-31<br/>1 day ago</div>\n' +
+                    '                            </div>\n' +
+                    '                            <div class="col-sm-9">\n' +
+                    '                                <div class="review-block-rate">\n' +
+                    '                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">\n' +
+                    '                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>\n' +
+                    '                                    </button>\n' +
+                    '                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">\n' +
+                    '                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>\n' +
+                    '                                    </button>\n' +
+                    '                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">\n' +
+                    '                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>\n' +
+                    '                                    </button>\n' +
+                    '                                    <button type="button" class="btn btn-default btn-grey btn-xs"\n' +
+                    '                                            aria-label="Left Align">\n' +
+                    '                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>\n' +
+                    '                                    </button>\n' +
+                    '                                    <button type="button" class="btn btn-default btn-grey btn-xs"\n' +
+                    '                                            aria-label="Left Align">\n' +
+                    '                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>\n' +
+                    '                                    </button>\n' +
+                    '                                </div>\n' +
+                    '                                <div class="review-block-title">this was nice in buy</div>\n' +
+                    '                                <div class="review-block-description" id="text"> '+reviews[i].tekst +'</div>\n' +
+                    '                            </div>\n' +
+                    '                        </div>\n' +
+                    '                        <hr/>';
+
+
+                //todo maak review block
+
+
+                if(reviews[i].beoordeling === 1 || reviews[i].beoordeling === 2){
+                    counterBad++;
+                }
+                if(reviews[i].beoordeling === 3 ){
+                    counterNotSoGood++;
+                }
+                if(reviews[i].beoordeling === 4 || reviews[i].beoordeling ===  5 ){
+                    counterGood++;
+                }
+
+            }
+        } else {
+            let text = document.createElement("p");
+
+            text.innerHTML = "It looks like you don't have any reviews yet..."
+
+            document.getElementById("reviewBoxList").appendChild(text);
+        }
+
+
+         document.getElementById("reviewCount").innerText = reviews.length + " Reviews";
+
+
+        //reviews
+        document.getElementById("badReviews").innerText = counterBad + " Reviews";
+        document.getElementById("positiveReview").innerText = counterGood + " Reviews";
+        document.getElementById("neutralReview").innerText = counterNotSoGood + " Reviews";
+
+
+
+    }
 
     #handleClickNavigationItem(event) {
         //Get the data-controller from the clicked element (this)

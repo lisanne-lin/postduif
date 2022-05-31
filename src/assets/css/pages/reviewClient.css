@@ -7,6 +7,16 @@
     height: 60%;
 }
 
+.review-block{
+
+    width: 300px;
+}
+.review-block-description{
+
+    width: 200px;
+    height: 200px;
+    margin-left: 20px;
+}
 .containerReview{
     margin-left: 90px;
 }
