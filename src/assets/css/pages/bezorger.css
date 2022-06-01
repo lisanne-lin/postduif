@@ -118,7 +118,7 @@ button#back:hover{
 }
 
 #map{
-    height: 200px;
+    height: 800px;
     width:auto;
     border: 1px solid red;
 }
