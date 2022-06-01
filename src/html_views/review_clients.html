@@ -4,7 +4,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://use.fontawesome.com/a6f0361695.js"></script>
-
+    <script src="js/addons/rating.js"></script>
 </head>
 
 <div class="d-flex justify-content-center">
@@ -15,10 +15,17 @@
                     <div class="row">
                         <div class="col-sm-12 col-lg-4">
                             <div class="card-body">
-                                <h4 class="card-title">Reviews</h4>
-                                <h5 class="card-subtitle">Overview of Review</h5>
-                                <h2 class="font-medium mt-5 mb-0">25426</h2>
-                                <span class="text-muted">This month we got 346 New Reviews</span>
+                                <h4 class="card-title">Company</h4>
+                                <h5 id="companyName" class="card-subtitle">Not available</h5>
+                                <h4 class="card-title">Opening hours</h4>
+                                <h5 class="card-subtitle">Not available</h5>
+                                <h4 class="card-title">Charity</h4>
+                                <h5 class="card-subtitle">Not available</h5>
+                                <h4 class="card-title">Address</h4>
+                                <h5 id="address" class="card-subtitle">Not available</h5>
+                                <h4 class="card-title">Phone number</h4>
+                                <h5 id="telephone"class="card-subtitle">Not available</h5>
+                                <h2 class="font-medium mt-5 mb-0" id="reviewCount">0</h2>
                             </div>
                         </div>
                         <div class="col-sm-12 col-lg-8 border-left">
@@ -29,10 +36,10 @@
                                             <i class="fa fa-smile-o display-5 text-muted"></i>
                                             <div class="ml-2">
                                                 <h5 class="mb-0">Positive Reviews</h5>
-                                                <span class="text-muted">25547 Reviews</span></div>
+                                                <span id="positiveReview" class="text-muted">0 Reviews</span></div>
                                         </div>
                                         <div class="progress">
-                                            <div class="positiveBar" role="progressbar" style="width: 47%"
+                                            <div id="progressGood" class="positiveBar" role="progressbar"
                                                  aria-valuenow="47" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </li>
@@ -41,10 +48,10 @@
                                             <i class="fa fa-frown-o display-5 text-muted"></i>
                                             <div class="ml-2">
                                                 <h5 class="mb-0">Negative Reviews</h5>
-                                                <span class="text-muted">5547 Reviews</span></div>
+                                                <span id="badReviews" class="text-muted">0 Reviews</span></div>
                                         </div>
                                         <div class="progress">
-                                            <div class="negativeBar" role="progressbar" style="width: 33%"
+                                            <div id="progressBad" class="negativeBar" role="progressbar"
                                                  aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </li>
@@ -53,11 +60,11 @@
                                             <i class="fa fa-meh-o display-5 text-muted"></i>
                                             <div class="ml-2">
                                                 <h5 class="mb-0">Neutral Reviews</h5>
-                                                <span class="text-muted">547 Reviews</span></div>
+                                                <span id="neutralReview" class="text-muted">0 Reviews</span></div>
                                         </div>
                                         <div class="progress">
-                                            <div class="neutralBar" role="progressbar" style="width: 20%"
-                                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div id="progressNeutral" class="neutralBar" role="progressbar"
+                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </li>
                                 </ul>
@@ -72,7 +79,24 @@
             <div class="inputCont">
                 <h2>Write your review here!</h2>
                 <textarea id="reviewBox" placeholder="Type something"></textarea>
+
+                <select id="select" style="font-size: 3rem">
+                    <option value="">--Choose an option--</option>
+                    <option value="1">Score: 1</option>
+                    <option value="2">Score: 2</option>
+                    <option value="3">Score: 3</option>
+                    <option value="4">Score: 4</option>
+                    <option value="5">Score: 5</option>
+                </select>
+                <div id="error" class="alert">
+                    <strong>Danger!</strong> Please enter a valid review!
+                </div>
+                <div id="success" class="alert success">
+                    <strong>Success!</strong> Indicates a successful or positive action.
+                </div>
+
                 <button type="button" id="buttonSend" class="btn btn-success">Submit</button>
+
             </div>
         </div>
     </div>
@@ -85,116 +109,11 @@
             <div class="row">
                 <div class="col-sm-7">
                     <hr/>
-                    <div class="review-block">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-                                <div class="review-block-name"><a href="#">nktailor</a></div>
-                                <div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="review-block-rate">
-                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default btn-grey btn-xs"
-                                            aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default btn-grey btn-xs"
-                                            aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="review-block-title">this was nice in buy</div>
-                                <div class="review-block-description">this was nice in buy. this was nice in buy. this
-                                    was
-                                    nice in buy. this was nice in buy this was nice in buy this was nice in buy this was
-                                    nice in buy this was nice in buy
-                                </div>
-                            </div>
-                        </div>
-                        <hr/>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-                                <div class="review-block-name"><a href="#">nktailor</a></div>
-                                <div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="review-block-rate">
-                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default btn-grey btn-xs"
-                                            aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default btn-grey btn-xs"
-                                            aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="review-block-title">this was nice in buy</div>
-                                <div class="review-block-description">this was nice in buy. this was nice in buy. this
-                                    was
-                                    nice in buy. this was nice in buy this was nice in buy this was nice in buy this was
-                                    nice in buy this was nice in buy
-                                </div>
-                            </div>
-                        </div>
-                        <hr/>
-
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-                                <div class="review-block-name"><a href="#">nktailor</a></div>
-                                <div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="review-block-rate">
-                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default btn-grey btn-xs"
-                                            aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default btn-grey btn-xs"
-                                            aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="review-block-title">this was nice in buy</div>
-                                <div class="review-block-description">this was nice in buy. this was nice in buy. this
-                                    was
-                                    nice in buy. this was nice in buy this was nice in buy this was nice in buy this was
-                                    nice in buy this was nice in buy
-                                </div>
-                            </div>
-                        </div>
+                    <div id="reviewBoxList" class="review-block">
 
 
                     </div>
+
                 </div>
             </div>
         </div>

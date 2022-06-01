@@ -27,10 +27,35 @@ export class PlaceOrderController extends Controller {
 
         this.#placeOrderView.querySelector("#saveButton").addEventListener("click",
             (event) => this.#saveOrder(event));
+
+        await this.#sendMail();
     }
 
-    #saveOrder(event) {
+    async #sendMail() {
+        fetch("https://api.hbo-ict.cloud/mail", {
+            headers: {
+                'Authorization': 'Bearer pad_rit_9.YRbTwIUUBpasHZ2x'
+            },
+            body: {
+                "from": {
+                    "name": "Group",
+                    "address": "group@hbo-ict.cloud"
+                },
+                "to": [
+                    {
+                        "name": "Simon Vriesema",
+                        "address": "simonvriesema@outlook.com"
+                    }
+                ],
+                "subject": "Just a test!",
+                "html": "Hello Lennard!This is an email :)"
+            }
+        })
+    }
+
+    async #saveOrder(event) {
         event.preventDefault();
+
 
 
         const naam = this.#placeOrderView.querySelector("#exampleInputName").value;

@@ -1,13 +1,25 @@
 @import url(../defaults.css);
 
-.containerProfile{
+.containerProfile {
     margin-top: 20px;
     width: 80%;
     margin-left: 10%;
     height: 60%;
 }
 
-.containerReview{
+.review-block {
+
+    width: 300px;
+}
+
+.review-block-description {
+
+    width: 200px;
+    height: 200px;
+    margin-left: 20px;
+}
+
+.containerReview {
     margin-left: 90px;
 }
 
@@ -25,8 +37,32 @@
     height: 200px;
 }
 
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
 
-.negativeBar{
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.alert.success {
+    background-color: #04AA6D;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+.negativeBar {
     float: left;
     width: 0;
     height: 100%;
@@ -35,14 +71,14 @@
     color: #fff;
     text-align: center;
     background-color: #bd4141;
-    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
     -webkit-transition: width .6s ease;
     -o-transition: width .6s ease;
     transition: width .6s ease;
 }
 
-.positiveBar{
+.positiveBar {
     float: left;
     width: 0;
     height: 100%;
@@ -51,14 +87,14 @@
     color: #fff;
     text-align: center;
     background-color: green;
-    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
     -webkit-transition: width .6s ease;
     -o-transition: width .6s ease;
     transition: width .6s ease;
 }
 
-.neutralBar{
+.neutralBar {
     float: left;
     width: 0;
     height: 100%;
@@ -67,8 +103,8 @@
     color: #fff;
     text-align: center;
     background-color: #F9E052FF;
-    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
     -webkit-transition: width .6s ease;
     -o-transition: width .6s ease;
     transition: width .6s ease;

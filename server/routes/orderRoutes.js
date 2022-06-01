@@ -22,6 +22,18 @@ class OrderRoutes {
         this.#calculateEarningsYesterday();
         this.#getPhonenumber();
         this.#saveOrder();
+        this.#getOrderByInfo();
+        this.#sortOrdersName();
+        this.#getTodaysOrder();
+        this.#getYesterdaysOrder();
+        this.#getOrderDataTwoDaysAgo();
+        this.#getOrderDataThreeDaysAgo();
+        this.#getOrderDataFourDaysAgo();
+        this.#getOrderDataFiveDaysAgo();
+        this.#getOrderDataSevenDaysAgo();
+        this.#getOrderDataTwoWeeksAgo();
+        this.#getOrderDataThreeWeeksAgo();
+        this.#getOrderDataFourWeeksAgo();
     }
 
     #saveOrder(){
@@ -43,10 +55,40 @@ class OrderRoutes {
         this.#app.get("/bestelling/getallfor", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT * FROM bestelling ORDER BY besteldatum"
+                    query: "SELECT * FROM bestelling ORDER BY besteldatum DESC"
                 });
                 //just give all data back as json, could also be empty
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #sortOrdersName() {
+        this.#app.get("/bestelling/getallforName", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT * FROM bestelling ORDER BY besteldatum DESC"
+                });
+                //just give all data back as json, could also be empty
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrderByInfo() {
+        this.#app.get("/bestelling/getOrderByInfo/:info/:info/:info/:info", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT * FROM bestelling INNER JOIN ondernemer ON bestelling.Ondernemer_ondernemer_id = ondernemer.ondernemer_id WHERE verzendnaam = ? OR verzendadres = ? OR verzend_postcode = ? OR bestelnummer = ?",
+                    values: [req.params.info, req.params.info, req.params.info, req.params.info]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
             } catch (e) {
                 res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
             }
@@ -276,6 +318,167 @@ class OrderRoutes {
             }
         });
     }
+
+    #getTodaysOrder() {
+        this.#app.get("/bestelling/getTodaysOrder/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT COUNT(bestelnummer) AS `Orders`, SUM(prijs) AS `Earnings` FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = CURDATE()",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getYesterdaysOrder() {
+        this.#app.get("/bestelling/getYesterdaysOrder/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT COUNT(bestelnummer) AS `Orders`, SUM(prijs) AS `Earnings` FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = DATE_SUB(CURDATE(), INTERVAL 1 DAY)",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrderDataTwoDaysAgo() {
+        this.#app.get("/bestelling/getOrderDataTwoDaysAgo/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT COUNT(bestelnummer) AS `Orders`, SUM(prijs) AS `Earnings` FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = DATE_SUB(CURDATE(), INTERVAL 2 DAY)",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrderDataThreeDaysAgo() {
+        this.#app.get("/bestelling/getOrderDataThreeDaysAgo/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT COUNT(bestelnummer) AS `Orders`, SUM(prijs) AS `Earnings` FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = DATE_SUB(CURDATE(), INTERVAL 3 DAY)",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrderDataFourDaysAgo() {
+        this.#app.get("/bestelling/getOrderDataFourDaysAgo/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT COUNT(bestelnummer) AS `Orders`, SUM(prijs) AS `Earnings` FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = DATE_SUB(CURDATE(), INTERVAL 4 DAY)",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrderDataFiveDaysAgo() {
+        this.#app.get("/bestelling/getOrderDataFiveDaysAgo/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT COUNT(bestelnummer) AS `Orders`, SUM(prijs) AS `Earnings` FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = DATE_SUB(CURDATE(), INTERVAL 5 DAY)",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrderDataSevenDaysAgo() {
+        this.#app.get("/bestelling/getOrderDataSevenDaysAgo/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT COUNT(bestelnummer) AS `Orders`, SUM(prijs) AS `Earnings` FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = DATE_SUB(CURDATE(), INTERVAL 7 DAY)",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrderDataTwoWeeksAgo() {
+        this.#app.get("/bestelling/getOrderDataTwoWeeksAgo/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT COUNT(bestelnummer) AS `Orders`, SUM(prijs) AS `Earnings` FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = DATE_SUB(CURDATE(), INTERVAL 14 DAY)",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrderDataThreeWeeksAgo() {
+        this.#app.get("/bestelling/getOrderDataThreeWeeksAgo/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT COUNT(bestelnummer) AS `Orders`, SUM(prijs) AS `Earnings` FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = DATE_SUB(CURDATE(), INTERVAL 21 DAY)",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+    #getOrderDataFourWeeksAgo() {
+        this.#app.get("/bestelling/getOrderDataFourWeeksAgo/:Ondernemer_ondernemer_id", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT COUNT(bestelnummer) AS `Orders`, SUM(prijs) AS `Earnings` FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum = DATE_SUB(CURDATE(), INTERVAL 28 DAY)",
+                    values: [req.params.Ondernemer_ondernemer_id]
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
     /**
      * pakt de telefoonnummer van de bestelling
      */

@@ -17,7 +17,10 @@ export class CustomersController extends Controller {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
 
         this.#customersView = await super.loadHtmlIntoContent("html_views/customers.html")
-        document.querySelector(".navbar").style.display = "block";
+        document.querySelector("#nav-orders").className = "nav-link";
+        document.querySelector("#nav-dash").className = "nav-link";
+        document.querySelector("#nav-settings").className = "nav-link";
+        document.querySelector("#nav-customers").className = "nav-link active";
 
         this.#customersView.querySelector("#search-btn").addEventListener("click", event => {
             this.#fetchCustomerByEmail(this.#customersView.querySelector("#tracktrace").value);
