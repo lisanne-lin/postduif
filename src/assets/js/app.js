@@ -31,6 +31,7 @@ import {NavbarRidersController} from "./controllers/NavbarRidersController.js";
 import {ReviewClientController} from "./controllers/reviewClientController.js";
 import {TrackOrderWithoutLoginController} from "./controllers/TrackOrderWithoutLoginController.js";
 import {clientLoginController} from "./controllers/clientLoginController.js";
+import {entrepreneurSettingsController} from "./controllers/entrepreneurSettingsController.js";
 
 export class App {
     //we only need one instance of the sessionManager, thus static use here
@@ -62,6 +63,7 @@ export class App {
     static CONTROLLER_COMPANY = "companies"
     static CONTROLLER_CLIENT_REVIEW = "review_clients";
     static CONTROLLER_CLIENT_LOGIN = "client_login";
+    static CONTROLLER_ENTREPRENEUR_SETTINGS = "entrepreneur_settings";
 
 
     constructor() {
@@ -90,6 +92,10 @@ export class App {
         switch (name) {
             case App.CONTROLLER_NAVBAR:
                 new NavbarController();
+                break;
+
+            case App.CONTROLLER_ENTREPRENEUR_SETTINGS:
+                new entrepreneurSettingsController();
                 break;
 
             case App.CONTROLLER_NAVBAR_BUSINESS:

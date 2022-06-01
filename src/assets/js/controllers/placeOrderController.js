@@ -32,34 +32,30 @@ export class PlaceOrderController extends Controller {
     }
 
     async #sendMail() {
-        var nodemailer = require('nodemailer');
-
-        var transporter = nodemailer.createTransport({
-            service: 'outlook',
-            auth: {
-                user: 'simonvriesema@outlook.com',
-                pass: 'KnolpowerHoodie1984$'
+        fetch("https://api.hbo-ict.cloud/mail", {
+            headers: {
+                'Authorization': 'Bearer pad_rit_9.YRbTwIUUBpasHZ2x'
+            },
+            body: {
+                "from": {
+                    "name": "Group",
+                    "address": "group@hbo-ict.cloud"
+                },
+                "to": [
+                    {
+                        "name": "Simon Vriesema",
+                        "address": "simonvriesema@outlook.com"
+                    }
+                ],
+                "subject": "Just a test!",
+                "html": "Hello Lennard!This is an email :)"
             }
-        });
-
-        var mailOptions = {
-            from: 'simonvriesema@outlook.com',
-            to: 'simon.vriesema@icloud.com',
-            subject: 'Sending Email using Node.js',
-            text: 'That was easy!'
-        };
-
-        transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-            }
-        });
+        })
     }
 
     async #saveOrder(event) {
         event.preventDefault();
+
 
 
         const naam = this.#placeOrderView.querySelector("#exampleInputName").value;
