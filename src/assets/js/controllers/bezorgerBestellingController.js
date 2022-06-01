@@ -3,9 +3,11 @@
  * @author Lisanne Lin
  */
 
+
 import { OrdersRepository } from "../repositories/ordersRepository.js";
 import { App } from "../app.js";
 import { Controller } from "./controller.js";
+
 
 export class bezorgerBestellingController extends Controller {
   #ordersRepository;
@@ -19,6 +21,7 @@ export class bezorgerBestellingController extends Controller {
   }
 
   async #setupView() {
+
     this.#createBezorgerBestellingView = await super.loadHtmlIntoContent(
       "html_views/bezorger_bestelling-lijst.html"
     );
@@ -55,13 +58,15 @@ export class bezorgerBestellingController extends Controller {
       document.querySelector(".order-list").appendChild(orderDetail);
     }
 
+    /**
+     * For every order, get id, and forward the id to another controller
+     */
     document.querySelectorAll(".order-detail").forEach((order) => {
       const id = order.getAttribute("id");
       order.addEventListener("click", (event) => {
         App.loadController(App.CONTROLLER_ORDER_DETAIL, { id });
-    
       });
-    });
+    })
   }
 }
 
