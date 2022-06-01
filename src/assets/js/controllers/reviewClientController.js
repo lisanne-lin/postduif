@@ -11,9 +11,7 @@ export class ReviewClientController extends Controller {
         this.#setupView();
         this.#reviewRepsitory = new ReviewRepsitory();
 
-
     }
-
 
     async #setupView() {
 
@@ -24,80 +22,64 @@ export class ReviewClientController extends Controller {
 
         const anchors = this.#reviewClient.querySelectorAll("a.nav-link");
 
-        this.#reviewClient.querySelector("#buttonSend").addEventListener("click",
-            (event) => this.#commend(event));
 
         // //set click listener on each anchor
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)))
 
 
+        let parts = window.location.href.split('#');
+        let compId = parts.pop() || parts.pop();
+
 
         this.#reviewClient.querySelector("#error").hidden = true;
         this.#reviewClient.querySelector("#success").hidden = true;
 
+        await this.#getreviewsList(compId);
+        await this.#getOndernemerInfo(compId);
 
-        await this.#getreviewsList()
+        this.#reviewClient.querySelector("#buttonSend").addEventListener("click",
+            (event) => this.#commend(compId));
+
+
     }
 
-
-
-    async #getreviewsList() {
-        let userid = 2;
+    async #getreviewsList(compId) {
         let counterBad = 0;
         let counterGood = 0;
         let counterNotSoGood = 0;
 
-        let reviews = await this.#reviewRepsitory.getReviewsById(userid);
+
+        let reviews = await this.#reviewRepsitory.getReviewsById(compId);
 
 
         if (reviews.length !== 0) {
             for (let i = 0; i < reviews.length; i++) {
 
 
-
                 let template = document.getElementById("reviewBoxList").innerHTML += '   <div class="row">\n' +
                     '                            <div class="col-sm-3">\n' +
                     '                                <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">\n' +
-                    '                                <div class="review-block-name"><a href="#">'+reviews[i].achternaam +'</a></div>\n' +
+                    '                                <div class="review-block-name"><a href="#">' + reviews[i].achternaam + '</a></div>\n' +
                     '                                <div class="review-block-date">2022-05-31<br/>1 day ago</div>\n' +
                     '                            </div>\n' +
                     '                            <div class="col-sm-9">\n' +
                     '                                <div class="review-block-rate">\n' +
-                    '                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">\n' +
-                    '                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>\n' +
-                    '                                    </button>\n' +
-                    '                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">\n' +
-                    '                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>\n' +
-                    '                                    </button>\n' +
-                    '                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">\n' +
-                    '                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>\n' +
-                    '                                    </button>\n' +
-                    '                                    <button type="button" class="btn btn-default btn-grey btn-xs"\n' +
-                    '                                            aria-label="Left Align">\n' +
-                    '                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>\n' +
-                    '                                    </button>\n' +
-                    '                                    <button type="button" class="btn btn-default btn-grey btn-xs"\n' +
-                    '                                            aria-label="Left Align">\n' +
-                    '                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>\n' +
-                    '                                    </button>\n' +
+                    '                                <div class="review-block-title">Score: ' + reviews[i].beoordeling + '/5</div>\n' +
                     '                                </div>\n' +
                     '                                <div class="review-block-title">this was nice in buy</div>\n' +
-                    '                                <div class="review-block-description" id="text"> '+reviews[i].tekst +'</div>\n' +
+                    '                                <div class="review-block-description" id="text"> ' + reviews[i].tekst + '</div>\n' +
                     '                            </div>\n' +
                     '                        </div>\n' +
                     '                        <hr/>';
 
 
-                //todo maak review block
-
-
-                if(reviews[i].beoordeling === 1 || reviews[i].beoordeling === 2){
+                if (reviews[i].beoordeling === 1 || reviews[i].beoordeling === 2) {
                     counterBad++;
                 }
-                if(reviews[i].beoordeling === 3 ){
+                if (reviews[i].beoordeling === 3) {
                     counterNotSoGood++;
                 }
-                if(reviews[i].beoordeling === 4 || reviews[i].beoordeling ===  5 ){
+                if (reviews[i].beoordeling === 4 || reviews[i].beoordeling === 5) {
                     counterGood++;
                 }
 
@@ -111,7 +93,7 @@ export class ReviewClientController extends Controller {
         }
 
 
-         document.getElementById("reviewCount").innerText = reviews.length + " Reviews";
+        document.getElementById("reviewCount").innerText = reviews.length + " Reviews";
 
 
         //reviews
@@ -119,6 +101,14 @@ export class ReviewClientController extends Controller {
         document.getElementById("positiveReview").innerText = counterGood + " Reviews";
         document.getElementById("neutralReview").innerText = counterNotSoGood + " Reviews";
 
+
+        let counterGoodTotal = counterGood / reviews.length * 100;
+        let counterNotSoGoodTotal = counterNotSoGood / reviews.length * 100;
+        let counterBadTotal = counterBad / reviews.length * 100;
+
+        document.getElementById("progressGood").style.width = counterGoodTotal + "%";
+        document.getElementById("progressNeutral").style.width = counterNotSoGoodTotal + "%";
+        document.getElementById("progressBad").style.width = counterBadTotal + "%";
 
 
     }
@@ -138,32 +128,27 @@ export class ReviewClientController extends Controller {
     }
 
 
-    #commend(event) {
-        event.preventDefault();
+    #commend(compId) {
 
-
-
-        //todo add user id
+        //todo add sessionID
         const customer_id = 1;
 
-        //todo add company id
-        const entrepreneur_id = 2;
+
+        const entrepreneur_id = compId;
         const command = this.#reviewClient.querySelector("#reviewBox").value;
 
-        //todo add rating menu
-        const rating = 5;
-
-
+        const ratings = document.getElementById('select');
+        const rating = ratings.value;
 
 
         let today = new Date();
-        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
 
-        if (command === ''){
+        if (command === '') {
 
             const error = this.#reviewClient.querySelector("#error").hidden = false;
-        }else {
+        } else {
 
             //code for db
 
@@ -173,5 +158,15 @@ export class ReviewClientController extends Controller {
 
             this.#reviewRepsitory.createReview(null, customer_id, entrepreneur_id, command, rating, date);
         }
+    }
+
+    async #getOndernemerInfo(compId) {
+        let ondernemerInfo = await this.#reviewRepsitory.getOndernemerInfoByID(compId);
+
+        document.getElementById("companyName").innerText = ondernemerInfo[0].naam;
+        document.getElementById("address").innerText = ondernemerInfo[0].adres + "\n" + ondernemerInfo[0].postcode + " " + ondernemerInfo[0].plaats;
+        document.getElementById("telephone").innerText = ondernemerInfo[0].telefoonnummer;
+        console.log(ondernemerInfo)
+        console.log(ondernemerInfo[0].naam)
     }
 }

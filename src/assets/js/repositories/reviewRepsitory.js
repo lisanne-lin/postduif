@@ -13,8 +13,12 @@ export class ReviewRepsitory {
         this.#networkManager = new NetworkManager();
     }
 
-    async getReviewsById(id){
+    async getReviewsById(id) {
         return await this.#networkManager.doRequest(`${this.#route}/getReviews/${id}`, "GET", {});
+    }
+
+    async getOndernemerInfoByID(id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getOndernemer/${id}`, "GET", {});
     }
 
     async createReview(review_id, customerId, entrepreneurId, command, rating, date) {
@@ -28,7 +32,6 @@ export class ReviewRepsitory {
                 review_date: date
             })
     }
-
 
 
 }

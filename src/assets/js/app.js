@@ -268,4 +268,5 @@ export class App {
 //When the DOM is ready, kick off our application.
 window.addEventListener("DOMContentLoaded", _ => {
     new App();
+
 });
