@@ -45,12 +45,13 @@ export class driverOrderDetailController extends Controller {
 		document.getElementById("adres").innerHTML = orderData[0].verzendadres;
 		document.getElementById("zip").innerHTML =
 			orderData[0].verzend_postcode;
+		document.getElementById("city").innerHTML = orderData[0].verzendplaats;
 		document.getElementById("phonenumber").innerHTML =
 			phonenumber.length !== 0 ? phonenumber[0].telefoonnummer : "";
 
-		// const deliverButton = document.getElementById("deliverOrder");
-		// const pickupButton = document.getElementById("pickOrder");
-		// const cancelButton = document.getElementById("cancel");
+		const deliverButton = document.getElementById("deliverOrder");
+		const pickupButton = document.getElementById("pickOrder");
+		const cancelButton = document.getElementById("cancel");
 		const backButton = document.getElementById("back");
 		backButton.addEventListener("click", (event) => {
 			App.loadController(App.CONTROLLER_BEZORGER_BESTELLING);
@@ -63,12 +64,12 @@ export class driverOrderDetailController extends Controller {
 		// marker
 		var marker = L.marker([28.238, 83.9956]).addTo(map);
 
-    /**
-     * Use openrouteservice API to find location information of the given address
-     * 
-     * @param {string} address to find information for 
-     * @returns location information of the given address (coordination etc)
-     */
+		/**
+		 * Use openrouteservice API to find location information of the given address
+		 *
+		 * @param {string} address to find information for
+		 * @returns location information of the given address (coordination etc)
+		 */
 		const findAddress = async (address) => {
 			return await fetch(
 				`https://api.openrouteservice.org/geocode/search?api_key=5b3ce3597851110001cf6248ed7e94a50da54720aeba66e7244e45a7&text=${address}&boundary.country=NL`
@@ -87,35 +88,36 @@ export class driverOrderDetailController extends Controller {
 		L.Routing.control({
 			waypoints: [
 				L.latLng(
-          businessAddress.geometry.coordinates[1],
+					businessAddress.geometry.coordinates[1],
 					businessAddress.geometry.coordinates[0]
 				),
 				L.latLng(
-          orderAddress.geometry.coordinates[1],
+					orderAddress.geometry.coordinates[1],
 					orderAddress.geometry.coordinates[0]
-				
 				),
 			],
 		}).addTo(map);
 
-		// deliverButton.style.display = "none";
-		// cancelButton.style.display = "none";
+		deliverButton.style.display = "none";
+		cancelButton.style.display = "none";
 
-		// pickupButton.onclick = function () {
-		//   deliverButton.style.display = "block";
-		//   cancelButton.style.display = "block";
+		pickupButton.addEventListener("click", displayDeliver);
+		deliverButton.addEventListener("click", () =>
+			this.#ordersRepository.updateStatus(id, "On the way")
+		);
 
-		//   pickupButton.style.display = "none";
-		//   backButton.style.display = "none";
+		function displayDeliver() {
+			deliverButton.style.display = "block";
+			cancelButton.style.display = "block";
+			pickupButton.style.display = "none";
+			backButton.style.display = "none";
+		}
 
-		//   console.log("click");
-		// };
-		// cancelButton.onclick = function () {
-		//   deliverButton.style.display = "none";
-		//   cancelButton.style.display = "none";
-
-		//   pickupButton.style.display = "block";
-		//   backButton.style.display = "block";
-		// };
+		cancelButton.onclick = function () {
+			deliverButton.style.display = "none";
+			cancelButton.style.display = "none";
+			pickupButton.style.display = "block";
+			backButton.style.display = "block";
+		};
 	}
 }
