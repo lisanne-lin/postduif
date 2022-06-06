@@ -67,11 +67,8 @@ export class App {
 
 
     constructor() {
-
         //Attempt to load the controller from the URL, if it fails, fall back to the welcome controller.
         App.loadControllerFromUrl(App.CONTROLLER_LANDING);
-
-        // App.loadControllerFromUrl(App.CONTROLLER_DASHBOARD);
     }
 
     /**
