@@ -26,7 +26,7 @@ class UsersRoutes {
         this.#app.get("/ondernemer/getIdFromEmailAdres/:emailadres", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT ondernemer_id  FROM ondernemer WHERE emailadres = ?",
+                    query: "SELECT ondernemer_id, naam FROM ondernemer WHERE emailadres = ?",
                     values: [req.params.emailadres],
                 });
 

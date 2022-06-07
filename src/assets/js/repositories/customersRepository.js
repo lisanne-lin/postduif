@@ -17,6 +17,10 @@ export class CustomersRepository {
         return await this.#networkManager.doRequest(`${this.#route}/getallfor/${entrepreneurNum}`, "GET", {});
     }
 
+    async getUserIdByEmail(emailadres){
+        return await this.#networkManager.doRequest(`${this.#route}/getIdFromEmailAdres/${emailadres}`, "GET", {});
+    }
+
     async getCustomerByEmail(emailadres){
         return await this.#networkManager.doRequest(`${this.#route}/getcustomer/${emailadres}`, "GET", {});
     }

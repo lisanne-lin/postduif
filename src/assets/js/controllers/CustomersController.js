@@ -32,8 +32,14 @@ export class CustomersController extends Controller {
             this.#fetchCustomerByEmail(this.#customersView.querySelector("#tracktrace").value);
         })
 
-        this.#customersView.querySelector("#sendmail").addEventListener("click", event => {
+        this.#customersView.querySelector("#sendmail").addEventListener("click", async event => {
+            await this.#sendMail(
+                this.#customersView.querySelector("#recipient-name").value,
+                ENTREPRENEUR_ID[0].naam,
+                this.#customersView.querySelector("#message-text").value
+            )
 
+            App.loadController(App.CONTROLLER_CUSTOMERS)
         })
 
         this.#customersView.querySelector("#dismiss-btn").addEventListener("click", event => {
@@ -73,6 +79,29 @@ export class CustomersController extends Controller {
 
             table.append(tableRow);
         }
+    }
+
+    async #sendMail(emailadres, naam, emailText) {
+        await fetch("https://api.hbo-ict.cloud/mail", {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer pad_rit_9.YRbTwIUUBpasHZ2x'
+            },
+            body: JSON.stringify({
+                "from": {
+                    "name": "Team postDuif ",
+                    "address": "group@hbo-ict.cloud"
+                },
+                "to": [
+                    {
+                        "name": naam,
+                        "address": emailadres
+                    }
+                ],
+                "subject": "Email from " + naam,
+                "html": emailText
+            })
+        })
     }
 
 

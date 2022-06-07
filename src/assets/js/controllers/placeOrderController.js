@@ -6,19 +6,25 @@
 import {Controller} from "./controller.js";
 import {OrdersRepository} from "../repositories/ordersRepository.js";
 import {App} from "../app.js";
+import {EntrepreneursRepository} from "../repositories/entrepreneursRepository.js";
 
 export class PlaceOrderController extends Controller {
     #placeOrderView;
     #ordersRepository;
+    #entrepreneursRepository;
+    #ID;
 
     constructor() {
         super();
         this.#ordersRepository = new OrdersRepository();
+        this.#entrepreneursRepository = new EntrepreneursRepository();
         this.#setupView();
     }
 
     async #setupView() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
+        const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
+        this.#ID = ENTREPRENEUR_ID[0].ondernemer_id;
 
         this.#placeOrderView = await super.loadHtmlIntoContent("html_views/place_order.html");
 
@@ -102,7 +108,7 @@ export class PlaceOrderController extends Controller {
 
             const createOrder = await this.#ordersRepository.createOrder(null, naam, adres, plaats, postcode, geschatte_bezorgdatum,
                 verzend_datum, bezorgkosten, null, null, null,
-                1, date, null, prijs);
+                this.#ID, date, null, prijs);
 
             this.#placeOrderView.querySelector("#saveButton").style.display = "none";
             this.#placeOrderView.querySelector("#loadingBtn").style.display = "block";
