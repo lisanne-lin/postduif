@@ -67,7 +67,7 @@ export class bezorgerBestellingController extends Controller {
 				case "On the way":
 					orderStatus.classList.add("on-the-way");
 					break;
-				case "Order delivered":
+				case "Delivered":
 					orderStatus.classList.add("delivered");
 					break;
 				case "Still to be picked up":

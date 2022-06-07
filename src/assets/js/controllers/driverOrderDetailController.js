@@ -34,8 +34,7 @@ export class driverOrderDetailController extends Controller {
 		// pakt het telefoonnummer van de bestelling
 		const phonenumber = await this.#ordersRepository.getPhonenumber(id);
 
-		// let orderStatus = (document.querySelector("order-status").innerHTML =
-		// 	orderData[0].status);
+		document.getElementById("orderStatus").innerHTML = orderData[0].status;
 		document.getElementById("customerName").innerHTML =
 			orderData[0].verzendnaam;
 		document.getElementById("naam").innerHTML = orderData[0].verzendnaam;
@@ -112,55 +111,50 @@ export class driverOrderDetailController extends Controller {
 		);
 
 		deliveredButton.addEventListener("click", () =>
-			this.#ordersRepository.updateStatus(id, "Order delivered")
+			this.#ordersRepository.updateStatus(id, "Delivered")
 		);
 
 		cancelOrder.addEventListener("click", () =>
 			this.#ordersRepository.updateStatus(id, "Order Cancelled")
 		);
 
-		pickupButton.onclick = function () {
-			outForDelivery.style.display = "block";
-			cancelButton.style.display = "block";
-			pickupButton.style.display = "none";
-			backButton.style.display = "none";
-		};
-		outForDelivery.onclick = function () {
-			deliveredButton.style.display = "block";
-			cancelOrder.style.display = "block";
-			outForDelivery.style.display = "none";
-			cancelButton.style.display = "none";
-			pickupButton.style.display = "none";
-			backButton.style.display = "block";
-		};
+		switch (orderData[0].status) {
+			case "Still to be picked up":
+				orderStatus.classList.add("pickup");
+				pickupButton.style.display = "block";
+				pickupButton.onclick = function () {
+					outForDelivery.style.display = "block";
+					cancelButton.style.display = "block";
+					pickupButton.style.display = "none";
+					backButton.style.display = "none";
+				};
 
-		cancelButton.onclick = function () {
-			outForDelivery.style.display = "none";
-			cancelButton.style.display = "none";
-			pickupButton.style.display = "block";
-			backButton.style.display = "block";
-		};
+			case "On the way":
+				orderStatus.classList.add("on-the-way");
+				pickupButton.style.display = "none";
+				pickupButton.classList.add("disabled");
+				cancelOrder.style.display = "block";
+				outForDelivery.onclick = function () {
+					pickupButton.style.display = "none";
+					outForDelivery.style.display = "none";
+					pickupButton.classList.add("disabled");
+					deliveredButton.style.display = "block";
+					cancelOrder.style.display = "block";
+				};
+				break;
 
-		deliveredButton.onclick = function () {
-			cancelButton.style.display = "none";
-			deliveredButton.classList.add("disabled");
-			deliveredButton.setAttribute("disabled", "disabled");
-		};
+			case "Delivered":
+				pickupButton.classList.add("disabled");
+				pickupButton.setAttribute("disabled", "");
+				orderStatus.classList.add("delivered");
+				// deliveredButton.onclick.alert = "Order Delivered confirmed";
+				break;
 
-		// switch (orderData[0].status) {
-		// 	case "Order Cancelled":
-		// 		cancelButton.style.display = "none";
-		// 		deliveredButton.classList.add("disabled");
-		// 		deliveredButton.setAttribute("disabled", "disabled");
-		// 		break;
-		// case "On the way":
-		// 	orderStatus.classList.add("on-the-way");
-		// 	break;
-		// case "Delivered":
-		// 	orderStatus.classList.add("Delivered");
-		// 	break;
-		// case "Still to be picked up":
-		// 	orderStatus.classList.add("pickup");
-		// }
+			case "Order Cancelled":
+				orderStatus.classList.add("order-cancelled");
+				pickupButton.classList.add("disabled");
+				deliveredButton.setAttribute("disabled", "");
+				break;
+		}
 	}
 }
