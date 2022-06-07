@@ -184,8 +184,6 @@ export class DashboardController extends Controller {
 
     async #fetchEarningsToday() {
         const amount = await this.#ordersRepository.calculateEarningsToday(this.#ID);
-
-        console.log(amount)
         if (amount.prijs == null) {
             this.#dashboardView.querySelector("#earnings-today").innerHTML = " -.--"
         } else {
@@ -195,6 +193,7 @@ export class DashboardController extends Controller {
 
     async #fetchEarningsWeek() {
         const amount = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
+
         if (amount.prijs == null) {
             this.#dashboardView.querySelector("#earnings-week").innerHTML = " -.--"
         } else {

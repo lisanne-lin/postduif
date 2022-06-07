@@ -52,13 +52,13 @@ export class OrdersController extends Controller {
             this.#deleteOrder(this.#orderView.querySelector("#order-num").value)
         })
 
-        this.#fetchOrders();
+        await this.#fetchOrders();
     }
 
     async #fetchOrders() {
         const orderData = await this.#ordersRepository.getOrdersFromUser(this.#ID);
 
-        for (let i = 0; i < 60; i++) {
+        for (let i = 0; i < orderData.length; i++) {
             let data = orderData[i];
             const table = this.#orderView.querySelector("#orders-tbody");
             let tableRow = table.insertRow()
