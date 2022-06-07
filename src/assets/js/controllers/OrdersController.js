@@ -8,14 +8,18 @@
 import {OrdersRepository} from "../repositories/ordersRepository.js";
 import {App} from "../app.js";
 import {Controller} from "./controller.js";
+import {EntrepreneursRepository} from "../repositories/entrepreneursRepository.js";
 
 export class OrdersController extends Controller {
     #ordersRepository
+    #entrepreneursRepository
     #orderView
+    #ID;
 
     constructor() {
         super();
         this.#ordersRepository = new OrdersRepository();
+        this.#entrepreneursRepository = new EntrepreneursRepository();
         this.#setupView();
     }
 
@@ -26,6 +30,8 @@ export class OrdersController extends Controller {
      */
     async #setupView() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
+        const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
+        this.#ID = ENTREPRENEUR_ID[0].ondernemer_id;
 
         this.#orderView = await super.loadHtmlIntoContent("html_views/orders.html")
         document.querySelector(".navbar").style.display = "block";
@@ -168,10 +174,6 @@ export class OrdersController extends Controller {
         this.#orderView.querySelector("#save-btn2").addEventListener("click", event => {this.#saveOrder()})
     }
 
-    async #saveOrder() {
-
-    }
-
     async #fetchOrderByNum(orderNum) {
         try {
             const orderData = await this.#ordersRepository.getOrderByOrderNum(orderNum);
@@ -181,7 +183,6 @@ export class OrdersController extends Controller {
                 let orderStreet = this.#orderView.querySelector("#order-street");
                 let orderZip = this.#orderView.querySelector("#order-zip");
                 let orderResidence = this.#orderView.querySelector("#order-residence");
-                // let orderEmail = this.#orderView.querySelector("#order-email");
                 let orderRemark = this.#orderView.querySelector("#order-remark");
                 let orderStatus = this.#orderView.querySelector("#order-status");
                 let orderEstimate = this.#orderView.querySelector("#order-estimate");
@@ -216,6 +217,5 @@ export class OrdersController extends Controller {
             this.#orderView.querySelector("#order-error").style = "block"
             this.#orderView.querySelector("#order-overview").style.display = "none";
         }
-
     }
 }

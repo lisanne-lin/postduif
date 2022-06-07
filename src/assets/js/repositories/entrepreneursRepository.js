@@ -12,6 +12,10 @@ export class EntrepreneursRepository {
         this.#networkManager = new NetworkManager();
     }
 
+    async getUserIdByEmail(emailadres) {
+        return await this.#networkManager.doRequest(`${this.#route}/getIdFromEmailAdres/${emailadres}`, "GET");
+    }
+
     async createEntrepreneur(ondernemer_id, naam, eigenaar, adres, plaats, postcode, telefoonnummer, emailadres, wachtwoord) {
         this.#networkManager.doRequest(this.#route, "POST",
             {

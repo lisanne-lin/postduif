@@ -17,8 +17,26 @@ class UsersRoutes {
     constructor(app) {
         this.#app = app;
 
-        this.#login()
-        this.#getEntrepreneurById()
+        this.#login();
+        this.#getEntrepreneurById();
+        this.#getIdFromEmailAdres();
+    }
+
+    #getIdFromEmailAdres() {
+        this.#app.get("/ondernemer/getIdFromEmailAdres/:emailadres", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT ondernemer_id  FROM ondernemer WHERE emailadres = ?",
+                    values: [req.params.emailadres],
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
+                    reason: e,
+                });
+            }
+        });
     }
 
     /**
@@ -34,7 +52,7 @@ class UsersRoutes {
 
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT emailadres, wachtwoord FROM ondernemer WHERE emailadres = ? AND wachtwoord = ?",
+                    query: "SELECT emailadres, wachtwoord, ondernemer_id  FROM ondernemer WHERE emailadres = ? AND wachtwoord = ?",
                     values: [emailadres, wachtwoord]
                 });
 
