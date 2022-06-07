@@ -46,10 +46,9 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT * FROM bestelling WHERE Ondernemer_ondernemer_id = ?",
+						query: "SELECT * FROM bestelling WHERE Ondernemer_ondernemer_id = ? ORDER BY besteldatum DESC LIMIT 60",
 						values: [req.params.Ondernemer_ondernemer_id],
 					});
-					//just give all data back as json, could also be empty
 					res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
 				} catch (e) {
 					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
@@ -255,7 +254,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = 1 AND besteldatum BETWEEN curdate()-7 AND curdate()",
+						query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum between date_sub(now(),INTERVAL 1 WEEK) and date_sub(now(),INTERVAL 0 WEEK);",
 						values: [req.params.Ondernemer_ondernemer_id],
 					});
 
@@ -277,7 +276,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = 1 AND besteldatum BETWEEN curdate()-14 AND curdate()-7",
+						query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum between date_sub(now(),INTERVAL 2 WEEK) AND date_sub(now(), INTERVAL 1 WEEK);",
 						values: [req.params.Ondernemer_ondernemer_id],
 					});
 
@@ -299,7 +298,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = 1 AND besteldatum BETWEEN curdate()-30 AND curdate()",
+						query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum >= DATE_ADD(curdate(), INTERVAL -30 DAY)",
 						values: [req.params.Ondernemer_ondernemer_id],
 					});
 
@@ -321,7 +320,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = 1 AND besteldatum BETWEEN curdate()-60 AND curdate()-30",
+						query: "SELECT SUM(prijs) FROM bestelling WHERE Ondernemer_ondernemer_id = ? AND besteldatum between date_sub(now(),INTERVAL -60 DAY) and date_sub(now(),INTERVAL -30 DAY);",
 						values: [req.params.Ondernemer_ondernemer_id],
 					});
 
@@ -343,7 +342,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(bezorgkosten)*0.04 FROM bestelling WHERE Ondernemer_ondernemer_id = 1",
+						query: "SELECT SUM(bezorgkosten)*0.04 FROM bestelling WHERE Ondernemer_ondernemer_id = ?",
 						values: [req.params.Ondernemer_ondernemer_id],
 					});
 

@@ -48,13 +48,9 @@ export class OrdersRepository {
 		});
 	}
 
-	async getOrderNumFromEmailAndName() {
-
-	}
-
 	async getOrdersFromUser(Ondernemer_ondernemer_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/getOrdersFromUser/${Ondernemer_ondernemer_id}`, "PUT", {}
+			`${this.#route}/getOrdersFromUser/${Ondernemer_ondernemer_id}`, "GET", {}
 		);
 	}
 

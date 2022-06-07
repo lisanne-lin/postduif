@@ -19,10 +19,6 @@ export class TrackOrderController extends Controller {
 
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
-        // const CUSTOMER_ID = await this.#customersRepository.getUserIdByEmail(App.sessionManager.get("username"))
-        // this.#ID = CUSTOMER_ID[0].klantnummer;
-
-        console.log(this.#ID)
 
         this.#trackView = await super.loadHtmlIntoContent("html_views/track_order.html");
 
@@ -34,15 +30,18 @@ export class TrackOrderController extends Controller {
             this.#fetchOrderByNumAndZip(this.#trackView.querySelector("#tracktrace").value, this.#trackView.querySelector("#input-zip").value);
         })
 
-        const customerData = await this.#customersRepository.getCustomerById(1);
+        const CUSTOMER_ID = await this.#customersRepository.getUserIdByEmail(App.sessionManager.get("username"));
+        this.#ID = CUSTOMER_ID[0].klantnummer
 
-        this.#trackView.querySelector("#welcomename").innerHTML = customerData[0].voornaam
+        const customerData = await this.#customersRepository.getCustomerById(this.#ID);
+
+        this.#trackView.querySelector("#welcomename").innerHTML = CUSTOMER_ID[0].voornaam
 
         await this.#getOrderHistory()
     }
 
     async #getOrderHistory() {
-        const orders = await this.#customersRepository.getOrdersFromCustomer(1);
+        const orders = await this.#customersRepository.getOrdersFromCustomer(this.#ID);
 
         if (orders.length !== 0) {
             for (let i = 0; i < orders.length; i++) {
@@ -183,7 +182,7 @@ export class TrackOrderController extends Controller {
             this.#trackView.querySelector("#save-btn").style.display = "block";
 
             this.#trackView.querySelector("#save-btn").addEventListener("click", event => {
-                this.#ordersRepository.saveOrder(orderData[0].bestelnummer, 1)
+                this.#ordersRepository.saveOrder(orderData[0].bestelnummer, this.#ID)
             })
         } catch (e) {
             this.#trackView.querySelector("#order-found").style.display = "none";
