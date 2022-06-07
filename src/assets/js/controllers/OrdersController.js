@@ -55,12 +55,8 @@ export class OrdersController extends Controller {
         this.#fetchOrders();
     }
 
-    /**
-     * async function that retrieves a room by its id via the right repository
-     * @private
-     */
     async #fetchOrders() {
-        const orderData = await this.#ordersRepository.getOrders();
+        const orderData = await this.#ordersRepository.getOrdersFromUser(this.#ID);
 
         for (let i = 0; i < 60; i++) {
             let data = orderData[i];
@@ -171,7 +167,7 @@ export class OrdersController extends Controller {
         this.#orderView.querySelector("#exampleInputStatus").value = orderData[0].prijs
         this.#orderView.querySelector("#exampleInputBezorgkosten").value = orderData[0].bezorgkosten
 
-        this.#orderView.querySelector("#save-btn2").addEventListener("click", event => {this.#saveOrder()})
+        // this.#orderView.querySelector("#save-btn2").addEventListener("click", event => {this.#saveOrder()})
     }
 
     async #fetchOrderByNum(orderNum) {

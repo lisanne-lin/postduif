@@ -152,7 +152,7 @@ export class DashboardController extends Controller {
     }
 
     async #fetchOrders() {
-        const orderData = await this.#ordersRepository.getOrders();
+        const orderData = await this.#ordersRepository.getOrdersFromUser(this.#ID);
         const maxOrders = 8
 
         for (let i = 0; i < maxOrders; i++) {

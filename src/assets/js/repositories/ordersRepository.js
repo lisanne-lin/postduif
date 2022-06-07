@@ -1,7 +1,7 @@
 /**
  * Repository voor Entity Orders
  */
-import { NetworkManager } from "../framework/utils/networkManager.js";
+import {NetworkManager} from "../framework/utils/networkManager.js";
 
 export class OrdersRepository {
 	#networkManager;
@@ -29,7 +29,7 @@ export class OrdersRepository {
 		status,
 		prijs
 	) {
-		this.#networkManager.doRequest(this.#route, "POST", {
+		return await this.#networkManager.doRequest(this.#route, "POST", {
 			bestelnummer: bestelnummer,
 			verzendnaam: verzendnaam,
 			verzendadres: verzendadres,
@@ -46,6 +46,16 @@ export class OrdersRepository {
 			status: status,
 			prijs: prijs,
 		});
+	}
+
+	async getOrderNumFromEmailAndName() {
+
+	}
+
+	async getOrdersFromUser(Ondernemer_ondernemer_id) {
+		return await this.#networkManager.doRequest(
+			`${this.#route}/getOrdersFromUser/${Ondernemer_ondernemer_id}`, "PUT", {}
+		);
 	}
 
 	async saveOrder(bestelnummer, Klant_klantnummer) {

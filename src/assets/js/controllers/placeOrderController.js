@@ -28,37 +28,40 @@ export class PlaceOrderController extends Controller {
         this.#placeOrderView.querySelector("#saveButton").addEventListener("click",
             (event) => this.#saveOrder(event));
 
-        await this.#sendMail();
     }
 
-    async #sendMail() {
-        fetch("https://api.hbo-ict.cloud/mail", {
+    async #sendMail(emailadres, naam, bestelnummer) {
+        await fetch("https://api.hbo-ict.cloud/mail", {
+            method: 'POST',
             headers: {
                 'Authorization': 'Bearer pad_rit_9.YRbTwIUUBpasHZ2x'
             },
-            body: {
+            body: JSON.stringify({
                 "from": {
-                    "name": "Group",
+                    "name": "Team postDuif ",
                     "address": "group@hbo-ict.cloud"
                 },
                 "to": [
                     {
-                        "name": "Simon Vriesema",
-                        "address": "simonvriesema@outlook.com"
+                        "name": naam,
+                        "address": emailadres
                     }
                 ],
-                "subject": "Just a test!",
-                "html": "Hello Lennard!This is an email :)"
-            }
+                "subject": "Track & Trace: " + bestelnummer,
+                "html": "Dear " + naam + ",\n\nIn order to track your order, you will need to enter this Track & Trace code on the postDuif website: " + bestelnummer +
+                    ". \n" +
+                    "Kind regards,\n" +
+                    "\n" +
+                    "Team postDuif"
+            })
         })
     }
 
     async #saveOrder(event) {
         event.preventDefault();
 
-
-
         const naam = this.#placeOrderView.querySelector("#exampleInputName").value;
+        const emailadres = this.#placeOrderView.querySelector("#exampleInputEmail").value;
         const adres = this.#placeOrderView.querySelector("#exampleInputAdres").value;
         const plaats = this.#placeOrderView.querySelector("#exampleInputPlaats").value;
         const postcode = this.#placeOrderView.querySelector("#exampleInputPostcode").value;
@@ -74,11 +77,6 @@ export class PlaceOrderController extends Controller {
 
         let date;
 
-        console.log(adresRegex.test(adres));
-        console.log(postcodeRegex.test(postcode));
-        console.log(geschatte_bezorgdatum)
-        console.log(verzend_datum)
-
         if (naam == "" || naam == " " || naam == null) {
             errorBox.innerHTML = "Name is too short or not entered correctly"
         } else if (!adresRegex.test(adres)) {
@@ -87,7 +85,7 @@ export class PlaceOrderController extends Controller {
             errorBox.innerHTML = "Please choose a place"
         } else if (!postcodeRegex.test(postcode)) {
             errorBox.innerHTML = "Zip is too short or not entered correctly"
-        } else if (geschatte_bezorgdatum == null || geschatte_bezorgdatum=="") {
+        } else if (geschatte_bezorgdatum == null || geschatte_bezorgdatum == "") {
             errorBox.innerHTML = "Please choose an estimated delivery date"
         } else if (verzend_datum == null || verzend_datum == "") {
             errorBox.innerHTML = "Please choose a shipping date"
@@ -102,16 +100,18 @@ export class PlaceOrderController extends Controller {
                 ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
                 ('00' + date.getUTCDate()).slice(-2);
 
-            this.#ordersRepository.createOrder(null, naam, adres, plaats, postcode, geschatte_bezorgdatum,
+            const createOrder = await this.#ordersRepository.createOrder(null, naam, adres, plaats, postcode, geschatte_bezorgdatum,
                 verzend_datum, bezorgkosten, null, null, null,
                 1, date, null, prijs);
 
             this.#placeOrderView.querySelector("#saveButton").style.display = "none";
             this.#placeOrderView.querySelector("#loadingBtn").style.display = "block";
 
+            this.#sendMail(emailadres, naam, createOrder.bestelnummer);
+
             setTimeout(function () {
                 App.loadController(App.CONTROLLER_ORDERS)
-            }, 4000);
+            }, 2000);
         }
     }
 }
