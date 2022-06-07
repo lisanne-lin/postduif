@@ -91,19 +91,22 @@ p.order-number{
     font-weight: bold;
 }
 
-button#pickOrder, button#deliverOrder{
-    /* background-color:var(--status-onderweg); */
+button#pickOrder, button#outForDelivery, button#orderDelivered{
     padding: 10px 55px;
     border-radius: 5px;
     font-weight: bold;
     margin-bottom: 10px;
+
+}
+button#orderDelivered{
+    background-color:var(--status-bezorgd);
 }
 
 button#deliverOrder{
-    background-color: var(--secondary);
+    background-color: var(--status-onderweg);
 }
 
-button#back, button#cancel{
+button#back, button#cancel, button#cancelOrder{
     background-color:transparent;
     font-weight: 300;
     color:var(--gray-800);
@@ -120,7 +123,6 @@ button#back:hover{
 #map{
     height: 500px;
     width:auto;
-    border: 1px solid red;
 }
 
 @media (max-width: 767.98px) {

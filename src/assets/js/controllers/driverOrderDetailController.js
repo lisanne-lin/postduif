@@ -49,10 +49,12 @@ export class driverOrderDetailController extends Controller {
 		document.getElementById("phonenumber").innerHTML =
 			phonenumber.length !== 0 ? phonenumber[0].telefoonnummer : "";
 
-		const deliverButton = document.getElementById("deliverOrder");
+		const outForDelivery = document.getElementById("outForDelivery");
 		const pickupButton = document.getElementById("pickOrder");
 		const cancelButton = document.getElementById("cancel");
 		const backButton = document.getElementById("back");
+		const cancelOrder = document.getElementById("cancelOrder");
+		const deliveredButton = document.getElementById("orderDelivered");
 		backButton.addEventListener("click", (event) => {
 			App.loadController(App.CONTROLLER_BEZORGER_BESTELLING);
 		});
@@ -98,24 +100,52 @@ export class driverOrderDetailController extends Controller {
 			],
 		}).addTo(map);
 
-		deliverButton.style.display = "none";
+		outForDelivery.style.display = "none";
 		cancelButton.style.display = "none";
+		deliveredButton.style.display = "none";
+		cancelOrder.style.display = "none";
 
-		pickupButton.addEventListener("click", displayDeliver);
-		deliverButton.addEventListener("click", () =>
+		outForDelivery.addEventListener("click", () =>
 			this.#ordersRepository.updateStatus(id, "On the way")
 		);
 
-		function displayDeliver() {
-			deliverButton.style.display = "block";
-			cancelButton.style.display = "block";
+		deliveredButton.addEventListener(
+			"click",
+			() => this.#ordersRepository.updateStatus(id, "Order Delivered")
+			// this.#deleteOrder(id)
+		);
+
+		cancelOrder.addEventListener("click", () =>
+			this.#ordersRepository.updateStatus(id, "Order Cancelled")
+		);
+
+		pickupButton.onclick = function () {
+			outForDelivery.style.cssText = `"display:block" "text-align:center";`;
+			cancelButton.style.cssText = `"display:block" "text-align:center";`;
 			pickupButton.style.display = "none";
 			backButton.style.display = "none";
-		}
+		};
+		outForDelivery.onclick = function () {
+			deliveredButton.style.cssText = `"display: block;" "text-align:center";`;
+			cancelOrder.style.display = "block";
+			outForDelivery.style.display = "none";
+			cancelButton.style.display = "none";
+			pickupButton.style.display = "none";
+			backButton.style.display = "block";
+		};
 
 		cancelButton.onclick = function () {
-			deliverButton.style.display = "none";
+			outForDelivery.style.display = "none";
 			cancelButton.style.display = "none";
+			pickupButton.style.display = "block";
+			backButton.style.display = "block";
+		};
+
+		cancelOrder.onclick = function () {
+			cancelButton.style.display = "none";
+			outForDelivery.style.display = "none";
+			cancelButton.style.display = "none";
+			deliveredButton.style.display = "none";
 			pickupButton.style.display = "block";
 			backButton.style.display = "block";
 		};

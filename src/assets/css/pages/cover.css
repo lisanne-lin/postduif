@@ -17,11 +17,6 @@
     color: var(--black);
 }
 
-
-/*.logged-in {*/
-/*    display: none;*/
-/*}*/
-
 .navbar-dark .navbar-nav .nav-link {
     color: var(--black);
     font-weight: 600;

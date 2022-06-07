@@ -75,7 +75,8 @@ header{
     height: calc(100vh - 48px);
     padding-top: .5rem;
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: auto; 
 }
 
 .sidebar .nav-link {
