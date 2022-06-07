@@ -1,10 +1,11 @@
 @import url(../defaults.css);
 
-#test{
+#test {
 
     overflow-x: hidden;
 
 }
+
 .containerProfile {
     margin-top: 20px;
     width: 80%;
@@ -12,12 +13,13 @@
     height: 60%;
 }
 
-#reviewBoxList{
+#reviewBoxList {
     overflow-x: hidden;
     height: 700px;
     overflow-y: auto;
 
 }
+
 .review-block {
     width: 300px;
 }
@@ -144,4 +146,19 @@
     max-width: 200px;
     padding: 10px 40px 10px 40px;
     border-radius: 10px;
+}
+
+@media (max-width: 767.98px) {
+    #test {
+        overflow: auto;
+    }
+
+    .col-sm-12 col-lg-4 {
+        width: 70%;
+    }
+
+    .row {
+        width: 3000px;
+    }
+
 }
