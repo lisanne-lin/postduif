@@ -36,7 +36,7 @@ export class PlaceOrderController extends Controller {
 
     }
 
-    async #sendMail(emailadres, naam, bestelnummer) {
+    async #sendMail(emailadres, naam, bestelnummer, postcode) {
         await fetch("https://api.hbo-ict.cloud/mail", {
             method: 'POST',
             headers: {
@@ -55,8 +55,8 @@ export class PlaceOrderController extends Controller {
                 ],
                 "subject": "Track & Trace: " + bestelnummer,
                 "html": "Dear " + naam + ",\n\nIn order to track your order, you will need to enter this Track & Trace code on the postDuif website: " + bestelnummer +
-                    ". \n" +
-                    "Kind regards,\n" +
+                    ", and your zip: " + postcode +
+                    ". Kind regards,\n" +
                     "\n" +
                     "Team postDuif"
             })
@@ -113,7 +113,7 @@ export class PlaceOrderController extends Controller {
             this.#placeOrderView.querySelector("#saveButton").style.display = "none";
             this.#placeOrderView.querySelector("#loadingBtn").style.display = "block";
 
-            this.#sendMail(emailadres, naam, createOrder.bestelnummer);
+            this.#sendMail(emailadres, naam, createOrder.bestelnummer, postcode);
 
             setTimeout(function () {
                 App.loadController(App.CONTROLLER_ORDERS)
