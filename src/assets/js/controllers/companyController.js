@@ -23,6 +23,8 @@ export class CompanyController extends Controller {
 
 
 
+        document.querySelector(".navbar").style.display = "none";
+
         this.#getreviewsList();
     }
 
@@ -37,13 +39,13 @@ export class CompanyController extends Controller {
 
         for (let i = 0; i < abouts.length; i++) {
 
-            let template = document.getElementById("abouts").innerHTML += ' <div  id="box"><a href="#' + abouts[i].ondernemer_id + '"  class="list-group-item list-group-item-action flex-column align-items-start business-login">\n' +
+            let template = document.getElementById("abouts").innerHTML += ' <div  id="box"><a href="#' + abouts[i].ondernemer_id + '"  style="background-color: #FFFCE8;" class="list-group-item list-group-item-action flex-column align-items-start business-login">\n' +
                 '            <div class="d-flex w-100 justify-content-between">\n' +
                 '                <h5 class="mb-1">' + abouts[i].naam + '</h5>\n' +
                 '                <small class="text-muted">' + abouts[i].telefoonnummer + '</small>\n' +
                 '            </div>\n' +
-                '            <p class="mb-1">Adres '+ abouts[i].adres  + '<br> ' + abouts[i].postcode  + '<br> ' + abouts[i].plaats +' \</p>\n' +
-                '            <small class="text-muted">' + abouts[i].eigenaar + '</small><br><br> <button id="boxing"  data-controller="review_clients" type="button" class="btn btn-secondary btn-sm">More info</button> \n' +
+                '            <p class="mb-1"> '+ abouts[i].adres  + '<br> ' + abouts[i].postcode  + '<br> ' + abouts[i].plaats +' \</p>\n' +
+                '            <small class="text-muted">' + abouts[i].eigenaar + '</small><br><br> <button id="boxing"  data-controller="review_clients" type="button" style="background-color: #377E7F" class="btn btn-secondary btn-sm">More info</button> \n' +
 
                 '        </a></div>\n';
 

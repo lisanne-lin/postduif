@@ -15,10 +15,10 @@ export class ReviewClientController extends Controller {
 
     async #setupView() {
 
-        App.loadController(App.CONTROLLER_NAVBAR_RIDERS);
+        App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
         //await for when HTML is loaded, never skip this method call in a controller
         this.#reviewClient = await super.loadHtmlIntoContent("html_views/review_clients.html")
-        document.querySelector("#postDuifLogo").innerHTML = "PostDuif Bezorger";
+        // document.querySelector("#postDuifLogo").innerHTML = "PostDuif Bezorger";
 
         const anchors = this.#reviewClient.querySelectorAll("a.nav-link");
 
@@ -28,6 +28,8 @@ export class ReviewClientController extends Controller {
 
 
         let parts = window.location.href.split('#');
+
+
         let compId = parts.pop() || parts.pop();
 
 
@@ -58,9 +60,8 @@ export class ReviewClientController extends Controller {
 
                 let template = document.getElementById("reviewBoxList").innerHTML += '   <div class="row">\n' +
                     '                            <div class="col-sm-3">\n' +
-                    '                                <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">\n' +
                     '                                <div class="review-block-name"><a href="#">' + reviews[i].achternaam + '</a></div>\n' +
-                    '                                <div class="review-block-date">2022-05-31<br/>1 day ago</div>\n' +
+                    '                                <div class="review-block-date">2022-05-31<br/></div>\n' +
                     '                            </div>\n' +
                     '                            <div class="col-sm-9">\n' +
                     '                                <div class="review-block-rate">\n' +
@@ -144,7 +145,7 @@ export class ReviewClientController extends Controller {
         let today = new Date();
         let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-
+            //check if something is filled in the review box
         if (command === '') {
 
             const error = this.#reviewClient.querySelector("#error").hidden = false;
@@ -157,6 +158,8 @@ export class ReviewClientController extends Controller {
 
 
             this.#reviewRepsitory.createReview(null, customer_id, entrepreneur_id, command, rating, date);
+
+
             App.loadController('review_clients');
             return false;
         }

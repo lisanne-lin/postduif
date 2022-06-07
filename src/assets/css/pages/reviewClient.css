@@ -13,14 +13,12 @@
 }
 
 #reviewBoxList{
-
     overflow-x: hidden;
     height: 700px;
     overflow-y: auto;
 
 }
 .review-block {
-
     width: 300px;
 }
 
@@ -126,4 +124,24 @@
     width: 900px;
 }
 
+.btn-submit {
+    background-color: var(--secondary);
+    border: none;
+    color: white;
+    transition: 0.3s;
+    width: auto;
+    max-width: 200px;
+    padding: 8px 40px 8px 40px;
+    border-radius: 10px;
+}
 
+.chooseScore {
+    background-color: var(--secondary);
+    border: none;
+    color: white;
+    transition: 0.3s;
+    width: auto;
+    max-width: 200px;
+    padding: 10px 40px 10px 40px;
+    border-radius: 10px;
+}
