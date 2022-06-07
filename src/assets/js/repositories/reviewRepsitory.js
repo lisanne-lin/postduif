@@ -1,5 +1,5 @@
 /**
- * Repository voor bezorger
+ * Repository voor review
  * @author Joy Park
  */
 import {NetworkManager} from "../framework/utils/networkManager.js";

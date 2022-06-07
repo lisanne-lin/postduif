@@ -157,6 +157,8 @@ export class ReviewClientController extends Controller {
 
 
             this.#reviewRepsitory.createReview(null, customer_id, entrepreneur_id, command, rating, date);
+            App.loadController('review_clients');
+            return false;
         }
     }
 

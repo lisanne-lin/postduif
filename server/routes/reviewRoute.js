@@ -40,7 +40,7 @@ class ReviewRoute {
         this.#app.get("/review/getOndernemer/:id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT naam, adres, plaats, postcode, telefoonnummer, initiatief FROM ondernemer WHERE ondernemer_id = ?",
+                    query: "SELECT naam, adres, plaats, postcode, telefoonnummer FROM ondernemer WHERE ondernemer_id = ?",
                     values: [req.params.id]
                 });
 
