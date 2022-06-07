@@ -6,7 +6,7 @@
  */
 const {request} = require("express");
 
-class ReviewRoute {
+class CompanyRoute {
     #app;
     #databaseHelper = require("../framework/utils/databaseHelper")
     #httpErrorCodes = require("../framework/utils/httpErrorCodes");
@@ -16,6 +16,7 @@ class ReviewRoute {
         this.#app = app;
         this.#createReview();
         this.#getReviewsById();
+        this.#getAbout();
         this.#getOndernemerInfoByID();
     }
 
@@ -40,7 +41,7 @@ class ReviewRoute {
         this.#app.get("/review/getOndernemer/:id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT naam, adres, plaats, postcode, telefoonnummer FROM ondernemer WHERE ondernemer_id = ?",
+                    query: "SELECT naam, adres, plaats, postcode, telefoonnummer, initiatief FROM ondernemer WHERE ondernemer_id = ?",
                     values: [req.params.id]
                 });
 
@@ -70,6 +71,24 @@ class ReviewRoute {
             }
         })
     }
+
+    #getAbout() {
+        this.#app.get("/about/abouts/", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT `ondernemer_id`, `naam`,`eigenaar`, `adres`, `plaats`, `postcode`, `telefoonnummer`, `emailadres` FROM `ondernemer` ",
+
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e})
+            }
+        });
+    }
+
+
 }
 
-module.exports = ReviewRoute;
+module.exports = CompanyRoute;

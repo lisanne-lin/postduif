@@ -8,6 +8,7 @@ export class DashboardController extends Controller {
     #ordersRepository
     #entrepreneursRepository
     #dashboardView;
+    #ID;
 
     constructor() {
         super();
@@ -18,6 +19,8 @@ export class DashboardController extends Controller {
 
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
+        const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
+        this.#ID = ENTREPRENEUR_ID[0].ondernemer_id;
 
         this.#dashboardView = await super.loadHtmlIntoContent("html_views/dashboard.html");
 
@@ -43,12 +46,12 @@ export class DashboardController extends Controller {
     }
 
     async #fetchPercentages() {
-        const orderDataToday = await this.#ordersRepository.calculateEarningsToday(1);
-        const orderDataYesterday = await this.#ordersRepository.calculateEarningsYesterday(1);
-        const orderDataWeek = await this.#ordersRepository.calculateEarningsWeek(1);
-        const orderDataLastWeek = await this.#ordersRepository.calculateEarningsLastWeek(1);
-        const orderDataMonth = await this.#ordersRepository.calculateEarningsMonth(1);
-        const orderDataLastMonth = await this.#ordersRepository.calculateEarningsLastMonth(1);
+        const orderDataToday = await this.#ordersRepository.calculateEarningsToday(this.#ID);
+        const orderDataYesterday = await this.#ordersRepository.calculateEarningsYesterday(this.#ID);
+        const orderDataWeek = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
+        const orderDataLastWeek = await this.#ordersRepository.calculateEarningsLastWeek(this.#ID);
+        const orderDataMonth = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
+        const orderDataLastMonth = await this.#ordersRepository.calculateEarningsLastMonth(this.#ID);
 
         const percentageToday = (((orderDataYesterday.prijs - orderDataToday.prijs) / orderDataToday.prijs) * 100);
         const percentageWeek = (((orderDataLastWeek.prijs - orderDataWeek.prijs) / orderDataWeek.prijs) * 100);
@@ -60,22 +63,22 @@ export class DashboardController extends Controller {
     }
 
     async #fetchEntrepreneurData() {
-        const data = await this.#entrepreneursRepository.getEntrepreneurById(1);
+        const data = await this.#entrepreneursRepository.getEntrepreneurById(this.#ID);
         this.#dashboardView.querySelector("#businessOwner").innerHTML = data[0].eigenaar;
         this.#dashboardView.querySelector("#businessName").innerHTML = data[0].naam;
     }
 
     async #fetchChartData() {
-        const DATA_TODAY = await this.#ordersRepository.getTodaysOrder(1);
-        const DATA_YESTERDAY = await this.#ordersRepository.getYesterdaysOrder(1);
-        const DATA_TWO_DAYS = await this.#ordersRepository.getOrderDataTwoDaysAgo(1);
-        const DATA_THREE_DAYS = await this.#ordersRepository.getOrderDataThreeDaysAgo(1);
-        const DATA_FOUR_DAYS = await this.#ordersRepository.getOrderDataFourDaysAgo(1);
-        const DATA_FIVE_DAYS = await this.#ordersRepository.getOrderDataFiveDaysAgo(1);
-        const DATA_SEVEN_DAYS = await this.#ordersRepository.getOrderDataSevenDaysAgo(1);
-        const DATA_TWO_WEEKS = await this.#ordersRepository.getOrderDataTwoWeeksAgo(1);
-        const DATA_THREE_WEEKS = await this.#ordersRepository.getOrderDataThreeWeeksAgo(1);
-        const DATA_FOUR_WEEKS = await this.#ordersRepository.getOrderDataFourWeeksAgo(1);
+        const DATA_TODAY = await this.#ordersRepository.getTodaysOrder(this.#ID);
+        const DATA_YESTERDAY = await this.#ordersRepository.getYesterdaysOrder(this.#ID);
+        const DATA_TWO_DAYS = await this.#ordersRepository.getOrderDataTwoDaysAgo(this.#ID);
+        const DATA_THREE_DAYS = await this.#ordersRepository.getOrderDataThreeDaysAgo(this.#ID);
+        const DATA_FOUR_DAYS = await this.#ordersRepository.getOrderDataFourDaysAgo(this.#ID);
+        const DATA_FIVE_DAYS = await this.#ordersRepository.getOrderDataFiveDaysAgo(this.#ID);
+        const DATA_SEVEN_DAYS = await this.#ordersRepository.getOrderDataSevenDaysAgo(this.#ID);
+        const DATA_TWO_WEEKS = await this.#ordersRepository.getOrderDataTwoWeeksAgo(this.#ID);
+        const DATA_THREE_WEEKS = await this.#ordersRepository.getOrderDataThreeWeeksAgo(this.#ID);
+        const DATA_FOUR_WEEKS = await this.#ordersRepository.getOrderDataFourWeeksAgo(this.#ID);
 
         const ORDERS_FIVE_DAYS = {
             // A labels array that can contain any sort of values
@@ -149,7 +152,7 @@ export class DashboardController extends Controller {
     }
 
     async #fetchOrders() {
-        const orderData = await this.#ordersRepository.getOrders();
+        const orderData = await this.#ordersRepository.getOrdersFromUser(this.#ID);
         const maxOrders = 8
 
         for (let i = 0; i < maxOrders; i++) {
@@ -169,18 +172,18 @@ export class DashboardController extends Controller {
     }
 
     async #fetchOrderCountOmw() {
-        const amount = await this.#ordersRepository.countOrdersOmw(1);
+        const amount = await this.#ordersRepository.countOrdersOmw(this.#ID);
         this.#dashboardView.querySelector("#orders-omw").innerHTML = amount.aantal
     }
 
     async #fetchOrderCountHere() {
-        const amount = await this.#ordersRepository.countOrdersHere(1);
+        const amount = await this.#ordersRepository.countOrdersHere(this.#ID);
 
         this.#dashboardView.querySelector("#orders-delivered").innerHTML = amount.aantal
     }
 
     async #fetchEarningsToday() {
-        const amount = await this.#ordersRepository.calculateEarningsToday(1);
+        const amount = await this.#ordersRepository.calculateEarningsToday(this.#ID);
 
         console.log(amount)
         if (amount.prijs == null) {
@@ -191,7 +194,7 @@ export class DashboardController extends Controller {
     }
 
     async #fetchEarningsWeek() {
-        const amount = await this.#ordersRepository.calculateEarningsWeek(1);
+        const amount = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
         if (amount.prijs == null) {
             this.#dashboardView.querySelector("#earnings-week").innerHTML = " -.--"
         } else {
@@ -200,7 +203,7 @@ export class DashboardController extends Controller {
     }
 
     async #fetchEarningsMonth() {
-        const amount = await this.#ordersRepository.calculateEarningsMonth(1);
+        const amount = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
         if (amount.prijs == null) {
             this.#dashboardView.querySelector("#earnings-month").innerHTML = " -.--"
         } else {
@@ -209,7 +212,7 @@ export class DashboardController extends Controller {
     }
 
     async #fetchCollectedMoney() {
-        const data = await this.#ordersRepository.calculateDonatedMoney(1);
+        const data = await this.#ordersRepository.calculateDonatedMoney(this.#ID);
 
         const amount = (Math.round(data.donatie * 100) / 100).toFixed(2);
         this.#dashboardView.querySelector("#collected-money").innerHTML = amount

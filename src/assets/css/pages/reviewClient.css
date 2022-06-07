@@ -1,5 +1,10 @@
 @import url(../defaults.css);
 
+#test{
+
+    overflow-x: hidden;
+
+}
 .containerProfile {
     margin-top: 20px;
     width: 80%;
@@ -7,6 +12,13 @@
     height: 60%;
 }
 
+#reviewBoxList{
+
+    overflow-x: hidden;
+    height: 700px;
+    overflow-y: auto;
+
+}
 .review-block {
 
     width: 300px;

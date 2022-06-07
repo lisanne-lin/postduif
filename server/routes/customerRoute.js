@@ -11,6 +11,24 @@ class CustomerRoute {
         this.#getCustomerById()
         this.#getOrdersFromCustomer()
         this.#login()
+        this.#getIdFromEmailAdres()
+    }
+
+    #getIdFromEmailAdres() {
+        this.#app.get("/klant/getIdFromEmailAdres/:emailadres", async (req, res) => {
+            try {
+                const data = await this.#databaseHelper.handleQuery({
+                    query: "SELECT klantnummer, voornaam, achternaam FROM klant WHERE emailadres = ?",
+                    values: [req.params.emailadres],
+                });
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+            } catch (e) {
+                res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
+                    reason: e,
+                });
+            }
+        });
     }
 
     #login() {

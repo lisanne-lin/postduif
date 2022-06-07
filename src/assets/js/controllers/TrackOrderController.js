@@ -8,6 +8,7 @@ export class TrackOrderController extends Controller {
     #trackView;
     #ordersRepository;
     #customersRepository;
+    #ID;
 
     constructor() {
         super();
@@ -18,6 +19,11 @@ export class TrackOrderController extends Controller {
 
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
+        // const CUSTOMER_ID = await this.#customersRepository.getUserIdByEmail(App.sessionManager.get("username"))
+        // this.#ID = CUSTOMER_ID[0].klantnummer;
+
+        console.log(this.#ID)
+
         this.#trackView = await super.loadHtmlIntoContent("html_views/track_order.html");
 
         document.querySelector(".navbar").style.display = "block";

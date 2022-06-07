@@ -1,20 +1,26 @@
 import {App} from "../app.js";
 import {Controller} from "./controller.js";
 import {CustomersRepository} from "../repositories/customersRepository.js";
+import {EntrepreneursRepository} from "../repositories/entrepreneursRepository.js";
 
 export class CustomersController extends Controller {
 
     #customersRepository
+    #entrepreneursRepository
     #customersView;
+    #ID;
 
     constructor() {
         super();
         this.#customersRepository = new CustomersRepository();
+        this.#entrepreneursRepository = new EntrepreneursRepository();
         this.#setup();
     }
 
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
+        const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
+        this.#ID = ENTREPRENEUR_ID[0].ondernemer_id;
 
         this.#customersView = await super.loadHtmlIntoContent("html_views/customers.html")
         document.querySelector("#nav-orders").className = "nav-link";
@@ -26,8 +32,14 @@ export class CustomersController extends Controller {
             this.#fetchCustomerByEmail(this.#customersView.querySelector("#tracktrace").value);
         })
 
-        this.#customersView.querySelector("#sendmail").addEventListener("click", event => {
+        this.#customersView.querySelector("#sendmail").addEventListener("click", async event => {
+            await this.#sendMail(
+                this.#customersView.querySelector("#recipient-name").value,
+                ENTREPRENEUR_ID[0].naam,
+                this.#customersView.querySelector("#message-text").value
+            )
 
+            App.loadController(App.CONTROLLER_CUSTOMERS)
         })
 
         this.#customersView.querySelector("#dismiss-btn").addEventListener("click", event => {
@@ -38,7 +50,7 @@ export class CustomersController extends Controller {
     }
 
     async #fetchCustomers() {
-        const customerData = await this.#customersRepository.getCustomers(1);
+        const customerData = await this.#customersRepository.getCustomers(this.#ID);
 
         for (let i = 0; i < customerData.length; i++) {
             let data = customerData[i];
@@ -67,7 +79,29 @@ export class CustomersController extends Controller {
 
             table.append(tableRow);
         }
+    }
 
+    async #sendMail(emailadres, naam, emailText) {
+        await fetch("https://api.hbo-ict.cloud/mail", {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer pad_rit_9.YRbTwIUUBpasHZ2x'
+            },
+            body: JSON.stringify({
+                "from": {
+                    "name": "Team postDuif ",
+                    "address": "group@hbo-ict.cloud"
+                },
+                "to": [
+                    {
+                        "name": naam,
+                        "address": emailadres
+                    }
+                ],
+                "subject": "Email from " + naam,
+                "html": emailText
+            })
+        })
     }
 
 

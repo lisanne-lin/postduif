@@ -37,6 +37,27 @@ class OrderRoutes {
 		this.#getOrderDataThreeWeeksAgo();
 		this.#getOrderDataFourWeeksAgo();
 		this.#updateStatus();
+		this.#getOrdersFromUser();
+	}
+
+	#getOrdersFromUser() {
+		this.#app.get(
+			"/bestelling/getOrdersFromUser/:Ondernemer_ondernemer_id",
+			async (req, res) => {
+				try {
+					const data = await this.#databaseHelper.handleQuery({
+						query: "SELECT * FROM bestelling WHERE Ondernemer_ondernemer_id = ?",
+						values: [req.params.Ondernemer_ondernemer_id],
+					});
+					//just give all data back as json, could also be empty
+					res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+				} catch (e) {
+					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
+						reason: e,
+					});
+				}
+			}
+		);
 	}
 
 	#saveOrder() {

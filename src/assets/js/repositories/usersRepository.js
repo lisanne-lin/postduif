@@ -5,7 +5,7 @@
  * @author Pim Meijer
  */
 
-import { NetworkManager } from "../framework/utils/networkManager.js";
+import {NetworkManager} from "../framework/utils/networkManager.js";
 
 export class UsersRepository {
     //# is a private field in Javascript
