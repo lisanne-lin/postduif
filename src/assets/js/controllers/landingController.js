@@ -1,55 +1,64 @@
 import { Controller } from "./controller.js";
-import {App} from "../app.js";
+import { App } from "../app.js";
 
 export class LandingController extends Controller {
+	#landingView;
 
-    #landingView;
+	constructor() {
+		super();
+		this.#setup();
+	}
 
-    constructor()  {
-        super();
-        this.#setup();
-    }
+	async #setup() {
+		this.#landingView = await super.loadHtmlIntoContent(
+			"html_views/landing.html"
+		);
 
-    async #setup() {
+		// document.querySelector(".navbar").style.display = "none";
 
-        this.#landingView = await super.loadHtmlIntoContent("html_views/landing.html");
+		const anchors = this.#landingView.querySelectorAll("a.business-login");
+		const signupButton = this.#landingView.querySelectorAll(
+			"button.get-started",
+			"a.business-signup"
+		);
 
-        // document.querySelector(".navbar").style.display = "none";
+		const loginButton =
+			this.#landingView.querySelectorAll("a.business-login");
 
-        const anchors = this.#landingView.querySelectorAll("a.business-login");
-        const signupButton = this.#landingView.querySelectorAll("button.get-started", "a.business-signup");
-        
-        const loginButton = this.#landingView.querySelectorAll("a.business-login");
+		//anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
 
+		signupButton.forEach((anchor) =>
+			anchor.addEventListener("click", (event) =>
+				this.#handleClickNavigationItem(event)
+			)
+		);
 
+		loginButton.forEach((anchor) =>
+			anchor.addEventListener("click", (event) =>
+				this.#handleClickNavigationItem(event)
+			)
+		);
+	}
 
-        anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
-        
-        signupButton.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
+	#handleClickNavigationItem(event) {
+		//Get the data-controller from the clicked element (this)
+		const clickedAnchor = event.target;
+		const controller = clickedAnchor.dataset.controller;
 
-        loginButton.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
-        
-    }
+		if (typeof controller === "undefined") {
+			console.error(
+				"No data-controller attribute defined in anchor HTML tag, don't know which controller to load!"
+			);
+			return false;
+		}
 
-    #handleClickNavigationItem(event) {
+		//TODO: You should add highlighting of correct anchor when page is active :)
 
-        
-        //Get the data-controller from the clicked element (this)
-        const clickedAnchor = event.target;
-        const controller = clickedAnchor.dataset.controller;
+		//Pass the action to a new function for further processing
 
-        if(typeof controller === "undefined") {
-            console.error("No data-controller attribute defined in anchor HTML tag, don't know which controller to load!")
-            return false;
-        }
+		App.loadController(controller);
 
-        //TODO: You should add highlighting of correct anchor when page is active :)
-
-        //Pass the action to a new function for further processing
-
-        App.loadController(controller);
-
-        //Return false to prevent reloading the page
-        return false;
-    }
+		//Return false to prevent reloading the page
+		return false;
+	}
 }

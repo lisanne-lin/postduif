@@ -34,6 +34,8 @@ export class driverOrderDetailController extends Controller {
 		// pakt het telefoonnummer van de bestelling
 		const phonenumber = await this.#ordersRepository.getPhonenumber(id);
 
+		// let orderStatus = (document.querySelector("order-status").innerHTML =
+		// 	orderData[0].status);
 		document.getElementById("customerName").innerHTML =
 			orderData[0].verzendnaam;
 		document.getElementById("naam").innerHTML = orderData[0].verzendnaam;
@@ -109,10 +111,8 @@ export class driverOrderDetailController extends Controller {
 			this.#ordersRepository.updateStatus(id, "On the way")
 		);
 
-		deliveredButton.addEventListener(
-			"click",
-			() => this.#ordersRepository.updateStatus(id, "Order Delivered")
-			// this.#deleteOrder(id)
+		deliveredButton.addEventListener("click", () =>
+			this.#ordersRepository.updateStatus(id, "Order delivered")
 		);
 
 		cancelOrder.addEventListener("click", () =>
@@ -120,13 +120,13 @@ export class driverOrderDetailController extends Controller {
 		);
 
 		pickupButton.onclick = function () {
-			outForDelivery.style.cssText = `"display:block" "text-align:center";`;
-			cancelButton.style.cssText = `"display:block" "text-align:center";`;
+			outForDelivery.style.display = "block";
+			cancelButton.style.display = "block";
 			pickupButton.style.display = "none";
 			backButton.style.display = "none";
 		};
 		outForDelivery.onclick = function () {
-			deliveredButton.style.cssText = `"display: block;" "text-align:center";`;
+			deliveredButton.style.display = "block";
 			cancelOrder.style.display = "block";
 			outForDelivery.style.display = "none";
 			cancelButton.style.display = "none";
@@ -141,13 +141,26 @@ export class driverOrderDetailController extends Controller {
 			backButton.style.display = "block";
 		};
 
-		cancelOrder.onclick = function () {
+		deliveredButton.onclick = function () {
 			cancelButton.style.display = "none";
-			outForDelivery.style.display = "none";
-			cancelButton.style.display = "none";
-			deliveredButton.style.display = "none";
-			pickupButton.style.display = "block";
-			backButton.style.display = "block";
+			deliveredButton.classList.add("disabled");
+			deliveredButton.setAttribute("disabled", "disabled");
 		};
+
+		// switch (orderData[0].status) {
+		// 	case "Order Cancelled":
+		// 		cancelButton.style.display = "none";
+		// 		deliveredButton.classList.add("disabled");
+		// 		deliveredButton.setAttribute("disabled", "disabled");
+		// 		break;
+		// case "On the way":
+		// 	orderStatus.classList.add("on-the-way");
+		// 	break;
+		// case "Delivered":
+		// 	orderStatus.classList.add("Delivered");
+		// 	break;
+		// case "Still to be picked up":
+		// 	orderStatus.classList.add("pickup");
+		// }
 	}
 }

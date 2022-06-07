@@ -77,13 +77,10 @@ export class App {
 	 * @returns {boolean} - successful controller change
 	 */
 	static loadController(name, controllerData = {}) {
-		console.log("loadController: " + name);
-
 		//log the data if data is being passed via controllers
 		if (controllerData && Object.entries(controllerData).length !== 0) {
-			console.log(controllerData);
 		}
-
+		console.log("load controller");
 		//load right controller based on the passed name to this function
 		switch (name) {
 			case App.CONTROLLER_NAVBAR:
@@ -112,6 +109,7 @@ export class App {
 
 			case App.CONTROLLER_CLIENT_LOGIN:
 				new clientLoginController();
+				App.setCurrentController(name);
 				break;
 
 			case App.CONTROLLER_LOGIN:
@@ -239,8 +237,6 @@ export class App {
 			default:
 				return false;
 		}
-		App.setCurrentController(name);
-
 		return true;
 	}
 

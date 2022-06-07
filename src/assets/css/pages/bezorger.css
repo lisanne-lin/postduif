@@ -44,13 +44,11 @@ h3#date{
     background-color: white;
     position: absolute;
     max-width: 90%;
-    max-height: 80vh;
     box-shadow: rgba(24, 39, 75, 0.08) 0px 5px 24px -4px;
     top: 10vh;
     left: 50%;
     transform: translateX(-50%); 
     border-radius: 10px;
-    overflow-y: scroll;
     padding: 0;
 }
 
@@ -79,8 +77,16 @@ p.company-name{
     font-size: 18px;
 }
 
-p.order-number{
-    font-size: 14px;
+p.order-number, p.zipcode{
+    font-size: 16px;
+}
+
+p.pickup{
+    color: var(--gray-500);
+}
+
+p.delivered{
+    color: var(--status-bezorgd);
 }
 
 .table td, .table th{
@@ -91,38 +97,55 @@ p.order-number{
     font-weight: bold;
 }
 
-button#pickOrder, button#outForDelivery, button#orderDelivered{
+button#pickOrder, button#outForDelivery, button#orderDelivered, button#back{
     padding: 10px 55px;
     border-radius: 5px;
     font-weight: bold;
     margin-bottom: 10px;
+    display: block;
+    margin: 0 auto;
 
 }
 button#orderDelivered{
     background-color:var(--status-bezorgd);
 }
 
-button#deliverOrder{
+button#outForDelivery{
     background-color: var(--status-onderweg);
 }
 
 button#back, button#cancel, button#cancelOrder{
+    display: block;
     background-color:transparent;
     font-weight: 300;
     color:var(--gray-800);
+    margin: 0 auto;
+
 }
 .buttons{
 text-align: center;
 margin-top: 30px;
 }
 
-button#back:hover{
+button#back:hover, button#cancel:hover{
     text-decoration: underline;
+}
+
+.disabled{
+    background-color: gray!important;
 }
 
 #map{
     height: 500px;
     width:auto;
+}
+
+.order-cancelled{
+    color: var(--status-geanulleerd);
+}
+
+.on-the-way{
+    color: var(--status-onderweg);
 }
 
 @media (max-width: 767.98px) {
