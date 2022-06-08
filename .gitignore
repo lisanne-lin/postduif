@@ -4,3 +4,5 @@
 .idea/workspace.xml
 src/.DS_Store
 src/assets/.DS_Store
+/node_modules
+*.json

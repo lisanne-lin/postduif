@@ -30,7 +30,21 @@
     position: relative;
     max-width: 1140px;
     top: 10vh;
+    height: auto;
 }
+
+.white-bg{
+    background-color: white;
+    position: absolute;
+    box-shadow: rgba(24, 39, 75, 0.08) 0px 5px 24px -4px;
+    left: 50%;
+    transform: translateX(-50%); 
+    border-radius: 10px;
+    padding: 90px;
+    overflow-y: scroll;
+    max-height: 1000px;
+}
+
 
 #graph {
     background-color: white;
@@ -70,3 +84,20 @@
     /* Control the thikness of your lines */
     stroke-width: 5px;
 }
+
+
+.illustration img{
+    max-height: 250px;
+}
+
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+.illustration{
+    display: none;
+}
+
+.white-bg{
+    padding: 0px;
+}
+ }

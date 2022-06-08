@@ -97,6 +97,11 @@
         color: var(--secondary);
     }
 
+img{
+    max-width: auto;
+    max-height: auto;
+}
+
 
     /* footer */
     footer {

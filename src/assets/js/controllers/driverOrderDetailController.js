@@ -133,7 +133,7 @@ export class driverOrderDetailController extends Controller {
 				orderStatus.classList.add("on-the-way");
 				pickupButton.style.display = "none";
 				pickupButton.classList.add("disabled");
-				cancelOrder.style.display = "block";
+
 				outForDelivery.onclick = function () {
 					pickupButton.style.display = "none";
 					outForDelivery.style.display = "none";

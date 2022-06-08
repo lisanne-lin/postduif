@@ -77,10 +77,10 @@ export class App {
 	 * @returns {boolean} - successful controller change
 	 */
 	static loadController(name, controllerData = {}) {
+		console.log("loadController " + name);
 		//log the data if data is being passed via controllers
 		if (controllerData && Object.entries(controllerData).length !== 0) {
 		}
-		console.log("load controller");
 		//load right controller based on the passed name to this function
 		switch (name) {
 			case App.CONTROLLER_NAVBAR:
