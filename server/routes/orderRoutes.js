@@ -59,6 +59,7 @@ class OrderRoutes {
 		);
 	}
 
+
 	#saveOrder() {
 		this.#app.put(
 			"/bestelling/saveorder/:bestelnummer/:Klant_klantnummer",
@@ -145,7 +146,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT * FROM bestelling INNER JOIN ondernemer ON bestelling.Ondernemer_ondernemer_id = ondernemer.ondernemer_id WHERE bestelnummer = ?",
+						query: "SELECT *, MONTHNAME(`geschatte_bezorgdatum`) as bestelmaand, DAY(`geschatte_bezorgdatum`) AS dag, year(`geschatte_bezorgdatum`) AS jaar FROM bestelling INNER JOIN ondernemer ON bestelling.Ondernemer_ondernemer_id = ondernemer.ondernemer_id WHERE bestelnummer = ?",
 						values: [req.params.bestelnummer],
 					});
 
@@ -402,7 +403,7 @@ class OrderRoutes {
 	}
 
 	#deleteOrder() {
-		this.#app.post("/bestelling/delete/:bestelnummer", async (req, res) => {
+		this.#app.delete("/bestelling/deleteOrder/:bestelnummer", async (req, res) => {
 			try {
 				const data = await this.#databaseHelper.handleQuery({
 					query: "DELETE FROM `bestelling` WHERE `bestelnummer` = ?",

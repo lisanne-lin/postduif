@@ -18,24 +18,10 @@
                     <i class="fa fa-plus" aria-hidden="true"></i> Add order
                 </button>
 
-                <div class="d-flex align-items-start">
-                    <div class="dropdown mr-sm-1">
-                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                            Sort by
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Name <i class="fa fa-sort-alpha-asc"
-                                                                          aria-hidden="true"></i></a></li>
-                            <li><a class="dropdown-item" href="#">Name <i class="fa fa-sort-alpha-desc"
-                                                                          aria-hidden="true"></i></a></li>
-                            <li><a class="dropdown-item" href="#">Order Date </a></li>
-                        </ul>
-                    </div>
-
+                <div class="d-flex align-items-start w-50">
                     <div class="input-group w-100">
                         <input type="search" id="search-order-input" class="form-control rounded"
-                               placeholder="Order Number" aria-label="Search"
+                               placeholder="Order Number, Name, Adress or Zip" aria-label="Search"
                                aria-describedby="search-addon"/>
                         <button type="button" id="search-order-btn" class="btn btn-outline-success"><i
                                 class="fa fa-search"
@@ -153,8 +139,6 @@
                 <div class="mb-3">
                     <h4><span id="status"><i class="fa fa-clock-o text-muted" aria-hidden="true"></i> On the way</span>
                     </h4>
-                    <h5>Estimated Delivery Time:</h5>
-                    <p><span id="estimated">00:00</span></p>
                 </div>
                 <hr>
                 <div class="mb-3">
@@ -175,13 +159,16 @@
                     <h4>Remark</h4>
                     <p><span id="entrepreneur-remark">something something</span></p>
                 </div>
+                <hr>
+                <div class="mb-3">
+                    <h4>Other</h4>
+                    <p>Price:               €<span id="price">something something</span></p>
+                    <p>Delivery charge:     €<span id="deliveryCharge">something something</span></p>
+                    <p>Order date:           <span id="orderDate">something something</span></p>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="edit-btn" data-target="#exampleModalToggle2"
-                        data-toggle="modal">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
-                </button>
-                <button type="button" class="btn btn-danger" id="close-btn" data-dismiss="modal">
+                <button type="button" class="btn btn-danger" id="delete-btn-modal" data-dismiss="modal">
                     <i class="fa fa-trash" aria-hidden="true"></i> Delete
                 </button>
             </div>

@@ -26,7 +26,7 @@ export class DashboardController extends Controller {
 
         document.querySelector(".navbar").style.display = "block";
         document.querySelector("#nav-orders").className = "nav-link";
-        document.querySelector("#nav-settings").className = "nav-link";
+        // document.querySelector("#nav-settings").className = "nav-link";
         document.querySelector("#nav-dash").className = "nav-link active";
 
         this.#dashboardView.querySelector("#place-order-btn").addEventListener("click", event => {

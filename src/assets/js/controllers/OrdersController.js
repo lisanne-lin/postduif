@@ -37,7 +37,7 @@ export class OrdersController extends Controller {
         document.querySelector(".navbar").style.display = "block";
         document.querySelector("#nav-orders").className = "nav-link active";
         document.querySelector("#nav-dash").className = "nav-link";
-        document.querySelector("#nav-settings").className = "nav-link";
+        // document.querySelector("#nav-settings").className = "nav-link";
 
         this.#orderView.querySelector("#place-order-btn").addEventListener("click", event => {
             App.loadController(event.target.dataset.controller);
@@ -46,10 +46,6 @@ export class OrdersController extends Controller {
         this.#orderView.querySelector("#search-order-btn").addEventListener("click", event => {
             this.#fetchOrdersByInfo(this.#orderView.querySelector("#search-order-input").value)
 
-        })
-
-        this.#orderView.querySelector("#delete-btn").addEventListener("click", event => {
-            this.#deleteOrder(this.#orderView.querySelector("#order-num").value)
         })
 
         await this.#fetchOrders();
@@ -85,11 +81,16 @@ export class OrdersController extends Controller {
         }
     }
 
+    async #deleteOrder(orderNum){
+        await this.#ordersRepository.deleteOrder(orderNum);
+    }
+
     async #fetchOrderDetails(orderNumber) {
         const orderData = await this.#ordersRepository.getOrderByOrderNum(orderNumber);
 
+        console.log(orderData)
+
         let orderStatus = this.#orderView.querySelector("#status");
-        let orderEstimate = this.#orderView.querySelector("#estimated");
         let orderName = this.#orderView.querySelector("#name");
         let orderStreet = this.#orderView.querySelector("#adress");
         let orderZip = this.#orderView.querySelector("#zip");
@@ -98,8 +99,9 @@ export class OrdersController extends Controller {
         let orderEntrepreneurZip = this.#orderView.querySelector("#entrepreneur-zip");
         let orderRemark = this.#orderView.querySelector("#entrepreneur-remark");
         let orderNum = this.#orderView.querySelector("#order-number");
-
-        let geschatte_bezorgdatum = orderData.geschatte_bezorgdatum
+        let orderPrice = this.#orderView.querySelector("#price");
+        let orderDate = this.#orderView.querySelector("#orderDate");
+        let orderDeliveryCharge = this.#orderView.querySelector("#deliveryCharge");
 
         orderNum.innerHTML = orderData[0].bestelnummer
         orderName.innerHTML = orderData[0].verzendnaam
@@ -107,19 +109,17 @@ export class OrdersController extends Controller {
         orderZip.innerHTML = orderData[0].verzend_postcode
         orderRemark.innerHTML = orderData[0].opmerking
         orderStatus.innerHTML = orderData[0].status
-        orderEstimate.innerHTML = geschatte_bezorgdatum
         orderEntrepreneurName.innerHTML = orderData[0].naam
         orderEntrepreneurAdress.innerHTML = orderData[0].adres
         orderEntrepreneurZip.innerHTML = orderData[0].postcode
+        orderPrice.innerHTML = orderData[0].prijs
+        orderDate.innerHTML = orderData[0].bestelmaand + " " + orderData[0].dag + ", " + orderData[0].jaar,
+        orderDeliveryCharge.innerHTML = orderData[0].bezorgkosten
 
-        this.#orderView.querySelector("#edit-btn").addEventListener("click", async event => {
-            await this.#editOrder(orderData[0].bestelnummer);
+        this.#orderView.querySelector("#delete-btn-modal").addEventListener("click", async event => {
+            await this.#deleteOrder(orderData[0].bestelnummer);
+            App.loadController(App.CONTROLLER_ORDERS);
         })
-
-        this.#orderView.querySelector("#close-btn").addEventListener("click", event => {this.#deleteOrder()})
-    }
-
-    async #deleteOrder() {
 
     }
 
@@ -153,21 +153,6 @@ export class OrdersController extends Controller {
                 await this.#fetchOrderDetails(data.bestelnummer);
             })
         }
-    }
-
-    async #editOrder(orderNumber) {
-        const orderData = await this.#ordersRepository.getOrderByOrderNum(orderNumber)
-
-        this.#orderView.querySelector("#exampleInputName").value = orderData[0].verzendnaam
-        this.#orderView.querySelector("#exampleInputAdres").value = orderData[0].verzendadres
-        this.#orderView.querySelector("#exampleInputPlaats").value = orderData[0].verzendplaats
-        this.#orderView.querySelector("#exampleInputPostcode").value = orderData[0].verzend_postcode
-        this.#orderView.querySelector("#exampleInputBezorgdatum").value = orderData[0].geschatte_bezorgdatum
-        this.#orderView.querySelector("#exampleInputVerzenddatum").value = orderData[0].verzend_datum
-        this.#orderView.querySelector("#exampleInputStatus").value = orderData[0].prijs
-        this.#orderView.querySelector("#exampleInputBezorgkosten").value = orderData[0].bezorgkosten
-
-        // this.#orderView.querySelector("#save-btn2").addEventListener("click", event => {this.#saveOrder()})
     }
 
     async #fetchOrderByNum(orderNum) {

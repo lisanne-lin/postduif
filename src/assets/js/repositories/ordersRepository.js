@@ -54,6 +54,12 @@ export class OrdersRepository {
 		);
 	}
 
+	async deleteOrder(bestelnummer) {
+		return await this.#networkManager.doRequest(
+			`${this.#route}/deleteOrder/${bestelnummer}`, "DELETE", {}
+		);
+	}
+
 	async saveOrder(bestelnummer, Klant_klantnummer) {
 		return await this.#networkManager.doRequest(
 			`${this.#route}/saveorder/${bestelnummer}/${Klant_klantnummer}`,
@@ -229,7 +235,7 @@ export class OrdersRepository {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/calculateearningslastweek/${Ondernemer_ondernemer_id}`,
+			}/calculateearningsweek/${Ondernemer_ondernemer_id}`,
 			"GET",
 			{}
 		);

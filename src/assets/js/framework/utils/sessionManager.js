@@ -36,7 +36,8 @@ export class SessionManager {
         delete(this.#session[key]);
 
         this.#saveSession();
-    }
+         location.reload();
+     }
 
     /**
      * Clears entire session object and saves it

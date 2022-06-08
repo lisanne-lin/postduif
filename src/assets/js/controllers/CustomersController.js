@@ -25,7 +25,7 @@ export class CustomersController extends Controller {
         this.#customersView = await super.loadHtmlIntoContent("html_views/customers.html")
         document.querySelector("#nav-orders").className = "nav-link";
         document.querySelector("#nav-dash").className = "nav-link";
-        document.querySelector("#nav-settings").className = "nav-link";
+        // document.querySelector("#nav-settings").className = "nav-link";
         document.querySelector("#nav-customers").className = "nav-link active";
 
         this.#customersView.querySelector("#search-btn").addEventListener("click", event => {
@@ -39,7 +39,7 @@ export class CustomersController extends Controller {
                 this.#customersView.querySelector("#message-text").value
             )
 
-            App.loadController(App.CONTROLLER_CUSTOMERS)
+            this.#customersView.querySelector(".modal").hide();
         })
 
         this.#customersView.querySelector("#dismiss-btn").addEventListener("click", event => {
@@ -61,7 +61,6 @@ export class CustomersController extends Controller {
             let emailCell = tableRow.insertCell()
             let numberCell = tableRow.insertCell()
             let locationCell = tableRow.insertCell()
-            let contactCell = tableRow.insertCell()
 
             let img = document.createElement("img")
 
@@ -75,7 +74,6 @@ export class CustomersController extends Controller {
             emailCell.append(data.emailadres);
             numberCell.append(data.telefoonnummer);
             locationCell.append(data.plaats);
-            contactCell.append(data.geschatte_bezorgdatum);
 
             table.append(tableRow);
         }

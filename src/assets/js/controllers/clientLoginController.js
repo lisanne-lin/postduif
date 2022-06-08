@@ -34,6 +34,9 @@ export class clientLoginController extends Controller{
         //from here we can safely get elements from the view via the right getter
         this.#loginView.querySelector("#login-btn").addEventListener("click", event => this.#handleLogin(event));
 
+        document.querySelector("#nav-settings").style.display = "none";
+        document.querySelector("#nav-track").style.display = "none";
+        document.querySelector("#nav-logout").style.display = "none";
     }
     /**
      * Async function that does a login request via repository

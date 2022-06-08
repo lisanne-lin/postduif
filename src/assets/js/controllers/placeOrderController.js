@@ -63,6 +63,7 @@ export class PlaceOrderController extends Controller {
         })
     }
 
+
     async #saveOrder(event) {
         event.preventDefault();
 
@@ -75,6 +76,7 @@ export class PlaceOrderController extends Controller {
         const verzend_datum = this.#placeOrderView.querySelector("#exampleInputVerzenddatum").value;
         const prijs = this.#placeOrderView.querySelector("#exampleInputStatus").value;
         const bezorgkosten = this.#placeOrderView.querySelector("#exampleInputBezorgkosten").value;
+        const opmerking = this.#placeOrderView.querySelector("#exampleRemark").value;
 
         const errorBox = this.#placeOrderView.querySelector("#error-box");
 
@@ -107,7 +109,7 @@ export class PlaceOrderController extends Controller {
                 ('00' + date.getUTCDate()).slice(-2);
 
             const createOrder = await this.#ordersRepository.createOrder(null, naam, adres, plaats, postcode, geschatte_bezorgdatum,
-                verzend_datum, bezorgkosten, null, null, null,
+                verzend_datum, bezorgkosten, opmerking, null, null,
                 this.#ID, date, null, prijs);
 
             this.#placeOrderView.querySelector("#saveButton").style.display = "none";
