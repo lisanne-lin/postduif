@@ -193,7 +193,7 @@ class OrderRoutes {
 					});
 
 					res.status(this.#errorCodes.HTTP_OK_CODE).json({
-						aantal: data[0]["COUNT(order_id)"],
+						amount: data[0]["COUNT(order_id)"],
 					});
 				} catch (e) {
 					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
@@ -210,12 +210,12 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(prijs) FROM order WHERE entrepreneur_id = ? AND order_date = CURDATE()",
+						query: "SELECT SUM(price) FROM order WHERE entrepreneur_id = ? AND order_date = CURDATE()",
 						values: [req.params.entrepreneur_id],
 					});
 
 					res.status(this.#errorCodes.HTTP_OK_CODE).json({
-						prijs: data[0]["SUM(prijs)"],
+						price: data[0]["SUM(price)"],
 					});
 				} catch (e) {
 					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
@@ -232,12 +232,12 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(prijs) FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 1 DAY)",
+						query: "SELECT SUM(price) FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 1 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
 					res.status(this.#errorCodes.HTTP_OK_CODE).json({
-						prijs: data[0]["SUM(prijs)"],
+						price: data[0]["SUM(price)"],
 					});
 				} catch (e) {
 					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
@@ -254,12 +254,12 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(prijs) FROM order WHERE entrepreneur_id = ? AND order_date between date_sub(now(),INTERVAL 1 WEEK) and date_sub(now(),INTERVAL 0 WEEK);",
+						query: "SELECT SUM(price) FROM order WHERE entrepreneur_id = ? AND order_date between date_sub(now(),INTERVAL 1 WEEK) and date_sub(now(),INTERVAL 0 WEEK);",
 						values: [req.params.entrepreneur_id],
 					});
 
 					res.status(this.#errorCodes.HTTP_OK_CODE).json({
-						prijs: data[0]["SUM(prijs)"],
+						price: data[0]["SUM(price)"],
 					});
 				} catch (e) {
 					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
@@ -276,12 +276,12 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(prijs) FROM order WHERE entrepreneur_id = ? AND order_date between date_sub(now(),INTERVAL 2 WEEK) AND date_sub(now(), INTERVAL 1 WEEK);",
+						query: "SELECT SUM(price) FROM order WHERE entrepreneur_id = ? AND order_date between date_sub(now(),INTERVAL 2 WEEK) AND date_sub(now(), INTERVAL 1 WEEK);",
 						values: [req.params.entrepreneur_id],
 					});
 
 					res.status(this.#errorCodes.HTTP_OK_CODE).json({
-						prijs: data[0]["SUM(prijs)"],
+						price: data[0]["SUM(price)"],
 					});
 				} catch (e) {
 					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
@@ -298,12 +298,12 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(prijs) FROM order WHERE entrepreneur_id = ? AND order_date >= DATE_ADD(curdate(), INTERVAL -30 DAY)",
+						query: "SELECT SUM(price) FROM order WHERE entrepreneur_id = ? AND order_date >= DATE_ADD(curdate(), INTERVAL -30 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
 					res.status(this.#errorCodes.HTTP_OK_CODE).json({
-						prijs: data[0]["SUM(prijs)"],
+						price: data[0]["SUM(price)"],
 					});
 				} catch (e) {
 					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
@@ -320,12 +320,12 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT SUM(prijs) FROM order WHERE entrepreneur_id = ? AND order_date between date_sub(now(),INTERVAL -60 DAY) and date_sub(now(),INTERVAL -30 DAY);",
+						query: "SELECT SUM(price) FROM order WHERE entrepreneur_id = ? AND order_date between date_sub(now(),INTERVAL -60 DAY) and date_sub(now(),INTERVAL -30 DAY);",
 						values: [req.params.entrepreneur_id],
 					});
 
 					res.status(this.#errorCodes.HTTP_OK_CODE).json({
-						prijs: data[0]["SUM(prijs)"],
+						price: data[0]["SUM(price)"],
 					});
 				} catch (e) {
 					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
@@ -368,7 +368,7 @@ class OrderRoutes {
 						values: [req.params.entrepreneur_id],
 					});
 					res.status(this.#errorCodes.HTTP_OK_CODE).json({
-						aantal: data[0]["COUNT(order_id)"],
+						amount: data[0]["COUNT(order_id)"],
 					});
 				} catch (e) {
 					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
@@ -390,7 +390,7 @@ class OrderRoutes {
 					});
 
 					res.status(this.#errorCodes.HTTP_OK_CODE).json({
-						aantal: data[0]["COUNT(order_id)"],
+						amount: data[0]["COUNT(order_id)"],
 					});
 				} catch (e) {
 					res.status(this.#errorCodes.BAD_REQUEST_CODE).json({
@@ -464,7 +464,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(prijs) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 1 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 1 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -484,7 +484,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(prijs) AS `Earnings` FROM order WHERE entrepreneur_identrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 2 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_identrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 2 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -504,7 +504,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(prijs) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 3 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 3 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -524,7 +524,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(prijs) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 4 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 4 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -544,7 +544,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(prijs) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 5 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 5 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -564,7 +564,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(prijs) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 7 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 7 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -584,7 +584,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(prijs) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 14 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 14 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -604,7 +604,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(prijs) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 21 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 21 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -624,7 +624,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(prijs) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 28 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 28 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 

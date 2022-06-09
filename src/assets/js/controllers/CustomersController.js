@@ -39,7 +39,7 @@ export class CustomersController extends Controller {
         this.#customersView.querySelector("#sendmail").addEventListener("click", async event => {
             await this.#sendMail(
                 this.#customersView.querySelector("#recipient-name").value,
-                ENTREPRENEUR_ID[0].naam,
+                ENTREPRENEUR_ID[0].name,
                 this.#customersView.querySelector("#message-text").value
             )
 
@@ -74,16 +74,16 @@ export class CustomersController extends Controller {
             img.height = 33;
 
             imageCell.append(img);
-            nameCell.append(data.voornaam + " " + data.achternaam);
-            emailCell.append(data.emailadres);
-            numberCell.append(data.telefoonnummer);
-            locationCell.append(data.plaats);
+            nameCell.append(data.first_name + " " + data.last_name);
+            emailCell.append(data.emailaddress);
+            numberCell.append(data.phonenumber);
+            locationCell.append(data.place);
 
             table.append(tableRow);
         }
     }
 
-    async #sendMail(emailadres, naam, emailText) {
+    async #sendMail(emailaddress, name, emailText) {
         await fetch("https://api.hbo-ict.cloud/mail", {
             method: 'POST',
             headers: {
@@ -96,11 +96,11 @@ export class CustomersController extends Controller {
                 },
                 "to": [
                     {
-                        "name": naam,
-                        "address": emailadres
+                        "name": name,
+                        "address": emailaddress
                     }
                 ],
-                "subject": "Email from " + naam,
+                "subject": "Email from " + name,
                 "html": emailText
             })
         })
@@ -121,11 +121,11 @@ export class CustomersController extends Controller {
                 let emailInputClient = this.#customersView.querySelector("#recipient-name")
                 let num = Math.floor(Math.random()*(8-1+1)+1)
 
-                nameClient.innerHTML = data[0].voornaam + " " + data[0].achternaam;
-                emailClient.innerHTML = data[0].emailadres
-                emailInputClient.value = data[0].emailadres
-                locationClient.innerHTML = data[0].plaats
-                phoneClient.innerHTML =  data[0].telefoonnummer
+                nameClient.innerHTML = data[0].first_name + " " + data[0].last_name;
+                emailClient.innerHTML = data[0].emailaddress
+                emailInputClient.value = data[0].emailaddress
+                locationClient.innerHTML = data[0].place
+                phoneClient.innerHTML =  data[0].phonenumber
                 imageClient.src = `assets/img/avatar${num}.svg`;
 
                 this.#customersView.querySelector("#contact-found").style.display = "block";

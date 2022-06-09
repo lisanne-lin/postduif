@@ -1,6 +1,6 @@
-import { Controller } from "./controller.js";
-import { App } from "../app.js";
-import { OrdersRepository } from "../repositories/ordersRepository.js";
+import {Controller} from "./controller.js";
+import {App} from "../app.js";
+import {OrdersRepository} from "../repositories/ordersRepository.js";
 
 export class TrackOrderWithoutLoginController extends Controller {
 	#trackView;
@@ -89,19 +89,19 @@ export class TrackOrderWithoutLoginController extends Controller {
 
 			let orderRemark = this.#trackView.querySelector("#message-text");
 
-			let geschatte_bezorgdatum = orderData[0].geschatte_bezorgdatum;
-			geschatte_bezorgdatum = new Date(
+			let estimated_delivery = orderData[0].estimated_delivery;
+			estimated_delivery = new Date(
 				now.getTime() - now.getTimezoneOffset() * 60000
 			)
 				.toISOString()
 				.substring(0, 19);
 
-			orderNum.innerHTML = orderData[0].bestelnummer;
-			orderName.innerHTML = orderData[0].verzendnaam;
-			orderStreet.innerHTML = orderData[0].verzendadres;
-			orderZip.innerHTML = orderData[0].verzend_postcode;
+			orderNum.innerHTML = orderData[0].order_id;
+			orderName.innerHTML = orderData[0].shipping_name;
+			orderStreet.innerHTML = orderData[0].shipping_address;
+			orderZip.innerHTML = orderData[0].shipping_zip;
 
-			orderRemark.value = orderData[0].opmerking;
+			orderRemark.value = orderData[0].remark;
 			orderStatus.innerHTML = orderData[0].status;
 
 			switch (orderData[0].status) {
@@ -123,10 +123,10 @@ export class TrackOrderWithoutLoginController extends Controller {
 				default:
 			}
 
-			orderEstimate.innerHTML = geschatte_bezorgdatum;
-			orderEntrepreneurName.innerHTML = orderData[0].naam;
-			orderEntrepreneurAdress.innerHTML = orderData[0].adres;
-			orderEntrepreneurZip.innerHTML = orderData[0].postcode;
+			orderEstimate.innerHTML = estimated_delivery;
+			orderEntrepreneurName.innerHTML = orderData[0].name;
+			orderEntrepreneurAdress.innerHTML = orderData[0].address;
+			orderEntrepreneurZip.innerHTML = orderData[0].zip;
 
 			this.#trackView.querySelector("#order-found").style.display =
 				"block";
