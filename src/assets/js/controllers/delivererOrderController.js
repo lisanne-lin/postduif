@@ -9,7 +9,7 @@ import { Controller } from "./controller.js";
 
 export class bezorgerBestellingController extends Controller {
 	#ordersRepository;
-	#createBezorgerBestellingView;
+	#createDelivererOrderView;
 
 	/**
 	 *
@@ -25,8 +25,8 @@ export class bezorgerBestellingController extends Controller {
 	 * Load HTML page and fill with correct data
 	 */
 	async #setupView() {
-		this.#createBezorgerBestellingView = await super.loadHtmlIntoContent(
-			"html_views/bezorger_bestelling-lijst.html"
+		this.#createDelivererOrderView = await super.loadHtmlIntoContent(
+			"html_views/deliverer_order-list.html"
 		);
 		this.#fetchOrders();
 	}

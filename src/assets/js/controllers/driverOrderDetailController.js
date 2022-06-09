@@ -12,7 +12,7 @@ export class driverOrderDetailController extends Controller {
 
 	/**
 	 *
-	 * @param {*} data of the order (order information)
+	 * @param {string} data of the order (order information)
 	 */
 	constructor(data) {
 		super();
