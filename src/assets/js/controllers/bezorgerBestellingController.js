@@ -11,12 +11,19 @@ export class bezorgerBestellingController extends Controller {
 	#ordersRepository;
 	#createBezorgerBestellingView;
 
+	/**
+	 *
+	 * @param {number} id of order (order number)
+	 */
 	constructor(id) {
 		super();
 		this.#ordersRepository = new OrdersRepository();
 		this.#setupView();
 	}
 
+	/**
+	 * Load HTML page and fill with correct data
+	 */
 	async #setupView() {
 		this.#createBezorgerBestellingView = await super.loadHtmlIntoContent(
 			"html_views/bezorger_bestelling-lijst.html"
@@ -24,12 +31,14 @@ export class bezorgerBestellingController extends Controller {
 		this.#fetchOrders();
 	}
 
+	/**
+	 * Fetch orders and display information
+	 */
 	async #fetchOrders() {
 		const orderData = await this.#ordersRepository.getOrders();
 		const getCompanyName = await this.#ordersRepository.getCompanyName();
-		console.log(orderData);
-		console.log(getCompanyName);
 
+		// For every made order, create div in HTML
 		for (let i = 0; i < orderData.length; i++) {
 			let data = orderData[i];
 			let name = getCompanyName[i];
@@ -60,10 +69,8 @@ export class bezorgerBestellingController extends Controller {
 			orderStatus.innerHTML = data.status;
 			console.log(data.status);
 
+			// Adds classes to html based on tracking status
 			switch (data.status) {
-				case "Order Cancelled":
-					orderStatus.classList.add("order-cancelled");
-					break;
 				case "On the way":
 					orderStatus.classList.add("on-the-way");
 					break;
@@ -77,9 +84,7 @@ export class bezorgerBestellingController extends Controller {
 			document.querySelector(".order-list").appendChild(orderDetail);
 		}
 
-		/**
-		 * For every order, get id, and forward the id to another controller
-		 */
+		// For every order, get id, and forward the id to another controller
 		document.querySelectorAll(".order-detail").forEach((order) => {
 			const id = order.getAttribute("id");
 			order.addEventListener("click", (event) => {
