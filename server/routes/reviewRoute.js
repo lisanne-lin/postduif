@@ -16,14 +16,14 @@ class ReviewRoute {
         this.#app = app;
         this.#createReview();
         this.#getReviewsById();
-        this.#getOndernemerInfoByID();
+        this.#getEntrepreneurInfoByID();
     }
 
     #getReviewsById() {
         this.#app.get("/review/getReviews/:id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT * FROM review INNER JOIN klant ON review.klant_id = klant.klantnummer WHERE ondernemer_id = ? ",
+                    query: "SELECT * FROM review INNER JOIN customer ON review.customer_id = customer.customer_id WHERE entrepreneur_id = ? ",
                     values: [req.params.id]
                 });
 
@@ -35,12 +35,11 @@ class ReviewRoute {
         });
     }
 
-    ///jbkjbkb
-    #getOndernemerInfoByID() {
-        this.#app.get("/review/getOndernemer/:id", async (req, res) => {
+    #getEntrepreneurInfoByID() {
+        this.#app.get("/review/getEntrepreneur/:id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT naam, adres, plaats, postcode, telefoonnummer FROM ondernemer WHERE ondernemer_id = ?",
+                    query: "SELECT name, address, place, zip, phonenumber FROM entrepreneur WHERE entrepreneur_id = ?",
                     values: [req.params.id]
                 });
 
@@ -51,13 +50,12 @@ class ReviewRoute {
             }
         });
     }
-
 
     #createReview() {
         this.#app.post("/review", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "INSERT INTO `review` (`review_id`, `klant_id`, `ondernemer_id`, `tekst`, `beoordeling`, `datum`) VALUES (?, ?, ?, ?, ?, ?)",
+                    query: "INSERT INTO review (review_id, customer_id, entrepreneur_id, text, rating, date) VALUES (?, ?, ?, ?, ?, ?)",
                     values: [req.body.id, req.body.customer_id, req.body.entrepreneur_id, req.body.command, req.body.rating, req.body.review_date]
                 });
 
