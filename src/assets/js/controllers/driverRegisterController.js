@@ -4,22 +4,18 @@
  */
 
 import { Controller } from "./controller.js";
-import {BezorgerRepository} from "../repositories/bezorgerRepository.js";
+import {DriverRepository} from "../repositories/driverRepository.js";
 import {App} from "../app.js";
 
 
-export class RegistrerenBezorgerController extends Controller {
+export class driverRegisterController extends Controller {
 
     #dashboardView;
-    #bezorgerRepository;
-
-
-
+    #driverRepository;
 
     constructor()  {
         super();
-
-        this.#bezorgerRepository = new BezorgerRepository();
+        this.#driverRepository = new DriverRepository();
         this.#setup();
     }
 
@@ -40,11 +36,11 @@ export class RegistrerenBezorgerController extends Controller {
         const firstName = this.#dashboardView.querySelector("#inputFirstName").value;
         const surName = this.#dashboardView.querySelector("#inputSurname").value;
         const email = this.#dashboardView.querySelector("#inputEmail").value;
-        const wachtwoord = this.#dashboardView.querySelector("#inputPassword").value;
-        const adres = this.#dashboardView.querySelector("#inputAdress").value;
-        const telefoonnummer = this.#dashboardView.querySelector("#inputPhonenumber").value;
-        const plaats = this.#dashboardView.querySelector("#inputResidence").value;
-        const postcode = this.#dashboardView.querySelector("#inputPostcode").value;
+        const password = this.#dashboardView.querySelector("#inputPassword").value;
+        const address = this.#dashboardView.querySelector("#inputAdress").value;
+        const phonenumber = this.#dashboardView.querySelector("#inputPhonenumber").value;
+        const place = this.#dashboardView.querySelector("#inputResidence").value;
+        const zip = this.#dashboardView.querySelector("#inputPostcode").value;
 
         const errorBox = this.#dashboardView.querySelector(".error");
 
@@ -58,18 +54,18 @@ export class RegistrerenBezorgerController extends Controller {
             errorBox.innerHTML = "Surname can't be empty";
         } else if (!email.match(regexEmail)) {
             errorBox.innerHTML = "Please enter a valid email address, example: user@gmail.com";
-        } else if (!wachtwoord.match(regexPassword)) {
+        } else if (!password.match(regexPassword)) {
             errorBox.innerHTML = "Please enter a password with minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character";
-        } else if (adres === null || adres === "") {
+        } else if (address === null || address === "") {
             errorBox.innerHTML = "Please enter an address";
-        } else if (telefoonnummer === null || telefoonnummer === "") {
+        } else if (phonenumber === null || phonenumber === "") {
             errorBox.innerHTML = "Phone number can't be empty";
-        } else if (!postcode.match(regexZip)) {
+        } else if (!zip.match(regexZip)) {
             errorBox.innerHTML = "Please enter a zip code";
         } else {
             errorBox.innerHTML = "";
-            this.#bezorgerRepository.createBezorger(null, firstName, surName,
-                adres, plaats, postcode, email, telefoonnummer, wachtwoord);
+            this.#driverRepository.createBezorger(null, firstName, surName,
+                address, place, zip, email, phonenumber, password);
             App.loadController(App.CONTROLLER_LOGIN_BEZORGER);
 
         }
