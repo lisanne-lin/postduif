@@ -1,33 +1,23 @@
-/**
- * This class contains ExpressJS routes specific for the users entity
- * this file is automatically loaded in app.js
- *
- * @author Pim Meijer
- */
 class UsersRoutes {
     #errorCodes = require("../framework/utils/httpErrorCodes")
     #databaseHelper = require("../framework/utils/databaseHelper")
     #cryptoHelper = require("../framework/utils/cryptoHelper");
     #app
 
-    /**
-     * @param app - ExpressJS instance(web application) we get passed automatically via app.js
-     * Important: always make sure there is an app parameter in your constructor!
-     */
     constructor(app) {
         this.#app = app;
 
         this.#login();
         this.#getEntrepreneurById();
-        this.#getIdFromEmailAdres();
+        this.#getIdFromemailaddress();
     }
 
-    #getIdFromEmailAdres() {
-        this.#app.get("/ondernemer/getIdFromEmailAdres/:emailadres", async (req, res) => {
+    #getIdFromemailaddress() {
+        this.#app.get("/entrepreneur/getIdFromemailaddress/:emailaddress", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT ondernemer_id, naam FROM ondernemer WHERE emailadres = ?",
-                    values: [req.params.emailadres],
+                    query: "SELECT entrepreneur_id, name FROM entrepreneur WHERE emailaddress = ?",
+                    values: [req.params.emailaddress],
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
@@ -44,25 +34,24 @@ class UsersRoutes {
      * @private
      */
     #login() {
-        this.#app.post("/ondernemer/login", async (req, res) => {
-            const emailadres = req.body.emailadres;
+        this.#app.post("/entrepreneur/login", async (req, res) => {
+            const emailaddress = req.body.emailaddress;
 
-            //TODO: You shouldn't save a password unencrypted!! Improve this by using this.#cryptoHelper functions :)
-            const wachtwoord = req.body.wachtwoord;
+            const password = req.body.password;
 
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT emailadres, wachtwoord, ondernemer_id  FROM ondernemer WHERE emailadres = ? AND wachtwoord = ?",
-                    values: [emailadres, wachtwoord]
+                    query: "SELECT emailaddress, password, entrepreneur_id  FROM entrepreneur WHERE emailaddress = ? AND password = ?",
+                    values: [emailaddress, password]
                 });
 
                 //if we founnd one record we know the user exists in users table
                 if (data.length === 1) {
                     //return just the username for now, never send password back!
-                    res.status(this.#errorCodes.HTTP_OK_CODE).json({"emailadres": data[0].emailadres});
+                    res.status(this.#errorCodes.HTTP_OK_CODE).json({"emailaddress": data[0].emailaddress});
                 } else {
                     //wrong username
-                    res.status(this.#errorCodes.AUTHORIZATION_ERROR_CODE).json({reason: "Wrong emailadres or password"});
+                    res.status(this.#errorCodes.AUTHORIZATION_ERROR_CODE).json({reason: "Wrong emailaddress or password"});
                 }
             } catch (e) {
                 res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e});
@@ -71,11 +60,11 @@ class UsersRoutes {
     }
 
     #getEntrepreneurById(id) {
-        this.#app.get("/ondernemer/getentrepreneur/:ondernemer_id", async (req, res) => {
+        this.#app.get("/entrepreneur/getentrepreneur/:entrepreneur_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT * FROM ondernemer WHERE ondernemer_id = ?",
-                    values: [req.params.ondernemer_id]
+                    query: "SELECT * FROM entrepreneur WHERE entrepreneur_id = ?",
+                    values: [req.params.entrepreneur_id]
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);

@@ -15,15 +15,15 @@ class DashboardRoute {
     }
 
     #createOrder() {
-        this.#app.post("/bestelling", async (req, res) => {
+        this.#app.post("/order", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "INSERT INTO bestelling (bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, geschatte_bezorgdatum, verzend_datum, bezorgkosten, opmerking, Bezorger_bezorger_id, Klant_klantnummer, Ondernemer_ondernemer_id, besteldatum, prijs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    values: [req.body.bestelnummer, req.body.verzendnaam, req.body.verzendadres, req.body.verzendplaats, req.body.verzend_postcode, req.body.geschatte_bezorgdatum, req.body.verzend_datum, req.body.bezorgkosten, req.body.opmerking, req.body.Bezorger_bezorger_id, req.body.Klant_klantnummer, req.body.Ondernemer_ondernemer_id, req.body.besteldatum, req.body.prijs]
+                    query: "INSERT INTO order (order_id, shipping_name, shipping_address, shipping_place, shipping_zip, estimated_delivery, shipping_date, delivery_charge, remark, delivery_person_id, customer_id, entrepreneur_id, order_date, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    values: [req.body.order_id, req.body.shipping_name, req.body.shipping_address, req.body.shipping_place, req.body.shipping_zip, req.body.estimated_delivery, req.body.shipping_date, req.body.delivery_charge, req.body.remark, req.body.delivery_person_id, req.body.customer_id, req.body.entrepreneur_id, req.body.order_date, req.body.price]
                 });
 
                 if (data.insertId) {
-                    res.status(this.#httpErrorCodes.HTTP_OK_CODE).json({bestelnummer: data.insertId});
+                    res.status(this.#httpErrorCodes.HTTP_OK_CODE).json({order_id: data.insertId});
                 }
 
             } catch (e) {
