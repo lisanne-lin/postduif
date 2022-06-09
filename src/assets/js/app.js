@@ -16,8 +16,8 @@ import { DashboardController } from "./controllers/dashboardController.js";
 import { PlaceOrderController } from "./controllers/placeOrderController.js";
 import { RegisterController } from "./controllers/registerController.js";
 import { LandingController } from "./controllers/landingController.js";
-import { BezorgerLoginController } from "./controllers/bezorgerLoginController.js";
-import { RegistrerenBezorgerController } from "./controllers/registrerenBezorgerController.js";
+import { driverLoginController } from "./controllers/driverLoginController.js";
+import { driverRegisterController } from "./controllers/driverRegisterController.js";
 import { OrdersController } from "./controllers/OrdersController.js";
 import { bezorgerBestellingController } from "./controllers/bezorgerBestellingController.js";
 import { TrackOrderController } from "./controllers/TrackOrderController.js";
@@ -135,15 +135,15 @@ export class App {
 
 			case App.CONTROLLER_LOGIN_BEZORGER:
 				App.isLoggedIn(
-					() => new BezorgerLoginController(),
-					() => new BezorgerLoginController()
+					() => new driverLoginController(),
+					() => new driverLoginController()
 				);
 				break;
 
 			case App.CONTROLLER_REGISTREREN_BEZORGER:
 				App.isLoggedIn(
-					() => new RegistrerenBezorgerController(),
-					() => new RegistrerenBezorgerController()
+					() => new driverRegisterController(),
+					() => new driverRegisterController()
 				);
 				break;
 

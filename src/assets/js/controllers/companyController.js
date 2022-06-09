@@ -21,20 +21,15 @@ export class CompanyController extends Controller {
     async #setupView() {
         this.#companyController = await super.loadHtmlIntoContent("html_views/companies.html");
 
-
         document.querySelector(".navbar").style.display = "none";
 
-        this.#getreviewsList();
+        this.#getReviewsList();
     }
 
-    async #getreviewsList() {
+    async #getReviewsList() {
 
 
         let abouts = await this.#companyRepository.getAbout();
-        console.log(abouts);
-
-
-        //add html
 
         for (let i = 0; i < abouts.length; i++) {
 
@@ -54,7 +49,6 @@ export class CompanyController extends Controller {
 
 
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
-
 
     }
 
