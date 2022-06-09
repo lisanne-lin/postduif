@@ -24,7 +24,7 @@ export class CustomersController extends Controller {
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
         const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
-        this.#ID = ENTREPRENEUR_ID[0].ondernemer_id;
+        this.#ID = ENTREPRENEUR_ID[0].entrepreneur_id;
 
         this.#customersView = await super.loadHtmlIntoContent("html_views/customers.html")
         document.querySelector("#nav-orders").className = "nav-link";

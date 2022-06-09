@@ -20,7 +20,7 @@ export class DashboardController extends Controller {
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
         const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
-        this.#ID = ENTREPRENEUR_ID[0].ondernemer_id;
+        this.#ID = ENTREPRENEUR_ID[0].entrepreneur_id;
 
         console.log(this.#ID)
         console.log(App.sessionManager.get("username"))

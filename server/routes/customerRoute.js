@@ -57,7 +57,7 @@ class CustomerRoute {
         this.#app.get("/customer/getallfor/:entrepreneur_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT distinct emailaddress, phonenumber, customer_id, place, first_name, last_name FROM customer LEFT JOIN order ON customer.customer_id = order.customer_customer_id WHERE order.entrepreneur_id = ? ORDER BY order.order_date",
+                    query: "SELECT distinct emailaddress, phonenumber, customer.customer_id, place, first_name, last_name FROM customer LEFT JOIN `order` ON customer.customer_id = `order`.customer_id WHERE `order`.entrepreneur_id = ? ORDER BY `order`.order_date",
                     values: [req.params.entrepreneur_id]
                 });
 
@@ -122,7 +122,7 @@ class CustomerRoute {
         this.#app.get("/customer/getordersfromcustomer/:customer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT order_id, shipping_name, shipping_address, shipping_place, shipping_zip, MONTHNAME(`estimated_delivery`) as bestelmaand, DAY(`estimated_delivery`) AS dag, year(`estimated_delivery`) AS jaar, shipping_date, delivery_charge, remark, delivery_person_id, customer_id, order_date, status, price, ondernemer.naam FROM order INNER JOIN customer ON order.customer_customer_id = customer.customer_id INNER JOIN entrepreneur_id ON order.entrepreneur_id = entrepreneur.entrepreneur_id WHERE customer.customer_id = ? ORDER BY estimated_delivery DESC ",
+                    query: "SELECT order_id, shipping_name, shipping_address, shipping_place, shipping_zip, MONTHNAME(`estimated_delivery`) as `month`, DAY(`estimated_delivery`) AS `day`, year(`estimated_delivery`) AS `year`, shipping_date, delivery_charge, remark, delivery_person_id, customer.customer_id, order_date, status, price, entrepreneur.name FROM `order` INNER JOIN customer ON `order`.customer_id = customer.customer_id INNER JOIN entrepreneur ON `order`.entrepreneur_id = entrepreneur.entrepreneur_id WHERE customer.customer_id = ? ORDER BY estimated_delivery DESC",
                     values: [req.params.customer_id]
                 });
 

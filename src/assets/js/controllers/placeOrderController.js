@@ -24,7 +24,7 @@ export class PlaceOrderController extends Controller {
     async #setupView() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
         const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
-        this.#ID = ENTREPRENEUR_ID[0].ondernemer_id;
+        this.#ID = ENTREPRENEUR_ID[0].entrepreneur_id;
 
         this.#placeOrderView = await super.loadHtmlIntoContent("html_views/place_order.html");
 
@@ -69,13 +69,13 @@ export class PlaceOrderController extends Controller {
 
         const NAME = this.#placeOrderView.querySelector("#exampleInputName").value;
         const EMAILADDRES = this.#placeOrderView.querySelector("#exampleInputEmail").value;
-        const ADDRESS = this.#placeOrderView.querySelector("#exampleInputADDRESS").value;
+        const ADDRESS = this.#placeOrderView.querySelector("#exampleInputAdres").value;
         const PLACE = this.#placeOrderView.querySelector("#exampleInputPlaats").value;
-        const ZIP = this.#placeOrderView.querySelector("#exampleInputzip").value;
+        const ZIP = this.#placeOrderView.querySelector("#exampleInputPostcode").value;
         const ESTIMATED_DELIVERY = this.#placeOrderView.querySelector("#exampleInputBezorgdatum").value;
         const SHIPPING_DATE = this.#placeOrderView.querySelector("#exampleInputVerzenddatum").value;
         const PRICE = this.#placeOrderView.querySelector("#exampleInputStatus").value;
-        const DELIVERY_CHARGE = this.#placeOrderView.querySelector("#exampleInputdelivery_charge").value;
+        const DELIVERY_CHARGE = this.#placeOrderView.querySelector("#exampleInputBezorgkosten").value;
         const REMARK = this.#placeOrderView.querySelector("#exampleRemark").value;
 
         const ERROR_BOX = this.#placeOrderView.querySelector("#error-box");

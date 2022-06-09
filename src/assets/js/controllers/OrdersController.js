@@ -5,10 +5,10 @@
  * @author Lennard Fonteijn & Pim Meijer
  */
 
-import { OrdersRepository } from "../repositories/ordersRepository.js";
-import { App } from "../app.js";
-import { Controller } from "./controller.js";
-import { EntrepreneursRepository } from "../repositories/entrepreneursRepository.js";
+import {OrdersRepository} from "../repositories/ordersRepository.js";
+import {App} from "../app.js";
+import {Controller} from "./controller.js";
+import {EntrepreneursRepository} from "../repositories/entrepreneursRepository.js";
 
 export class OrdersController extends Controller {
 	#ordersRepository;
@@ -34,7 +34,7 @@ export class OrdersController extends Controller {
 			await this.#entrepreneursRepository.getUserIdByEmail(
 				App.sessionManager.get("username")
 			);
-		this.#ID = ENTREPRENEUR_ID[0].ondernemer_id;
+		this.#ID = ENTREPRENEUR_ID[0].entrepreneur_id;
 
 		this.#orderView = await super.loadHtmlIntoContent(
 			"html_views/orders.html"

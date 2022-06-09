@@ -18,7 +18,7 @@ class DashboardRoute {
         this.#app.post("/order", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "INSERT INTO order (order_id, shipping_name, shipping_address, shipping_place, shipping_zip, estimated_delivery, shipping_date, delivery_charge, remark, delivery_person_id, customer_id, entrepreneur_id, order_date, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    query: "INSERT INTO `order` (order_id, shipping_name, shipping_address, shipping_place, shipping_zip, estimated_delivery, shipping_date, delivery_charge, remark, delivery_person_id, customer_id, entrepreneur_id, order_date, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                     values: [req.body.order_id, req.body.shipping_name, req.body.shipping_address, req.body.shipping_place, req.body.shipping_zip, req.body.estimated_delivery, req.body.shipping_date, req.body.delivery_charge, req.body.remark, req.body.delivery_person_id, req.body.customer_id, req.body.entrepreneur_id, req.body.order_date, req.body.price]
                 });
 
