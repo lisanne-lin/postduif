@@ -2,6 +2,7 @@
  * Repository voor Entity Orders
  */
 import {NetworkManager} from "../framework/utils/networkManager.js";
+import {driverOrderDetailController} from "../controllers/driverOrderDetailController";
 
 export class OrdersRepository {
 	#networkManager;
@@ -13,56 +14,56 @@ export class OrdersRepository {
 	}
 
 	async createOrder(
-		bestelnummer,
-		verzendnaam,
-		verzendadres,
-		verzendplaats,
-		verzend_postcode,
-		geschatte_bezorgdatum,
-		verzend_datum,
-		bezorgkosten,
-		opmerking,
-		Bezorger_bezorger_id,
-		Klant_klantnummer,
-		Ondernemer_ondernemer_id,
-		besteldatum,
+		order_id,
+		shipping_name,
+		shipping_address,
+		shipping_place,
+		shipping_zip,
+		estimated_delivery,
+		shipping_date,
+		delivery_charge,
+		remark,
+		delivery_person_id,
+		customer_id,
+		entrepreneur_id,
+		order_date,
 		status,
-		prijs
+		price
 	) {
 		return await this.#networkManager.doRequest(this.#route, "POST", {
-			bestelnummer: bestelnummer,
-			verzendnaam: verzendnaam,
-			verzendadres: verzendadres,
-			verzendplaats: verzendplaats,
-			verzend_postcode: verzend_postcode,
-			geschatte_bezorgdatum: geschatte_bezorgdatum,
-			verzend_datum: verzend_datum,
-			bezorgkosten: bezorgkosten,
-			opmerking: opmerking,
-			Bezorger_bezorger_id: Bezorger_bezorger_id,
-			Klant_klantnummer: Klant_klantnummer,
-			Ondernemer_ondernemer_id: Ondernemer_ondernemer_id,
-			besteldatum: besteldatum,
+			order_id: order_id,
+			shipping_name: shipping_name,
+			shipping_address: shipping_address,
+			shipping_place: shipping_place,
+			shipping_zip: shipping_zip,
+			estimated_delivery: estimated_delivery,
+			shipping_date: shipping_date,
+			delivery_charge: delivery_charge,
+			remark: remark,
+			delivery_person_id: delivery_person_id,
+			customer_id: customer_id,
+			entrepreneur_id: entrepreneur_id,
+			order_date: order_date,
 			status: status,
-			prijs: prijs,
+			price: price,
 		});
 	}
 
-	async getOrdersFromUser(Ondernemer_ondernemer_id) {
+	async getOrdersFromUser(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/getOrdersFromUser/${Ondernemer_ondernemer_id}`, "GET", {}
+			`${this.#route}/getOrdersFromUser/${entrepreneur_id}`, "GET", {}
 		);
 	}
 
-	async deleteOrder(bestelnummer) {
+	async deleteOrder(order_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/deleteOrder/${bestelnummer}`, "DELETE", {}
+			`${this.#route}/deleteOrder/${order_id}`, "DELETE", {}
 		);
 	}
 
-	async saveOrder(bestelnummer, Klant_klantnummer) {
+	async saveOrder(order_id, customer_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/saveorder/${bestelnummer}/${Klant_klantnummer}`,
+			`${this.#route}/saveorder/${order_id}/${customer_id}`,
 			"PUT",
 			{}
 		);
@@ -75,86 +76,86 @@ export class OrdersRepository {
 		);
 	}
 
-	async getTodaysOrder(Ondernemer_ondernemer_id) {
+	async getTodaysOrder(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/getTodaysOrder/${Ondernemer_ondernemer_id}`,
+			`${this.#route}/getTodaysOrder/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
-	async getYesterdaysOrder(Ondernemer_ondernemer_id) {
+	async getYesterdaysOrder(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/getYesterdaysOrder/${Ondernemer_ondernemer_id}`,
+			`${this.#route}/getYesterdaysOrder/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
-	async getOrderDataTwoDaysAgo(Ondernemer_ondernemer_id) {
+	async getOrderDataTwoDaysAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/getOrderDataTwoDaysAgo/${Ondernemer_ondernemer_id}`,
+			`${this.#route}/getOrderDataTwoDaysAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
-	async getOrderDataThreeDaysAgo(Ondernemer_ondernemer_id) {
+	async getOrderDataThreeDaysAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/getOrderDataThreeDaysAgo/${Ondernemer_ondernemer_id}`,
+			}/getOrderDataThreeDaysAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
-	async getOrderDataFourDaysAgo(Ondernemer_ondernemer_id) {
+	async getOrderDataFourDaysAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/getOrderDataFourDaysAgo/${Ondernemer_ondernemer_id}`,
+			}/getOrderDataFourDaysAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
-	async getOrderDataFiveDaysAgo(Ondernemer_ondernemer_id) {
+	async getOrderDataFiveDaysAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/getOrderDataFiveDaysAgo/${Ondernemer_ondernemer_id}`,
+			}/getOrderDataFiveDaysAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
-	async getOrderDataSevenDaysAgo(Ondernemer_ondernemer_id) {
+	async getOrderDataSevenDaysAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/getOrderDataSevenDaysAgo/${Ondernemer_ondernemer_id}`,
+			}/getOrderDataSevenDaysAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
-	async getOrderDataTwoWeeksAgo(Ondernemer_ondernemer_id) {
+	async getOrderDataTwoWeeksAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/getOrderDataTwoWeeksAgo/${Ondernemer_ondernemer_id}`,
+			}/getOrderDataTwoWeeksAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
-	async getOrderDataThreeWeeksAgo(Ondernemer_ondernemer_id) {
+	async getOrderDataThreeWeeksAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/getOrderDataThreeWeeksAgo/${Ondernemer_ondernemer_id}`,
+			}/getOrderDataThreeWeeksAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
-	async getOrderDataFourWeeksAgo(Ondernemer_ondernemer_id) {
+	async getOrderDataFourWeeksAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/getOrderDataFourWeeksAgo/${Ondernemer_ondernemer_id}`,
+			}/getOrderDataFourWeeksAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
@@ -167,111 +168,111 @@ export class OrdersRepository {
 		);
 	}
 
-	async getOrderByOrderNum(bestelnummer) {
+	async getOrderByOrderNum(order_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/getorder/${bestelnummer}`,
+			`${this.#route}/getorder/${order_id}`,
 			"GET"
 		);
 	}
 
-	async getOrderByOrderNumAndZip(bestelnummer, zip) {
+	async getOrderByOrderNumAndZip(order_id, zip) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/trackorder/${bestelnummer}/${zip}`,
+			`${this.#route}/trackorder/${order_id}/${zip}`,
 			"GET"
 		);
 	}
 
-	async countOrders(Ondernemer_ondernemer_id) {
+	async countOrders(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/count/${Ondernemer_ondernemer_id}`,
+			`${this.#route}/count/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
 	}
 
-	async deleteOrders(bestelnummer) {
+	async deleteOrders(order_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/delete/${bestelnummer}`,
+			`${this.#route}/delete/${order_id}`,
 			"POST",
 			{}
 		);
 	}
 
-	async countOrdersOmw(Ondernemer_ondernemer_id) {
+	async countOrdersOmw(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/countomw/${Ondernemer_ondernemer_id}`,
+			`${this.#route}/countomw/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
 	}
 
-	async countOrdersHere(Ondernemer_ondernemer_id) {
+	async countOrdersHere(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/counthere/${Ondernemer_ondernemer_id}`,
+			`${this.#route}/counthere/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
 	}
 
-	async calculateEarningsToday(Ondernemer_ondernemer_id) {
+	async calculateEarningsToday(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/calculateearningstoday/${Ondernemer_ondernemer_id}`,
+			`${this.#route}/calculateearningstoday/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
 	}
 
-	async calculateEarningsYesterday(Ondernemer_ondernemer_id) {
+	async calculateEarningsYesterday(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/calculateearningsyesterday/${Ondernemer_ondernemer_id}`,
+			}/calculateearningsyesterday/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
 	}
 
-	async calculateEarningsWeek(Ondernemer_ondernemer_id) {
+	async calculateEarningsWeek(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/calculateearningsweek/${Ondernemer_ondernemer_id}`,
+			}/calculateearningsweek/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
 	}
 
-	async calculateEarningsLastWeek(Ondernemer_ondernemer_id) {
+	async calculateEarningsLastWeek(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/calculateearningslastweek/${Ondernemer_ondernemer_id}`,
+			}/calculateearningslastweek/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
 	}
 
-	async calculateEarningsMonth(Ondernemer_ondernemer_id) {
+	async calculateEarningsMonth(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/calculateearningsmonth/${Ondernemer_ondernemer_id}`,
+			`${this.#route}/calculateearningsmonth/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
 	}
 
-	async calculateEarningsLastMonth(Ondernemer_ondernemer_id) {
+	async calculateEarningsLastMonth(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
 			`${
 				this.#route
-			}/calculateearningslastmonth/${Ondernemer_ondernemer_id}`,
+			}/calculateearningslastmonth/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
 	}
 
-	async calculateDonatedMoney(Ondernemer_ondernemer_id) {
+	async calculateDonatedMoney(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/calculatedonatedmoney/${Ondernemer_ondernemer_id}`,
+			`${this.#route}/calculatedonatedmoney/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
@@ -289,14 +290,14 @@ export class OrdersRepository {
 		);
 	}
 	/**
-	 * haalt het telefoonnummer op met het bestelnummer
+	 * haalt het telefoonnummer op met het order_id
 	 *
-	 * @param {number} bestellingnummer
+	 * @param {number} order_id
 	 * @returns telefoonnummer van de bestelling
 	 */
-	async getPhonenumber(bestellingnummer) {
+	async getPhonenumber(order_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/getphonenumber/${bestellingnummer}`,
+			`${this.#route}/getphonenumber/${driverOrderDetailController}`,
 			"GET"
 		);
 	}
@@ -304,7 +305,7 @@ export class OrdersRepository {
 	/**
 	 * Update de status van een bestelling
 	 *
-	 * @param {number} orderId bestelnummer
+	 * @param {number} orderId order_id
 	 * @param {string} status status van het bestelling
 	 * @returns
 	 */
