@@ -1,26 +1,24 @@
 import {App} from "../app.js";
 import {Controller} from "./controller.js";
-import {ReviewRepsitory} from "../repositories/reviewRepsitory.js";
+import {ReviewRepository} from "../repositories/reviewRepository.js";
 
 export class ReviewClientController extends Controller {
     #reviewClient
-    #reviewRepsitory;
+    #reviewRepository;
 
     constructor() {
         super();
         this.#setupView();
-        this.#reviewRepsitory = new ReviewRepsitory();
+        this.#reviewRepository = new ReviewRepository();
     }
 
     async #setupView() {
 
         App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
-        //await for when HTML is loaded, never skip this method call in a controller
         this.#reviewClient = await super.loadHtmlIntoContent("html_views/review_clients.html")
         const anchors = this.#reviewClient.querySelectorAll("a.nav-link");
 
 
-        //set click listener on each anchor
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)))
 
 
@@ -32,8 +30,8 @@ export class ReviewClientController extends Controller {
         this.#reviewClient.querySelector("#error").hidden = true;
         this.#reviewClient.querySelector("#success").hidden = true;
 
-        await this.#getreviewsList(compId);
-        await this.#getOndernemerInfo(compId);
+        await this.#getReviewsList(compId);
+        await this.#getEntrepreneurInfo(compId);
 
         this.#reviewClient.querySelector("#buttonSend").addEventListener("click",
             (event) => this.#commend(compId));
@@ -41,13 +39,13 @@ export class ReviewClientController extends Controller {
 
     }
 
-    async #getreviewsList(compId) {
+    async #getReviewsList(compId) {
         let counterBad = 0;
         let counterGood = 0;
         let counterNotSoGood = 0;
 
 
-        let reviews = await this.#reviewRepsitory.getReviewsById(compId);
+        let reviews = await this.#reviewRepository.getReviewsById(compId);
 
 
         if (reviews.length !== 0) {
@@ -124,7 +122,6 @@ export class ReviewClientController extends Controller {
 
     #commend(compId) {
 
-        //todo add sessionID
         const customer_id = 1;
 
 
@@ -138,33 +135,27 @@ export class ReviewClientController extends Controller {
         let today = new Date();
         let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-        //check if something is filled in the review box
+        //check if something is filled in the review box, if not give an error
         if (command === '') {
 
             const error = this.#reviewClient.querySelector("#error").hidden = false;
         } else {
 
-            //code for db
-
             const error = this.#reviewClient.querySelector("#error").hidden = true;
             const success = this.#reviewClient.querySelector("#success").hidden = false;
 
 
-            this.#reviewRepsitory.createReview(null, customer_id, entrepreneur_id, command, rating, date);
+            this.#reviewRepository.createReview(null, customer_id, entrepreneur_id, command, rating, date);
 
-
-            // App.loadController('review_clients');
-            // return false;
         }
     }
 
-    async #getOndernemerInfo(compId) {
-        let ondernemerInfo = await this.#reviewRepsitory.getOndernemerInfoByID(compId);
+    //
+    async #getEntrepreneurInfo(compId) {
+        let entrepreneurInfo = await this.#reviewRepository.getEntrepreneurInfoByID(compId);
 
-        document.getElementById("companyName").innerText = ondernemerInfo[0].naam;
-        document.getElementById("address").innerText = ondernemerInfo[0].adres + "\n" + ondernemerInfo[0].postcode + " " + ondernemerInfo[0].plaats;
-        document.getElementById("telephone").innerText = ondernemerInfo[0].telefoonnummer;
-        console.log(ondernemerInfo)
-        console.log(ondernemerInfo[0].naam)
+        document.getElementById("companyName").innerText = entrepreneurInfo[0].naam;
+        document.getElementById("address").innerText = entrepreneurInfo[0].adres + "\n" + entrepreneurInfo[0].postcode + " " + entrepreneurInfo[0].plaats;
+        document.getElementById("telephone").innerText = entrepreneurInfo[0].telefoonnummer;
     }
 }
