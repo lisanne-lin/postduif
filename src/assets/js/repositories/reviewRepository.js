@@ -4,7 +4,7 @@
  */
 import {NetworkManager} from "../framework/utils/networkManager.js";
 
-export class ReviewRepsitory {
+export class ReviewRepository {
     #networkManager;
     #route;
 
@@ -17,8 +17,8 @@ export class ReviewRepsitory {
         return await this.#networkManager.doRequest(`${this.#route}/getReviews/${id}`, "GET", {});
     }
 
-    async getOndernemerInfoByID(id) {
-        return await this.#networkManager.doRequest(`${this.#route}/getOndernemer/${id}`, "GET", {});
+    async getEntrepreneurInfoByID(id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getEntrepreneur/${id}`, "GET", {});
     }
 
     async createReview(review_id, customerId, entrepreneurId, command, rating, date) {

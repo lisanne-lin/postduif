@@ -5,46 +5,46 @@ export class CustomersRepository {
     #route;
 
     constructor() {
-        this.#route = "/klant";
+        this.#route = "/customer";
         this.#networkManager = new NetworkManager();
     }
 
-    async login(emailadres, wachtwoord){
-        return await this.#networkManager.doRequest(`${this.#route}/login`, "POST", {"emailadres": emailadres, "wachtwoord": wachtwoord});
+    async login(emailaddress, password){
+        return await this.#networkManager.doRequest(`${this.#route}/login`, "POST", {"emailaddress": emailaddress, "password": password});
     }
 
     async getCustomers(entrepreneurNum){
         return await this.#networkManager.doRequest(`${this.#route}/getallfor/${entrepreneurNum}`, "GET", {});
     }
 
-    async getUserIdByEmail(emailadres){
-        return await this.#networkManager.doRequest(`${this.#route}/getIdFromEmailAdres/${emailadres}`, "GET", {});
+    async getUserIdByEmail(emailaddress){
+        return await this.#networkManager.doRequest(`${this.#route}/getIdFromemailaddress/${emailaddress}`, "GET", {});
     }
 
-    async getCustomerByEmail(emailadres){
-        return await this.#networkManager.doRequest(`${this.#route}/getcustomer/${emailadres}`, "GET", {});
+    async getCustomerByEmail(emailaddress){
+        return await this.#networkManager.doRequest(`${this.#route}/getcustomer/${emailaddress}`, "GET", {});
     }
 
-    async createCustomer(klantnummer, voornaam, achternaam, emailadres, telefoonnummer, plaats, adres, postcode, wachtwoord) {
+    async createCustomer(customer_id, first_name, last_name, emailaddress, phonenumber, place, address, zip, password) {
         this.#networkManager.doRequest(`${this.#route}/createcustomer`, "POST",
             {
-                klantnummer: klantnummer,
-                voornaam: voornaam,
-                achternaam: achternaam,
-                emailadres: emailadres,
-                telefoonnummer: telefoonnummer,
-                plaats: plaats,
-                adres: adres,
-                postcode: postcode,
-                wachtwoord: wachtwoord
+                customer_id: customer_id,
+                first_name: first_name,
+                last_name: last_name,
+                emailaddress: emailaddress,
+                phonenumber: phonenumber,
+                place: place,
+                address: address,
+                zip: zip,
+                password: password
             })
     }
 
-    async getCustomerById (klantnummer) {
-        return await this.#networkManager.doRequest(`${this.#route}/getcustomerbyid/${klantnummer}`, "GET", {});
+    async getCustomerById (customer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getcustomerbyid/${customer_id}`, "GET", {});
     }
 
-    async getOrdersFromCustomer(klantnummer) {
-        return await this.#networkManager.doRequest(`${this.#route}/getordersfromcustomer/${klantnummer}`, "GET", {});
+    async getOrdersFromCustomer(customer_id) {
+        return await this.#networkManager.doRequest(`${this.#route}/getordersfromcustomer/${customer_id}`, "GET", {});
     }
 }

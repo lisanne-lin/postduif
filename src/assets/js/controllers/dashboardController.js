@@ -26,8 +26,7 @@ export class DashboardController extends Controller {
 
         document.querySelector(".navbar").style.display = "block";
         document.querySelector("#nav-orders").className = "nav-link";
-        // document.querySelector("#nav-settings").className = "nav-link";
-        document.querySelector("#nav-dash").className = "nav-link active";
+         document.querySelector("#nav-dash").className = "nav-link active";
 
         this.#dashboardView.querySelector("#place-order-btn").addEventListener("click", event => {
             App.loadController(App.CONTROLLER_ORDERS);
@@ -53,9 +52,9 @@ export class DashboardController extends Controller {
         const orderDataMonth = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
         const orderDataLastMonth = await this.#ordersRepository.calculateEarningsLastMonth(this.#ID);
 
-        const percentageToday = (((orderDataYesterday.prijs - orderDataToday.prijs) / orderDataToday.prijs) * 100);
-        const percentageWeek = (((orderDataLastWeek.prijs - orderDataWeek.prijs) / orderDataWeek.prijs) * 100);
-        const percentageMonth = (((orderDataLastMonth.prijs - orderDataMonth.prijs) / orderDataMonth.prijs) * 100);
+        const percentageToday = (((orderDataYesterday.price - orderDataToday.price) / orderDataToday.price) * 100);
+        const percentageWeek = (((orderDataLastWeek.price - orderDataWeek.price) / orderDataWeek.price) * 100);
+        const percentageMonth = (((orderDataLastMonth.price - orderDataMonth.price) / orderDataMonth.price) * 100);
 
         this.#dashboardView.querySelector("#percentageday").innerHTML = percentageToday;
         this.#dashboardView.querySelector("#percentageweek").innerHTML = percentageWeek;
@@ -163,9 +162,9 @@ export class DashboardController extends Controller {
             let nameCell = tableRow.insertCell()
             let adresCell = tableRow.insertCell()
 
-            orderCell.append(data.bestelnummer);
-            nameCell.append(data.verzendnaam);
-            adresCell.append(data.verzendadres);
+            orderCell.append(data.order_id);
+            nameCell.append(data.shipping_name);
+            adresCell.append(data.shipping_address);
 
             table.append(tableRow);
         }
@@ -173,40 +172,40 @@ export class DashboardController extends Controller {
 
     async #fetchOrderCountOmw() {
         const amount = await this.#ordersRepository.countOrdersOmw(this.#ID);
-        this.#dashboardView.querySelector("#orders-omw").innerHTML = amount.aantal
+        this.#dashboardView.querySelector("#orders-omw").innerHTML = amount.amount
     }
 
     async #fetchOrderCountHere() {
         const amount = await this.#ordersRepository.countOrdersHere(this.#ID);
 
-        this.#dashboardView.querySelector("#orders-delivered").innerHTML = amount.aantal
+        this.#dashboardView.querySelector("#orders-delivered").innerHTML = amount.amount
     }
 
     async #fetchEarningsToday() {
         const amount = await this.#ordersRepository.calculateEarningsToday(this.#ID);
-        if (amount.prijs == null) {
+        if (amount.price == null) {
             this.#dashboardView.querySelector("#earnings-today").innerHTML = " -.--"
         } else {
-            this.#dashboardView.querySelector("#earnings-today").innerHTML = amount.prijs
+            this.#dashboardView.querySelector("#earnings-today").innerHTML = amount.price
         }
     }
 
     async #fetchEarningsWeek() {
         const amount = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
 
-        if (amount.prijs == null) {
+        if (amount.price == null) {
             this.#dashboardView.querySelector("#earnings-week").innerHTML = " -.--"
         } else {
-            this.#dashboardView.querySelector("#earnings-week").innerHTML = amount.prijs
+            this.#dashboardView.querySelector("#earnings-week").innerHTML = amount.price
         }
     }
 
     async #fetchEarningsMonth() {
         const amount = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
-        if (amount.prijs == null) {
+        if (amount.price == null) {
             this.#dashboardView.querySelector("#earnings-month").innerHTML = " -.--"
         } else {
-            this.#dashboardView.querySelector("#earnings-month").innerHTML = amount.prijs
+            this.#dashboardView.querySelector("#earnings-month").innerHTML = amount.price
         }
     }
 

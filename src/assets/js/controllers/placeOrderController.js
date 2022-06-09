@@ -29,14 +29,14 @@ export class PlaceOrderController extends Controller {
         this.#placeOrderView = await super.loadHtmlIntoContent("html_views/place_order.html");
 
         document.querySelector(".navbar").style.display = "block";
-        document.querySelector("#nav-orders").className = "nav-link active";
+        document.querySelector("#nav-orders").classNAME = "nav-link active";
 
         this.#placeOrderView.querySelector("#saveButton").addEventListener("click",
             (event) => this.#saveOrder(event));
 
     }
 
-    async #sendMail(emailadres, naam, bestelnummer, postcode) {
+    async #sendMail(emailaddress, name, order_id, ZIP) {
         await fetch("https://api.hbo-ict.cloud/mail", {
             method: 'POST',
             headers: {
@@ -49,13 +49,13 @@ export class PlaceOrderController extends Controller {
                 },
                 "to": [
                     {
-                        "name": naam,
-                        "address": emailadres
+                        "name": name,
+                        "address": emailaddress
                     }
                 ],
-                "subject": "Track & Trace: " + bestelnummer,
-                "html": "Dear " + naam + ",\n\nIn order to track your order, you will need to enter this Track & Trace code on the postDuif website: " + bestelnummer +
-                    ", and your zip: " + postcode +
+                "subject": "Track & Trace: " + order_id,
+                "html": "Dear " + name + ",\n\nIn order to track your order, you will need to enter this Track & Trace code on the postDuif website: " + order_id +
+                    ", and your ZIP: " + ZIP +
                     ". Kind regards,\n" +
                     "\n" +
                     "Team postDuif"
@@ -67,55 +67,53 @@ export class PlaceOrderController extends Controller {
     async #saveOrder(event) {
         event.preventDefault();
 
-        const naam = this.#placeOrderView.querySelector("#exampleInputName").value;
-        const emailadres = this.#placeOrderView.querySelector("#exampleInputEmail").value;
-        const adres = this.#placeOrderView.querySelector("#exampleInputAdres").value;
-        const plaats = this.#placeOrderView.querySelector("#exampleInputPlaats").value;
-        const postcode = this.#placeOrderView.querySelector("#exampleInputPostcode").value;
-        const geschatte_bezorgdatum = this.#placeOrderView.querySelector("#exampleInputBezorgdatum").value;
-        const verzend_datum = this.#placeOrderView.querySelector("#exampleInputVerzenddatum").value;
-        const prijs = this.#placeOrderView.querySelector("#exampleInputStatus").value;
-        const bezorgkosten = this.#placeOrderView.querySelector("#exampleInputBezorgkosten").value;
-        const opmerking = this.#placeOrderView.querySelector("#exampleRemark").value;
+        const NAME = this.#placeOrderView.querySelector("#exampleInputName").value;
+        const EMAILADDRES = this.#placeOrderView.querySelector("#exampleInputEmail").value;
+        const ADDRESS = this.#placeOrderView.querySelector("#exampleInputADDRESS").value;
+        const PLACE = this.#placeOrderView.querySelector("#exampleInputPlaats").value;
+        const ZIP = this.#placeOrderView.querySelector("#exampleInputzip").value;
+        const ESTIMATED_DELIVERY = this.#placeOrderView.querySelector("#exampleInputBezorgdatum").value;
+        const SHIPPING_DATE = this.#placeOrderView.querySelector("#exampleInputVerzenddatum").value;
+        const PRICE = this.#placeOrderView.querySelector("#exampleInputStatus").value;
+        const DELIVERY_CHARGE = this.#placeOrderView.querySelector("#exampleInputdelivery_charge").value;
+        const REMARK = this.#placeOrderView.querySelector("#exampleRemark").value;
 
-        const errorBox = this.#placeOrderView.querySelector("#error-box");
+        const ERROR_BOX = this.#placeOrderView.querySelector("#error-box");
 
-        const adresRegex = /^([1-9][e][\s])*([a-zA-Z]+(([\.][\s])|([\s]))?)+[1-9][0-9]*(([-][1-9][0-9]*)|([\s]?[a-zA-Z]+))?$/i;
-        const postcodeRegex = /^[1-9][0-9]{3}[\s]?[A-Za-z]{2}$/i;
-
-        let date;
-
-        if (naam == "" || naam == " " || naam == null) {
-            errorBox.innerHTML = "Name is too short or not entered correctly"
-        } else if (!adresRegex.test(adres)) {
-            errorBox.innerHTML = "Adress is not entered correctly"
-        } else if (plaats == "" || plaats == null) {
-            errorBox.innerHTML = "Please choose a place"
-        } else if (!postcodeRegex.test(postcode)) {
-            errorBox.innerHTML = "Zip is too short or not entered correctly"
-        } else if (geschatte_bezorgdatum == null || geschatte_bezorgdatum == "") {
-            errorBox.innerHTML = "Please choose an estimated delivery date"
-        } else if (verzend_datum == null || verzend_datum == "") {
-            errorBox.innerHTML = "Please choose a shipping date"
-        } else if (prijs == null || prijs == 0) {
-            errorBox.innerHTML = "Please choose the price of the order"
-        } else if (bezorgkosten == null || bezorgkosten == 0) {
-            errorBox.innerHTML = "Please choose the delivery costs, delivery guys want to earn money too..."
+        const ADDRESSS_REGEX = /^([1-9][e][\s])*([a-zA-Z]+(([\.][\s])|([\s]))?)+[1-9][0-9]*(([-][1-9][0-9]*)|([\s]?[a-zA-Z]+))?$/i;
+        const ZIP_REGEX = /^[1-9][0-9]{3}[\s]?[A-Za-z]{2}$/i;
+        
+        if (NAME == "" || NAME == " " || NAME == null) {
+            ERROR_BOX.innerHTML = "Name is too short or not entered correctly"
+        } else if (!ADDRESSS_REGEX.test(ADDRESS)) {
+            ERROR_BOX.innerHTML = "Addres is not entered correctly"
+        } else if (PLACE == "" || PLACE == null) {
+            ERROR_BOX.innerHTML = "Please choose a place"
+        } else if (!ZIP_REGEX.test(ZIP)) {
+            ERROR_BOX.innerHTML = "Zip is too short or not entered correctly"
+        } else if (ESTIMATED_DELIVERY == null || ESTIMATED_DELIVERY == "") {
+            ERROR_BOX.innerHTML = "Please choose an estimated delivery date"
+        } else if (SHIPPING_DATE == null || SHIPPING_DATE == "") {
+            ERROR_BOX.innerHTML = "Please choose a shipping date"
+        } else if (PRICE == null || PRICE == 0) {
+            ERROR_BOX.innerHTML = "Please choose the PRICE of the order"
+        } else if (DELIVERY_CHARGE == null || DELIVERY_CHARGE == 0) {
+            ERROR_BOX.innerHTML = "Please choose the delivery costs, delivery guys want to earn money too..."
         } else {
-            date = new Date();
+            let date = new Date();
 
             date = date.getUTCFullYear() + '-' +
                 ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
                 ('00' + date.getUTCDate()).slice(-2);
 
-            const createOrder = await this.#ordersRepository.createOrder(null, naam, adres, plaats, postcode, geschatte_bezorgdatum,
-                verzend_datum, bezorgkosten, opmerking, null, null,
-                this.#ID, date, null, prijs);
+            const createOrder = await this.#ordersRepository.createOrder(null, NAME, ADDRESS, PLACE, ZIP, ESTIMATED_DELIVERY,
+                SHIPPING_DATE, DELIVERY_CHARGE, REMARK, null, null,
+                this.#ID, date, null, PRICE);
 
             this.#placeOrderView.querySelector("#saveButton").style.display = "none";
             this.#placeOrderView.querySelector("#loadingBtn").style.display = "block";
 
-            this.#sendMail(emailadres, naam, createOrder.bestelnummer, postcode);
+            this.#sendMail(EMAILADDRES, NAME, createOrder.order_id, ZIP);
 
             setTimeout(function () {
                 App.loadController(App.CONTROLLER_ORDERS)
