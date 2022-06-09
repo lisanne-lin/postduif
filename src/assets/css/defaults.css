@@ -17,9 +17,8 @@
         --gray-500: #CDD0D4;
         --gray-800: #40424A;
         --black: #222328;
-        --status-bezorgd: #2DD034;
-        --status-onderweg: #FFB800;
-        --status-geanulleerd: #FE4C4C;
+        --status-delivered: #2DD034;
+        --status-on-the-way: #FFB800;
     }
 
     main{

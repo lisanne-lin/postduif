@@ -1,5 +1,5 @@
 /**
- * Controller for getting deliveries
+ * Controller for getting delivery information details
  * @author Lisanne Lin
  */
 
@@ -10,12 +10,20 @@ export class driverOrderDetailController extends Controller {
 	#ordersRepository;
 	#driverOrderDetailController;
 
+	/**
+	 *
+	 * @param {string} data of the order (order information)
+	 */
 	constructor(data) {
 		super();
 		this.#ordersRepository = new OrdersRepository();
 		this.#setupView(data.id);
 	}
 
+	/**
+	 *
+	 * @param {number} id of order (order number)
+	 */
 	async #setupView(id) {
 		this.#driverOrderDetailController = await super.loadHtmlIntoContent(
 			"html_views/order-page-details_deliverer.html"
@@ -24,16 +32,17 @@ export class driverOrderDetailController extends Controller {
 	}
 
 	/**
-	 * pakt data van de order uit de database en laat het zien op de pagina
-	 * @param {number} id = bestelnummer van bestelling
+	 * Fetch orders and display information
+	 * @param {number} id of order (order number)
 	 */
 	async #fetchOrder(id) {
-		// haalt de bestelling op met de bestelnummer
+		// Gets order with order number
 		const orderData = await this.#ordersRepository.getOrderByOrderNum(id);
 		const getCompanyName = await this.#ordersRepository.getCompanyName(id);
-		// pakt het telefoonnummer van de bestelling
+		// Gets the phonenumber of the order
 		const phonenumber = await this.#ordersRepository.getPhonenumber(id);
 
+		//Displays information of order
 		document.getElementById("orderStatus").innerHTML = orderData[0].status;
 		document.getElementById("customerName").innerHTML =
 			orderData[0].verzendnaam;
@@ -60,16 +69,17 @@ export class driverOrderDetailController extends Controller {
 			App.loadController(App.CONTROLLER_BEZORGER_BESTELLING);
 		});
 
-		// leaflet map with osm tilelayer
+		// Leaflet map with OSM tilelayer (Plugin)
 		var map = L.map("map").setView([28.238, 83.9956], 11);
 		L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(map);
 
-		// marker
+		// Location marker
 		var marker = L.marker([28.238, 83.9956]).addTo(map);
 
 		/**
 		 * Use openrouteservice API to find location information of the given address
 		 *
+		 * @author Lisanne Lin
 		 * @param {string} address to find information for
 		 * @returns location information of the given address (coordination etc)
 		 */
@@ -89,6 +99,7 @@ export class driverOrderDetailController extends Controller {
 			`${orderData[0].adres} ${orderData[0].postcode} ${orderData[0].plaats}`
 		);
 		L.Routing.control({
+			//Converts addresses into coordinates
 			waypoints: [
 				L.latLng(
 					businessAddress.geometry.coordinates[1],
@@ -131,15 +142,18 @@ export class driverOrderDetailController extends Controller {
 			pickupButton.classList.add("disabled");
 			deliveredButton.style.display = "block";
 			orderStatus.classList.remove("pickup");
+			orderStatus.innerText = "On the way";
 			orderStatus.classList.add("on-the-way");
 		};
 
 		deliveredButton.onclick = function () {
 			deliveredButton.style.display = "none";
 			orderStatus.classList.remove("on-the-way");
+			orderStatus.innerText = "Delivered";
 			orderStatus.classList.add("delivered");
 		};
 
+		//Adds classes and hides buttons based on order status
 		switch (orderData[0].status) {
 			case "Still to be picked up":
 				orderStatus.classList.add("pickup");
@@ -147,11 +161,13 @@ export class driverOrderDetailController extends Controller {
 				break;
 
 			case "On the way":
+				orderStatus.innerText = "On the way";
 				orderStatus.classList.add("on-the-way");
 				deliveredButton.style.display = "block";
 				break;
 
 			case "Delivered":
+				orderStatus.innerText = "Delivered";
 				orderStatus.classList.add("delivered");
 				deliveredButton.style.display = "block";
 				break;
@@ -159,48 +175,6 @@ export class driverOrderDetailController extends Controller {
 			case "Order Cancelled":
 				cancelButton.style.display = "block";
 				break;
-
-			default:
-				break;
 		}
-
-		// switch (orderData[0].status) {
-		// 	case "Still to be picked up":
-		// 		orderStatus.classList.add("pickup");
-		// 		pickupButton.style.display = "block";
-		// 		pickupButton.onclick = function () {
-		// 			outForDelivery.style.display = "block";
-		// 			cancelButton.style.display = "block";
-		// 			pickupButton.style.display = "none";
-		// 			backButton.style.display = "none";
-		// 		};
-
-		// 	case "On the way":
-		// 		orderStatus.classList.add("on-the-way");
-		// 		pickupButton.style.display = "none";
-		// 		pickupButton.classList.add("disabled");
-		// 		cancelOrder.style.display = "block";
-		// 		outForDelivery.onclick = function () {
-		// 			pickupButton.style.display = "none";
-		// 			outForDelivery.style.display = "none";
-		// 			pickupButton.classList.add("disabled");
-		// 			deliveredButton.style.display = "block";
-		// 			cancelOrder.style.display = "block";
-		// 		};
-		// 		break;
-
-		// 	case "Delivered":
-		// 		pickupButton.classList.add("disabled");
-		// 		pickupButton.setAttribute("disabled", "");
-		// 		orderStatus.classList.add("delivered");
-		// 		// deliveredButton.onclick.alert = "Order Delivered confirmed";
-		// 		break;
-
-		// 	case "Order Cancelled":
-		// 		orderStatus.classList.add("order-cancelled");
-		// 		pickupButton.classList.add("disabled");
-		// 		deliveredButton.setAttribute("disabled", "");
-		// 		break;
-		// }
 	}
 }

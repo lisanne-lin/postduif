@@ -1,52 +1,55 @@
-    <head>
-        <!-- leaflet css -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
-        <!-- leaflet js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-        <!-- leaflet routing machine -->    
-        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
-        <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
-        <link rel="stylesheet" href="../assets/css/pages/bezorger.css">
-    </head>
+<head>
+    <!-- leaflet css -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+    <!-- leaflet js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js"
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <!-- leaflet routing machine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    <link rel="stylesheet" href="../assets/css/pages/bezorger.css">
+</head>
 
-    <nav class="navbar navbar-expand-md fixed-top driver logged-in">
-        <div class="container-fluid">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <img src="assets/img/logo.svg" height="40px">
-                <span class="fs-4">PostDuif</span>
-            </a>
-            <ul>
-                <li class="nav-item nav-courier-logout"><a href="#" id="nav-settings" class="nav-link"
-                        data-controller="logout">
-                        <i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
-                </li>
-            </ul>
+<nav class="navbar navbar-expand-md fixed-top driver logged-in">
+    <div class="container-fluid">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <img src="assets/img/logo.svg" height="40px">
+            <span class="fs-4">PostDuif</span>
+        </a>
+        <ul>
+            <li class="nav-item nav-courier-logout"><a href="#" id="nav-settings" class="nav-link"
+                    data-controller="logout">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="bg">
+    <div class="container container-deliverer order-list">
+        <h2 class="header">Order for <span id="customerName">Name customer</span></h2>
+        <h3 id="companyName" class="company-name"></h3>
+        <h3>Ordernumber <span id="ordernumber"></span> </h3>
+        <h3 id="date"></h3>
+        <p id="orderStatus"></p>
+        <div class="order-address">
+            <p id="naam"></p>
+            <p id="adres"></p>
+            <p id="zip"></p>
+            <p id="city"></p>
+            <p id="phonenumber"></p>
+            <div id="map"></div>
+
+            <div class="buttons">
+                <button id="pickOrder" class="pick-order">Pick this order</button>
+                <button id="outForDelivery" class="deliver-order">Out for Delivery</button>
+                <button id="orderDelivered" class="order-delivered">Delivered</button>
+                <button id="cancel">Cancel</button>
+                <button id="back" data-controller="bezorgerBestelling">Back</button>
+            </div>
         </div>
-    </nav>
-
-    <div class="bg">
-        <div class="container container-bezorger order-list">
-            <h2 class="header">Order for <span id="customerName">Name customer</span></h2>
-            <h3 id="companyName" class="company-name"></h3>
-            <h3>Ordernumber <span id="ordernumber"></span> </h3>
-            <h3 id="date"></h3>
-            <p id="orderStatus"></p>
-            <div class="order-address">
-                <p id="naam"></p>
-                <p id="adres"></p>
-                <p id="zip"></p>
-                <p id="city"></p>
-                <p id="phonenumber"></p>
-                <div id="map"></div>
-
-                <div class="buttons">
-                    <button id="pickOrder" class="pick-order">Pick this order</button>
-                    <button id="outForDelivery" class="deliver-order">Out for Delivery</button>
-                    <button id="orderDelivered" class="order-delivered">Delivered</button>
-                    <button id="cancelOrder" class="order-delivered">Cancel Order</button>
-                    <button id="cancel">Cancel</button>
-                    <button id="back" data-controller="bezorgerBestelling">Back</button>
-                </div>
     </div>
-    </div>
-    </div>
+</div>
