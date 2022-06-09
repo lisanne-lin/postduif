@@ -22,6 +22,9 @@ export class DashboardController extends Controller {
         const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
         this.#ID = ENTREPRENEUR_ID[0].ondernemer_id;
 
+        console.log(this.#ID)
+        console.log(App.sessionManager.get("username"))
+
         this.#dashboardView = await super.loadHtmlIntoContent("html_views/dashboard.html");
 
         document.querySelector(".navbar").style.display = "block";
@@ -210,7 +213,7 @@ export class DashboardController extends Controller {
     }
 
     async #fetchCollectedMoney() {
-        const data = await this.#ordersRepository.calculateDonatedMoney(this.#ID);
+        const DATA = await this.#ordersRepository.calculateDonatedMoney(this.#ID);
 
         const amount = (Math.round(data.donatie * 100) / 100).toFixed(2);
         this.#dashboardView.querySelector("#collected-money").innerHTML = amount
