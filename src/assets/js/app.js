@@ -7,31 +7,29 @@
  * @author Lennard Fonteijn & Pim Meijer
  */
 
-import { SessionManager } from "./framework/utils/sessionManager.js";
-import { LoginController } from "./controllers/loginController.js";
-import { NavbarController } from "./controllers/navbarController.js";
-import { UploadController } from "./controllers/uploadController.js";
-import { WelcomeController } from "./controllers/welcomeController.js";
-import { DashboardController } from "./controllers/dashboardController.js";
-import { PlaceOrderController } from "./controllers/placeOrderController.js";
-import { RegisterController } from "./controllers/registerController.js";
-import { LandingController } from "./controllers/landingController.js";
-import { BezorgerLoginController } from "./controllers/bezorgerLoginController.js";
-import { RegistrerenBezorgerController } from "./controllers/registrerenBezorgerController.js";
-import { OrdersController } from "./controllers/OrdersController.js";
-import { delivererOrderController } from "./controllers/delivererOrderController.js";
-import { TrackOrderController } from "./controllers/TrackOrderController.js";
-import { CustomersController } from "./controllers/CustomersController.js";
-import { ClientRegisterController } from "./controllers/ClientRegisterController.js";
-import { CompanyController } from "./controllers/companyController.js";
-import { driverOrderDetailController } from "./controllers/driverOrderDetailController.js";
-import { NavbarBusinessController } from "./controllers/NavbarBusinessController.js";
-import { NavbarClientsController } from "./controllers/NavbarClientsController.js";
-import { NavbarRidersController } from "./controllers/NavbarRidersController.js";
-import { ReviewClientController } from "./controllers/reviewClientController.js";
-import { TrackOrderWithoutLoginController } from "./controllers/TrackOrderWithoutLoginController.js";
-import { clientLoginController } from "./controllers/clientLoginController.js";
-import { entrepreneurSettingsController } from "./controllers/entrepreneurSettingsController.js";
+import {SessionManager} from "./framework/utils/sessionManager.js";
+import {LoginController} from "./controllers/loginController.js";
+import {NavbarController} from "./controllers/navbarController.js";
+import {UploadController} from "./controllers/uploadController.js";
+import {WelcomeController} from "./controllers/welcomeController.js";
+import {DashboardController} from "./controllers/dashboardController.js";
+import {PlaceOrderController} from "./controllers/placeOrderController.js";
+import {RegisterController} from "./controllers/registerController.js";
+import {LandingController} from "./controllers/landingController.js";
+import {BezorgerLoginController} from "./controllers/bezorgerLoginController.js";
+import {OrdersController} from "./controllers/OrdersController.js";
+import {delivererOrderController} from "./controllers/delivererOrderController.js";
+import {TrackOrderController} from "./controllers/TrackOrderController.js";
+import {CustomersController} from "./controllers/CustomersController.js";
+import {ClientRegisterController} from "./controllers/ClientRegisterController.js";
+import {CompanyController} from "./controllers/companyController.js";
+import {driverOrderDetailController} from "./controllers/driverOrderDetailController.js";
+import {NavbarBusinessController} from "./controllers/NavbarBusinessController.js";
+import {NavbarClientsController} from "./controllers/NavbarClientsController.js";
+import {NavbarRidersController} from "./controllers/NavbarRidersController.js";
+import {ReviewClientController} from "./controllers/reviewClientController.js";
+import {TrackOrderWithoutLoginController} from "./controllers/TrackOrderWithoutLoginController.js";
+import {clientLoginController} from "./controllers/clientLoginController.js";
 
 export class App {
 	//we only need one instance of the sessionManager, thus static use here
@@ -63,7 +61,6 @@ export class App {
 	static CONTROLLER_COMPANY = "companies";
 	static CONTROLLER_CLIENT_REVIEW = "review_clients";
 	static CONTROLLER_CLIENT_LOGIN = "client_login";
-	static CONTROLLER_ENTREPRENEUR_SETTINGS = "entrepreneur_settings";
 
 	constructor() {
 		//Attempt to load the controller from the URL, if it fails, fall back to the welcome controller.
@@ -86,10 +83,6 @@ export class App {
 			case App.CONTROLLER_NAVBAR:
 				new NavbarController();
 				return true;
-
-			case App.CONTROLLER_ENTREPRENEUR_SETTINGS:
-				new entrepreneurSettingsController();
-				break;
 
 			case App.CONTROLLER_NAVBAR_BUSINESS:
 				new NavbarBusinessController();

@@ -2,14 +2,13 @@
  * Repository voor Entity Orders
  */
 import {NetworkManager} from "../framework/utils/networkManager.js";
-import {driverOrderDetailController} from "../controllers/driverOrderDetailController";
 
 export class OrdersRepository {
 	#networkManager;
 	#route;
 
 	constructor() {
-		this.#route = "/bestelling";
+		this.#route = "/order";
 		this.#networkManager = new NetworkManager();
 	}
 
