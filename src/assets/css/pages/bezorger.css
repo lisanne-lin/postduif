@@ -40,7 +40,7 @@ h3#date{
     border-radius: 0px 0px 10px 10px;
 }
 
-.container-bezorger{
+.container-deliverer{
     background-color: white;
     position: absolute;
     max-width: 90%;
@@ -142,9 +142,4 @@ button#back:hover, button#cancel:hover{
 
 .on-the-way{
     color: var(--status-on-the-way);
-}
-
-@media (max-width: 767.98px) {
-
-
 }
