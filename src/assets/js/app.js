@@ -19,7 +19,7 @@ import { LandingController } from "./controllers/landingController.js";
 import { driverLoginController } from "./controllers/driverLoginController.js";
 import { driverRegisterController } from "./controllers/driverRegisterController.js";
 import { OrdersController } from "./controllers/OrdersController.js";
-import { delivererOrderController } from "./controllers/delivererOrderController.js";
+import { bezorgerBestellingController } from "./controllers/bezorgerBestellingController.js";
 import { TrackOrderController } from "./controllers/TrackOrderController.js";
 import { CustomersController } from "./controllers/CustomersController.js";
 import { ClientRegisterController } from "./controllers/ClientRegisterController.js";
@@ -213,13 +213,13 @@ export class App {
 
 			case App.CONTROLLER_BEZORGER_BESTELLING:
 				App.isLoggedIn(
-					() => new delivererOrderController(),
+					() => new bezorgerBestellingController(),
 					() => new LoginController()
 				);
 				break;
 			case App.CONTROLLER_DRIVER:
 				App.isLoggedIn(
-					() => new delivererOrderController(),
+					() => new bezorgerBestellingController(),
 					() => new LoginController()
 				);
 				break;

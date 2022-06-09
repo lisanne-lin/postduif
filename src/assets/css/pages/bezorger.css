@@ -40,7 +40,7 @@ h3#date{
     border-radius: 0px 0px 10px 10px;
 }
 
-.container-deliverer{
+.container-bezorger{
     background-color: white;
     position: absolute;
     max-width: 90%;
@@ -86,7 +86,7 @@ p.pickup{
 }
 
 p.delivered{
-    color: var(--status-delivered);
+    color: var(--status-bezorgd);
 }
 
 .table td, .table th{
@@ -107,11 +107,11 @@ button#pickOrder, button#outForDelivery, button#orderDelivered, button#back{
 
 }
 button#orderDelivered{
-    background-color:var(--status-delivered);
+    background-color:var(--status-bezorgd);
 }
 
 button#outForDelivery{
-    background-color: var(--status-on-the-way);
+    background-color: var(--status-onderweg);
 }
 
 button#back, button#cancel, button#cancelOrder{
@@ -140,6 +140,15 @@ button#back:hover, button#cancel:hover{
     width:auto;
 }
 
+.order-cancelled{
+    color: var(--status-geanulleerd);
+}
+
 .on-the-way{
-    color: var(--status-on-the-way);
+    color: var(--status-onderweg);
+}
+
+@media (max-width: 767.98px) {
+
+
 }
