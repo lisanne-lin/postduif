@@ -67,7 +67,6 @@ export class delivererOrderController extends Controller {
 			orderNumber.innerHTML = "Order " + data.bestelnummer;
 			orderZipcode.innerHTML = data.verzend_postcode;
 			orderStatus.innerHTML = data.status;
-			console.log(data.status);
 
 			// Adds classes to html based on tracking status
 			switch (data.status) {

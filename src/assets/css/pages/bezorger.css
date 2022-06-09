@@ -86,7 +86,7 @@ p.pickup{
 }
 
 p.delivered{
-    color: var(--status-bezorgd);
+    color: var(--status-delivered);
 }
 
 .table td, .table th{
@@ -107,11 +107,11 @@ button#pickOrder, button#outForDelivery, button#orderDelivered, button#back{
 
 }
 button#orderDelivered{
-    background-color:var(--status-bezorgd);
+    background-color:var(--status-delivered);
 }
 
 button#outForDelivery{
-    background-color: var(--status-onderweg);
+    background-color: var(--status-on-the-way);
 }
 
 button#back, button#cancel, button#cancelOrder{
@@ -140,12 +140,8 @@ button#back:hover, button#cancel:hover{
     width:auto;
 }
 
-.order-cancelled{
-    color: var(--status-geanulleerd);
-}
-
 .on-the-way{
-    color: var(--status-onderweg);
+    color: var(--status-on-the-way);
 }
 
 @media (max-width: 767.98px) {
