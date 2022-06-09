@@ -11,15 +11,15 @@ class CustomerRoute {
         this.#getCustomerById()
         this.#getOrdersFromCustomer()
         this.#login()
-        this.#getIdFromEmailAdres()
+        this.#getIdFromemailaddress()
     }
 
-    #getIdFromEmailAdres() {
-        this.#app.get("/klant/getIdFromEmailAdres/:emailadres", async (req, res) => {
+    #getIdFromemailaddress() {
+        this.#app.get("/customer/getIdFromemailaddress/:emailaddress", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT klantnummer, voornaam, achternaam FROM klant WHERE emailadres = ?",
-                    values: [req.params.emailadres],
+                    query: "SELECT customer_id, first_name, last_name FROM customer WHERE emailaddress = ?",
+                    values: [req.params.emailaddress],
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
@@ -32,21 +32,20 @@ class CustomerRoute {
     }
 
     #login() {
-        this.#app.post("/klant/login", async (req, res) => {
-            const emailadres = req.body.emailadres;
-            //TODO: You shouldn't save a password unencrypted!! Improve this by using this.#cryptoHelper functions :)
-            const wachtwoord = req.body.wachtwoord;
+        this.#app.post("/customer/login", async (req, res) => {
+            const emailaddress = req.body.emailaddress;
+            const password = req.body.password;
 
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT emailadres, wachtwoord FROM klant WHERE emailadres = ? AND wachtwoord = ?",
-                    values: [emailadres, wachtwoord]
+                    query: "SELECT emailaddress, password FROM customer WHERE emailaddress = ? AND password = ?",
+                    values: [emailaddress, password]
                 });
 
                 if (data.length === 1) {
-                    res.status(this.#errorCodes.HTTP_OK_CODE).json({"emailadres": data[0].emailadres});
+                    res.status(this.#errorCodes.HTTP_OK_CODE).json({"emailaddress": data[0].emailaddress});
                 } else {
-                    res.status(this.#errorCodes.AUTHORIZATION_ERROR_CODE).json({reason: "Wrong emailadres or password"});
+                    res.status(this.#errorCodes.AUTHORIZATION_ERROR_CODE).json({reason: "Wrong emailaddress or password"});
                 }
             } catch (e) {
                 res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e});
@@ -55,11 +54,11 @@ class CustomerRoute {
     }
 
     #getCustomers() {
-        this.#app.get("/klant/getallfor/:Ondernemer_ondernemer_id", async (req, res) => {
+        this.#app.get("/customer/getallfor/:entrepreneur_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT distinct emailadres, telefoonnummer, klantnummer, plaats, voornaam, achternaam FROM klant LEFT JOIN bestelling ON klant.klantnummer = bestelling.Klant_klantnummer WHERE bestelling.Ondernemer_ondernemer_id = ? ORDER BY bestelling.besteldatum",
-                    values: [req.params.Ondernemer_ondernemer_id]
+                    query: "SELECT distinct emailaddress, phonenumber, customer_id, place, first_name, last_name FROM customer LEFT JOIN order ON customer.customer_id = order.customer_customer_id WHERE order.entrepreneur_id = ? ORDER BY order.order_date",
+                    values: [req.params.entrepreneur_id]
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
@@ -70,11 +69,11 @@ class CustomerRoute {
     }
 
     #getCustomerByEmail() {
-        this.#app.get("/klant/getcustomer/:emailadres", async (req, res) => {
+        this.#app.get("/customer/getcustomer/:emailaddress", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT distinct emailadres, telefoonnummer, klantnummer, plaats, voornaam, achternaam FROM klant WHERE emailadres LIKE \"%\"? \"%\";",
-                    values: [req.params.emailadres]
+                    query: "SELECT distinct emailaddress, phonenumber, customer_id, place, first_name, last_name FROM customer WHERE emailaddress LIKE \"%\"? \"%\";",
+                    values: [req.params.emailaddress]
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
@@ -86,15 +85,15 @@ class CustomerRoute {
     }
 
     #createCustomerAccount() {
-        this.#app.post("/klant/createcustomer", async (req, res) => {
+        this.#app.post("/customer/createcustomer", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "INSERT INTO klant (klantnummer, voornaam, achternaam, emailadres, telefoonnummer, plaats, adres, postcode, wachtwoord) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    values: [req.body.klantnummer, req.body.voornaam, req.body.achternaam, req.body.emailadres, req.body.telefoonnummer, req.body.plaats, req.body.adres, req.body.postcode, req.body.wachtwoord]
+                    query: "INSERT INTO customer (customer_id, first_name, last_name, emailaddress, phonenumber, place, address, zip, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    values: [req.body.customer_id, req.body.first_name, req.body.last_name, req.body.emailaddress, req.body.phonenumber, req.body.place, req.body.address, req.body.zip, req.body.password]
                 });
 
                 if (data.insertId) {
-                    res.status(this.#errorCodes.HTTP_OK_CODE).json({klantnummer: data.insertId});
+                    res.status(this.#errorCodes.HTTP_OK_CODE).json({customer_id: data.insertId});
                 }
 
             } catch (e) {
@@ -104,11 +103,11 @@ class CustomerRoute {
     }
 
     #getCustomerById() {
-        this.#app.get("/klant/getcustomerbyid/:klantnummer", async (req, res) => {
+        this.#app.get("/customer/getcustomerbyid/:customer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT * FROM klant WHERE klantnummer = ?;",
-                    values: [req.params.klantnummer]
+                    query: "SELECT * FROM customer WHERE customer_id = ?;",
+                    values: [req.params.customer_id]
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
@@ -120,11 +119,11 @@ class CustomerRoute {
     }
 
     #getOrdersFromCustomer() {
-        this.#app.get("/klant/getordersfromcustomer/:klantnummer", async (req, res) => {
+        this.#app.get("/customer/getordersfromcustomer/:customer_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT bestelnummer, verzendnaam, verzendadres, verzendplaats, verzend_postcode, MONTHNAME(`geschatte_bezorgdatum`) as bestelmaand, DAY(`geschatte_bezorgdatum`) AS dag, year(`geschatte_bezorgdatum`) AS jaar, verzend_datum, bezorgkosten, opmerking, Bezorger_bezorger_id, Ondernemer_ondernemer_id, besteldatum, status, prijs, ondernemer.naam FROM bestelling INNER JOIN klant ON bestelling.Klant_klantnummer = klant.klantnummer INNER JOIN ondernemer ON bestelling.Ondernemer_ondernemer_id = ondernemer.ondernemer_id WHERE klant.klantnummer = ? ORDER BY geschatte_bezorgdatum DESC ",
-                    values: [req.params.klantnummer]
+                    query: "SELECT order_id, shipping_name, shipping_address, shipping_place, shipping_zip, MONTHNAME(`estimated_delivery`) as bestelmaand, DAY(`estimated_delivery`) AS dag, year(`estimated_delivery`) AS jaar, shipping_date, delivery_charge, remark, delivery_person_id, customer_id, order_date, status, price, ondernemer.naam FROM order INNER JOIN customer ON order.customer_customer_id = customer.customer_id INNER JOIN entrepreneur_id ON order.entrepreneur_id = entrepreneur.entrepreneur_id WHERE customer.customer_id = ? ORDER BY estimated_delivery DESC ",
+                    values: [req.params.customer_id]
                 });
 
                 res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
