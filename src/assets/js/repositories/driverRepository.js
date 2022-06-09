@@ -14,10 +14,10 @@ export class DriverRepository {
     }
 
 
-    async createBezorger(bezorger_id, firstName, surName, address, place, zip, email, phonenumber, password) {
+    async createBezorger(deliverer_id, firstName, surName, address, place, zip, email, phonenumber, password) {
         this.#networkManager.doRequest(this.#route, "POST",
             {
-                deliverer_id: bezorger_id,
+                deliverer_id: deliverer_id,
                 firstNameDriver: firstName,
                 surNameDriver: surName,
                 addressDriver: address,
