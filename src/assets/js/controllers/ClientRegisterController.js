@@ -3,6 +3,11 @@ import {CustomersRepository} from "../repositories/customersRepository.js";
 import {OrdersRepository} from "../repositories/ordersRepository.js";
 import {App} from "../app.js";
 
+/**
+ * Controller for the ClientRegisterPage
+ * @author Simon Vriesema
+ */
+
 export class ClientRegisterController extends Controller {
     #clientRegisterView;
     #customersRepository;

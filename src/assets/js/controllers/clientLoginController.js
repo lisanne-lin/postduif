@@ -1,6 +1,6 @@
 /**
  * Controller responsible for all events in login view
- * @author Pim Meijer
+ * @author Simon Vriesema
  */
 
 import {UsersRepository} from "../repositories/usersRepository.js";
@@ -9,7 +9,6 @@ import {Controller} from "./controller.js";
 import {CustomersRepository} from "../repositories/customersRepository.js";
 
 export class clientLoginController extends Controller{
-    //# is a private field in Javascript
     #usersRepository
     #customersRepository
     #loginView
@@ -47,11 +46,11 @@ export class clientLoginController extends Controller{
         event.preventDefault();
 
         //get the input field elements from the view and retrieve the value
-        const emailadres = this.#loginView.querySelector("#exampleInputUsername").value;
-        const wachtwoord = this.#loginView.querySelector("#exampleInputPassword").value;
+        const EMAIL_ADDRESS = this.#loginView.querySelector("#exampleInputUsername").value;
+        const PASSWORD = this.#loginView.querySelector("#exampleInputPassword").value;
 
         try{
-            const user = await this.#customersRepository.login(emailadres, wachtwoord);
+            const user = await this.#customersRepository.login(EMAIL_ADDRESS, PASSWORD);
 
             //let the session manager know we are logged in by setting the username, never set the password in localstorage
             App.sessionManager.set("username", user.emailadres);

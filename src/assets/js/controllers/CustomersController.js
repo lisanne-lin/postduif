@@ -3,6 +3,10 @@ import {Controller} from "./controller.js";
 import {CustomersRepository} from "../repositories/customersRepository.js";
 import {EntrepreneursRepository} from "../repositories/entrepreneursRepository.js";
 
+/**
+ * Controller for the customers page on the business side
+ * @author Simon Vriesema
+ */
 export class CustomersController extends Controller {
 
     #customersRepository
