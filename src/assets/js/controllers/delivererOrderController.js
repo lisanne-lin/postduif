@@ -7,9 +7,9 @@ import { OrdersRepository } from "../repositories/ordersRepository.js";
 import { App } from "../app.js";
 import { Controller } from "./controller.js";
 
-export class bezorgerBestellingController extends Controller {
+export class delivererOrderController extends Controller {
 	#ordersRepository;
-	#createDelivererOrderView;
+	#createBezorgerBestellingView;
 
 	/**
 	 *
@@ -25,8 +25,8 @@ export class bezorgerBestellingController extends Controller {
 	 * Load HTML page and fill with correct data
 	 */
 	async #setupView() {
-		this.#createDelivererOrderView = await super.loadHtmlIntoContent(
-			"html_views/deliverer_order-list.html"
+		this.#createBezorgerBestellingView = await super.loadHtmlIntoContent(
+			"html_views/bezorger_bestelling-lijst.html"
 		);
 		this.#fetchOrders();
 	}
