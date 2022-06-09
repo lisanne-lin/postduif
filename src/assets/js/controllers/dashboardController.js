@@ -45,26 +45,26 @@ export class DashboardController extends Controller {
     }
 
     async #fetchPercentages() {
-        const orderDataToday = await this.#ordersRepository.calculateEarningsToday(this.#ID);
-        const orderDataYesterday = await this.#ordersRepository.calculateEarningsYesterday(this.#ID);
-        const orderDataWeek = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
-        const orderDataLastWeek = await this.#ordersRepository.calculateEarningsLastWeek(this.#ID);
-        const orderDataMonth = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
-        const orderDataLastMonth = await this.#ordersRepository.calculateEarningsLastMonth(this.#ID);
+        const ORDER_DATA_TODAY = await this.#ordersRepository.calculateEarningsToday(this.#ID);
+        const ORDER_DATA_YESTERDAY = await this.#ordersRepository.calculateEarningsYesterday(this.#ID);
+        const ORDER_DATA_WEEK = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
+        const ORDER_DATA_LAST_WEEK = await this.#ordersRepository.calculateEarningsLastWeek(this.#ID);
+        const ORDER_DATA_MONTH = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
+        const ORDER_DATA_LAST_MONTH = await this.#ordersRepository.calculateEarningsLastMonth(this.#ID);
 
-        const percentageToday = (((orderDataYesterday.price - orderDataToday.price) / orderDataToday.price) * 100);
-        const percentageWeek = (((orderDataLastWeek.price - orderDataWeek.price) / orderDataWeek.price) * 100);
-        const percentageMonth = (((orderDataLastMonth.price - orderDataMonth.price) / orderDataMonth.price) * 100);
+        const PERCENTAGE_TODAY = (((ORDER_DATA_YESTERDAY.price - ORDER_DATA_TODAY.price) / ORDER_DATA_TODAY.price) * 100);
+        const PERCENTAGE_WEEK = (((ORDER_DATA_LAST_WEEK.price - ORDER_DATA_WEEK.price) / ORDER_DATA_WEEK.price) * 100);
+        const PERCENTAGE_MONTH = (((ORDER_DATA_LAST_MONTH.price - ORDER_DATA_MONTH.price) / ORDER_DATA_MONTH.price) * 100);
 
-        this.#dashboardView.querySelector("#percentageday").innerHTML = percentageToday;
-        this.#dashboardView.querySelector("#percentageweek").innerHTML = percentageWeek;
-        this.#dashboardView.querySelector("#percentagemonth").innerHTML = percentageMonth;
+        this.#dashboardView.querySelector("#percentageday").innerHTML = PERCENTAGE_TODAY;
+        this.#dashboardView.querySelector("#PERCENTAGE_WEEK").innerHTML = PERCENTAGE_WEEK;
+        this.#dashboardView.querySelector("#PERCENTAGE_MONTH").innerHTML = PERCENTAGE_MONTH;
     }
 
     async #fetchEntrepreneurData() {
-        const data = await this.#entrepreneursRepository.getEntrepreneurById(this.#ID);
-        this.#dashboardView.querySelector("#businessOwner").innerHTML = data[0].eigenaar;
-        this.#dashboardView.querySelector("#businessName").innerHTML = data[0].naam;
+        const DATA = await this.#entrepreneursRepository.getEntrepreneurById(this.#ID);
+        this.#dashboardView.querySelector("#businessOwner").innerHTML = DATA[0].owner;
+        this.#dashboardView.querySelector("#businessName").innerHTML = DATA[0].name;
     }
 
     async #fetchChartData() {
@@ -82,7 +82,7 @@ export class DashboardController extends Controller {
         const ORDERS_FIVE_DAYS = {
             // A labels array that can contain any sort of values
             labels: ['5 days ago', '4 days ago', '3 days ago', '2 days ago', 'Yesterday', "Today"],
-            // Our series array that contains series objects or in this case series data arrays
+            // Our series array that contains series objects or in this case series DATA arrays
             series: [
                 [DATA_FIVE_DAYS[0].Orders, DATA_FOUR_DAYS[0].Orders, DATA_THREE_DAYS[0].Orders, DATA_TWO_DAYS[0].Orders, DATA_YESTERDAY[0].Orders, DATA_TODAY[0].Orders]
             ]
@@ -91,7 +91,7 @@ export class DashboardController extends Controller {
         const ORDERS_FOUR_WEEKS = {
             // A labels array that can contain any sort of values
             labels: ['4 Weeks Ago', '3 Weeks Ago', '2 Weeks Ago', '7 days ago', "Today"],
-            // Our series array that contains series objects or in this case series data arrays
+            // Our series array that contains series objects or in this case series DATA arrays
             series: [
                 [DATA_FOUR_WEEKS[0].Orders, DATA_THREE_WEEKS[0].Orders, DATA_TWO_WEEKS[0].Orders, DATA_SEVEN_DAYS[0].Orders, DATA_TODAY[0].Orders]
             ]
@@ -100,7 +100,7 @@ export class DashboardController extends Controller {
         const EARNINGS_FIVE_DAYS = {
             // A labels array that can contain any sort of values
             labels: ['5 days ago', '4 days ago', '3 days ago', '2 days ago', 'Yesterday', "Today"],
-            // Our series array that contains series objects or in this case series data arrays
+            // Our series array that contains series objects or in this case series DATA arrays
             series: [
                 [DATA_FIVE_DAYS[0].Earnings, DATA_FOUR_DAYS[0].Earnings, DATA_THREE_DAYS[0].Earnings, DATA_TWO_DAYS[0].Earnings, DATA_YESTERDAY[0].Earnings, DATA_TODAY[0].Earnings]
             ]
@@ -109,7 +109,7 @@ export class DashboardController extends Controller {
         let EARNINGS_FOUR_WEEKS = {
             // A labels array that can contain any sort of values
             labels: ['4 Weeks Ago', '3 Weeks Ago', '2 Weeks Ago', '7 days ago', "Today"],
-            // Our series array that contains series objects or in this case series data arrays
+            // Our series array that contains series objects or in this case series DATA arrays
             series: [
                 [DATA_FOUR_WEEKS[0].Earnings, DATA_THREE_WEEKS[0].Earnings, DATA_TWO_WEEKS[0].Earnings, DATA_SEVEN_DAYS[0].Earnings, DATA_TODAY[0].Earnings]
             ]
@@ -171,49 +171,49 @@ export class DashboardController extends Controller {
     }
 
     async #fetchOrderCountOmw() {
-        const amount = await this.#ordersRepository.countOrdersOmw(this.#ID);
-        this.#dashboardView.querySelector("#orders-omw").innerHTML = amount.amount
+        const AMOUNT = await this.#ordersRepository.countOrdersOmw(this.#ID);
+        this.#dashboardView.querySelector("#orders-omw").innerHTML = AMOUNT.amount
     }
 
     async #fetchOrderCountHere() {
-        const amount = await this.#ordersRepository.countOrdersHere(this.#ID);
+        const AMOUNT = await this.#ordersRepository.countOrdersHere(this.#ID);
 
-        this.#dashboardView.querySelector("#orders-delivered").innerHTML = amount.amount
+        this.#dashboardView.querySelector("#orders-delivered").innerHTML = AMOUNT.amount
     }
 
     async #fetchEarningsToday() {
-        const amount = await this.#ordersRepository.calculateEarningsToday(this.#ID);
-        if (amount.price == null) {
+        const AMOUNT = await this.#ordersRepository.calculateEarningsToday(this.#ID);
+        if (AMOUNT.price == null) {
             this.#dashboardView.querySelector("#earnings-today").innerHTML = " -.--"
         } else {
-            this.#dashboardView.querySelector("#earnings-today").innerHTML = amount.price
+            this.#dashboardView.querySelector("#earnings-today").innerHTML = AMOUNT.price
         }
     }
 
     async #fetchEarningsWeek() {
-        const amount = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
+        const AMOUNT = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
 
-        if (amount.price == null) {
+        if (AMOUNT.price == null) {
             this.#dashboardView.querySelector("#earnings-week").innerHTML = " -.--"
         } else {
-            this.#dashboardView.querySelector("#earnings-week").innerHTML = amount.price
+            this.#dashboardView.querySelector("#earnings-week").innerHTML = AMOUNT.price
         }
     }
 
     async #fetchEarningsMonth() {
-        const amount = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
-        if (amount.price == null) {
+        const AMOUNT = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
+        if (AMOUNT.price == null) {
             this.#dashboardView.querySelector("#earnings-month").innerHTML = " -.--"
         } else {
-            this.#dashboardView.querySelector("#earnings-month").innerHTML = amount.price
+            this.#dashboardView.querySelector("#earnings-month").innerHTML = AMOUNT.price
         }
     }
 
     async #fetchCollectedMoney() {
         const data = await this.#ordersRepository.calculateDonatedMoney(this.#ID);
 
-        const amount = (Math.round(data.donatie * 100) / 100).toFixed(2);
-        this.#dashboardView.querySelector("#collected-money").innerHTML = amount
+        const AMOUNT = (Math.round(DATA.donatie * 100) / 100).toFixed(2);
+        this.#dashboardView.querySelector("#collected-money").innerHTML = AMOUNT
     }
 }
 
