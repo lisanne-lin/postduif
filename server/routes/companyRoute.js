@@ -24,7 +24,7 @@ class CompanyRoute {
         this.#app.get("/review/getReviews/:id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT * FROM review INNER JOIN klant ON review.klant_id = klant.klantnummer WHERE ondernemer_id = ? ",
+                    query: "SELECT * FROM review INNER JOIN customer ON review.customer_id = customer.customer_id WHERE entrepreneur_id = ? ",
                     values: [req.params.id]
                 });
 
@@ -36,12 +36,12 @@ class CompanyRoute {
         });
     }
 
-    ///jbkjbkb
+
     #getOndernemerInfoByID() {
         this.#app.get("/review/getOndernemer/:id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT naam, adres, plaats, postcode, telefoonnummer, initiatief FROM ondernemer WHERE ondernemer_id = ?",
+                    query: "SELECT name, address, place, zip, phonenumber, initiative FROM entrepreneur WHERE entrepreneur_id = ?",
                     values: [req.params.id]
                 });
 
@@ -58,7 +58,7 @@ class CompanyRoute {
         this.#app.post("/review", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "INSERT INTO `review` (`review_id`, `klant_id`, `ondernemer_id`, `tekst`, `beoordeling`, `datum`) VALUES (?, ?, ?, ?, ?, ?)",
+                    query: "INSERT INTO review (review_id, customer_id, entrepreneur_id, text, rating, date) VALUES (?, ?, ?, ?, ?, ?)",
                     values: [req.body.id, req.body.customer_id, req.body.entrepreneur_id, req.body.command, req.body.rating, req.body.review_date]
                 });
 
@@ -76,7 +76,7 @@ class CompanyRoute {
         this.#app.get("/about/abouts/", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT `ondernemer_id`, `naam`,`eigenaar`, `adres`, `plaats`, `postcode`, `telefoonnummer`, `emailadres` FROM `ondernemer` ",
+                    query: "SELECT entrepreneur_id, name, owner, address, place, zip, phonenumber, emailaddress FROM entrepreneur ",
 
                 });
 

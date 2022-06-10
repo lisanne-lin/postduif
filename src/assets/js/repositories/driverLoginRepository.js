@@ -17,7 +17,7 @@ export class DriverLoginRepository {
 
     async login(email_address, password) {
         return await this.#networkManager
-            .doRequest(`${this.#route}/login`, "POST", {"emailadres": email_address, "password": password});
+            .doRequest(`${this.#route}/login`, "POST", {"email_address": email_address, "password": password});
     }
 
 
