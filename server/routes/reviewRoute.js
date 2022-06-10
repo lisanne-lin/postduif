@@ -15,15 +15,15 @@ class ReviewRoute {
     constructor(app) {
         this.#app = app;
         this.#createReview();
-        this.#getReviewsById();
+        this.#getReviewById();
         this.#getEntrepreneurInfoByID();
     }
 
-    #getReviewsById() {
-        this.#app.get("/review/getReviews/:id", async (req, res) => {
+    #getReviewById() {
+        this.#app.get("/review/reviewsById/:id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({
-                    query: "SELECT * FROM review INNER JOIN customer ON review.customer_id = customer.customer_id WHERE entrepreneur_id = ? ",
+                    query: "SELECT * FROM review INNER JOIN entrepreneur ON review.`entrepreneur_id` = entrepreneur.entrepreneur_id WHERE review.entrepreneur_id = ?",
                     values: [req.params.id]
                 });
 
@@ -34,6 +34,7 @@ class ReviewRoute {
             }
         });
     }
+
 
     #getEntrepreneurInfoByID() {
         this.#app.get("/review/getEntrepreneur/:id", async (req, res) => {
