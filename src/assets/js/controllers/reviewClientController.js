@@ -47,9 +47,9 @@ export class ReviewClientController extends Controller {
         let counterNotSoGood = 0;
 
 
-        let reviews = await this.#reviewRepository.getReviewsById(compId);
+        let reviews = await this.#reviewRepository.getReviewById(compId);
 
-console.log(reviews);
+
 
         if (reviews.length !== 0) {
             for (let i = 0; i < reviews.length; i++) {
@@ -60,7 +60,7 @@ console.log(reviews);
                     '                            </div>\n' +
                     '                            <div class="col-sm-9">\n' +
                     '                                <div class="review-block-rate">\n' +
-                    '                                <div class="review-block-title" style="font-size: 25px;">Score: ' + reviews[i].rate + '/5</div>\n' +
+                    '                                <div class="review-block-title" style="font-size: 25px;">Score: ' + reviews[i].rating + '/5</div>\n' +
                     '                                </div>\n' +
                     '                                <div class="review-block-description" id="text"> ' + reviews[i].text + '</div>\n' +
                     '                            </div>\n' +
@@ -68,13 +68,13 @@ console.log(reviews);
                     '                        <hr/>';
 
 
-                if (reviews[i].rate === 1 || reviews[i].rate === 2) {
+                if (reviews[i].rating === 1 || reviews[i].rating === 2) {
                     counterBad++;
                 }
-                if (reviews[i].rate === 3) {
+                if (reviews[i].rating === 3) {
                     counterNotSoGood++;
                 }
-                if (reviews[i].rate === 4 || reviews[i].rate === 5) {
+                if (reviews[i].rating === 4 || reviews[i].rating === 5) {
                     counterGood++;
                 }
 
@@ -149,6 +149,10 @@ console.log(reviews);
 
 
             this.#reviewRepository.createReview(null, customer_id, entrepreneur_id, command, rating, date);
+
+            App.loadController('review_clients');
+            return false;
+
 
         }
     }

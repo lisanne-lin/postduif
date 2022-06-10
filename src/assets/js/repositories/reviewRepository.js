@@ -13,8 +13,8 @@ export class ReviewRepository {
         this.#networkManager = new NetworkManager();
     }
 
-    async getReviewsById(id) {
-        return await this.#networkManager.doRequest(`${this.#route}/getReviews/${id}`, "GET", {});
+    async getReviewById(id) {
+        return await this.#networkManager.doRequest(`${this.#route}/reviewsById/${id}`, "GET", {});
     }
 
     async getEntrepreneurInfoByID(id) {
