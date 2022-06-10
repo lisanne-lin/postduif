@@ -22,9 +22,6 @@ export class DashboardController extends Controller {
         const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
         this.#ID = ENTREPRENEUR_ID[0].entrepreneur_id;
 
-        console.log(this.#ID)
-        console.log(App.sessionManager.get("username"))
-
         this.#dashboardView = await super.loadHtmlIntoContent("html_views/dashboard.html");
 
         document.querySelector(".navbar").style.display = "block";
@@ -66,8 +63,8 @@ export class DashboardController extends Controller {
 
     async #fetchEntrepreneurData() {
         const data = await this.#entrepreneursRepository.getEntrepreneurById(this.#ID);
-        this.#dashboardView.querySelector("#businessOwner").innerHTML = data[0].eigenaar;
-        this.#dashboardView.querySelector("#businessName").innerHTML = data[0].naam;
+        this.#dashboardView.querySelector("#businessOwner").innerHTML = data[0].owner;
+        this.#dashboardView.querySelector("#businessName").innerHTML = data[0].name;
     }
 
     async #fetchChartData() {

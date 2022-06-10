@@ -31,13 +31,12 @@ export class OrdersController extends Controller {
     async #setupView() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
         const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
-        this.#ID = ENTREPRENEUR_ID[0].ondernemer_id;
+        this.#ID = ENTREPRENEUR_ID[0].entrepreneur_id;
 
         this.#orderView = await super.loadHtmlIntoContent("html_views/orders.html")
         document.querySelector(".navbar").style.display = "block";
         document.querySelector("#nav-orders").className = "nav-link active";
         document.querySelector("#nav-dash").className = "nav-link";
-        // document.querySelector("#nav-settings").className = "nav-link";
 
         this.#orderView.querySelector("#place-order-btn").addEventListener("click", event => {
             App.loadController(event.target.dataset.controller);

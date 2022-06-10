@@ -59,7 +59,7 @@ class UsersRoutes {
         });
     }
 
-    #getEntrepreneurById(id) {
+    #getEntrepreneurById() {
         this.#app.get("/entrepreneur/getentrepreneur/:entrepreneur_id", async (req, res) => {
             try {
                 const data = await this.#databaseHelper.handleQuery({

@@ -46,7 +46,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT * FROM order WHERE entrepreneur_id = ? ORDER BY order_date DESC LIMIT 60",
+						query: "SELECT * FROM `order` WHERE entrepreneur_id = ? ORDER BY order_date DESC LIMIT 60",
 						values: [req.params.entrepreneur_id],
 					});
 					res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
@@ -65,7 +65,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "UPDATE order SET customer_id = ? WHERE order_id = ?",
+						query: "UPDATE `order` SET customer_id = ? WHERE order_id = ?",
 						values: [req.params.customer_id, req.params.order_id],
 					});
 					//just give all data back as json, could also be empty
@@ -99,7 +99,7 @@ class OrderRoutes {
 		this.#app.get("/order/getallforName", async (req, res) => {
 			try {
 				const data = await this.#databaseHelper.handleQuery({
-					query: "SELECT * FROM order ORDER BY order_date DESC",
+					query: "SELECT * FROM `order` ORDER BY order_date DESC",
 				});
 				//just give all data back as json, could also be empty
 				res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
@@ -140,7 +140,7 @@ class OrderRoutes {
 		this.#app.get("/order/getorder/:order_id", async (req, res) => {
 			try {
 				const data = await this.#databaseHelper.handleQuery({
-					query: "SELECT *, MONTHNAME(`estimated_delivery`) as month, DAY(`estimated_delivery`) AS day, year(`estimated_delivery`) AS year FROM `order` INNER JOIN entrepreneur ON `order`.entrepreneur_id = entrepreneur.entrepreneur_id WHERE order_id = ?",
+					query: "SELECT *, MONTHNAME(`estimated_delivery`) as `month`, DAY(`estimated_delivery`) AS `day`, year(`estimated_delivery`) AS `year` FROM `order` INNER JOIN entrepreneur ON `order`.entrepreneur_id = entrepreneur.entrepreneur_id WHERE order_id = ?",
 					values: [req.params.order_id],
 				});
 
@@ -155,7 +155,7 @@ class OrderRoutes {
 
 	#getOrderByNumAndZip() {
 		this.#app.get(
-			"/order/trackorder/:order_id/:shipping_zip",
+			"a",
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
@@ -350,7 +350,7 @@ class OrderRoutes {
 		this.#app.get("/order/countomw/:entrepreneur_id", async (req, res) => {
 			try {
 				const data = await this.#databaseHelper.handleQuery({
-					query: 'SELECT COUNT(order_id) FROM order WHERE entrepreneur_id = ? and status = "On the way"',
+					query: 'SELECT COUNT(order_id) FROM `order` WHERE entrepreneur_id = ? and status = "On the way"',
 					values: [req.params.entrepreneur_id],
 				});
 				res.status(this.#errorCodes.HTTP_OK_CODE).json({
@@ -406,7 +406,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: " SELECT order.order_date, order.entrepreneur_id, order.order_id, entrepreneur.name FROM `order` INNER JOIN entrepreneur ON order.entrepreneur_id = entrepreneur.entrepreneur_id",
+						query: " SELECT `order`.order_date, `order`.entrepreneur_id, `order`.order_id, entrepreneur.name FROM `order` INNER JOIN entrepreneur ON `order`.entrepreneur_id = entrepreneur.entrepreneur_id",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -426,7 +426,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = CURDATE()",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM `order` WHERE entrepreneur_id = ? AND order_date = CURDATE()",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -446,7 +446,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 1 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM `order` WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 1 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -466,7 +466,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_identrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 2 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM `order` WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 2 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -486,7 +486,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 3 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM `order` WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 3 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -506,7 +506,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 4 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM `order` WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 4 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -526,7 +526,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 5 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM `order` WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 5 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -546,7 +546,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 7 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM `order` WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 7 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -566,7 +566,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 14 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM `order` WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 14 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -586,7 +586,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 21 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM `order` WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 21 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -606,7 +606,7 @@ class OrderRoutes {
 			async (req, res) => {
 				try {
 					const data = await this.#databaseHelper.handleQuery({
-						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM order WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 28 DAY)",
+						query: "SELECT COUNT(order_id) AS `Orders`, SUM(price) AS `Earnings` FROM `order` WHERE entrepreneur_id = ? AND order_date = DATE_SUB(CURDATE(), INTERVAL 28 DAY)",
 						values: [req.params.entrepreneur_id],
 					});
 
@@ -627,7 +627,7 @@ class OrderRoutes {
 		this.#app.get("/order/getphonenumber/:order_id", async (req, res) => {
 			try {
 				const data = await this.#databaseHelper.handleQuery({
-					query: " SELECT customer.phonenumber FROM `order` INNER JOIN customer ON order.customer_id = customer.customer_id WHERE order.order_id = ?",
+					query: " SELECT customer.phonenumber FROM `order` INNER JOIN customer ON `order`.customer_id = customer.customer_id WHERE `order`.order_id = ?",
 					values: [req.params.order_id],
 				});
 
@@ -644,7 +644,7 @@ class OrderRoutes {
 		this.#app.put("/order/:order_id/status", async (req, res) => {
 			try {
 				const data = await this.#databaseHelper.handleQuery({
-					query: "UPDATE `order` SET status = ? WHERE order.order_id = ?",
+					query: "UPDATE `order` SET status = ? WHERE `order`.order_id = ?",
 					values: [req.body.status, req.params.order_id],
 				});
 

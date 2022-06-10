@@ -7,30 +7,30 @@
  * @author Lennard Fonteijn & Pim Meijer
  */
 
-import { SessionManager } from "./framework/utils/sessionManager.js";
-import { LoginController } from "./controllers/loginController.js";
-import { NavbarController } from "./controllers/navbarController.js";
-import { UploadController } from "./controllers/uploadController.js";
-import { WelcomeController } from "./controllers/welcomeController.js";
-import { DashboardController } from "./controllers/dashboardController.js";
-import { PlaceOrderController } from "./controllers/placeOrderController.js";
-import { RegisterController } from "./controllers/registerController.js";
-import { LandingController } from "./controllers/landingController.js";
-import { OrdersController } from "./controllers/OrdersController.js";
-import { TrackOrderController } from "./controllers/TrackOrderController.js";
-import { CustomersController } from "./controllers/CustomersController.js";
-import { ClientRegisterController } from "./controllers/ClientRegisterController.js";
-import { CompanyController } from "./controllers/companyController.js";
-import { driverOrderDetailController } from "./controllers/driverOrderDetailController.js";
-import { NavbarBusinessController } from "./controllers/NavbarBusinessController.js";
-import { NavbarClientsController } from "./controllers/NavbarClientsController.js";
-import { NavbarRidersController } from "./controllers/NavbarRidersController.js";
-import { ReviewClientController } from "./controllers/reviewClientController.js";
-import { TrackOrderWithoutLoginController } from "./controllers/TrackOrderWithoutLoginController.js";
-import { clientLoginController } from "./controllers/clientLoginController.js";
-import { driverLoginController } from "./controllers/driverLoginController.js";
-import { driverRegisterController } from "./controllers/driverRegisterController.js";
-import { driverOrderController } from "./controllers/driverOrderController.js";
+import {SessionManager} from "./framework/utils/sessionManager.js";
+import {LoginController} from "./controllers/loginController.js";
+import {NavbarController} from "./controllers/navbarController.js";
+import {UploadController} from "./controllers/uploadController.js";
+import {WelcomeController} from "./controllers/welcomeController.js";
+import {DashboardController} from "./controllers/dashboardController.js";
+import {PlaceOrderController} from "./controllers/placeOrderController.js";
+import {RegisterController} from "./controllers/registerController.js";
+import {LandingController} from "./controllers/landingController.js";
+import {OrdersController} from "./controllers/OrdersController.js";
+import {TrackOrderController} from "./controllers/TrackOrderController.js";
+import {CustomersController} from "./controllers/CustomersController.js";
+import {ClientRegisterController} from "./controllers/ClientRegisterController.js";
+import {CompanyController} from "./controllers/companyController.js";
+import {driverOrderDetailController} from "./controllers/driverOrderDetailController.js";
+import {NavbarBusinessController} from "./controllers/NavbarBusinessController.js";
+import {NavbarClientsController} from "./controllers/NavbarClientsController.js";
+import {NavbarRidersController} from "./controllers/NavbarRidersController.js";
+import {ReviewClientController} from "./controllers/reviewClientController.js";
+import {TrackOrderWithoutLoginController} from "./controllers/TrackOrderWithoutLoginController.js";
+import {clientLoginController} from "./controllers/clientLoginController.js";
+import {driverLoginController} from "./controllers/driverLoginController.js";
+import {driverRegisterController} from "./controllers/driverRegisterController.js";
+import {driverOrderController} from "./controllers/driverOrderController.js";
 
 export class App {
 	//we only need one instance of the sessionManager, thus static use here
@@ -65,7 +65,7 @@ export class App {
 
 	constructor() {
 		//Attempt to load the controller from the URL, if it fails, fall back to the welcome controller.
-		App.loadControllerFromUrl(App.CONTROLLER_LANDING);
+		App.loadControllerFromUrl(App.CONTROLLER_LOGIN);
 	}
 
 	/**
