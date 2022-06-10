@@ -1,7 +1,7 @@
 /**
  * Repository voor Entity Orders
  */
-import {NetworkManager} from "../framework/utils/networkManager.js";
+import { NetworkManager } from "../framework/utils/networkManager.js";
 
 export class OrdersRepository {
 	#networkManager;
@@ -50,13 +50,17 @@ export class OrdersRepository {
 
 	async getOrdersFromUser(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/getOrdersFromUser/${entrepreneur_id}`, "GET", {}
+			`${this.#route}/getOrdersFromUser/${entrepreneur_id}`,
+			"GET",
+			{}
 		);
 	}
 
 	async deleteOrder(order_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/deleteOrder/${order_id}`, "DELETE", {}
+			`${this.#route}/deleteOrder/${order_id}`,
+			"DELETE",
+			{}
 		);
 	}
 
@@ -98,63 +102,49 @@ export class OrdersRepository {
 
 	async getOrderDataThreeDaysAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/getOrderDataThreeDaysAgo/${entrepreneur_id}`,
+			`${this.#route}/getOrderDataThreeDaysAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
 	async getOrderDataFourDaysAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/getOrderDataFourDaysAgo/${entrepreneur_id}`,
+			`${this.#route}/getOrderDataFourDaysAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
 	async getOrderDataFiveDaysAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/getOrderDataFiveDaysAgo/${entrepreneur_id}`,
+			`${this.#route}/getOrderDataFiveDaysAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
 	async getOrderDataSevenDaysAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/getOrderDataSevenDaysAgo/${entrepreneur_id}`,
+			`${this.#route}/getOrderDataSevenDaysAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
 	async getOrderDataTwoWeeksAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/getOrderDataTwoWeeksAgo/${entrepreneur_id}`,
+			`${this.#route}/getOrderDataTwoWeeksAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
 	async getOrderDataThreeWeeksAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/getOrderDataThreeWeeksAgo/${entrepreneur_id}`,
+			`${this.#route}/getOrderDataThreeWeeksAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
 
 	async getOrderDataFourWeeksAgo(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/getOrderDataFourWeeksAgo/${entrepreneur_id}`,
+			`${this.#route}/getOrderDataFourWeeksAgo/${entrepreneur_id}`,
 			"GET"
 		);
 	}
@@ -223,9 +213,7 @@ export class OrdersRepository {
 
 	async calculateEarningsYesterday(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/calculateearningsyesterday/${entrepreneur_id}`,
+			`${this.#route}/calculateearningsyesterday/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
@@ -233,9 +221,7 @@ export class OrdersRepository {
 
 	async calculateEarningsWeek(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/calculateearningsweek/${entrepreneur_id}`,
+			`${this.#route}/calculateearningsweek/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
@@ -243,9 +229,7 @@ export class OrdersRepository {
 
 	async calculateEarningsLastWeek(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/calculateearningslastweek/${entrepreneur_id}`,
+			`${this.#route}/calculateearningslastweek/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
@@ -261,9 +245,7 @@ export class OrdersRepository {
 
 	async calculateEarningsLastMonth(entrepreneur_id) {
 		return await this.#networkManager.doRequest(
-			`${
-				this.#route
-			}/calculateearningslastmonth/${entrepreneur_id}`,
+			`${this.#route}/calculateearningslastmonth/${entrepreneur_id}`,
 			"GET",
 			{}
 		);
@@ -296,7 +278,7 @@ export class OrdersRepository {
 	 */
 	async getPhonenumber(order_id) {
 		return await this.#networkManager.doRequest(
-			`${this.#route}/getphonenumber/${driverOrderDetailController}`,
+			`${this.#route}/getphonenumber/${order_id}`,
 			"GET"
 		);
 	}

@@ -7,7 +7,7 @@ import { OrdersRepository } from "../repositories/ordersRepository.js";
 import { App } from "../app.js";
 import { Controller } from "./controller.js";
 
-export class bezorgerBestellingController extends Controller {
+export class driverOrderController extends Controller {
 	#ordersRepository;
 	#createBezorgerBestellingView;
 
@@ -19,7 +19,7 @@ export class bezorgerBestellingController extends Controller {
 
 	async #setupView() {
 		this.#createBezorgerBestellingView = await super.loadHtmlIntoContent(
-			"html_views/bezorger_bestelling-lijst.html"
+			"html_views/deliverer_order-list.html"
 		);
 		this.#fetchOrders();
 	}
@@ -31,11 +31,15 @@ export class bezorgerBestellingController extends Controller {
 		console.log(getCompanyName);
 
 		for (let i = 0; i < orderData.length; i++) {
-			let data = orderData[i];
-			let name = getCompanyName[i];
+			const data = orderData[i];
+			let companyName = await this.#ordersRepository.getCompanyName(
+				orderData[i].entrepreneur_id
+			);
+			companyName = companyName[0].name;
+
 			let orderDetail = document.createElement("div");
 			orderDetail.classList.add("order-detail");
-			orderDetail.setAttribute("id", data.bestelnummer);
+			orderDetail.setAttribute("id", data.order_id);
 			let orderDate = document.createElement("p");
 			orderDate.classList.add("date");
 			let company = document.createElement("p");
@@ -53,10 +57,10 @@ export class bezorgerBestellingController extends Controller {
 			orderDetail.appendChild(orderZipcode);
 			orderDetail.appendChild(orderStatus);
 
-			orderDate.innerHTML = data.geschatte_bezorgdatum;
-			company.innerHTML = name.naam;
-			orderNumber.innerHTML = "Order " + data.bestelnummer;
-			orderZipcode.innerHTML = data.verzend_postcode;
+			orderDate.innerHTML = data.order_date;
+			company.innerHTML = companyName;
+			orderNumber.innerHTML = "Order " + data.order_id;
+			orderZipcode.innerHTML = data.shipping_zip;
 			orderStatus.innerHTML = data.status;
 			console.log(data.status);
 
@@ -84,6 +88,7 @@ export class bezorgerBestellingController extends Controller {
 			const id = order.getAttribute("id");
 			order.addEventListener("click", (event) => {
 				App.loadController(App.CONTROLLER_ORDER_DETAIL, { id });
+				console.log("click");
 			});
 		});
 	}
