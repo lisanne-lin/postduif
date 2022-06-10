@@ -24,31 +24,32 @@ export class driverOrderDetailController extends Controller {
 	}
 
 	/**
-	 * pakt data van de order uit de database en laat het zien op de pagina
-	 * @param {number} id = bestelnummer van bestelling
+	 * Displays information of an order
+	 *
+	 * @param {number} id  order id of an order
 	 */
 	async #fetchOrder(id) {
-		// haalt de bestelling op met de bestelnummer
+		//gets orders with order id
 		const orderData = await this.#ordersRepository.getOrderByOrderNum(id);
 		const getCompanyName = await this.#ordersRepository.getCompanyName(id);
-		// pakt het telefoonnummer van de bestelling
+		//gets phonenumber of the order
 		const phonenumber = await this.#ordersRepository.getPhonenumber(id);
-
+		console.log(orderData[0].order_id);
 		document.getElementById("orderStatus").innerHTML = orderData[0].status;
 		document.getElementById("customerName").innerHTML =
-			orderData[0].verzendnaam;
-		document.getElementById("naam").innerHTML = orderData[0].verzendnaam;
+			orderData[0].shipping_name;
+		document.getElementById("naam").innerHTML = orderData[0].shipping_name;
 		document.getElementById("companyName").innerHTML =
-			getCompanyName[0].naam;
+			getCompanyName[0].name;
 		document.getElementById("ordernumber").innerHTML =
-			orderData[0].bestelnummer;
-		document.getElementById("date").innerHTML = orderData[0].verzend_datum;
-		document.getElementById("adres").innerHTML = orderData[0].verzendadres;
-		document.getElementById("zip").innerHTML =
-			orderData[0].verzend_postcode;
-		document.getElementById("city").innerHTML = orderData[0].verzendplaats;
+			orderData[0].order_id;
+		document.getElementById("date").innerHTML = orderData[0].shipping_date;
+		document.getElementById("adres").innerHTML =
+			orderData[0].shipping_address;
+		document.getElementById("zip").innerHTML = orderData[0].shipping_zip;
+		document.getElementById("city").innerHTML = orderData[0].shipping_place;
 		document.getElementById("phonenumber").innerHTML =
-			phonenumber.length !== 0 ? phonenumber[0].telefoonnummer : "";
+			phonenumber.length !== 0 ? phonenumber[0].phonenumber : "";
 
 		const outForDelivery = document.getElementById("outForDelivery");
 		const pickupButton = document.getElementById("pickOrder");
@@ -83,10 +84,10 @@ export class driverOrderDetailController extends Controller {
 				});
 		};
 		const orderAddress = await findAddress(
-			`${orderData[0].verzendadres} ${orderData[0].verzend_postcode} ${orderData[0].verzendplaats}`
+			`${orderData[0].shipping_address} ${orderData[0].shipping_zip} ${orderData[0].shipping_place}`
 		);
 		const businessAddress = await findAddress(
-			`${orderData[0].adres} ${orderData[0].postcode} ${orderData[0].plaats}`
+			`${orderData[0].address} ${orderData[0].zip} ${orderData[0].place}`
 		);
 		L.Routing.control({
 			waypoints: [
@@ -163,44 +164,5 @@ export class driverOrderDetailController extends Controller {
 			default:
 				break;
 		}
-
-		// switch (orderData[0].status) {
-		// 	case "Still to be picked up":
-		// 		orderStatus.classList.add("pickup");
-		// 		pickupButton.style.display = "block";
-		// 		pickupButton.onclick = function () {
-		// 			outForDelivery.style.display = "block";
-		// 			cancelButton.style.display = "block";
-		// 			pickupButton.style.display = "none";
-		// 			backButton.style.display = "none";
-		// 		};
-
-		// 	case "On the way":
-		// 		orderStatus.classList.add("on-the-way");
-		// 		pickupButton.style.display = "none";
-		// 		pickupButton.classList.add("disabled");
-		// 		cancelOrder.style.display = "block";
-		// 		outForDelivery.onclick = function () {
-		// 			pickupButton.style.display = "none";
-		// 			outForDelivery.style.display = "none";
-		// 			pickupButton.classList.add("disabled");
-		// 			deliveredButton.style.display = "block";
-		// 			cancelOrder.style.display = "block";
-		// 		};
-		// 		break;
-
-		// 	case "Delivered":
-		// 		pickupButton.classList.add("disabled");
-		// 		pickupButton.setAttribute("disabled", "");
-		// 		orderStatus.classList.add("delivered");
-		// 		// deliveredButton.onclick.alert = "Order Delivered confirmed";
-		// 		break;
-
-		// 	case "Order Cancelled":
-		// 		orderStatus.classList.add("order-cancelled");
-		// 		pickupButton.classList.add("disabled");
-		// 		deliveredButton.setAttribute("disabled", "");
-		// 		break;
-		// }
 	}
 }
