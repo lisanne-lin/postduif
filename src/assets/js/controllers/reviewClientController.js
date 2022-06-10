@@ -1,3 +1,7 @@
+/**
+* Controller for review
+* @author Joy Park
+*/
 import {App} from "../app.js";
 import {Controller} from "./controller.js";
 import {ReviewRepository} from "../repositories/reviewRepository.js";
@@ -22,12 +26,15 @@ export class ReviewClientController extends Controller {
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)))
 
 
+        /*
+            Get the sellers id from the url
+         */
         let parts = window.location.href.split('#');
-
-
         let compId = parts.pop() || parts.pop();
 
-        console.log(compId);
+        /*
+            Hiding the error and success msg
+         */
 
         this.#reviewClient.querySelector("#error").hidden = true;
         this.#reviewClient.querySelector("#success").hidden = true;
@@ -42,14 +49,25 @@ export class ReviewClientController extends Controller {
     }
 
     async #getReviewsList(compId) {
+
+        /*
+          Some variable's for the rating
+         */
+
         let counterBad = 0;
         let counterGood = 0;
         let counterNotSoGood = 0;
 
 
+        /*
+            Get all the user reviews by id of the seller
+         */
         let reviews = await this.#reviewRepository.getReviewById(compId);
 
 
+        /*
+        looping trough all the reviews and printing out the template.
+         */
 
         if (reviews.length !== 0) {
             for (let i = 0; i < reviews.length; i++) {
@@ -68,6 +86,10 @@ export class ReviewClientController extends Controller {
                     '                        <hr/>';
 
 
+                /*
+                 Giving all the reviews the right rating
+                 */
+
                 if (reviews[i].rating === 1 || reviews[i].rating === 2) {
                     counterBad++;
                 }
@@ -80,6 +102,11 @@ export class ReviewClientController extends Controller {
 
             }
         } else {
+
+
+            /*
+               If you don't have any reviews it will show a msg
+             */
             let text = document.createElement("p");
 
             text.innerHTML = "It looks like you don't have any reviews yet..."
@@ -88,10 +115,11 @@ export class ReviewClientController extends Controller {
         }
 
 
+        /*
+        Getting and setting the html with the rating. Calculating the % of the total rating and setting the with of the progress bar.
+         */
+
         document.getElementById("reviewCount").innerText = reviews.length + " Reviews";
-
-
-        //reviews
         document.getElementById("badReviews").innerText = counterBad + " Reviews";
         document.getElementById("positiveReview").innerText = counterGood + " Reviews";
         document.getElementById("neutralReview").innerText = counterNotSoGood + " Reviews";
@@ -123,27 +151,32 @@ export class ReviewClientController extends Controller {
     }
 
 
+    /*
+       Sending the review to the repo
+     */
+
     #commend(compId) {
 
         const customer_id = 1;
-
-
         const entrepreneur_id = compId;
         const command = this.#reviewClient.querySelector("#reviewBox").value;
-
         const ratings = document.getElementById('select');
         const rating = ratings.value;
-
-
         let today = new Date();
         let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-        //check if something is filled in the review box, if not give an error
-        if (command === '') {
+        /*
+           check if something is filled in the review box, if not give an error
+         */
 
+        if (command === '') {
             const error = this.#reviewClient.querySelector("#error").hidden = false;
         } else {
 
+
+            /*
+                set the success msg to show, and posting the data to the repo
+             */
             const error = this.#reviewClient.querySelector("#error").hidden = true;
             const success = this.#reviewClient.querySelector("#success").hidden = false;
 

@@ -1,6 +1,6 @@
 /**
- * Controller for getting deliveries
- * @author Lisanne Lin
+ * Controller for company list
+ * @author Joy Park
  */
 
 import {CompanyRepository} from "../repositories/companyRepository.js";
@@ -23,11 +23,14 @@ export class CompanyController extends Controller {
 
         document.querySelector(".navbar").style.display = "none";
 
-        this.#getReviewsList();
+        this.#getSellerList();
     }
 
-    async #getReviewsList() {
+    async #getSellerList() {
 
+        /*
+            Get all the sellers and printing it out as a template.
+         */
 
         let abouts = await this.#companyRepository.getAbout();
 
