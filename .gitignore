@@ -1,6 +1,7 @@
 .DS_Store
 .idea
 /server
+!/cypress
 .idea/workspace.xml
 src/.DS_Store
 src/assets/.DS_Store
