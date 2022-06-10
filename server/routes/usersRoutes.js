@@ -45,7 +45,7 @@ class UsersRoutes {
                     values: [emailaddress, password]
                 });
 
-                //if we founnd one record we know the user exists in users table
+                //if we found one record we know the user exists in users table
                 if (data.length === 1) {
                     //return just the username for now, never send password back!
                     res.status(this.#errorCodes.HTTP_OK_CODE).json({"emailaddress": data[0].emailaddress});
