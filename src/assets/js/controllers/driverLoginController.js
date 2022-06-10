@@ -1,17 +1,17 @@
 
 import { App } from "../app.js";
 import { Controller } from "./controller.js";
-import {BezorgerLoginRepository} from "../repositories/bezorgerLoginRepository.js";
+import {DriverLoginRepository} from "../repositories/driverLoginRepository.js";
 
-export class BezorgerLoginController extends Controller{
+export class driverLoginController extends Controller{
     //# is a private field in Javascript
-    #bezorgerLoginRepository
-    #loginBezorger
+    #driverLoginRepository
+    #loginDriver
 
 
     constructor() {
         super();
-        this.#bezorgerLoginRepository = new BezorgerLoginRepository();
+        this.#driverLoginRepository = new DriverLoginRepository();
         this.#setupView()
     }
 
@@ -19,31 +19,28 @@ export class BezorgerLoginController extends Controller{
     async #setupView() {
         App.loadController(App.CONTROLLER_NAVBAR_RIDERS);
         //await for when HTML is loaded, never skip this method call in a controller
-        this.#loginBezorger = await super.loadHtmlIntoContent("html_views/driverLogin.html")
+        this.#loginDriver = await super.loadHtmlIntoContent("html_views/driverLogin.html")
         document.querySelector("#postDuifLogo").innerHTML = "PostDuif Bezorger";
 
-        //from here we can safely get elements from the view via the right getter
-        this.#loginBezorger.querySelector("#login-btn").addEventListener("click", event => this.#handleLogin(event));
+        this.#loginDriver.querySelector("#login-btn").addEventListener("click", event => this.#handleLogin(event));
 
 
-        const anchors = this.#loginBezorger.querySelectorAll("a.nav-link");
+        const anchors = this.#loginDriver.querySelectorAll("a.nav-link");
 
-        // //set click listener on each anchor
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)))
     }
 
     async #handleLogin(event) {
         event.preventDefault();
 
-        //get the input field elements from the view and retrieve the value
-        const emailadres = this.#loginBezorger.querySelector("#exampleInputUsername").value;
-        const wachtwoord = this.#loginBezorger.querySelector("#exampleInputPassword").value;
+        const email_address = this.#loginDriver.querySelector("#exampleInputUsername").value;
+        const password = this.#loginDriver.querySelector("#exampleInputPassword").value;
 
         try{
-            const user = await this.#bezorgerLoginRepository.login(emailadres, wachtwoord);
+            const user = await this.#driverLoginRepository.login(email_address, password);
 
             //let the session manager know we are logged in by setting the username, never set the password in localstorage
-            App.sessionManager.set("username", user.emailadres);
+            App.sessionManager.set("username", user.email_address);
             App.loadController(App.CONTROLLER_BEZORGER_BESTELLING);
 
             document.querySelector(".sidebar-container").style.display = "block";
@@ -52,7 +49,7 @@ export class BezorgerLoginController extends Controller{
             if(error.code === 401) {
 
                 alert("Password or email is not correct");
-                this.#loginBezorger.querySelector(".error").innerHTML = error.reason;
+                this.#loginDriver.querySelector(".error").innerHTML = error.reason;
 
             } else {
                 console.error(error);

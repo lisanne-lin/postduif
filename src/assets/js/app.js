@@ -16,9 +16,7 @@ import {DashboardController} from "./controllers/dashboardController.js";
 import {PlaceOrderController} from "./controllers/placeOrderController.js";
 import {RegisterController} from "./controllers/registerController.js";
 import {LandingController} from "./controllers/landingController.js";
-import {BezorgerLoginController} from "./controllers/bezorgerLoginController.js";
 import {OrdersController} from "./controllers/OrdersController.js";
-import {delivererOrderController} from "./controllers/delivererOrderController.js";
 import {TrackOrderController} from "./controllers/TrackOrderController.js";
 import {CustomersController} from "./controllers/CustomersController.js";
 import {ClientRegisterController} from "./controllers/ClientRegisterController.js";
@@ -30,6 +28,9 @@ import {NavbarRidersController} from "./controllers/NavbarRidersController.js";
 import {ReviewClientController} from "./controllers/reviewClientController.js";
 import {TrackOrderWithoutLoginController} from "./controllers/TrackOrderWithoutLoginController.js";
 import {clientLoginController} from "./controllers/clientLoginController.js";
+import {driverLoginController} from "./controllers/driverLoginController.js";
+import {driverRegisterController} from "./controllers/driverRegisterController.js";
+import {bezorgerBestellingController} from "./controllers/bezorgerBestellingController.js";
 
 export class App {
 	//we only need one instance of the sessionManager, thus static use here
@@ -39,7 +40,7 @@ export class App {
 	//controller identifiers, add new controllers here
 	static CONTROLLER_NAVBAR = "navbar";
 	static CONTROLLER_LOGIN = "login";
-	static CONTROLLER_LOGIN_BEZORGER = "loginBezorger";
+	static CONTROLLER_LOGIN_BEZORGER = "driverLogin";
 	static CONTROLLER_LOGOUT = "logout";
 	static CONTROLLER_WELCOME = "welcome";
 	static CONTROLLER_UPLOAD = "upload";
@@ -47,7 +48,7 @@ export class App {
 	static CONTROLLER_PLACE_ORDER = "place_order";
 	static CONTROLLER_SIGN_UP = "sign_up";
 	static CONTROLLER_LANDING = "landing";
-	static CONTROLLER_REGISTREREN_BEZORGER = "registerDriver";
+	static CONTROLLER_REGISTREREN_BEZORGER = "driverRegister";
 	static CONTROLLER_ORDERS = "orders";
 	static CONTROLLER_BEZORGER_BESTELLING = "bezorgerBestelling";
 	static CONTROLLER_TRACK = "trackOrder";
@@ -126,19 +127,21 @@ export class App {
 				);
 				break;
 
+
 			case App.CONTROLLER_LOGIN_BEZORGER:
 				App.isLoggedIn(
-					() => new BezorgerLoginController(),
-					() => new BezorgerLoginController()
+					() => new driverLoginController(),
+					() => new driverLoginController()
 				);
 				break;
 
 			case App.CONTROLLER_REGISTREREN_BEZORGER:
 				App.isLoggedIn(
-					() => new RegistrerenBezorgerController(),
-					() => new RegistrerenBezorgerController()
+					() => new driverRegisterController(),
+					() => new driverRegisterController()
 				);
 				break;
+
 
 			case App.CONTROLLER_ORDERS:
 				App.isLoggedIn(
@@ -206,16 +209,11 @@ export class App {
 
 			case App.CONTROLLER_BEZORGER_BESTELLING:
 				App.isLoggedIn(
-					() => new delivererOrderController(),
+					() => new bezorgerBestellingController(),
 					() => new LoginController()
 				);
 				break;
-			case App.CONTROLLER_DRIVER:
-				App.isLoggedIn(
-					() => new delivererOrderController(),
-					() => new LoginController()
-				);
-				break;
+
 
 			case App.CONTROLLER_ORDER_DETAIL:
 				App.isLoggedIn(

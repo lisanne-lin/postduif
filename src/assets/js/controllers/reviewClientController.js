@@ -27,6 +27,8 @@ export class ReviewClientController extends Controller {
 
         let compId = parts.pop() || parts.pop();
 
+        console.log(compId);
+
         this.#reviewClient.querySelector("#error").hidden = true;
         this.#reviewClient.querySelector("#success").hidden = true;
 
@@ -47,6 +49,7 @@ export class ReviewClientController extends Controller {
 
         let reviews = await this.#reviewRepository.getReviewsById(compId);
 
+console.log(reviews);
 
         if (reviews.length !== 0) {
             for (let i = 0; i < reviews.length; i++) {
@@ -57,21 +60,21 @@ export class ReviewClientController extends Controller {
                     '                            </div>\n' +
                     '                            <div class="col-sm-9">\n' +
                     '                                <div class="review-block-rate">\n' +
-                    '                                <div class="review-block-title" style="font-size: 25px;">Score: ' + reviews[i].beoordeling + '/5</div>\n' +
+                    '                                <div class="review-block-title" style="font-size: 25px;">Score: ' + reviews[i].rate + '/5</div>\n' +
                     '                                </div>\n' +
-                    '                                <div class="review-block-description" id="text"> ' + reviews[i].tekst + '</div>\n' +
+                    '                                <div class="review-block-description" id="text"> ' + reviews[i].text + '</div>\n' +
                     '                            </div>\n' +
                     '                        </div>\n' +
                     '                        <hr/>';
 
 
-                if (reviews[i].beoordeling === 1 || reviews[i].beoordeling === 2) {
+                if (reviews[i].rate === 1 || reviews[i].rate === 2) {
                     counterBad++;
                 }
-                if (reviews[i].beoordeling === 3) {
+                if (reviews[i].rate === 3) {
                     counterNotSoGood++;
                 }
-                if (reviews[i].beoordeling === 4 || reviews[i].beoordeling === 5) {
+                if (reviews[i].rate === 4 || reviews[i].rate === 5) {
                     counterGood++;
                 }
 
@@ -154,8 +157,8 @@ export class ReviewClientController extends Controller {
     async #getEntrepreneurInfo(compId) {
         let entrepreneurInfo = await this.#reviewRepository.getEntrepreneurInfoByID(compId);
 
-        document.getElementById("companyName").innerText = entrepreneurInfo[0].naam;
-        document.getElementById("address").innerText = entrepreneurInfo[0].adres + "\n" + entrepreneurInfo[0].postcode + " " + entrepreneurInfo[0].plaats;
-        document.getElementById("telephone").innerText = entrepreneurInfo[0].telefoonnummer;
+        document.getElementById("companyName").innerText = entrepreneurInfo[0].name;
+        document.getElementById("address").innerText = entrepreneurInfo[0].address + "\n" + entrepreneurInfo[0].zip + " " + entrepreneurInfo[0].place;
+        document.getElementById("telephone").innerText = entrepreneurInfo[0].phonenumber;
     }
 }
