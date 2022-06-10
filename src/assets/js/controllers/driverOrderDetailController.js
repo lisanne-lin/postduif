@@ -92,10 +92,12 @@ export class driverOrderDetailController extends Controller {
 		L.Routing.control({
 			waypoints: [
 				L.latLng(
+					//converts business address to coordinates
 					businessAddress.geometry.coordinates[1],
 					businessAddress.geometry.coordinates[0]
 				),
 				L.latLng(
+					//converts customer address to coordinates
 					orderAddress.geometry.coordinates[1],
 					orderAddress.geometry.coordinates[0]
 				),
