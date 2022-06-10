@@ -20,6 +20,10 @@ export class ClientRegisterController extends Controller {
         this.#setupView();
     }
 
+    /**
+     * Loads contents of desired HTML file into the index.html .content div and runs the functions
+     * @returns {Promise<void>}
+     */
     async #setupView() {
         App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
 

@@ -21,6 +21,10 @@ export class CustomersController extends Controller {
         this.#setup();
     }
 
+    /**
+     * Loads navbar and html file and runs the functions
+     * @returns {Promise<void>}
+     */
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
         const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
@@ -29,7 +33,6 @@ export class CustomersController extends Controller {
         this.#customersView = await super.loadHtmlIntoContent("html_views/customers.html")
         document.querySelector("#nav-orders").className = "nav-link";
         document.querySelector("#nav-dash").className = "nav-link";
-        // document.querySelector("#nav-settings").className = "nav-link";
         document.querySelector("#nav-customers").className = "nav-link active";
 
         this.#customersView.querySelector("#search-btn").addEventListener("click", event => {
@@ -53,6 +56,10 @@ export class CustomersController extends Controller {
         this.#fetchCustomers()
     }
 
+    /**
+     * Get all the customer data from the client and puts it in the table
+     * @returns {Promise<void>}
+     */
     async #fetchCustomers() {
         const customerData = await this.#customersRepository.getCustomers(this.#ID);
 
@@ -83,6 +90,13 @@ export class CustomersController extends Controller {
         }
     }
 
+    /**
+     * sends an email to the client
+     * @param emailaddress = emailaddress from customer
+     * @param name = name from customer
+     * @param emailText = text to send to customer
+     * @returns {Promise<void>}
+     */
     async #sendMail(emailaddress, name, emailText) {
         await fetch("https://api.hbo-ict.cloud/mail", {
             method: 'POST',
@@ -106,7 +120,11 @@ export class CustomersController extends Controller {
         })
     }
 
-
+    /**
+     * Get customer by searching with his/her emailadress
+     * @param email = emailadress from the client
+     * @returns {Promise<void>}
+     */
     async #fetchCustomerByEmail(email) {
         try {
             const data = await this.#customersRepository.getCustomerByEmail(email);

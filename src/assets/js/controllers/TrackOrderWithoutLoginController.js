@@ -12,6 +12,10 @@ export class TrackOrderWithoutLoginController extends Controller {
 		this.#ordersRepository = new OrdersRepository();
 	}
 
+	/**
+	 * Setups page with navbar and html file
+	 * @returns {Promise<void>}
+	 */
 	async #setup() {
 		App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
 

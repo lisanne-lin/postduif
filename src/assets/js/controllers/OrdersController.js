@@ -50,6 +50,10 @@ export class OrdersController extends Controller {
         await this.#fetchOrders();
     }
 
+    /**
+     * fetches orders and puts in table
+     * @returns {Promise<void>}
+     */
     async #fetchOrders() {
         const ORDER_DATA = await this.#ordersRepository.getOrdersFromUser(this.#ID);
 
@@ -80,10 +84,20 @@ export class OrdersController extends Controller {
         }
     }
 
+    /**
+     * Deletes orders from the database
+     * @param orderNum
+     * @returns {Promise<void>}
+     */
     async #deleteOrder(orderNum){
         await this.#ordersRepository.deleteOrder(orderNum);
     }
 
+    /**
+     * Fetches order and the details
+     * @param orderNumber
+     * @returns {Promise<void>}
+     */
     async #fetchOrderDetails(orderNumber) {
         const ORDER_DATA = await this.#ordersRepository.getOrderByOrderNum(orderNumber);
         
@@ -120,6 +134,11 @@ export class OrdersController extends Controller {
 
     }
 
+    /**
+     * Get order from db with the right information
+     * @param info
+     * @returns {Promise<void>}
+     */
     async #fetchOrdersByInfo(info) {
         const ORDER_DATA = await this.#ordersRepository.getOrderByInfo(info);
         this.#orderView.querySelector("#orders-tbody").remove();

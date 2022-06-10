@@ -17,6 +17,10 @@ export class DashboardController extends Controller {
         this.#setup();
     }
 
+    /**
+     * Loads in navbar and html file and runs all the functions
+     * @returns {Promise<void>}
+     */
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
         const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
@@ -44,29 +48,41 @@ export class DashboardController extends Controller {
         this.#fetchChartData();
     }
 
+    /**
+     * Calculates the earnings percentages of the customers business
+     * @returns {Promise<void>}
+     */
     async #fetchPercentages() {
-        const orderDataToday = await this.#ordersRepository.calculateEarningsToday(this.#ID);
-        const orderDataYesterday = await this.#ordersRepository.calculateEarningsYesterday(this.#ID);
-        const orderDataWeek = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
-        const orderDataLastWeek = await this.#ordersRepository.calculateEarningsLastWeek(this.#ID);
-        const orderDataMonth = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
-        const orderDataLastMonth = await this.#ordersRepository.calculateEarningsLastMonth(this.#ID);
+        const ORDER_DATA_TODAY = await this.#ordersRepository.calculateEarningsToday(this.#ID);
+        const ORDER_DATA_YESTERDAY = await this.#ordersRepository.calculateEarningsYesterday(this.#ID);
+        const ORDER_DATA_WEEK = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
+        const ORDER_DATA_LAST_WEEK = await this.#ordersRepository.calculateEarningsLastWeek(this.#ID);
+        const ORDER_DATA_MONTH = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
+        const ORDER_DATA_LAST_MONTH = await this.#ordersRepository.calculateEarningsLastMonth(this.#ID);
 
-        const percentageToday = (((orderDataYesterday.price - orderDataToday.price) / orderDataToday.price) * 100);
-        const percentageWeek = (((orderDataLastWeek.price - orderDataWeek.price) / orderDataWeek.price) * 100);
-        const percentageMonth = (((orderDataLastMonth.price - orderDataMonth.price) / orderDataMonth.price) * 100);
+        const PERCENTAGE_TODAY = (((ORDER_DATA_YESTERDAY.price - ORDER_DATA_TODAY.price) / ORDER_DATA_TODAY.price) * 100);
+        const PERCENTAGE_WEEK = (((ORDER_DATA_LAST_WEEK.price - ORDER_DATA_WEEK.price) / ORDER_DATA_WEEK.price) * 100);
+        const PERCENTAGE_MONTH = (((ORDER_DATA_LAST_MONTH.price - ORDER_DATA_MONTH.price) / ORDER_DATA_MONTH.price) * 100);
 
-        this.#dashboardView.querySelector("#percentageday").innerHTML = percentageToday;
-        this.#dashboardView.querySelector("#percentageweek").innerHTML = percentageWeek;
-        this.#dashboardView.querySelector("#percentagemonth").innerHTML = percentageMonth;
+        this.#dashboardView.querySelector("#percentageday").innerHTML = PERCENTAGE_TODAY;
+        this.#dashboardView.querySelector("#percentageweek").innerHTML = PERCENTAGE_WEEK;
+        this.#dashboardView.querySelector("#percentagemonth").innerHTML = PERCENTAGE_MONTH;
     }
 
+    /**
+     * Fetches the data from the Entrpreneur
+     * @returns {Promise<void>}
+     */
     async #fetchEntrepreneurData() {
-        const data = await this.#entrepreneursRepository.getEntrepreneurById(this.#ID);
-        this.#dashboardView.querySelector("#businessOwner").innerHTML = data[0].owner;
-        this.#dashboardView.querySelector("#businessName").innerHTML = data[0].name;
+        const DATA = await this.#entrepreneursRepository.getEntrepreneurById(this.#ID);
+        this.#dashboardView.querySelector("#businessOwner").innerHTML = DATA[0].owner;
+        this.#dashboardView.querySelector("#businessName").innerHTML = DATA[0].name;
     }
 
+    /**
+     * Fetches the orderdata for the charts and puts the data in the charts
+     * @returns {Promise<void>}
+     */
     async #fetchChartData() {
         const DATA_TODAY = await this.#ordersRepository.getTodaysOrder(this.#ID);
         const DATA_YESTERDAY = await this.#ordersRepository.getYesterdaysOrder(this.#ID);
@@ -106,7 +122,7 @@ export class DashboardController extends Controller {
             ]
         };
 
-        let EARNINGS_FOUR_WEEKS = {
+        const EARNINGS_FOUR_WEEKS = {
             // A labels array that can contain any sort of values
             labels: ['4 Weeks Ago', '3 Weeks Ago', '2 Weeks Ago', '7 days ago', "Today"],
             // Our series array that contains series objects or in this case series data arrays
@@ -150,70 +166,98 @@ export class DashboardController extends Controller {
         new Chartist.Line('.ct-bar', ORDERS_FIVE_DAYS);
     }
 
+    /**
+     * fetches orderd and put the orders in a tiny table
+     * @returns {Promise<void>}
+     */
     async #fetchOrders() {
-        const orderData = await this.#ordersRepository.getOrdersFromUser(this.#ID);
-        const maxOrders = 8
+        const ORDER_DATA = await this.#ordersRepository.getOrdersFromUser(this.#ID);
+        const MAX_ORDERS = 8
 
-        for (let i = 0; i < maxOrders; i++) {
-            let data = orderData[i];
-            const table = this.#dashboardView.querySelector("#order-table");
-            let tableRow = table.insertRow()
-            let orderCell = tableRow.insertCell()
-            let nameCell = tableRow.insertCell()
-            let adresCell = tableRow.insertCell()
+        for (let i = 0; i < MAX_ORDERS; i++) {
+            const DATA = ORDER_DATA[i];
+            const TABLE = this.#dashboardView.querySelector("#order-table");
+            const TABLE_ROW = TABLE.insertRow()
+            const ORDER_CELL = TABLE_ROW.insertCell()
+            const NAME_CELL = TABLE_ROW.insertCell()
+            const ADRESCELL = TABLE_ROW.insertCell()
 
-            orderCell.append(data.order_id);
-            nameCell.append(data.shipping_name);
-            adresCell.append(data.shipping_address);
+            ORDER_CELL.append(DATA.order_id);
+            NAME_CELL.append(DATA.shipping_name);
+            ADRESCELL.append(DATA.shipping_address);
 
-            table.append(tableRow);
+            TABLE.append(TABLE_ROW);
         }
     }
 
+    /**
+     * counts orders
+     * @returns {Promise<void>}
+     */
     async #fetchOrderCountOmw() {
-        const amount = await this.#ordersRepository.countOrdersOmw(this.#ID);
-        this.#dashboardView.querySelector("#orders-omw").innerHTML = amount.amount
+        const AMOUNT = await this.#ordersRepository.countOrdersOmw(this.#ID);
+        this.#dashboardView.querySelector("#orders-omw").innerHTML = AMOUNT.amount
     }
 
+    /**
+     * counts orders that are here
+     * @returns {Promise<void>}
+     */
     async #fetchOrderCountHere() {
-        const amount = await this.#ordersRepository.countOrdersHere(this.#ID);
+        const AMOUNT = await this.#ordersRepository.countOrdersHere(this.#ID);
 
-        this.#dashboardView.querySelector("#orders-delivered").innerHTML = amount.amount
+        this.#dashboardView.querySelector("#orders-delivered").innerHTML = AMOUNT.amount
     }
 
+    /**
+     * counts orders for today
+     * @returns {Promise<void>}
+     */
     async #fetchEarningsToday() {
-        const amount = await this.#ordersRepository.calculateEarningsToday(this.#ID);
-        if (amount.price == null) {
+        const AMOUNT = await this.#ordersRepository.calculateEarningsToday(this.#ID);
+        if (AMOUNT.price == null) {
             this.#dashboardView.querySelector("#earnings-today").innerHTML = " -.--"
         } else {
-            this.#dashboardView.querySelector("#earnings-today").innerHTML = amount.price
+            this.#dashboardView.querySelector("#earnings-today").innerHTML = AMOUNT.price
         }
     }
 
+    /**
+     * counts earnings for the week
+     * @returns {Promise<void>}
+     */
     async #fetchEarningsWeek() {
-        const amount = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
+        const AMOUNT = await this.#ordersRepository.calculateEarningsWeek(this.#ID);
 
-        if (amount.price == null) {
+        if (AMOUNT.price == null) {
             this.#dashboardView.querySelector("#earnings-week").innerHTML = " -.--"
         } else {
-            this.#dashboardView.querySelector("#earnings-week").innerHTML = amount.price
+            this.#dashboardView.querySelector("#earnings-week").innerHTML = AMOUNT.price
         }
     }
 
+    /**
+     * Counts earnings for this month
+     * @returns {Promise<void>}
+     */
     async #fetchEarningsMonth() {
-        const amount = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
-        if (amount.price == null) {
+        const AMOUNT = await this.#ordersRepository.calculateEarningsMonth(this.#ID);
+        if (AMOUNT.price == null) {
             this.#dashboardView.querySelector("#earnings-month").innerHTML = " -.--"
         } else {
-            this.#dashboardView.querySelector("#earnings-month").innerHTML = amount.price
+            this.#dashboardView.querySelector("#earnings-month").innerHTML = AMOUNT.price
         }
     }
 
+    /**
+     * fetches the collected money
+     * @returns {Promise<void>}
+     */
     async #fetchCollectedMoney() {
         const DATA = await this.#ordersRepository.calculateDonatedMoney(this.#ID);
 
-        const amount = (Math.round(data.donatie * 100) / 100).toFixed(2);
-        this.#dashboardView.querySelector("#collected-money").innerHTML = amount
+        const AMOUNT = (Math.round(DATA.donatie * 100) / 100).toFixed(2);
+        this.#dashboardView.querySelector("#collected-money").innerHTML = AMOUNT
     }
 }
 

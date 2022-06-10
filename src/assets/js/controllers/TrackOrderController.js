@@ -17,6 +17,10 @@ export class TrackOrderController extends Controller {
         this.#customersRepository = new CustomersRepository();
     }
 
+    /**
+     * setusp page with the navba, html file and runs the funcions
+     * @returns {Promise<void>}
+     */
     async #setup() {
         App.loadController(App.CONTROLLER_NAVBAR_CLIENT);
 
@@ -33,13 +37,17 @@ export class TrackOrderController extends Controller {
         const CUSTOMER_ID = await this.#customersRepository.getUserIdByEmail(App.sessionManager.get("username"));
         this.#ID = CUSTOMER_ID[0].customer_id
 
-        const customerData = await this.#customersRepository.getCustomerById(this.#ID);
+        const CUSTOMER_DATA = await this.#customersRepository.getCustomerById(this.#ID);
 
         this.#trackView.querySelector("#welcomename").innerHTML = CUSTOMER_ID[0].first_name
 
         await this.#getOrderHistory()
     }
 
+    /**
+     * Gets the order History from the client
+     * @returns {Promise<void>}
+     */
     async #getOrderHistory() {
         const orders = await this.#customersRepository.getOrdersFromCustomer(this.#ID);
 
@@ -123,6 +131,12 @@ export class TrackOrderController extends Controller {
         }
     }
 
+    /**
+     * Searches an order using orderNum and the zip from the order
+     * @param num
+     * @param zip
+     * @returns {Promise<void>}
+     */
     async #fetchOrderByNumAndZip(num, zip) {
         try {
             const orderData = await this.#ordersRepository.getOrderByOrderNumAndZip(num, zip);

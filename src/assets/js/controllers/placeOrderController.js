@@ -21,6 +21,10 @@ export class PlaceOrderController extends Controller {
         this.#setupView();
     }
 
+    /**
+     * Loads in navbar, html file and runs the functions
+     * @returns {Promise<void>}
+     */
     async #setupView() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
         const ENTREPRENEUR_ID = await this.#entrepreneursRepository.getUserIdByEmail(App.sessionManager.get("username"))
@@ -36,6 +40,14 @@ export class PlaceOrderController extends Controller {
 
     }
 
+    /**
+     * Sends an confirmation email to the client
+     * @param emailaddress
+     * @param name
+     * @param order_id
+     * @param ZIP
+     * @returns {Promise<void>}
+     */
     async #sendMail(emailaddress, name, order_id, ZIP) {
         await fetch("https://api.hbo-ict.cloud/mail", {
             method: 'POST',
@@ -63,7 +75,11 @@ export class PlaceOrderController extends Controller {
         })
     }
 
-
+    /**
+     * Saves an order to the db
+     * @param event
+     * @returns {Promise<void>}
+     */
     async #saveOrder(event) {
         event.preventDefault();
 

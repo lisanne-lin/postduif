@@ -17,6 +17,10 @@ export class RegisterController extends Controller {
         this.#setupView();
     }
 
+    /**
+     * Loads in Navbar and runs functions when clicked
+     * @returns {Promise<void>}
+     */
     async #setupView() {
         App.loadController(App.CONTROLLER_NAVBAR_BUSINESS);
 
@@ -37,6 +41,11 @@ export class RegisterController extends Controller {
             });
     }
 
+    /**
+     * Ads an account to the db
+     * @param event
+     * @returns {Promise<void>}
+     */
     async #saveAccount(event) {
         event.preventDefault();
 
