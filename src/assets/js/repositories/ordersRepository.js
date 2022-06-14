@@ -260,9 +260,10 @@ export class OrdersRepository {
 	}
 
 	/**
+	 *gets the name of the company with order_id
 	 *
-	 * @param {*} id
-	 * @returns
+	 * @param {*} id is the order_id
+	 * @returns name of the company
 	 */
 	async getCompanyName(id) {
 		return await this.#networkManager.doRequest(
